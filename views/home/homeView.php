@@ -19,26 +19,24 @@ foreach ($products as $product) {
     );
 }
 ?>
-<div class="text-dark-tertiary">
+<div class="text-emerald-600">
     <!-- navbar -->
     <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
     <header class="py-10 md:py-20 w-11/12 mx-auto">
         <!-- title -->
         <div class="flex flex-col md:flex-row justify-center items-center pb-10 gap-10 lg:gap-20 ">
             <div class="max-w-2xl">
-                <h1 class="text-left text-3xl lg:text-5xl xl:text-6xl font-bold md:font-bold text-tertiary mb-1 md:mb-5">
+                <h1 class="text-left text-3xl lg:text-5xl xl:text-6xl font-bold md:font-bold text-emerald-600 mb-1 md:mb-5">
                     <span class="text-pink-600">Benvenuti nella</span> </br> Merceria Creativa Tania, </br>
                     <p class="text-lg md:text-xl lg:text-2xl xl:text-3xl">il tuo negozio online per il cucito creativo.</p>
                 </h1>
-                <div class="text-left w-32 md:w-48 py-1 rounded-lg bg-tertiary flex justify-center items-center">
+                <div class="text-left w-32 md:w-48 py-1 rounded-lg bg-emerald-600 flex justify-center items-center">
                     <p class="text-stone-100 md:text-xl">Scopri di più</p>
                 </div>
             </div>
             <!-- image -->
             <div class="max-w-xs lg:max-w-sm xl:max-w-md rounded-lg shadow-lg shadow-pink-600">
-                <!-- <img src="/mct/wp-content/themes/merceriacreativatania/assets/images/fotoHeader.jpg" alt=""> -->
                 <img src="<?php echo get_image_path('fotoHeader.jpg'); ?>" alt="Header Image">
-
             </div>
         </div>
         <!-- brand -->
@@ -71,7 +69,7 @@ foreach ($products as $product) {
             <section class="flex flex-col overflow-hidden">
                 <div class="flex flex-col max-w-7xl">
                     <div class="flex flex-col items-start md:grid md:grid-cols-2 md:px-5 md:items-center text-left py-5">
-                        <h2 class="titleH2">Prodotti più venduti</h2>
+                        <h2 class="text-2xl font-black text-emerald-600 md:text-3xl lg:text-4xl">Prodotti più venduti</h2>
                         <p class="text-xl text-pink-600 flex justify-end items-center gap-1">
                             Vedi tutti i prodotti
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -89,13 +87,13 @@ foreach ($products as $product) {
                         ?>
                     </div>
                     <div class="flex justify-end items-center gap-5 py-5">
-                        <button type="button" id="prev" class="text-white bg-dark-tertiary hover:text-white hover:bg-dark-tertiary focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 rotate-180">
+                        <button type="button" id="prev" class="text-white bg-emerald-600 hover:text-white hover:bg-emerald-600 focus:ring-4 focus:outline-none focus:ring-emerald-600 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 rotate-180">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
                             <!-- <span class="sr-only">Icon description</span> -->
                         </button>
-                        <button type="button" id="next" class="text-white bg-dark-tertiary hover:text-white hover:bg-dark-tertiary focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2">
+                        <button type="button" id="next" class="text-white bg-emerald-600 hover:text-white hover:bg-emerald-600 focus:ring-4 focus:outline-none focus:ring-emerald-600 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
@@ -109,11 +107,11 @@ foreach ($products as $product) {
             <!-- call to action -->
             <section class="flex flex-col items-center gap-5 pb-20">
                 <div class="max-w-md md:max-w-lg lg:max-w-5xl flex items-center text-left mb-5">
-                    <div class="p-4 border-tertiary border-r-2">
-                        <h3 class="text-sm md:text-2xl lg:text-4xl text-dark-tertiary">Ecco perché scegliere <span class="font-black">noi</span></br> per i tuoi acquisti online:</h3>
+                    <div class="p-4 border-emerald-600 border-r-2">
+                        <h3 class="text-sm md:text-2xl lg:text-4xl text-emerald-600">Ecco perché scegliere <span class="font-black">noi</span></br> per i tuoi acquisti online:</h3>
                     </div>
                     <div class="p-4">
-                        <h3 class="text-sm md:text-lg lg:text-2xl text-dark-tertiary text-left items-center">spedizione rapida e <br> gratuita sopra i 79€</h3>
+                        <h3 class="text-sm md:text-lg lg:text-2xl text-emerald-600 text-left items-center">spedizione rapida e <br> gratuita sopra i 79€</h3>
                     </div>
                 </div>
                 <div class="max-w-7xl flex text-left gap-5">
@@ -125,15 +123,15 @@ foreach ($products as $product) {
                     ];
                     foreach ($data as $d) {
                         $image_path = get_image_path("svg/" . $d["img_src"]);
-                        echo '
-                            <div class="flex items-center gap-1">
-                                <img class="w-8 h-8 md:h-12 md:w-12 lg:h-20 lg:w-20" src="' . $image_path . '" alt="">
-                                <div>
-                                    <h5 class="text-xs md:text-lg lg:text-2xl xl:text-3xl font-semibold">' . $d["h5"] . '</h5>
-                                    <p class="text-[10px] md:text-md lg:text-xl">' . $d["p"] . '</p>
-                                </div>
+                    ?>
+                        <div class="flex items-center gap-1">
+                            <img class="w-8 h-8 md:h-12 md:w-12 lg:h-20 lg:w-20" src="<?php echo $image_path; ?>" alt="">
+                            <div>
+                                <h5 class="text-xs md:text-lg lg:text-2xl xl:text-3xl font-semibold"><?php echo $d["h5"]; ?></h5>
+                                <p class="text-[10px] md:text-md lg:text-xl"><?php echo $d["p"]; ?></p>
                             </div>
-                            ';
+                        </div>
+                    <?php
                     }
                     ?>
 
@@ -141,7 +139,7 @@ foreach ($products as $product) {
             </section>
             <section>
                 <div class="md:px-5 py-5">
-                    <h2 class="titleH2 text-left">Categorie</h2>
+                    <h2 class="text-2xl font-black text-emerald-600 md:text-3xl lg:text-4xl text-left">Categorie</h2>
                 </div>
                 <div class="md:px-5 flex flex-wrap md:justify-between justify-around gap-5">
                     <?php
@@ -175,18 +173,18 @@ foreach ($products as $product) {
                 <div>
                     <div class="flex gap-2">
                         <div>
-                            <label for="input-group-1" class="hidden mb-2 text-sm font-medium text-dark-tertiary dark:text-white">Your Email</label>
+                            <label for="input-group-1" class="hidden mb-2 text-sm font-medium text-emerald-600">Your Email</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-tertiary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <svg aria-hidden="true" class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                                     </svg>
                                 </div>
-                                <input type="text" id="input-group-1" class="bg-gray-50 border border-gray-300 text-dark-tertiary text-sm rounded-lg w-56 focus:ring-pink-500 focus:border-pink-500 block p-2.5" placeholder="tania@gmail.com" style="padding: 0.5rem 0.5rem 0.5rem 2.2rem">
+                                <input type="text" id="input-group-1" class="bg-gray-50 border border-gray-300 text-emerald-600 text-sm rounded-lg w-56 focus:ring-pink-500 focus:border-pink-500 block p-2.5" placeholder="tania@gmail.com" style="padding: 0.5rem 0.5rem 0.5rem 2.2rem">
                             </div>
                         </div>
-                        <button class="bg-tertiary text-xs md:text-sm lg:text-md text-white rounded-lg px-5">Invia</button>
+                        <button class="bg-emerald-600 text-xs md:text-sm lg:text-md text-white rounded-lg px-5">Invia</button>
                     </div>
                 </div>
             </section>

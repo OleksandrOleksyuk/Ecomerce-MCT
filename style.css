@@ -13,14 +13,12 @@ Last modified: 20/02/2023 - oleksandr
 @tailwind utilities;
 
 @layer components {
-  .titleH2 {
-    @apply text-2xl font-black text-tertiary md:text-3xl lg:text-4xl;
-  }
 }
 
 #containerImageCard img {
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 /* nascondo le cose di WP */
@@ -83,4 +81,23 @@ a {
   text-decoration: none !important;
   color: inherit;
   list-style: none;
+}
+
+ul,
+ol {
+  list-style: none; /* Rimuove i punti elenco */
+  padding: 0; /* Rimuove il padding predefinito del browser */
+  margin: 0; /* Rimuove il margin predefinito del browser */
+  outline: none; /* Rimuove l'outline attorno all'elemento quando viene cliccato */
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none; /* Rimuove l'aspetto predefinito del browser */
+  -moz-appearance: none;
+  appearance: none;
+  outline: none; /* Rimuove l'outline attorno all'elemento quando viene cliccato */
+}
+
+input[type="checkbox"]:checked {
+  /* Aggiunge uno stile personalizzato all'elemento selezionato */
 }

@@ -18,6 +18,7 @@ $viewName = $generalController->GetViewName();
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 	<link href="<?php get_link_path('dist/output.css'); ?>" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo("pingback_url"); ?>">
 	<?php echo $generalController->SetViewStyle(

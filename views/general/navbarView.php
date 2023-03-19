@@ -1,4 +1,4 @@
-<div class="bg-dark-tertiary text-stone-100 py-2 text-sm sm:text-base text-center">
+<div class="bg-emerald-600 text-stone-100 py-2 text-sm sm:text-base text-center">
     <p>Spedizione gratuita sopra i 79€ - Spedizione entro 24h</p>
 </div>
 <nav class="navbar flex justify-between items-center w-11/12 mx-auto top-0">
@@ -13,7 +13,7 @@
             ];
             foreach ($elements as $key => $value) {
                 $path = get_link_path($key);
-                echo "<li class=''><a class='hover:text-pink-600 text-xl' href=" . $path . ">$value</a></li>";
+                echo "<li class='cursor-pointer'><a class='hover:text-pink-600 text-xl' href=" . $path . ">$value</a></li>";
             }
             ?>
         </ul>
