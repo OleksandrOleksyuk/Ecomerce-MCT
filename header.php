@@ -66,7 +66,7 @@ $viewName = $generalController->GetViewName();
 		do_action("storefront_before_content"); ?>
 
 		<div id="content" class="site-content" tabindex="-1">
-			<div class="col-full">
+			<div class="col-full color-primary">
 
 				<?php do_action("storefront_content_top");
 				?>

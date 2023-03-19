@@ -68,13 +68,13 @@ file_put_contents($path, '<pre>' . print_r($catgegoriesProduct, true)  . '</pre>
 ?>
 <section id="product">
     <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
-    <h1 class="text-center w-full text-7xl font-bold text-emerald-700">Prodotti</h1>
+    <h1 class="text-center w-full text-7xl font-bold text-dark-tertiary">Prodotti</h1>
     <div class="flex py-10 md:py-20 w-11/12 mx-auto gap-2">
         <div class="w-64 p-4">
             <h2 class="text-4xl font-bold text-pink-500">Filtra per:</h2>
             <div>
-                <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Marca</h3>
-                <ul class="w-48 text-sm font-medium text-emerald-900">
+                <h3 class="mt-2 font-semibold text-dark-tertiary text-2xl">Marca</h3>
+                <ul class="w-48 text-sm font-medium text-dark-tertiary">
                     <?php
                     // Stampa gli elementi del nuovo array
                     foreach ($catgegoriesProduct as $key => $value) {
@@ -82,7 +82,7 @@ file_put_contents($path, '<pre>' . print_r($catgegoriesProduct, true)  . '</pre>
                         <li class="w-full">
                             <div class="flex items-center">
                                 <input id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4  bg-pink-100 border-pink-500 rounded">
-                                <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 text-sm font-medium text-emerald-900"><?php echo $value['name']; ?></label>
+                                <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 text-sm font-medium text-dark-tertiary"><?php echo $value['name']; ?></label>
                             </div>
                         </li>
                     <?php
@@ -91,8 +91,8 @@ file_put_contents($path, '<pre>' . print_r($catgegoriesProduct, true)  . '</pre>
                 </ul>
             </div>
             <div>
-                <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Categoria</h3>
-                <ul class="w-48 text-sm font-medium text-emerald-900">
+                <h3 class="mt-2 font-semibold text-dark-tertiary text-2xl">Categoria</h3>
+                <ul class="w-48 text-sm font-medium text-dark-tertiary">
                     <?php
                     // Stampa gli elementi del nuovo array
                     foreach ($catgegoriesProduct as $subcategories) {
@@ -102,7 +102,7 @@ file_put_contents($path, '<pre>' . print_r($catgegoriesProduct, true)  . '</pre>
                                 <li class="w-full">
                                     <div class="flex items-center">
                                         <input id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4  bg-pink-100 border-pink-500 rounded">
-                                        <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 text-sm font-medium text-emerald-900"><?php echo $value['name']; ?></label>
+                                        <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 text-sm font-medium text-dark-tertiary"><?php echo $value['name']; ?></label>
                                     </div>
                                 </li>
                     <?php

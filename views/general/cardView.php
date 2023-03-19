@@ -28,7 +28,7 @@ $product = $params['params'];
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
-                <div class="px-10 py-1 text-slate-50 bg-emerald-600 rounded-lg">
+                <div class="px-10 py-1 text-slate-50 bg-tertiary rounded-lg">
                     <p>Aggiungi</p>
                 </div>
             </div>

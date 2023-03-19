@@ -1,5 +1,5 @@
-<footer class="bg-emerald-900 flex items-center flex-col">
-    <div class="p-4 bg-emerald-900 md:px-6 md:py-8 w-11/12 mx-auto ">
+<footer class="bg-dark-tertiary flex items-center flex-col">
+    <div class="p-4 bg-dark-tertiary md:px-6 md:py-8 w-11/12 mx-auto ">
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="<?php echo get_link_path('home'); ?>"><img class="h-20" src="<?php echo get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
             <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 ">

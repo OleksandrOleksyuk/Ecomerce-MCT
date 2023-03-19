@@ -14,7 +14,7 @@ Last modified: 20/02/2023 - oleksandr
 
 @layer components {
   .titleH2 {
-    @apply text-2xl font-black text-emerald-600 md:text-3xl lg:text-4xl;
+    @apply text-2xl font-black text-tertiary md:text-3xl lg:text-4xl;
   }
 }
 
