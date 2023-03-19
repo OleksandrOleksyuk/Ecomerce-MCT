@@ -95,33 +95,44 @@ $result = file_put_contents($path, '<pre>' . print_r($all_products, true)  . '</
                     <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Marca</h3>
                     <ul class="w-48 font-medium text-emerald-900">
                         <?php
-                        // Stampa gli elementi del nuovo array
-                        foreach ($categoriesProduct as $key => $value) {
+                        $displayed_parents = []; // array vuoto per tenere traccia dei valori già visualizzati
+
+                        foreach ($product_list as $key => $value) {
+                            // verifica se il valore è già stato visualizzato
+                            if (!in_array($value['parent'], $displayed_parents)) {
+                                // aggiungi il valore attuale all'array di valori visualizzati
+                                $displayed_parents[] = $value['parent'];
                         ?>
-                            <li class="w-full">
-                                <div class="flex items-center">
-                                    <input data-type="categories" id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 border-[1px] checked:bg-pink-300 checked:text-white border-pink-500 rounded">
-                                    <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?php echo $value['name']; ?></label>
-                                </div>
-                            </li>
+                                <li class="w-full">
+                                    <div class="flex items-center">
+                                        <input data-type="categories" data-parent="<?php echo strtolower($value['data-parent']); ?>" id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 border-[1px] checked:bg-pink-300 checked:text-white border-pink-500 rounded">
+                                        <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?php echo $value['parent']; ?></label>
+                                    </div>
+                                </li>
                         <?php
+                            }
                         }
                         ?>
                     </ul>
+
                 </div>
                 <div>
                     <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Categoria</h3>
                     <ul class="w-48 font-medium text-emerald-900">
                         <?php
-                        // Stampa gli elementi del nuovo array
-                        foreach ($categoriesProduct as $subcategories) {
-                            if ($subcategories['children']) {
-                                foreach ($subcategories['children'] as $key => $value) {
+                        $displayed_children = []; // array vuoto per tenere traccia dei valori già visualizzati
+                        foreach ($product_list as $key => $value) {
+                            // verifico se il mio array non è vuoto per evitare che mi dia errore
+                            if (!empty($value['children'])) {
+                                // verifica se il valore è già stato visualizzato
+                                if (!in_array($value['children'][0], $displayed_children)) {
+                                    // aggiungi il valore attuale all'array di valori visualizzati
+                                    $displayed_children[] = $value['children'][0];
                         ?>
                                     <li class="w-full">
                                         <div class="flex items-center">
-                                            <input data-type="subcategories" id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 border-[1px] checked:bg-pink-300 checked:text-white border-pink-500 rounded">
-                                            <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?php echo $value['name']; ?></label>
+                                            <input data-type="subcategories" data-children="<?php echo strtolower($value['data-children']); ?>" id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 border-[1px] checked:bg-pink-300 checked:text-white border-pink-500 rounded">
+                                            <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?php echo $value['children'][0]; ?></label>
                                         </div>
                                     </li>
                         <?php
@@ -130,13 +141,14 @@ $result = file_put_contents($path, '<pre>' . print_r($all_products, true)  . '</
                         }
                         ?>
                     </ul>
+
                 </div>
                 <div class="p2">
                     <div class="flex gap-2 p-2 mx-auto border border-pink-600 rounded-lg items-center justify-center">Reset<img class="h-6 w-6 hover:animate-spin" src="<?php echo get_image_path('svg/reset.svg'); ?>" alt="" srcset=""></div>
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 w-full 2xl:grid-cols-4">
+        <div id="containerProduct" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full 2xl:grid-cols-4">
             <?php
             foreach ($product_list as $product) {
                 // include($path);
