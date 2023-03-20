@@ -1,23 +1,5 @@
 <?php
-$args = array(
-    'post_type' => 'product',
-    'posts_per_page' => -1,
-);
-
-$products = wc_get_products($args);
-
-$product_list = array();
-
-foreach ($products as $product) {
-    $product_list[] = array(
-        'id' => $product->get_id(),
-        'name' => $product->get_name(),
-        'image' => $product->get_image(),
-        'short_description' => $product->get_short_description(),
-        'price' => $product->get_price(),
-        // Aggiungi altre proprietà di prodotto desiderate
-    );
-}
+$product_list = render_products(10);
 ?>
 <div class="text-emerald-600">
     <!-- navbar -->
@@ -50,10 +32,10 @@ foreach ($products as $product) {
             ?>
         </div>
     </header>
-    <main id='pippo'>
-        <div class="bg-pink-50 py-5 flex flex-col items-center px-5 md:px-10">
+    <main>
+        <section class="section opacity-0 translate-y-52 duration-1000 bg-pink-50 py-5 flex flex-col items-center px-5 md:px-10">
             <!-- welcome phrase -->
-            <section class="flex justify-center py-5 xl:w-11/12 mx-auto">
+            <div class="flex justify-center mx-auto py-5 w-11/12">
                 <div class="flex flex-col md:grid md:grid-cols-3 max-w-5xl text-left">
                     <div class="col-span-1 p-2 lg:p-5">
                         <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl">Stai cercando <span class="text-pink-600 font-semibold">prodotti unici</span>per dare sfogo alla tua <span class="text-pink-600 font-semibold"> creatività</span>?</p>
@@ -64,9 +46,9 @@ foreach ($products as $product) {
                         </p>
                     </div>
                 </div>
-            </section>
+            </div>
             <!-- best-selling products -->
-            <section class="flex flex-col overflow-hidden">
+            <div class="flex flex-col mx-auto overflow-hidden w-11/12">
                 <div class="flex flex-col max-w-7xl">
                     <div class="flex flex-col items-start md:grid md:grid-cols-2 md:px-5 md:items-center text-left py-5">
                         <h2 class="text-2xl font-black text-emerald-600 md:text-3xl lg:text-4xl">Prodotti più venduti</h2>
@@ -81,7 +63,6 @@ foreach ($products as $product) {
                         <?php
                         // ciclo foreach per stampare i prodotti
                         foreach ($product_list as $product) {
-                            // include($path);
                             echo $this->SetGeneralsShortCodesParams(['section' => 'general', 'name' => 'cardView', 'params' => $product]);
                         }
                         ?>
@@ -101,11 +82,11 @@ foreach ($products as $product) {
                         </button>
                     </div>
                 </div>
-            </section>
-        </div>
-        <div class="py-10 md:py-20 flex flex-col items-center w-11/12 mx-auto">
+            </div>
+        </section>
+        <section class="section opacity-0 translate-y-52 duration-1000 py-10 md:py-20 flex flex-col items-center w-11/12 mx-auto">
             <!-- call to action -->
-            <section class="flex flex-col items-center gap-5 pb-20">
+            <div class="flex flex-col items-center gap-5 pb-20">
                 <div class="max-w-md md:max-w-lg lg:max-w-5xl flex items-center text-left mb-5">
                     <div class="p-4 border-emerald-600 border-r-2">
                         <h3 class="text-sm md:text-2xl lg:text-4xl text-emerald-600">Ecco perché scegliere <span class="font-black">noi</span></br> per i tuoi acquisti online:</h3>
@@ -136,8 +117,8 @@ foreach ($products as $product) {
                     ?>
 
                 </div>
-            </section>
-            <section>
+            </div>
+            <div>
                 <div class="md:px-5 py-5">
                     <h2 class="text-2xl font-black text-emerald-600 md:text-3xl lg:text-4xl text-left">Categorie</h2>
                 </div>
@@ -162,11 +143,11 @@ foreach ($products as $product) {
                     }
                     ?>
                 </div>
-            </section>
-        </div>
-        <div class="bg-pink-50 py-5 md:py-20 px-10 flex flex-col items-center">
+            </div>
+        </section>
+        <section class="section opacity-0 translate-y-52 duration-1000 bg-pink-50 py-5 md:py-20 px-10 flex flex-col items-center">
             <!-- news letter -->
-            <section class="flex flex-col gap-5 max-w-2xl items-center">
+            <div class="flex flex-col gap-5 max-w-2xl items-center">
                 <div>
                     <p class="md:text-lg lg:text-xl xl:text-2xl">Iscriviti alla nostra newsletter per ricevere il <span class="text-pink-600">15% di sconto</span> sul tuo primo acquisto e <span class="text-pink-600">sorprese esclusive</span> ogni mese.</p>
                 </div>
@@ -187,14 +168,14 @@ foreach ($products as $product) {
                         <button class="bg-emerald-600 text-xs md:text-sm lg:text-md text-white rounded-lg px-5">Invia</button>
                     </div>
                 </div>
-            </section>
-        </div>
-        <div>
+            </div>
+        </section>
+        <section class="section opacity-0 translate-y-52 duration-1000">
             <!-- reviews -->
             <?php
             echo do_shortcode('[views section=reviews name=reviewsViews]');
             ?>
-        </div>
+        </section>
     </main>
 </div>
 <?php echo do_shortcode('[views section=footer name=footerView]'); ?>

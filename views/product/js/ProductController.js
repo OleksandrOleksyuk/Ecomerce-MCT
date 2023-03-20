@@ -17,19 +17,26 @@ export default class ProductController {
             if (evt.target.checked && evt.target.getAttribute('data-parent')) {
                 parent = evt.target.getAttribute('data-parent');
             } else if (evt.target.checked && evt.target.getAttribute('data-children')) {
+                console.log(evt.target);
                 parent = evt.target.getAttribute('data-parent');
                 children = evt.target.getAttribute('data-children');
             }
             this.renderContainerCard(parent, children)
         }));
     }
-    renderContainerCard(parent = "", children = ""){
+
+    renderContainerCard(parent = "", children = "") {
+        console.log(parent, children);
         const containerProduct = document.querySelectorAll('#containerProduct > div');
         containerProduct.forEach(card => card.classList.add('hidden'));
         [...containerProduct].filter(card => {
-            if(card.getAttribute('data-parent') === parent){
-                card.classList.remove('hidden');
-            }
+
+            (card.getAttribute('data-parent') === parent) && card.classList.remove('hidden');
+
+            (card.getAttribute('data-children') === children && card.getAttribute('data-parent') === parent) && card.classList.remove('hidden');
+
+            (card.getAttribute('data-children') === children) && card.classList.remove('hidden');
+            
         })
     }
 }

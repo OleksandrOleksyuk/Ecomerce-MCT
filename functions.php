@@ -2,7 +2,6 @@
 require_once('controllers.php');
 // require_once(get_template_directory() . '/config.php');
 
-
 function get_image_path($image_filename)
 {
     $local_path = '/mct';
@@ -41,4 +40,50 @@ function get_link_path($path)
 function is_local()
 {
     return strpos($_SERVER['HTTP_HOST'], 'localhost') !== false;
+}
+
+function render_products($limit = -1)
+{
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => $limit
+    );
+
+    $products = wc_get_products($args);
+
+    $product_list = array();
+
+    foreach ($products as $product) {
+        $categories = get_the_terms($product->get_id(), 'product_cat');
+        $parent_id = 0;
+        $children_ids = array();
+
+        foreach ($categories as $category) {
+            if ($category->parent == 0) {
+                $parent_id = $category->name;
+            } else {
+                $parent_category = get_term($category->parent, 'product_cat');
+                $parent_id = $parent_category->name;
+                $children_ids[] = $category->name;
+            }
+        }
+
+        $product_list[] = array(
+            'id' => $product->get_id(),
+            'name' => $product->get_name(),
+            'image' => $product->get_image(),
+            'short_description' => $product->get_short_description(),
+            'price' => $product->get_price(),
+            'categories' => $product->get_categories(),
+            'parent' => $parent_id,
+            'children' => $children_ids,
+            'data-parent' => $parent_id,
+            'data-children' => implode(',', $children_ids),
+            // Aggiungi altre proprietà di prodotto desiderate
+        );
+    }
+
+    $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/logs.txt');
+    file_put_contents($path, '<pre>' . print_r($product_list, true)  . '</pre>');
+    return $product_list;
 }

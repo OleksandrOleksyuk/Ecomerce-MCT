@@ -1,88 +1,5 @@
 <?php
-$args = array(
-    'post_type' => 'product',
-    'posts_per_page' => -1,
-);
-
-$products = wc_get_products($args);
-
-$product_list = array();
-
-foreach ($products as $product) {
-    $categories = get_the_terms($product->get_id(), 'product_cat');
-    $parent_id = 0;
-    $children_ids = array();
-
-    foreach ($categories as $category) {
-        if ($category->parent == 0) {
-            // This is a top-level category
-            $parent_id = $category->name;
-        } else {
-            // This is a child category
-            $parent_category = get_term($category->parent, 'product_cat');
-            $parent_id = $parent_category->name;
-            $children_ids[] = $category->name;
-        }
-    }
-
-    $product_list[] = array(
-        'id' => $product->get_id(),
-        'name' => $product->get_name(),
-        'image' => $product->get_image(),
-        'short_description' => $product->get_short_description(),
-        'price' => $product->get_price(),
-        'categories' => $product->get_categories(),
-        'parent' => $parent_id,
-        'children' => $children_ids,
-        'data-parent' => $parent_id,
-        'data-children' => implode(',', $children_ids),
-        // Aggiungi altre proprietà di prodotto desiderate
-    );
-}
-
-
-function list_product_categories()
-{
-    $categories = get_terms(
-        array(
-            'taxonomy'   => 'product_cat',
-            'orderby'    => 'name',
-            'hide_empty' => false,
-        )
-    );
-
-    $categories = treeify_terms($categories);
-
-    return $categories;
-}
-
-function treeify_terms($terms, $root_id = 0)
-{
-    $tree = array();
-
-    foreach ($terms as $term) {
-        if ($term->parent === $root_id) {
-            array_push(
-                $tree,
-                array(
-                    'name'     => $term->name,
-                    'slug'     => $term->slug,
-                    'id'       => $term->term_id,
-                    'count'    => $term->count,
-                    'children' => treeify_terms($terms, $term->term_id),
-                )
-            );
-        }
-    }
-
-    return $tree;
-}
-
-$categoriesProduct = list_product_categories();
-$all_products = array_merge([$categoriesProduct], [$product_list]);
-$path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/logs.txt');
-$result = file_put_contents($path, '<pre>' . print_r($all_products, true)  . '</pre>');
-
+$product_list = render_products();
 ?>
 <section id="product">
     <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
@@ -96,7 +13,6 @@ $result = file_put_contents($path, '<pre>' . print_r($all_products, true)  . '</
                     <ul class="w-48 font-medium text-emerald-900">
                         <?php
                         $displayed_parents = []; // array vuoto per tenere traccia dei valori già visualizzati
-
                         foreach ($product_list as $key => $value) {
                             // verifica se il valore è già stato visualizzato
                             if (!in_array($value['parent'], $displayed_parents)) {
@@ -105,7 +21,7 @@ $result = file_put_contents($path, '<pre>' . print_r($all_products, true)  . '</
                         ?>
                                 <li class="w-full">
                                     <div class="flex items-center">
-                                        <input data-type="categories" data-parent="<?php echo strtolower($value['data-parent']); ?>" id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 border-[1px] checked:bg-pink-300 checked:text-white border-pink-500 rounded">
+                                        <input data-type="categories" data-parent="<?php echo strtolower($value['data-parent']); ?>" id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 border-[1px] checked:bg-blue-300 checked:text-white border-pink-500 rounded accent-pink-500">
                                         <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?php echo $value['parent']; ?></label>
                                     </div>
                                 </li>
@@ -114,7 +30,6 @@ $result = file_put_contents($path, '<pre>' . print_r($all_products, true)  . '</
                         }
                         ?>
                     </ul>
-
                 </div>
                 <div>
                     <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Categoria</h3>
@@ -155,9 +70,7 @@ $result = file_put_contents($path, '<pre>' . print_r($all_products, true)  . '</
                 echo $this->SetGeneralsShortCodesParams([
                     'section' => 'general',
                     'name' => 'cardView',
-                    'params' => $product,
-                    'data-parent' => $product['data-parent'],
-                    'data-children' => $product['data-children']
+                    'params' => $product
                 ]);
             }
 

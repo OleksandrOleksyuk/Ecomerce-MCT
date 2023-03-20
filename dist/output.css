@@ -1038,6 +1038,11 @@ video {
   border-collapse: separate;
 }
 
+.translate-y-52 {
+  --tw-translate-y: 13rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .rotate-180 {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -2473,6 +2478,14 @@ video {
   -moz-osx-font-smoothing: auto;
 }
 
+.accent-pink-500 {
+  accent-color: #ec4899;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
 .opacity-50 {
   opacity: 0.5;
 }
@@ -2748,6 +2761,16 @@ video {
   transition-duration: 150ms;
 }
 
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
+}
+
 .duration-500 {
   transition-duration: 500ms;
 }
@@ -2848,29 +2871,8 @@ a {
   list-style: none;
 }
 
-ul,
-ol {
-  list-style: none;
-  /* Rimuove i punti elenco */
-  padding: 0;
-  /* Rimuove il padding predefinito del browser */
-  margin: 0;
-  /* Rimuove il margin predefinito del browser */
-  outline: none;
-  /* Rimuove l'outline attorno all'elemento quando viene cliccato */
-}
-
-input[type="checkbox"] {
-  -webkit-appearance: none;
-  /* Rimuove l'aspetto predefinito del browser */
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  /* Rimuove l'outline attorno all'elemento quando viene cliccato */
-}
-
-input[type="checkbox"]:checked {
-  /* Aggiunge uno stile personalizzato all'elemento selezionato */
+section.section {
+  transition: transform 1s, opacity 1s;
 }
 
 @media (min-width: 640px) {
@@ -2907,6 +2909,11 @@ input[type="checkbox"]:checked {
       max-width: 1536px;
     }
   }
+}
+
+.checked\:bg-blue-300:checked {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
 }
 
 .checked\:bg-pink-300:checked {
@@ -3268,10 +3275,6 @@ input[type="checkbox"]:checked {
 }
 
 @media (min-width: 1280px) {
-  .xl\:w-11\/12 {
-    width: 91.666667%;
-  }
-
   .xl\:max-w-md {
     max-width: 28rem;
   }

@@ -7,6 +7,7 @@ export default class HomeController extends ExecJs {
     this.handleClickMenu();
     this.sliderBestSellProduct();
     this.ReviewsController = new ReviewsController();
+    this.revealSections();
   }
 
   handleClickMenu() {
@@ -45,6 +46,32 @@ export default class HomeController extends ExecJs {
           carouselEl.forEach((card) => (card.style.transform = `translateX(${direction * (cardWidth + gapCard)}px)`)); // magic number 20 da calcolare);
         })
       );
+    });
+  }
+
+  revealSections() {
+    const allSections = document.querySelectorAll('section.section');
+
+    const revealSection = function (entries, observer) {
+      const [entry] = entries;
+
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.remove('opacity-0');
+      entry.target.classList.remove('translate-y-52');
+      observer.unobserve(entry.target);
+    };
+
+    const sectionObserver = new IntersectionObserver(revealSection, {
+      root: null,
+      threshold: 0.15,
+    });
+
+    [...allSections].forEach(function (section) {
+      sectionObserver.observe(section);
+      section.classList.add();
+      entry.target.classList.add('opacity-0');
+      entry.target.classList.add('translate-y-52');
     });
   }
 }
