@@ -17,8 +17,8 @@ $viewName = $generalController->GetViewName();
 	<meta charset="<?php bloginfo("charset"); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
-	<link href="<?php get_link_path('dist/output.css'); ?>" rel="stylesheet">
-	<script src="https://cdn.tailwindcss.com"></script>
+	<link href="/mct/wp-content/themes/merceriacreativatania/dist/output.css" rel="stylesheet">
+
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo("pingback_url"); ?>">
 	<?php echo $generalController->SetViewStyle(

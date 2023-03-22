@@ -4,7 +4,7 @@ $product_list = render_products();
 <section id="product" class="">
     <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
     <h1 class="text-center w-full text-7xl font-bold text-emerald-900">Prodotti</h1>
-    <div class="flex flex-col lg:flex-row py-10 md:py-20 w-11/12 mx-auto gap-2 max-w-screen-2xl h-screen">
+    <div class="flex flex-col lg:flex-row py-10 md:py-20 w-11/12 mx-auto gap-2 max-w-screen-2xl">
         <div class="w-64 p-4">
             <h2 class="text-4xl font-bold text-pink-500">Filtra per:</h2>
             <div class="flex lg:block">
