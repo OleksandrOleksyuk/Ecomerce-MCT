@@ -2,11 +2,11 @@
 $product = $params['params'];
 ?>
 <div data-parent="<?php echo strtolower($product['data-parent']); ?>" data-children="<?php echo strtolower($product['data-children']); ?>" id="<?php echo $product['id']; ?>" class="transition-all duration-500 ease-linear col-span-1 mb-4">
-    <div class="w-72 h-[27.1875rem] bg-cyan-100 p-5 text-left flex flex-col justify-between rounded-lg border-2 border-green-50">
+    <div class="w-72 h-96 shadow-lg p-5 text-left flex flex-col justify-between rounded-lg">
         <div id="containerImageCard" class="flex h-48 items-center justify-center overflow-hidden">
             <?php echo $product['image']; ?>
         </div>
-        <div class="flex flex-col justify-between h-52">
+        <div class="flex flex-col justify-between h-48">
             <div>
                 <h4 class="text-2xl font-bold text-emerald-600">
                     <?php echo $product['name']; ?>

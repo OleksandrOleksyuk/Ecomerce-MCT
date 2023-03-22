@@ -21,6 +21,10 @@ Last modified: 20/02/2023 - oleksandr
   border-radius: 5px;
 }
 
+/* * {
+  font-family: "Poppins", sans-serif !important;
+} */
+
 /* nascondo le cose di WP */
 /* #page > header, */
 section.storefront-product-section,
@@ -85,4 +89,16 @@ a {
 
 section.section {
   transition: transform 1s, opacity 1s;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none; /* per compatibilità con alcuni browser */
+}
+/* Disattiva il bordo sui link quando selezionati */
+a:focus,
+button:focus,
+input:focus,
+div:focus {
+  outline: none;
 }

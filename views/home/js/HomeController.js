@@ -67,11 +67,10 @@ export default class HomeController extends ExecJs {
       threshold: 0.15,
     });
 
-    [...allSections].forEach(function (section) {
+    [...allSections].forEach((section) => {
       sectionObserver.observe(section);
-      section.classList.add();
-      entry.target.classList.add('opacity-0');
-      entry.target.classList.add('translate-y-52');
+      section.classList.add('opacity-0');
+      section.classList.add('translate-y-52');
     });
   }
 }

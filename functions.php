@@ -51,12 +51,12 @@ function render_products($limit = -1)
 
     $products = wc_get_products($args);
 
-    $product_list = array();
+    $product_list = [];
 
     foreach ($products as $product) {
         $categories = get_the_terms($product->get_id(), 'product_cat');
         $parent_id = 0;
-        $children_ids = array();
+        $children_ids = [];
 
         foreach ($categories as $category) {
             if ($category->parent == 0) {
@@ -68,7 +68,7 @@ function render_products($limit = -1)
             }
         }
 
-        $product_list[] = array(
+        $product_list[] = [
             'id' => $product->get_id(),
             'name' => $product->get_name(),
             'image' => $product->get_image(),
@@ -80,7 +80,7 @@ function render_products($limit = -1)
             'data-parent' => $parent_id,
             'data-children' => implode(',', $children_ids),
             // Aggiungi altre proprietà di prodotto desiderate
-        );
+        ];
     }
 
     $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/logs.txt');

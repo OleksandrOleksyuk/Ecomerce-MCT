@@ -9,11 +9,11 @@
         <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 ">
             <?php
             $elements = [
-                "home" => "Home", "product" => "Prodotti", "home2" => "Fai da te creativo", "home3" => "Chi sono",
+                "home" => "Home", "product" => "Prodotti", "#" => "Fai da te creativo", "#" => "Chi sono",
             ];
             foreach ($elements as $key => $value) {
                 $path = get_link_path($key);
-                echo "<li class='cursor-pointer'><a class='hover:text-pink-600 text-xl' href=" . $path . ">$value</a></li>";
+                echo "<li class='cursor-pointer'><a class='hover:text-pink-500 text-xl' href=" . $path . ">$value</a></li>";
             }
             ?>
         </ul>
