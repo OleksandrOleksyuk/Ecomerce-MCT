@@ -1,30 +1,32 @@
 <?php
 $product_list = render_products(4);
+$product_id = get_query_var('product_id');
+$product = render_single_product($product_id);
 ?>
 <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
 <main class="text-emerald-900">
     <section class="flex flex-col lg:flex-row mx-auto justify-center items-center max-w-7xl lg:gap-8 p-10">
-        <div class="lg:w-1/2 flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center lg:items-end p-5">
-            <img class="w-64 h-64 sm:w-96 sm:h-96 xl:w-[400px] xl:h-[400px] mb-5" src="<?= get_image_path('test.jpeg'); ?>" alt="">
-            <div class="justify-between max-sm:w-64 max-sm:flex lg:flex lg:w-96 xl:w-[400px]">
-                <div class="active border-[1px] border-emerald-500 rounded-lg">
-                    <img class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-lg" src=" <?= get_image_path('test.jpeg'); ?>" alt="">
+        <div id="imgFirst" class="lg:w-1/2 flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center lg:items-end p-5">
+            <?= $product['image']; ?>
+            <div id="" class="justify-between max-sm:w-64 max-sm:flex lg:flex lg:w-96 xl:w-[400px]">
+                <div class="">
+                    <?= $product['image']; ?>
                 </div>
                 <div>
-                    <img class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24" src="<?= get_image_path('test.jpeg'); ?>" alt="">
+                    <?= $product['image']; ?>
                 </div>
                 <div>
-                    <img class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24" src="<?= get_image_path('test.jpeg'); ?>" alt="">
+                    <?= $product['image']; ?>
                 </div>
                 <div>
-                    <img class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24" src="<?= get_image_path('test.jpeg'); ?>" alt="">
+                    <?= $product['image']; ?>
                 </div>
             </div>
         </div>
         <div class="lg:w-1/2 p-10">
             <div class="space-y-2">
-                <h1 class="text-emerald-900 font-bold text-5xl lg:text-6xl">Cupido</span>
-                    <h3 class="font-bold text-3xl lg:text-4xl  text-pink-500">€ 4,90</h3>
+                <h1 class="text-emerald-900 font-bold text-4xl lg:text-5xl"><?= $product['name']; ?></span>
+                    <h3 class="font-bold text-4xl lg:text-5xl  text-pink-500"><?= $product['price']; ?></h3>
                     <!-- <div class="flex gap-1 ">
                         <?php
                         for ($i = 0; $i < 5; $i++) {
@@ -34,14 +36,11 @@ $product_list = render_products(4);
                         }
                         ?>
                     </div> -->
-                    <p class=" lg:text-lg font-light">Un vero gioco di “vedo non vedo”, luce e ombra, dove la lavorazione semi-ingabbiata intorno al filo ne esalta la rotondità e gli dona una struttura rotonda e corposa.
-                        Il punto di forza è il contrasto tra il filo di base e la legatura metallizzata tono su tono che lo avvolge.
-                    </p>
-                    <div class="lg:text-lg font-light">
+                    <p class=" lg:text-lg font-light"><?= $product['description']; ?></p>
+                    <!-- <div class="lg:text-lg font-light">
                         <p><span class="font-medium">Composizione</span>: 40% cotone 35% acrilico 17 % poliammide 4% altre fibre 4% fibra metallizzata</p>
                         <p class=""><span class="font-medium">Ferri:</span> 3mm</p>
-                    </div>
-                    <!--COLORS-->
+                    </div> -->
                     <div>
                         <div class="flex gap-2">
                             <span class="font-medium lg:text-lg">COLORE:</span>

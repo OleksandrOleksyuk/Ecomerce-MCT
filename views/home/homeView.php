@@ -1,5 +1,6 @@
 <?php
-$product_list = render_products(10); ?>
+$product_list = render_products(10);
+?>
 <div class="text-emerald-900">
     <!-- navbar -->
     <?= do_shortcode("[views section=general name=navbarView]"); ?>
@@ -136,7 +137,7 @@ $product_list = render_products(10); ?>
             <div class="md:px-5 py-5">
                 <h2 class="font-black lg:text-4xl md:text-3xl md:text-left text-2xl text-center text-emerald-600">Categorie</h2>
             </div>
-            <div class="md:px-5 flex flex-wrap md:justify-between justify-around gap-5">
+            <div class="md:px-5 flex flex-wrap md:justify-between justify-around gap-1">
                 <?php
                 $data = [
                     ["img_src" => "lana.jpeg", "h5" => "Lana"],
@@ -147,10 +148,10 @@ $product_list = render_products(10); ?>
                 foreach ($data as $d) {
                     $image_path = get_image_path($d["img_src"]); ?>
                     <div class="relative rounded-xl">
-                        <img class="2xl:h-80 2xl:w-72 h-36 lg:h-64 lg:w-52 md:h-48 md:w-36 object-cover rounded-xl w-28 xl:h-80 xl:w-64" src="<?= $image_path ?>" alt="">
+                        <img class="2xl:h-80 2xl:w-72 w-screen h-24 sm:w-32 sm:h-52 md:w-40 lg:h-72 lg:w-52 object-cover rounded-xl  xl:h-80 xl:w-64" src="<?= $image_path ?>" alt="">
                         <div class="absolute inset-0 bg-black opacity-50 rounded-xl"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <h5 class="text-white text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold text-center z-10"><?= $d["h5"] ?></h5>
+                            <h5 class="text-white text-3xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold text-center z-10"><?= $d["h5"] ?></h5>
                         </div>
                     </div>
                 <?php

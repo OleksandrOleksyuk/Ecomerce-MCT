@@ -1,2 +1,3 @@
-import SingleProduct from "./singleProduct";
-new SingleProduct();
+import SingleProduct from "./singleProduct.js";
+
+var singleProduct = new SingleProduct();

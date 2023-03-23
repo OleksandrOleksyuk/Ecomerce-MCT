@@ -16,7 +16,7 @@ Last modified: 20/02/2023 - oleksandr
 }
 
 #containerImageCard img {
-  height: 100%;
+  width: 100%;
   object-fit: cover;
   border-radius: 5px;
 }

@@ -1,5 +1,6 @@
 import ExecJs from "../../../assets/js/ExecJS.js";
 import ReviewsController from "../../reviews/js/ReviewsController.js";
+import SingleProduct from "../../singleproduct/js/singleProduct.js";
 
 export default class HomeController extends ExecJs {
   constructor() {

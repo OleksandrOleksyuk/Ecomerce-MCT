@@ -13,47 +13,7 @@ export default class ProductController {
 
     this.handleClickCheckbox([...brandEl, ...subEl]);
   }
-//   handleClickCheckbox(arr) {
-//     let parent;
-//     let children;
-//     const contProd = document.querySelectorAll("#contProd > div");
-//     arr.forEach((input) => {
-//       input.addEventListener("change", (evt) => {
-//         parent = evt.target.getAttribute('data-parent');
-//         children = evt.target.getAttribute('data-children');
 
-//         console.log(parent, children);
-
-//         if(evt.target.checked){
-            
-//         } else {
-
-//         }
-//       });
-//     });
-//   }
-  //     let parent;
-  //     let children;
-  //     const contProd = document.querySelectorAll("#contProd > div");
-  //     arr.forEach((input) =>
-  //       input.addEventListener("change", (evt) => {
-  //         evt.preventDefault();
-
-  //         [...contProd].forEach((card) => card.classList.add("hidden"));
-
-  //         console.log(evt.target);
-
-  //         if (evt.target.checked && evt.target.getAttribute("data-parent")) {
-  //           parent = evt.target.getAttribute("data-parent");
-  //             [...contProd].forEach((card) => {
-  //                 if(card.getAttribute('data-parent') === parent){
-  //                     card.classList.remove('hidden')
-  //                 }
-  //             });
-  //         }
-  //       })
-  //     );
-  //   }
   handleClickCheckbox(arr) {
       const contProd = document.querySelectorAll("#contProd > div");
 
