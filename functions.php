@@ -50,7 +50,6 @@ function is_local()
     return in_array($_SERVER['REMOTE_ADDR'], $localhosts) || strpos($_SERVER['HTTP_HOST'], 'localhost') !== false;
 }
 
-
 function render_products($limit = -1)
 {
     $args = array(
@@ -100,7 +99,6 @@ function render_products($limit = -1)
     file_put_contents($path, '<pre>' . print_r($product_list, true)  . '</pre>');
     return $product_list;
 }
-
 function render_single_product($product_id)
 {
     $product = wc_get_product($product_id);
