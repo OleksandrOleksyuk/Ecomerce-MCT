@@ -1,7 +1,7 @@
-<div class="bg-emerald-600 text-stone-100 py-2 text-sm sm:text-base text-center">
+<div class="bg-emerald-900 text-stone-100 py-2 text-sm sm:text-base text-center">
     <p>Spedizione gratuita sopra i 79€ - Spedizione entro 24h</p>
 </div>
-<nav class="navbar flex justify-between items-center w-11/12 mx-auto top-0">
+<nav class=" navbar flex justify-between items-center w-11/12 mx-auto top-0 text-emerald-900">
     <div>
         <a href="<?php echo get_link_path('home'); ?>"><img class="h-20" src="<?php echo get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
     </div>

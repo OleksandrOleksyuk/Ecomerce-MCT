@@ -13,6 +13,9 @@ Last modified: 20/02/2023 - oleksandr
 @tailwind utilities;
 
 @layer components {
+  .activeProduct {
+    @apply outline outline-offset-2 outline-pink-500;
+  }
 }
 
 #containerImageCard img {

@@ -5,7 +5,7 @@ $product_list = render_products();
     <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
     <h1 class="text-center w-full text-5xl lg:text-7xl font-bold text-emerald-900 py-10">Prodotti</h1>
     <div class="flex flex-col md:flex-row w-11/12 mx-auto gap-2 max-w-screen-2xl">
-        <div class="p-4 shadow-lg">
+        <div class="p-4 shadow-lg h-fit rounded-lg">
             <h2 class="text-4xl font-bold text-pink-500">Filtra per:</h2>
             <div class="flex flex-col gap-2 lg:block">
                 <div class="flex md:block">

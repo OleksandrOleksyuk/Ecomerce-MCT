@@ -6,7 +6,7 @@ class GeneralController extends UtilsController
     {
         // $this->SetGeneralsScript();
         $this->SetGeneralsShortCodes();
-        $this->SetGeneralsStyles();
+        // $this->SetGeneralsStyles();
     }
     public function SetGeneralsShortCodes()
     {
@@ -84,15 +84,6 @@ class GeneralController extends UtilsController
                     break;
             }
             return $section;
-        } catch (Exception $e) {
-            return 'Caught exception: ' . $e->getMessage();
-        }
-    }
-
-    public function SetViewStyle($url)
-    {
-        try {
-            return '<style>@import \'' . $url . '\'</style>';
         } catch (Exception $e) {
             return 'Caught exception: ' . $e->getMessage();
         }

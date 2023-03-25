@@ -1,5 +1,7 @@
-export default class ProductController {
+import ExecJs from "../../../assets/js/ExecJS.js";
+export default class ProductController extends ExecJs {
   constructor() {
+    super();
     this.filterCard();
   }
 

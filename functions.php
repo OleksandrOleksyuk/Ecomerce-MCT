@@ -105,22 +105,30 @@ function render_single_product($product_id)
 {
     $product = wc_get_product($product_id);
 
-    $categories = get_the_terms($product->get_id(), 'product_cat');
-    $parent_id = 0;
-    $children_ids = [];
-
-    foreach ($categories as $category) {
-        if ($category->parent == 0) {
-            $parent_id = $category->name;
-        } else {
-            $parent_category = get_term($category->parent, 'product_cat');
-            $parent_id = $parent_category->name;
-            $children_ids[] = $category->name;
-        }
-    }
+    // Ottenere le categorie del prodotto come prima
+    // ...
 
     $price = $product->get_price();
     $price = number_format($price, 2, '.', ''); // Formatta il prezzo con due decimali
+
+    $variations = $product->get_available_variations();
+    $variation_data = array();
+
+    foreach ($variations as $variation) {
+        // Aggiungi le informazioni sull'attributo per ciascuna variazione
+        $variation_data[] = array(
+            'id' => $variation['variation_id'],
+            'attributes' => $variation['attributes'],
+            'price' => $variation['display_price'],
+            'image' => wp_get_attachment_image_src($variation['image_id'], 'full')[0]
+        );
+    }
+    $gallery_ids = $product->get_gallery_image_ids();
+    $gallery_images = array();
+
+    foreach ($gallery_ids as $gallery_id) {
+        $gallery_images[] = wp_get_attachment_image_src($gallery_id, 'full')[0];
+    }
 
     $product_data = [
         'id' => $product->get_id(),
@@ -130,12 +138,9 @@ function render_single_product($product_id)
         'description' => $product->get_description(),
         'price' => $price,
         'categories' => $product->get_categories(),
-        'parent' => $parent_id,
-        'children' => $children_ids,
-        'data-parent' => $parent_id,
-        'data-children' => implode(',', $children_ids),
-        'link' => get_link_path('singleproduct') . "/?product_id=" . $product->get_id()
-        // Aggiungi altre proprietà di prodotto desiderate
+        'link' => get_link_path('singleproduct') . "/?product_id=" . $product->get_id(),
+        'variations' => $variation_data, // Aggiungi le informazioni sulle variazioni disponibili
+        'gallery_images' => $gallery_images // Aggiungi le immagini della galleria del prodotto
     ];
 
     // Resto del codice per renderizzare il prodotto come desiderato

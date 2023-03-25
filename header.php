@@ -20,9 +20,6 @@ $viewName = $generalController->GetViewName();
 	<link href="<?= get_merceria_path('dist/output.css'); ?>" rel="stylesheet">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo("pingback_url"); ?>">
-	<?php echo $generalController->SetViewStyle(
-		get_stylesheet_directory_uri() . "/views/" . $viewName . "/css/style.css"
-	); ?>
 	<?php wp_head(); ?>
 </head>
 

@@ -1,36 +1,18 @@
 import ExecJs from "../../../assets/js/ExecJS.js";
 import ReviewsController from "../../reviews/js/ReviewsController.js";
-import SingleProduct from "../../singleproduct/js/singleProduct.js";
 
 export default class HomeController extends ExecJs {
   constructor() {
     super();
-    this.handleClickMenu();
+    // this.handleClickMenu();
     this.sliderBestSellProduct();
     this.ReviewsController = new ReviewsController();
     this.revealSections();
   }
-
-  handleClickMenu() {
-    const openBtn = document.querySelector("#open");
-    const closeBtn = document.querySelector("#close");
-    const menu = document.querySelector("#menu");
-    [openBtn, closeBtn].forEach((el) =>
-      el.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-        menu.classList.toggle("flex");
-        openBtn.classList.toggle("hidden");
-        closeBtn.classList.toggle("hidden");
-      })
-    );
-  }
-
   sliderBestSellProduct() {
     let direction = 0;
-
     document.addEventListener("DOMContentLoaded", () => {
       const carouselEl = [...document.querySelectorAll(".carousel > div")];
-
       const prevBtn = document.querySelector("#prev");
       const nextBtn = document.querySelector("#next");
       const arr = [prevBtn, nextBtn];
@@ -52,22 +34,17 @@ export default class HomeController extends ExecJs {
 
   revealSections() {
     const allSections = document.querySelectorAll('section.section');
-
     const revealSection = function (entries, observer) {
       const [entry] = entries;
-
       if (!entry.isIntersecting) return;
-
       entry.target.classList.remove('opacity-0');
       entry.target.classList.remove('translate-y-52');
       observer.unobserve(entry.target);
     };
-
     const sectionObserver = new IntersectionObserver(revealSection, {
       root: null,
       threshold: 0.15,
     });
-
     [...allSections].forEach((section) => {
       sectionObserver.observe(section);
       section.classList.add('opacity-0');
