@@ -17,6 +17,8 @@ $product = render_single_product($product_id);
                 ?>
                         <img class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-lg object-cover mt-2" src="<?= $value; ?>" alt="">
                 <?php
+                    } else {
+                        continue;
                     }
                 }
                 ?>
