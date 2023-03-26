@@ -54,9 +54,9 @@ function render_products($limit = -1)
 {
     $args = array(
         'post_type' => 'product',
-        'posts_per_page' => $limit
+        'posts_per_page' => $limit,
+        'post_status' => 'publish' // aggiungi questo parametro per ottenere solo prodotti pubblicati
     );
-
     $products = wc_get_products($args);
 
     $product_list = [];
@@ -104,9 +104,6 @@ function render_products($limit = -1)
 function render_single_product($product_id)
 {
     $product = wc_get_product($product_id);
-
-    // Ottenere le categorie del prodotto come prima
-    // ...
 
     $price = $product->get_price();
     $price = number_format($price, 2, '.', ''); // Formatta il prezzo con due decimali
