@@ -2,7 +2,7 @@
 $product_list = render_products(4);
 $product_id = get_query_var('product_id');
 $product = render_single_product($product_id);
-
+$image_src = isset($product['variations'][0]['image']) ? $product['variations'][0]['image'] : '';
 ?>
 <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
 <main class="text-emerald-900">

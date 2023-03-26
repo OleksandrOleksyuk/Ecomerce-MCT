@@ -66,16 +66,17 @@ function render_products($limit = -1)
         $parent_id = 0;
         $children_ids = [];
 
-        foreach ($categories as $category) {
-            if ($category->parent == 0) {
-                $parent_id = $category->name;
-            } else {
-                $parent_category = get_term($category->parent, 'product_cat');
-                $parent_id = $parent_category->name;
-                $children_ids[] = $category->name;
+        if (is_array($categories) || is_object($categories)) {
+            foreach ($categories as $category) {
+                if ($category->parent == 0) {
+                    $parent_id = $category->name;
+                } else {
+                    $parent_category = get_term($category->parent, 'product_cat');
+                    $parent_id = $parent_category->name;
+                    $children_ids[] = $category->name;
+                }
             }
         }
-
         $price = $product->get_price();
         $price = number_format($price, 2, '.', ''); // Formatta il prezzo con due decimali
 
@@ -95,8 +96,9 @@ function render_products($limit = -1)
         ];
     }
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/logs.txt');
-    file_put_contents($path, '<pre>' . print_r($product_list, true)  . '</pre>');
+    // $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/logs.txt');
+    // var_dump($path);
+    // file_put_contents($path, '<pre>' . print_r($product_list, true)  . '</pre>');
     return $product_list;
 }
 function render_single_product($product_id)
@@ -118,15 +120,26 @@ function render_single_product($product_id)
             'id' => $variation['variation_id'],
             'attributes' => $variation['attributes'],
             'price' => $variation['display_price'],
-            'image' => wp_get_attachment_image_src($variation['image_id'], 'full')[0]
+            'image' => ''
         );
+
+        if (isset($variation['image_id']) && $variation['image_id']) {
+            $image_data = wp_get_attachment_image_src($variation['image_id'], 'full');
+            if (is_array($image_data)) {
+                $variation_data[count($variation_data) - 1]['image'] = $image_data[0];
+            }
+        }
     }
     $gallery_ids = $product->get_gallery_image_ids();
     $gallery_images = array();
 
     foreach ($gallery_ids as $gallery_id) {
-        $gallery_images[] = wp_get_attachment_image_src($gallery_id, 'full')[0];
+        $image_data = wp_get_attachment_image_src($gallery_id, 'full');
+        if (is_array($image_data) && !empty($image_data[0])) {
+            $gallery_images[] = $image_data[0];
+        }
     }
+
 
     $product_data = [
         'id' => $product->get_id(),
@@ -142,7 +155,7 @@ function render_single_product($product_id)
     ];
 
     // Resto del codice per renderizzare il prodotto come desiderato
-    $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/single.txt');
-    file_put_contents($path, '<pre>' . print_r($product_data, true)  . '</pre>');
+    // $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/single.txt');
+    // file_put_contents($path, '<pre>' . print_r($product_data, true)  . '</pre>');
     return $product_data;
 }
