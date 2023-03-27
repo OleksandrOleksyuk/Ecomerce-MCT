@@ -18,11 +18,6 @@ export default class ProductController extends ExecJs {
         this.selectedCategories = [];
         this.selectedBrands = [];
         this.checkedCheckboxes = [...document.querySelectorAll('input[type="checkbox"]:checked')];
-        // show all cards if no categories or brands are selected
-        if (this.checkedCheckboxes.length === 0) {
-          [...this.productCards].forEach((card) => card.classList.remove("hidden"));
-          return;
-        }
         // if click categories need active brand
         if (evt.target.getAttribute('data-children')) {
           const parentEl = document.querySelector(`input[data-type="categories"][data-parent="${evt.target.getAttribute("data-parent")}"]`);
@@ -33,6 +28,11 @@ export default class ProductController extends ExecJs {
           this.checkedCheckboxes = this.checkedCheckboxes.filter(cat => {
             return cat.checked = (cat.getAttribute('data-parent') === evt.target.getAttribute('data-parent')) ? false : true
           });
+        }
+        // show all cards if no categories or brands are selected
+        if (this.checkedCheckboxes.length === 0) {
+          [...this.productCards].forEach((card) => card.classList.remove("hidden"));
+          return;
         }
         this.updateSelectedCategoriesAndBrands();
         // show cards that match the selected categories and brands
