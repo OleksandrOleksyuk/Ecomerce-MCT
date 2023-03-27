@@ -167,11 +167,13 @@ $product_list = render_products(10);
             </div>
         </section>
         <!-- news letter -->
-        <?= do_shortcode("[views section=general name=newsletterView]"); ?>
         <section class="section opacity-0 translate-y-52 duration-1000">
-            <!-- reviews -->
+            <?= do_shortcode("[views section=general name=newsletterView]"); ?>
+        </section>
+        <section class="section opacity-0 translate-y-52 duration-1000">
             <?= do_shortcode("[views section=reviews name=reviewsViews]"); ?>
         </section>
+        <!-- reviews -->
     </main>
 </div>
 <?= do_shortcode("[views section=footer name=footerView]"); ?>

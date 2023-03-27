@@ -2,7 +2,7 @@
 $product_list = render_products();
 ?>
 <section id="product" class="">
-    <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
+    <?= do_shortcode('[views section=general name=navbarView]'); ?>
     <h1 class="text-center w-full text-5xl lg:text-7xl font-bold text-emerald-900 py-10">Prodotti</h1>
     <div class="flex flex-col md:flex-row w-11/12 mx-auto gap-2 max-w-screen-2xl">
         <div class="p-4 shadow-lg h-fit rounded-lg">
@@ -22,8 +22,8 @@ $product_list = render_products();
                             ?>
                                     <li class="w-full">
                                         <div class="flex items-center">
-                                            <input data-type="categories" data-parent="<?php echo strtolower($value['data-parent']); ?>" id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 checked:bg-pink-400 rounded-full bg-pink-100 border-[1px] border-pink-500">
-                                            <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?php echo $value['parent']; ?></label>
+                                            <input data-type="categories" data-parent="<?= strtolower($value['data-parent']); ?>" id="<?= $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 checked:bg-pink-400 rounded-full bg-pink-100 border-[1px] border-pink-500">
+                                            <label for="<?= $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?= $value['parent']; ?></label>
                                         </div>
                                     </li>
                             <?php
@@ -47,8 +47,8 @@ $product_list = render_products();
                             ?>
                                         <li class="w-full">
                                             <div class="flex items-center">
-                                                <input data-type="subcategories" data-children="<?php echo strtolower($value['data-children']); ?>" id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 checked:bg-pink-400 rounded-full bg-pink-100 border-[1px] border-pink-500 ">
-                                                <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?php echo $value['children'][0]; ?></label>
+                                                <input data-type="subcategories" data-parent="<?= strtolower($value['data-parent']); ?>" data-children="<?= strtolower($value['data-children']); ?>" id="<?= '1' . $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 checked:bg-pink-400 rounded-full bg-pink-100 border-[1px] border-pink-500 ">
+                                                <label for="<?= '1' . $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?= $value['children'][0]; ?></label>
                                             </div>
                                         </li>
                             <?php
@@ -57,11 +57,10 @@ $product_list = render_products();
                             }
                             ?>
                         </ul>
-
                     </div>
                 </div>
                 <div class="p-2">
-                    <div class="flex gap-2 p-2 mx-auto border border-pink-600 rounded-lg items-center justify-center">Reset<img class="h-6 w-6 hover:animate-spin" src="<?php echo get_image_path('svg/reset.svg'); ?>" alt="" srcset=""></div>
+                    <div class="flex gap-2 p-2 mx-auto border border-pink-600 rounded-lg items-center justify-center">Reset<img class="h-6 w-6 hover:animate-spin" src="<?= get_image_path('svg/reset.svg'); ?>" alt="" srcset=""></div>
                 </div>
             </div>
         </div>
@@ -75,10 +74,9 @@ $product_list = render_products();
                     'params' => $product
                 ]);
             }
-
             ?>
         </div>
-
     </div>
 </section>
-<?php echo do_shortcode('[views section=footer name=footerView]'); ?>
+<!-- footer -->
+<?= do_shortcode('[views section=footer name=footerView]'); ?>

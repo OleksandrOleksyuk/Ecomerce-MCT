@@ -91,7 +91,8 @@ function render_products($limit = -1)
             'children' => $children_ids,
             'data-parent' => $parent_id,
             'data-children' => implode(',', $children_ids),
-            'link' => get_link_path('singleproduct') . "/?product_id=" . $product->get_id()
+            'link' => get_link_path('singleproduct') . "/?product_id=" . $product->get_id(),
+            'available' => $product->is_in_stock()
             // Aggiungi altre proprietà di prodotto desiderate
         ];
     }

@@ -1,4 +1,4 @@
-<section class="section opacity-0 translate-y-52 duration-1000 bg-pink-50 py-10 lg:py-20 px-10 flex flex-col items-center">
+<section class="bg-pink-50 py-10 lg:py-20 px-10 flex flex-col items-center">
     <div class="flex flex-col gap-5 max-w-2xl items-center">
         <div>
             <h1 class="text-3xl lg:text-4xl">Iscriviti alla nostra newsletter </h1>

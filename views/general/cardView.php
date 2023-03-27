@@ -1,14 +1,14 @@
 <?php
 $product = $params['params'];
 ?>
-<div data-parent="<?= strtolower($product['data-parent']); ?>" data-children="<?= strtolower($product['data-children']); ?>" id="<?= $product['id']; ?>" class="transition-all duration-500 ease-linear col-span-1 mb-4 w-72 md:w-[225px] xl:w-64 2xl:w-72 h-96 rounded-lg shadow-lg hover:shadow-pink-600 hover:bg-pink-50">
+<div data-parent="<?= strtolower($product['data-parent']); ?>" data-children="<?= strtolower($product['data-children']); ?>" id="<?= $product['id']; ?>" class="transition-all duration-1000 ease-linear col-span-1 mb-4 w-72 md:w-[225px] xl:w-64 2xl:w-72 h-96 rounded-lg shadow-lg hover:shadow-pink-600 ">
     <a href="<?= $product['link']; ?>">
         <div class="w-72 md:w-[225px] xl:w-64 2xl:w-72 h-96 p-5 text-left flex flex-col justify-between">
             <div id="containerImageCard" class="flex h-48 items-center justify-center overflow-hidden relative">
                 <?= $product['image']; ?>
-                <span class="absolute top-2 left-2 inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                    <span class="w-2 h-2 mr-1 bg-green-500 rounded-full"></span>
-                    Disponibile
+                <span class="absolute top-2 left-2 inline-flex items-center <?= $product['available'] ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'; ?>  text-xs font-medium px-2.5 py-0.5 rounded-full">
+                    <span class="w-2 h-2 mr-1 <?= $product['available'] ? 'bg-green-500' : 'bg-red-500'; ?>  rounded-full"></span>
+                    <?= $product['available'] ? 'Disponibile' : 'Non disponibile'; ?>
                 </span>
             </div>
             <div class="flex flex-col justify-between h-48">

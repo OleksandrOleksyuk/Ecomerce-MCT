@@ -1,9 +1,9 @@
 <div class="bg-emerald-900 text-stone-100 py-2 text-sm sm:text-base text-center">
     <p>Spedizione gratuita sopra i 79€ - Spedizione entro 24h</p>
 </div>
-<nav class=" navbar flex justify-between items-center w-11/12 mx-auto top-0 text-emerald-900">
+<nav class="navbar flex justify-between items-center w-11/12 mx-auto top-0 text-emerald-900">
     <div>
-        <a href="<?php echo get_link_path('home'); ?>"><img class="h-20" src="<?php echo get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
+        <a href="<?= get_link_path('home'); ?>"><img class="h-20" src="<?= get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
     </div>
     <div id="menu" class="hidden md:block absolute md:static bg-white left-0 top-[120px] w-full md:w-auto p-5">
         <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 ">

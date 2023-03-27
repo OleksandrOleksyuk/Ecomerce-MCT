@@ -2,45 +2,60 @@ import ExecJs from "../../../assets/js/ExecJS.js";
 export default class ProductController extends ExecJs {
   constructor() {
     super();
-    this.filterCard();
+    this.productCards = document.querySelectorAll("#contProd > div");
+    this.categoryCheckboxes = document.querySelectorAll('#product input[data-type="categories"]');
+    this.subcategoryCheckboxes = document.querySelectorAll('#product input[data-type="subcategories"]');
+    //...
+    this.setupCategoryFilter();
   }
-
-  filterCard() {
-    const brandEl = document.querySelectorAll(
-      '#product input[data-type="categories"]'
-    );
-    const subEl = document.querySelectorAll(
-      '#product input[data-type="subcategories"]'
-    );
-
-    this.handleClickCheckbox([...brandEl, ...subEl]);
-  }
-
-  handleClickCheckbox(arr) {
-      const contProd = document.querySelectorAll("#contProd > div");
-
-      arr.forEach((input) => {
-        input.addEventListener("change", (evt) => {
-          evt.preventDefault();
-
-          // nascvondo tutte le card
-          [...contProd].forEach((card) => card.classList.add("hidden"));
-
-          // mostro solo i filtri corrispondenti alle checkbox selezionate
-          const selectedCheck = document.querySelectorAll('input[type="checkbox"]:checked');
-
-          if (selectedCheck.length > 0) {
-            selectedCheck.forEach((checkbox) => {
-
-              const parent = checkbox.getAttribute("data-parent");
-              [...contProd].forEach((card) => (card.getAttribute("data-parent") === parent) && card.classList.remove("hidden"));
-            });
-          } else {
-            // Se nessuna check è selezionata, mostro tutte le card
-            [...contProd].forEach((card) => card.classList.remove("hidden"));
-          }
-          console.log(selectedCheck.length);
-        });
+  setupCategoryFilter() {
+    [...this.categoryCheckboxes, ...this.subcategoryCheckboxes].forEach((input) => {
+      input.addEventListener("change", (evt) => {
+        evt.preventDefault();
+        // hide all cards
+        [...this.productCards].forEach((card) => card.classList.add("hidden"));
+        // get selected categories and brands
+        this.selectedCategories = [];
+        this.selectedBrands = [];
+        this.checkedCheckboxes = [...document.querySelectorAll('input[type="checkbox"]:checked')];
+        // show all cards if no categories or brands are selected
+        if (this.checkedCheckboxes.length === 0) {
+          [...this.productCards].forEach((card) => card.classList.remove("hidden"));
+          return;
+        }
+        // if click categories need active brand
+        if (evt.target.getAttribute('data-children')) {
+          const parentEl = document.querySelector(`input[data-type="categories"][data-parent="${evt.target.getAttribute("data-parent")}"]`);
+          if (!parentEl.checked) parentEl.checked = true;
+        }
+        // if you deselect the brand you need to deselect all the categories related to the brand
+        if (!evt.target.checked && evt.target.getAttribute('data-type') === "categories") {
+          this.checkedCheckboxes = this.checkedCheckboxes.filter(cat => {
+            return cat.checked = (cat.getAttribute('data-parent') === evt.target.getAttribute('data-parent')) ? false : true
+          });
+        }
+        this.updateSelectedCategoriesAndBrands();
+        // show cards that match the selected categories and brands
+        this.showMatchingProductCards();
       });
-    }
+    });
+  }
+  updateSelectedCategoriesAndBrands() {
+    this.checkedCheckboxes.forEach((checkbox) => {
+      const parent = checkbox.getAttribute("data-parent");
+      const children = checkbox.getAttribute("data-children");
+      if (parent) this.selectedBrands.push(parent);
+      if (children) this.selectedCategories.push(children);
+    });
+  }
+  showMatchingProductCards() {
+    [...this.productCards].forEach((card) => {
+      const brand = card.getAttribute("data-parent");
+      const category = card.getAttribute("data-children");
+      // show cards that match the selected categories and brands
+      if ((this.selectedCategories.length === 0 || this.selectedCategories.includes(category)) && (this.selectedBrands.includes(brand))) {
+        card.classList.remove("hidden");
+      }
+    });
+  }
 }
