@@ -2892,10 +2892,10 @@ video {
 }
 
 #containerImageCard img {
-  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
+  height: 12rem;
 }
 
 /* * {
