@@ -3,10 +3,10 @@ module.exports = {
   content: ["./**/*.php", "./**/*.js", "./**/*.html"],
   theme: {
     extend: {
-      colors:{
+      colors: {
         "primary": "#f8fafc",
-        "secondary" : "#f43f5e",
-      }
+        "secondary": "#f43f5e",
+      },
     },
   },
   plugins: [],

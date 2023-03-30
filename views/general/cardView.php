@@ -1,33 +1,29 @@
 <?php
 $product = $params['params'];
 ?>
-<div data-parent="<?= strtolower($product['data-parent']); ?>" data-children="<?= strtolower($product['data-children']); ?>" id="<?= $product['id']; ?>" class="transition-all duration-1000 ease-linear col-span-1 mb-4 w-72 md:w-[225px] xl:w-64 2xl:w-72 h-96 rounded-lg shadow-lg hover:shadow-pink-600 ">
+<div data-parent="<?= strtolower($product['data-parent']); ?>" data-children="<?= strtolower($product['data-children']); ?>" id="<?= $product['id']; ?>" class="transition-all duration-1000 ease-linear col-span-1 mb-4 w-80 h-[432px] rounded-xl shadow-lg hover:shadow-pink-600 text-slate-900">
     <a href="<?= $product['link']; ?>">
-        <div class="w-72 md:w-[225px] xl:w-64 2xl:w-72 h-96 p-5 text-left flex flex-col justify-between">
-            <div id="containerImageCard" class="flex h-48 items-center justify-center overflow-hidden relative">
+        <div class="w-80 h-[432px] text-left flex flex-col rounded-xl">
+            <div id="containerImageCard" class="flex h-48 items-center justify-center overflow-hidden relative rounded-t-xl">
                 <?= $product['image']; ?>
-                <span class="absolute top-2 left-2 inline-flex items-center <?= $product['available'] ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'; ?>  text-xs font-medium px-2.5 py-0.5 rounded-full">
-                    <span class="w-2 h-2 mr-1 <?= $product['available'] ? 'bg-green-500' : 'bg-red-500'; ?>  rounded-full"></span>
-                    <?= $product['available'] ? 'Disponibile' : 'Non disponibile'; ?>
-                </span>
             </div>
-            <div class="flex flex-col justify-between h-48">
+            <div class="flex flex-col justify-between h-60 p-5">
                 <div>
-                    <h4 class="font-bold lg:text-2xl text-emerald-600 text-xl">
+                    <p class="uppercase text-sm tracking-widest"><?= $product['parent']; ?></p>
+                    <h4 class="font-semibold text-3xl overflow-hidden">
                         <?= $product['name']; ?>
                     </h4>
-                    <h3 class="text-4xl font-bold text-pink-600">
-                        <?= '€ ' . $product['price']; ?>
-                    </h3>
-                    <p class="text-sm">
+                    <p class="font-light">
                         <?= $product['short_description']; ?>
                     </p>
                 </div>
                 <div class="">
-                    <button class="bg-emerald-300 flex group h-10 items-center justify-center overflow-hidden relative rounded-lg shadow text-lg">
-                        <div class="absolute inset-0 w-0 bg-emerald-400 transition-all duration-500 ease group-hover:w-full"></div>
-                        <span class="relative text-emerald-900 group-hover:text-white">Dettagli</span>
-                    </button>
+                    <h3 class="text-4xl font-semibold text-emerald-600 py-2">
+                        <?= '€ ' . $product['price']; ?>
+                    </h3>
+                    <a href="#" class="bg-emerald-600 inline-flex items-center justify-center rounded-lg py-2 text-center text-base font-medium text-white hover:bg-opacity-90 w-full">
+                        Vai ai dettagli
+                    </a>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
-<section class="bg-pink-50 py-10 lg:py-20 px-10 flex flex-col items-center">
+<section class="py-10 lg:py-20 px-10 flex flex-col items-center text-emerald-900">
     <div class="flex flex-col gap-5 max-w-2xl items-center">
-        <div>
+        <div class="text-center">
             <h1 class="text-3xl lg:text-4xl">Iscriviti alla nostra newsletter </h1>
             <p class="md:text-lg lg:text-xl">Vi piacerebbe ricevere <span class="text-pink-600">sconti</span> e consigli <span class="text-pink-600">esclusivi</span> ogni mese sul cucito direttamente via email? Sapete cosa fare.</p>
         </div>

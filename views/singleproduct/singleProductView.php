@@ -9,7 +9,7 @@ $image_src = isset($product['variations'][0]['image']) ? $product['variations'][
     <section class="flex flex-col lg:flex-row mx-auto justify-center items-center max-w-7xl lg:gap-8 p-10">
         <div class="lg:w-1/2 flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center lg:items-end p-5">
             <img id="imgFirst" class="w-64 h-64 sm:w-96 sm:h-96 xl:w-[450px] xl:h-[450px] mb-5 rounded-lg p-2 object-cover" src="<?= $product['variations'][0]['image']; ?>" alt="">
-            <div id="gallery" class="justify-start max-sm:w-64 max-sm:flex lg:flex lg:w-96 xl:w-[450px] gap-1">
+            <div id="gallery" class="justify-between max-sm:w-64 max-sm:flex lg:flex lg:w-96 xl:w-[450px]">
                 <img id="imgFirst--small" class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-lg mt-2 activeProduct" src="<?= $product['variations'][0]['image']; ?>" alt="">
                 <?php
                 foreach ($product['gallery_images'] as $value) {
