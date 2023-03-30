@@ -969,6 +969,10 @@ video {
   height: 100%;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1043,6 +1047,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-10\/12 {
+  width: 83.333333%;
 }
 
 .max-w-2xl {
@@ -2896,6 +2904,7 @@ video {
      object-fit: cover;
   border-radius: 5px;
   height: 12rem;
+  width: auto;
 }
 
 /* * {
@@ -3011,6 +3020,11 @@ button:focus,
 input:focus,
 div:focus {
   outline: none;
+}
+
+span.p-singleProduct {
+  font-weight: 800;
+  margin: 0.8rem 0;
 }
 
 @media (min-width: 640px) {
@@ -3401,8 +3415,16 @@ div:focus {
     flex-direction: row;
   }
 
+  .lg\:flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+
   .lg\:flex-col {
     flex-direction: column;
+  }
+
+  .lg\:items-start {
+    align-items: flex-start;
   }
 
   .lg\:items-end {
@@ -3411,10 +3433,6 @@ div:focus {
 
   .lg\:gap-20 {
     gap: 5rem;
-  }
-
-  .lg\:gap-8 {
-    gap: 2rem;
   }
 
   .lg\:p-5 {
@@ -3459,6 +3477,11 @@ div:focus {
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .lg\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }
 

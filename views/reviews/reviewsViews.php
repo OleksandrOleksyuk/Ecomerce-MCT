@@ -2,7 +2,7 @@
 <section class="flex items-center py-20">
     <div class="max-w-7xl flex flex-col md:grid md:grid-cols-5 text-left gap-5 w-11/12 mx-auto justify-items-center">
         <div class="px-5 col-span-2">
-            <h2 class="font-black lg:text-4xl md:text-3xl md:text-left text-2xl text-center text-emerald-600">Cosa pensano di noi</h2>
+            <h2 class="font-semibold lg:text-4xl md:text-3xl md:text-left text-2xl text-center text-emerald-600">Cosa pensano di noi</h2>
             <div class="flex items-center mb-2">
                 <?php for ($i = 0; $i < 5; $i++) {
                     echo '<img class="w-5 h-5" src="' . $svgPath . '" />';

@@ -57,7 +57,7 @@ $product_list = render_products(10);
             <div class="flex flex-col max-w-7xl mx-auto overflow-hidden w-11/12">
                 <div class="flex flex-col">
                     <div class="flex flex-col items-start md:grid md:grid-cols-2 md:px-5 md:items-center text-left py-5">
-                        <h2 class="text-2xl font-black text-emerald-600 md:text-3xl lg:text-4xl">Prodotti più venduti</h2>
+                        <h2 class="text-2xl font-semibold text-emerald-600 md:text-3xl lg:text-4xl">Prodotti più venduti</h2>
                         <a href="<?= get_link_path('product'); ?>">
                             <p class="text-xl text-pink-600 flex justify-end items-center gap-1">
                                 Vedi tutti i prodotti
@@ -94,7 +94,7 @@ $product_list = render_products(10);
             <div class="flex flex-col items-center gap-5 w-11/12 mx-auto ">
                 <div class="flex items-center text-left mb-5">
                     <div class="p-4 border-emerald-600 border-r-2">
-                        <h3 class="lg:text-4xl md:text-3xl sm:text-2xl text-sm">Ecco perché scegliere <span class="font-black">noi</span></br> per i tuoi acquisti online:</h3>
+                        <h3 class="lg:text-4xl md:text-3xl sm:text-2xl text-sm">Ecco perché scegliere <span class="font-semibold">noi</span></br> per i tuoi acquisti online:</h3>
                     </div>
                     <div class="p-4">
                         <h3 class="lg:text-4xl md:text-3xl sm:text-2xl text-sm  text-left items-center">spedizione rapida e <br> gratuita sopra i 79€</h3>
@@ -137,7 +137,7 @@ $product_list = render_products(10);
         </section>
         <section class="section opacity-0 translate-y-52 duration-1000 py-10 lg:py-20 flex flex-col w-11/12 max-w-7xl mx-auto">
             <div class="md:px-5 py-5">
-                <h2 class="font-black lg:text-4xl md:text-3xl md:text-left text-2xl text-center text-emerald-600">Categorie</h2>
+                <h2 class="font-semibold lg:text-4xl md:text-3xl md:text-left text-2xl text-center text-emerald-600">Categorie</h2>
             </div>
             <div class="md:px-5 flex flex-wrap md:justify-between justify-around gap-1">
                 <?php
