@@ -4,6 +4,9 @@ export default class SingleProduct extends ExecJS {
   constructor() {
     super();
     this.changeImageOnClick();
+    this.appendProduct();
+    this.counter();
+    this.renderSidebar();
   }
   changeImageOnClick() {
     const mainImg = document.querySelector('#imgFirst');
@@ -31,5 +34,19 @@ export default class SingleProduct extends ExecJS {
     });
 
   }
+  counter() {
+    const minusBtn = document.getElementById('minus-btn');
+    const plusBtn = document.getElementById('plus-btn');
+    const quantity = document.getElementById('singleProduct--qnt');
 
+    minusBtn.addEventListener('click', () => {
+      const currentQuantity = parseInt(quantity.textContent);
+      if (currentQuantity > 1) quantity.textContent = currentQuantity - 1;
+    });
+
+    plusBtn.addEventListener('click', () => {
+      quantity.textContent = parseInt(quantity.textContent) + 1;
+    });
+
+  }
 }

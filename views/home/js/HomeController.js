@@ -11,28 +11,23 @@ export default class HomeController extends ExecJs {
   }
   sliderBestSellProduct() {
     let direction = 0;
-    document.addEventListener("DOMContentLoaded", () => {
-      const carouselEl = [...document.querySelectorAll(".carousel > div")];
-      const prevBtn = document.querySelector("#prev");
-      const nextBtn = document.querySelector("#next");
-      const arr = [prevBtn, nextBtn];
+    const carouselEl = document.querySelectorAll(".carousel > div");
+    const prevBtn = document.querySelector("#prev");
+    const nextBtn = document.querySelector("#next");
 
-      const cardWidth = carouselEl[0].getBoundingClientRect().width;
+    // const idPositionLast = carouselEl[carouselEl.length - 1].id;
+    const cardWidth = carouselEl[0].getBoundingClientRect().width;
+    const gapCard = 20;
 
-      const gapCard = 20;
-
-      arr.forEach((btn) =>
-        btn.addEventListener("click", function () {
-          console.log();
-
-          if (direction === 0 && this.id === "prev") {
-            this.classList.add('disabled')
-            return false
-          };
-          direction = this.id === "next" ? (direction += -1) : (direction += 1);
-          carouselEl.forEach((card) => (card.style.transform = `translateX(${direction * (cardWidth + gapCard)}px)`)); // magic number 20 da calcolare);
-        })
-      );
+    nextBtn.addEventListener('click', () => {
+      if (direction === carouselEl.length - 1) direction = 0;
+      else direction += 1
+      carouselEl.forEach((card) => card.style.transform = `translateX(-${direction * (cardWidth + gapCard)}px)`);
+    });
+    prevBtn.addEventListener('click', () => {
+      if (direction === 0) direction = carouselEl.length - 1;
+      else direction -= 1
+      carouselEl.forEach((card) => card.style.transform = `translateX(-${direction * (cardWidth + gapCard)}px)`);
     });
   }
 
