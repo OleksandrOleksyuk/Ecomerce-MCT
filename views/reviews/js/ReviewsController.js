@@ -68,10 +68,5 @@ export default class ReviewsController {
       </div>`;
       containerStar.insertAdjacentHTML("afterbegin", html);
     });
-
-    // const mediaStar =
-    //   resultStar.reduce((count, s, i) => (count += s * (i + 1)), 0) / sumStar;
-    // const pippoStar = [...document.querySelectorAll("img.emerald-600")];
-    // pippoStar[pippoStar.length - 1].style.cssText = 'fill: 50%';
   }
 }

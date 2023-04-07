@@ -6,7 +6,7 @@
         <a href="<?= get_link_path('home'); ?>"><img class="h-20" src="<?= get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
     </div>
     <div id="menu" class="hidden md:block absolute md:static bg-white left-0 top-[120px] w-full md:w-auto p-5">
-        <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 ">
+        <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 transition-all duration-500">
             <?php
             $elements = [
                 "home" => "Home", "product" => "Prodotti", "#" => "Fai da te creativo", "#" => "Chi sono",
@@ -41,15 +41,15 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </div>
-        <div class="w-full h-full py-5 flex flex-col justify-between gap-5">
-            <h1 class="text-4xl font-semibolds absolute top-10 left-0 p-5 bg-white w-full">Carrello</h1>
+        <div class="w-full h-full py-5 flex flex-col justify-between gap-5 text-start">
+            <h1 class="text-4xl font-semibolds absolute top-10 left-0 p-5 bg-white w-full z-10">Carrello</h1>
             <div id="containerSidebarProduct" class="overflow-scroll py-20"></div>
             <div>
                 <p>Eventuali costi di spedizioni vengono calcolati al checkout</p>
                 <div class="flex justify-between items-center w-full">
                     <div>
                         <h3 class="font-semibold text-3xl overflow-hidden">
-                            Tutto tondo
+                            Subtotale
                         </h3>
                     </div>
                     <div>
@@ -58,11 +58,18 @@
                         </h3>
                     </div>
                 </div>
-                <a href="#" class="bg-emerald-600 inline-flex items-center justify-center rounded-lg py-2 text-center text-base font-medium text-white hover:bg-opacity-90 w-full">
-                    vai al checkout
+                <a href="<?= get_link_path('checkout'); ?>">
+                    <div class="mt-6 text-center">
+                        <button type="button" class="group inline-flex w-full items-center justify-center rounded-md bg-emerald-900 px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-emerald-800 hover:text-white">
+                            Checkout
+                            <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </button>
+                    </div>
                 </a>
                 <div class="text-center">
-                    <p>o <a href="" class="text-pink-500">continua a fare shopping</a></p>
+                    <p>o <a href="<?= get_link_path('product'); ?>" class="text-pink-500 cursor-pointer">continua a fare shopping</a></p>
                 </div>
             </div>
         </div>

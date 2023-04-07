@@ -82,6 +82,9 @@ class GeneralController extends UtilsController
                 case 'singleproduct':
                     $section = 'singleproduct';
                     break;
+                case 'checkout':
+                    $section = 'checkout';
+                    break;
             }
             return $section;
         } catch (Exception $e) {

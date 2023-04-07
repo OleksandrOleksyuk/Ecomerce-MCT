@@ -5,7 +5,6 @@ export default class ExecJs {
     // this.generalPage = new GeneralPage(this);
     this.handleClickMenu();
     this.toggleSlideover();
-
     this.renderSidebar();
   }
   handleClickMenu() {
@@ -28,8 +27,11 @@ export default class ExecJs {
     const openSliderOver = document.querySelector('#openSliderover');
     const closeSlideOver = document.querySelector('#closeSlideover');
     const addToSidebarBtn = document.querySelector('#addToSidebarBtn');
+    const arr = [openSliderOver, sliderBg, closeSlideOver];
+    if (addToSidebarBtn) arr.push(addToSidebarBtn);
+    console.log(arr);
 
-    [openSliderOver, sliderBg, closeSlideOver, addToSidebarBtn].forEach(el =>
+    arr.forEach(el =>
       el.addEventListener('click', (evt) => {
         evt.preventDefault();
         sliderContainer.classList.toggle('invisible');
@@ -65,14 +67,12 @@ export default class ExecJs {
 
     addToSidebarBtn.addEventListener('click', (evt) => {
       evt.preventDefault();
-
       const src = document.querySelector('#imgFirst').src;
       const categories = document.querySelector('#singleProduct--categories').textContent;
       const name = document.querySelector('#singleProduct--name').textContent;
       const qnt = document.querySelector('#singleProduct--qnt').textContent;
       const price = document.querySelector('#singleProduct--price').textContent.replace('€ ', '').trim();
       const data = { src, categories, name, qnt, price }
-
       this.saveCartToLocalStorage(data);
 
       this.renderSidebar();
@@ -91,26 +91,26 @@ export default class ExecJs {
       const finalPrice = (+qnt * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
-        <div class="flex gap-3 mb-5 px-5 relative">
-          <div class="deleteEl h-10 z-10 w-10 absolute top-0 right-0 m-5 flex justify-center items-center cursor-pointer">
+        <div class="flex gap-3 mb-5 px-5 relative shadow-lg py-2">
+          <div class="deleteEl h-10 z-10 w-10 pl-5 absolute top-0 right-0 flex justify-center items-center cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
           </div>
-          <div class="w-40 h-28">
+          <div class="w-32 h-24">
             <img class=" h-full object-cover" src="${src}" alt="">
           </div>
           <div class="flex flex-col justify-between w-full">
             <div>
               <p class="uppercase text-sm tracking-widest">${categories}</p>
-              <h3 class="font-semibold text-3xl overflow-hidden">${name}</h3>
+              <h3 class="font-semibold text-2xl overflow-hidden">${name}</h3>
             </div>
             <div class="flex justify-between items-end">
               <div>
                 <p class="font-light">quantità <span id="qnt">${qnt}</span></p>
               </div>
               <div>
-                <h3 class="text-4xl font-semibold text-emerald-600 py-2">€ ${finalPrice}</h3>
+                <h3 class="text-2xl text-emerald-600 py-2">€ ${finalPrice}</h3>
               </div>
             </div>
           </div>
