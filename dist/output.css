@@ -564,6 +564,31 @@ video {
   outline-color: #ec4899;
 }
 
+.btnStyle {
+  border-radius: 0.5rem;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #10b981;
+  --tw-gradient-to: rgb(16 185 129 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #047857;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.btnStyle:hover {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #4ade80;
+  --tw-gradient-to: rgb(74 222 128 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #22c55e;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -802,14 +827,6 @@ video {
   margin-left: 1rem;
 }
 
-.mr-2 {
-  margin-right: 0.5rem;
-}
-
-.mr-\[10px\] {
-  margin-right: 10px;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -1011,6 +1028,14 @@ video {
   height: 100%;
 }
 
+.h-\[600px\] {
+  height: 600px;
+}
+
+.h-\[550px\] {
+  height: 550px;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1089,6 +1114,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.min-w-full {
+  min-width: 100%;
 }
 
 .max-w-2xl {
@@ -3318,11 +3347,6 @@ span.p-singleProduct {
   background-color: rgb(16 185 129 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-emerald-600:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(5 150 105 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-emerald-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(6 95 70 / var(--tw-bg-opacity));
@@ -3331,10 +3355,6 @@ span.p-singleProduct {
 .hover\:bg-red-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-opacity-90:hover {
-  --tw-bg-opacity: 0.9;
 }
 
 .hover\:font-bold:hover {
@@ -3615,16 +3635,12 @@ span.p-singleProduct {
     gap: 3vw;
   }
 
-  .md\:overflow-x-auto {
-    overflow-x: auto;
-  }
-
-  .md\:whitespace-nowrap {
-    white-space: nowrap;
-  }
-
   .md\:p-10 {
     padding: 2.5rem;
+  }
+
+  .md\:p-5 {
+    padding: 1.25rem;
   }
 
   .md\:px-10 {
@@ -3659,11 +3675,6 @@ span.p-singleProduct {
   .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-
-  .md\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
   }
 
   .md\:text-xl {

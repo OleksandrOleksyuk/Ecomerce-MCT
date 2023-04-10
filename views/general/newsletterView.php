@@ -18,7 +18,7 @@
                         <input type="text" id="input-group-1" class="bg-gray-50 border border-gray-300 text-emerald-600 text-sm rounded-lg w-56 lg:w-72 focus:ring-pink-500 focus:border-pink-500 block p-2.5" placeholder="tania@gmail.com" style="padding: 0.5rem 0.5rem 0.5rem 2.2rem">
                     </div>
                 </div>
-                <button class="bg-emerald-600 text-xs md:text-sm lg:text-md text-white rounded-lg px-5">Invia</button>
+                <button class="btnStyle py-1">Invia</button>
             </div>
         </div>
     </div>

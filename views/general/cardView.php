@@ -21,8 +21,10 @@ $product = $params['params'];
                     <h3 class="text-4xl font-semibold text-emerald-600 py-2">
                         <?= '€ ' . $product['price']; ?>
                     </h3>
-                    <a href="#" class="bg-emerald-600 inline-flex items-center justify-center rounded-lg py-2 text-center text-base font-medium text-white hover:bg-opacity-90 w-full">
-                        Vai ai dettagli
+                    <a href="#" class="">
+                        <button class="btnStyle min-w-full">
+                            Vai ai dettagli
+                        </button>
                     </a>
                 </div>
             </div>
