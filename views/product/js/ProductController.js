@@ -3,46 +3,77 @@ export default class ProductController extends ExecJs {
   constructor() {
     super();
     this.productCards = document.querySelectorAll("#contProd > div");
-    this.categoryCheckboxes = document.querySelectorAll('#product input[data-type="categories"]');
-    this.subcategoryCheckboxes = document.querySelectorAll('#product input[data-type="subcategories"]');
+    this.categoryCheckboxes = document.querySelectorAll(
+      '#product input[data-type="categories"]'
+    );
+    this.subcategoryCheckboxes = document.querySelectorAll(
+      '#product input[data-type="subcategories"]'
+    );
     //...
     this.setupCategoryFilter();
   }
   setupCategoryFilter() {
-    [...this.categoryCheckboxes, ...this.subcategoryCheckboxes].forEach((input) => {
-      input.addEventListener("change", (evt) => {
-        evt.preventDefault();
-        // hide all cards
-        [...this.productCards].forEach((card) => card.classList.add("hidden"));
-        // get selected categories and brands
-        const selectedCategories = [];
-        const selectedBrands = [];
-        let checkedCheckboxes = [...document.querySelectorAll('input[type="checkbox"]:checked')];
-        // if click categories need active brand
-        if (evt.target.getAttribute('data-children')) {
-          const parentEl = document.querySelector(`input[data-type="categories"][data-parent="${evt.target.getAttribute("data-parent")}"]`);
-          if (!parentEl.checked) parentEl.checked = true;
-        }
-        // if you deselect the brand you need to deselect all the categories related to the brand
-        if (!evt.target.checked && evt.target.getAttribute('data-type') === "categories") {
-          checkedCheckboxes = checkedCheckboxes.filter(cat => {
-            return cat.checked = (cat.getAttribute('data-parent') === evt.target.getAttribute('data-parent')) ? false : true
-          });
-        }
-        // show all cards if no categories or brands are selected
-        if (checkedCheckboxes.length === 0) {
-          [...this.productCards].forEach((card) => card.classList.remove("hidden"));
-          return;
-        }
-        console.log(selectedBrands, selectedCategories);
-        this.updateSelectedCategoriesAndBrands(selectedCategories, selectedBrands, checkedCheckboxes);
-        // show cards that match the selected categories and brands
-        console.log(selectedBrands, selectedCategories);
-        this.showMatchingProductCards(selectedCategories, selectedBrands);
-      });
-    });
+    [...this.categoryCheckboxes, ...this.subcategoryCheckboxes].forEach(
+      (input) => {
+        input.addEventListener("change", (evt) => {
+          evt.preventDefault();
+          // hide all cards
+          [...this.productCards].forEach((card) =>
+            card.classList.add("hidden")
+          );
+          // get selected categories and brands
+          const selectedCategories = [];
+          const selectedBrands = [];
+          let checkedCheckboxes = [
+            ...document.querySelectorAll('input[type="checkbox"]:checked'),
+          ];
+          // if click categories need active brand
+          if (evt.target.getAttribute("data-children")) {
+            const parentEl = document.querySelector(
+              `input[data-type="categories"][data-parent="${evt.target.getAttribute(
+                "data-parent"
+              )}"]`
+            );
+            if (!parentEl.checked) parentEl.checked = true;
+          }
+          // if you deselect the brand you need to deselect all the categories related to the brand
+          if (
+            !evt.target.checked &&
+            evt.target.getAttribute("data-type") === "categories"
+          ) {
+            checkedCheckboxes = checkedCheckboxes.filter((cat) => {
+              return (cat.checked =
+                cat.getAttribute("data-parent") ===
+                evt.target.getAttribute("data-parent")
+                  ? false
+                  : true);
+            });
+          }
+          // show all cards if no categories or brands are selected
+          if (checkedCheckboxes.length === 0) {
+            [...this.productCards].forEach((card) =>
+              card.classList.remove("hidden")
+            );
+            return;
+          }
+          console.log(selectedBrands, selectedCategories);
+          this.updateSelectedCategoriesAndBrands(
+            selectedCategories,
+            selectedBrands,
+            checkedCheckboxes
+          );
+          // show cards that match the selected categories and brands
+          console.log(selectedBrands, selectedCategories);
+          this.showMatchingProductCards(selectedCategories, selectedBrands);
+        });
+      }
+    );
   }
-  updateSelectedCategoriesAndBrands(selectedCategories, selectedBrands, checkedCheckboxes) {
+  updateSelectedCategoriesAndBrands(
+    selectedCategories,
+    selectedBrands,
+    checkedCheckboxes
+  ) {
     checkedCheckboxes.forEach((checkbox) => {
       const parent = checkbox.getAttribute("data-parent");
       const children = checkbox.getAttribute("data-children");
@@ -55,7 +86,11 @@ export default class ProductController extends ExecJs {
       const brand = card.getAttribute("data-parent");
       const category = card.getAttribute("data-children");
       // show cards that match the selected categories and brands
-      if ((selectedCategories.length === 0 || selectedCategories.includes(category)) && (selectedBrands.includes(brand))) {
+      if (
+        (selectedCategories.length === 0 ||
+          selectedCategories.includes(category)) &&
+        selectedBrands.includes(brand)
+      ) {
         card.classList.remove("hidden");
       }
     });

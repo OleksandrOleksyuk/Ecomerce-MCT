@@ -144,3 +144,7 @@ span.p-singleProduct {
   width: auto;
   height: auto;
 }
+
+.hidden {
+  display: none !important;
+}
