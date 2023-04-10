@@ -136,3 +136,8 @@ span.p-singleProduct {
   font-weight: 800;
   margin: 0.8rem 0;
 }
+
+.swiper-slide {
+  width: auto;
+  height: auto;
+}
