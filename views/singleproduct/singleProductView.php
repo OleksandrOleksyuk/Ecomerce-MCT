@@ -22,7 +22,7 @@ $image_src = isset($product['variations'][0]['image']) ? $product['variations'][
                 ?>
             </div>
         </div>
-        <div class="lg:w-1/2 h-[550px] md:p-5 flex flex-col justify-between">
+        <div class="lg:w-1/2 min-h-[550px] md:p-5 flex flex-col justify-between">
             <div class="space-y-2">
                 <p id="singleProduct--categories" class="uppercase tracking-widest"><?= $product['categories']; ?></p>
                 <h1 id="singleProduct--name" class="text-emerald-900 text-4xl lg:text-5xl"><?= $product['name']; ?></h1>
