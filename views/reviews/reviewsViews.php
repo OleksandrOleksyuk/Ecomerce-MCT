@@ -1,5 +1,5 @@
 <?php $svgPath = get_image_path("svg/star.svg"); ?>
-<section class="flex items-center py-20">
+<!-- <section class="flex items-center py-20">
     <div class="max-w-7xl flex flex-col md:grid md:grid-cols-5 text-left gap-5 w-11/12 mx-auto justify-items-center">
         <div class="px-5 col-span-2">
             <h2 class="font-semibold lg:text-4xl md:text-3xl md:text-left text-2xl text-center text-emerald-600">Cosa pensano di noi</h2>
@@ -17,6 +17,14 @@
                 </svg>
             </button>
         </div>
-        <div id="reviewsContainer" class="px-5 col-span-3 h-[500px] overflow-y-auto"></div>
+        <div id="reviewsContainer" class="swiper mySwiper col-span-3 overflow-hidden w-96">
+            <div class="swiper-wrapper items-center">
+            </div>
+        </div>
     </div>
-</section>
+</section> -->
+<div id="reviewsContainer" class="swiper mySwiper col-span-3 overflow-hidden w-fulll">
+    <div class="swiper-wrapper items-center">
+
+    </div>
+</div>

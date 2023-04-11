@@ -19,7 +19,7 @@ export default class ProductController extends ExecJs {
           evt.preventDefault();
           // hide all cards
           [...this.productCards].forEach((card) =>
-            card.classList.add("hidden")
+            card.classList.add("hiddenCard")
           );
           // get selected categories and brands
           const selectedCategories = [];
@@ -52,7 +52,7 @@ export default class ProductController extends ExecJs {
           // show all cards if no categories or brands are selected
           if (checkedCheckboxes.length === 0) {
             [...this.productCards].forEach((card) =>
-              card.classList.remove("hidden")
+              card.classList.remove("hiddenCard")
             );
             return;
           }
@@ -91,7 +91,7 @@ export default class ProductController extends ExecJs {
           selectedCategories.includes(category)) &&
         selectedBrands.includes(brand)
       ) {
-        card.classList.remove("hidden");
+        card.classList.remove("hiddenCard");
       }
     });
   }

@@ -145,6 +145,6 @@ span.p-singleProduct {
   height: auto;
 }
 
-.hidden {
-  display: none !important;
+.hiddenCard {
+  display: none;
 }

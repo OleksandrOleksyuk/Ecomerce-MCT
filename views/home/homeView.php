@@ -7,20 +7,28 @@ $product_list = render_products(10);
     <header class="py-10 lg:py-20 w-11/12 mx-auto">
         <!-- title -->
         <div class="flex flex-col sm:flex-row justify-center items-center pb-10 gap-10 lg:gap-20 ">
-            <div class="max-w-2xl text-left">
-                <h1 class="text-3xl lg:text-5xl xl:text-6xl font-semibold text-emerald-600 mb-1 md:mb-5">
-                    <span class="text-pink-600">Benvenuti nella</span> </br> <span class="highlight"> Merceria Creativa Tania, </span> </br>
-                    <p class="text-lg md:text-xl lg:text-2xl xl:text-3xl">il tuo negozio online per il cucito creativo.</p>
-                </h1>
-                <a href="#" class="btnStyle">
-                    Scopri di più
-                </a>
+            <div class="flex flex-col gap-2 max-w-2xl">
+                <div class="text-left">
+                    <h1 class="text-3xl lg:text-5xl xl:text-6xl font-semibold text-emerald-600 mb-1 md:mb-5">
+                        <span class="text-pink-600">Benvenuti nella</span> </br> <span class="highlight"> Merceria Creativa Tania, </span> </br>
+                        <p class="text-lg md:text-xl lg:text-2xl xl:text-3xl">il tuo negozio online per il cucito creativo.</p>
+                    </h1>
+                    <a href="#" class="btnStyle">
+                        Scopri di più
+                    </a>
+                </div>
+                <section class="section opacity-0 translate-y-52 duration-1000 ">
+                    <?= do_shortcode("[views section=reviews name=reviewsViews]"); ?>
+                </section>
             </div>
             <!-- image -->
             <div class="max-w-xs lg:max-w-sm  shadow-lg shadow-pink-400">
                 <img class="" src="<?= get_image_path("foto.jpeg"); ?>" alt="Header Image">
             </div>
         </div>
+        <section class="section opacity-0 translate-y-52 duration-1000">
+            <?= do_shortcode("[views section=reviews name=reviewsViews]"); ?>
+        </section>
         <!-- brand -->
         <div class="flex justify-center items-center gap-10 pt-5">
             <?php
@@ -38,15 +46,15 @@ $product_list = render_products(10);
     </header>
     <main>
         <!-- welcome phrase -->
-        <section class="section opacity-0 translate-y-52 duration-1000 py-5 flex flex-col items-center px-5 md:px-10">
+        <section class="section bg-emerald-50 opacity-0 translate-y-52 duration-1000 py-5 flex flex-col items-center px-5 md:px-10">
             <div class="flex justify-center mx-auto py-5 w-11/12">
                 <div class="flex flex-col md:grid md:grid-cols-3 max-w-5xl text-left">
                     <div class="col-span-1 p-2 lg:p-5">
-                        <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl">Stai cercando <span class="text-pink-600 font-semibold">prodotti unici</span> per dare sfogo alla tua <span class="text-pink-600 font-semibold"> creatività</span>?</p>
+                        <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl">Stai cercando <span class="text-emerald-600 font-semibold">prodotti unici</span> per dare sfogo alla tua <span class="text-emerald-600 font-semibold"> creatività</span>?</p>
                     </div>
                     <div class="col-span-2 p-2 lg:p-5">
-                        <p class="lg:text-lg xl:text-xl mb-5">Sì, io, Merceria Creativa Tania, sono il luogo giusto per te. Offro una vasta scelta di tessuti di alta <span class="font-semibold">qualità</span>, bottoni <span class="font-semibold">esclusivi</span> e accessori per soddisfare il tuo <span class="font-semibold">desiderio</span> di creare. Sono certa che troverai ciò che stai cercando per realizzare progetti <span class="font-semibold">originali</span> e <span class="font-semibold">straordinari</span>.</p>
-                        <p class="text-xl xl:text-2xl text-pink-600 font-semibold">Vieni a scoprire il mio mondo della creatività!
+                        <p class="lg:text-lg xl:text-xl mb-5">Sì, io, Merceria Creativa Tania, sono il luogo giusto per te. Offro una vasta scelta di tessuti di alta <span class="font-bold text-emerald-600">qualità</span>, bottoni <span class="font-bold text-emerald-600">esclusivi</span> e accessori per soddisfare il tuo <span class="font-bold text-emerald-600">desiderio</span> di creare. Sono certa che troverai ciò che stai cercando per realizzare progetti <span class="font-bold text-emerald-600">originali</span> e <span class="font-bold text-emerald-600">straordinari</span>.</p>
+                        <p class="text-xl xl:text-2xl text-emerald-600 font-semibold">Vieni a scoprire il mio mondo della creatività!
                         </p>
                     </div>
                 </div>
@@ -92,7 +100,7 @@ $product_list = render_products(10);
                 </div>
             </div>
         </section>
-        <section class="section opacity-0 translate-y-52 duration-1000 py-10 lg:py-20 flex flex-col items-center">
+        <section class="section bg-emerald-50 opacity-0 translate-y-52 duration-1000 py-10 lg:py-20 flex flex-col items-center">
             <!-- call to action -->
             <div class="flex flex-col items-center gap-5 w-11/12 mx-auto ">
                 <div class="flex items-center text-left mb-5">
@@ -165,7 +173,7 @@ $product_list = render_products(10);
             </div>
         </section>
         <!-- news letter -->
-        <section class="section opacity-0 translate-y-52 duration-1000">
+        <section class="section bg-emerald-50 opacity-0 translate-y-52 duration-1000">
             <?= do_shortcode("[views section=general name=newsletterView]"); ?>
         </section>
         <section class="section opacity-0 translate-y-52 duration-1000">
