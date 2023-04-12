@@ -13,6 +13,7 @@ export default class SingleProduct extends ExecJS {
     const mainImgSmall = document.querySelector('#imgFirst--small')
     const colorList = document.querySelectorAll('#colorSingleProduct img');
     const gallery = document.querySelectorAll('#gallery img');
+    const colorStr = document.querySelector('#color');
     colorList.forEach((color) => {
       color.addEventListener('click', (event) => {
         colorList.forEach(c => c.classList.contains('activeProduct') ? c.classList.remove('activeProduct') : null);
@@ -22,6 +23,8 @@ export default class SingleProduct extends ExecJS {
         const newImg = event.target.getAttribute('data-image');
         mainImg.setAttribute('src', newImg);
         mainImgSmall.setAttribute('src', newImg);
+        console.log(event.target.dataset.color);
+        colorStr.textContent = event.target.dataset.color;
       });
     });
     gallery.forEach((color) => {

@@ -1,3 +1,4 @@
+<?php global $woocommerce; ?>
 <?= do_shortcode("[views section=general name=navbarView]"); ?>
 <div id="checkout" class="text-emerald-900 md:grid md:grid-cols-4 w-11/12 mx-auto">
     <div class="col-span-2 px-5 py-10 lg:p-20">
@@ -137,7 +138,7 @@
                         indietro
                     </button>
                     <button class="uppercase text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-next>
-
+                        <?= do_shortcode('[woo_paypal_checkout_button]'); ?>
                     </button>
                 </div>
             </div>

@@ -7,9 +7,9 @@ $image_src = isset($product['variations'][0]['image']) ? $product['variations'][
 <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
 <main id="singleProduct" class="text-emerald-900">
     <section class="flex flex-col lg:flex-row-reverse mx-auto justify-center items-center max-w-7xl p-10">
-        <div class="lg:w-1/2 h-[550px] flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center lg:items-start p-5">
+        <div class="lg:w-1/2 h-[550px] flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center p-5">
             <img id="imgFirst" class="w-64 h-64 sm:w-96 sm:h-96  mb-5 rounded-lg p-2 object-cover" src="<?= $product['variations'][0]['image']; ?>" alt="">
-            <div id="gallery" class="justify-between max-sm:w-64 max-sm:flex lg:flex lg:w-96 xl:w-[450px]">
+            <div id="gallery" class="gap-5 max-sm:flex lg:flex ]">
                 <img id="imgFirst--small" class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-lg mt-2 activeProduct" src="<?= $product['variations'][0]['image']; ?>" alt="">
                 <?php
                 foreach ($product['gallery_images'] as $value) {
@@ -29,7 +29,7 @@ $image_src = isset($product['variations'][0]['image']) ? $product['variations'][
 
                 <p class="lg:text-lg font-light"><?= $product['description']; ?></p>
                 <div class="mt-5">
-                    <span class="font-semibold lg:text-lg">COLORE:</span>
+                    <span class="font-semibold lg:text-lg">COLORE:</span> <span id="color" class="uppercase text-pink-500"><?= $product['variations'][0]['attributes']['attribute_pa_color']; ?></span>
                     <div id="colorSingleProduct" class="flex gap-2 flex-wrap">
                         <?php
                         foreach ($product['variations'] as $key => $value) {

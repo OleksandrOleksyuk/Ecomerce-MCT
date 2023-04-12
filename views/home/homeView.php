@@ -13,22 +13,22 @@ $product_list = render_products(10);
                         <span class="text-pink-600">Benvenuti nella</span> </br> <span class="highlight"> Merceria Creativa Tania, </span> </br>
                         <p class="text-lg md:text-xl lg:text-2xl xl:text-3xl">il tuo negozio online per il cucito creativo.</p>
                     </h1>
-                    <a href="#" class="btnStyle">
+                    <!-- <a href="#welcome" class="btnStyle z-20">
                         Scopri di più
-                    </a>
+                    </a> -->
+                    <section class="section opacity-0 translate-y-52 duration-1000 max-xl:hidden">
+                        <?= do_shortcode("[views section=reviews name=reviewsViews]"); ?>
+                    </section>
                 </div>
-                <section class="section opacity-0 translate-y-52 duration-1000 ">
-                    <?= do_shortcode("[views section=reviews name=reviewsViews]"); ?>
-                </section>
             </div>
             <!-- image -->
             <div class="max-w-xs lg:max-w-sm  shadow-lg shadow-pink-400">
                 <img class="" src="<?= get_image_path("foto.jpeg"); ?>" alt="Header Image">
             </div>
         </div>
-        <section class="section opacity-0 translate-y-52 duration-1000">
+        <div class="xl:hidden">
             <?= do_shortcode("[views section=reviews name=reviewsViews]"); ?>
-        </section>
+        </div>
         <!-- brand -->
         <div class="flex justify-center items-center gap-10 pt-5">
             <?php
@@ -38,7 +38,7 @@ $product_list = render_products(10);
             foreach ($logos as $logo) {
                 $imagePath = get_image_path("logo/logo-$logo");
             ?>
-                <div class='w-32 h-32 flex justify-center items-center'><img class='block' src="<?= $imagePath; ?>" alt='logo-<?= $logo; ?> '></div>
+                <div class='w-32 h-32 flex justify-center items-center hover:scale-105 transform duration-500'><img class='block' src="<?= $imagePath; ?>" alt='logo-<?= $logo; ?> '></div>
             <?php
             }
             ?>
@@ -46,7 +46,7 @@ $product_list = render_products(10);
     </header>
     <main>
         <!-- welcome phrase -->
-        <section class="section bg-emerald-50 opacity-0 translate-y-52 duration-1000 py-5 flex flex-col items-center px-5 md:px-10">
+        <section id="welcome" class="section bg-emerald-50 opacity-0 translate-y-52 duration-1000 py-5 flex flex-col items-center px-5 md:px-10">
             <div class="flex justify-center mx-auto py-5 w-11/12">
                 <div class="flex flex-col md:grid md:grid-cols-3 max-w-5xl text-left">
                     <div class="col-span-1 p-2 lg:p-5">
@@ -133,10 +133,10 @@ $product_list = render_products(10);
                     foreach ($data as $d) {
                         $image_path = get_image_path("svg/" . $d["img_src"]); ?>
                         <div class="flex items-center gap-1">
-                            <img class="w-8 h-8 md:h-12 md:w-12 lg:h-20 lg:w-20" src="<?php echo $image_path; ?>" alt="">
+                            <img class="w-8 h-8 md:h-12 md:w-12 lg:h-20 lg:w-20" src="<?= $image_path; ?>" alt="">
                             <div>
-                                <h5 class="text-xs sm:text-base md:text-lg lg:text-2xl xl:text-3xl font-semibold"><?php echo $d["h5"]; ?></h5>
-                                <p class="text-[10px] md:text-md lg:text-xl"><?php echo $d["p"]; ?></p>
+                                <h5 class="text-xs sm:text-base md:text-lg lg:text-2xl xl:text-3xl font-semibold"><?= $d["h5"]; ?></h5>
+                                <p class="text-[10px] md:text-md lg:text-xl"><?= $d["p"]; ?></p>
                             </div>
                         </div>
                     <?php
@@ -160,8 +160,8 @@ $product_list = render_products(10);
                 ];
                 foreach ($data as $d) {
                     $image_path = get_image_path($d["img_src"]); ?>
-                    <div class="relative rounded-xl">
-                        <img class="2xl:h-80 2xl:w-72 w-screen h-24 sm:w-32 sm:h-52 md:w-40 lg:h-72 lg:w-52 object-cover rounded-xl  xl:h-80 xl:w-64" src="<?= $image_path ?>" alt="">
+                    <div class="relative rounded-xl hover:scale-105 cursor-pointer transform duration-500">
+                        <img class=" 2xl:h-80 2xl:w-72 w-screen h-24 sm:w-32 sm:h-52 md:w-40 lg:h-72 lg:w-52 object-cover rounded-xl xl:h-80 xl:w-64 " src="<?= $image_path ?>" alt="">
                         <div class="absolute inset-0 bg-black opacity-50 rounded-xl"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <h5 class="text-white text-3xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-semibold text-center z-10"><?= $d["h5"] ?></h5>
@@ -176,10 +176,6 @@ $product_list = render_products(10);
         <section class="section bg-emerald-50 opacity-0 translate-y-52 duration-1000">
             <?= do_shortcode("[views section=general name=newsletterView]"); ?>
         </section>
-        <section class="section opacity-0 translate-y-52 duration-1000">
-            <?= do_shortcode("[views section=reviews name=reviewsViews]"); ?>
-        </section>
-        <!-- reviews -->
     </main>
 </div>
 <?= do_shortcode("[views section=footer name=footerView]"); ?>

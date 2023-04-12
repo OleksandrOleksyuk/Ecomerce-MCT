@@ -1,278 +1,273 @@
 [
-    {
-        "id": 0,
-        "name": "Delia Saccomani",
-        "star": 5,
-        "description": "Negozio incredibilmente pieno di materiale creativo e anche pezzi già fatti ! La proprietaria Tania di una gentilezza e cordialità unica insieme alle sue collaboratrici per i corsi"
-    },
-    {
-        "id": 1,
-        "name": "Anna Portia Coretti",
-        "star": 5,
-        "description": "Appena stata qui! Un’ottima merceria nel quartiere. Ha tutto ciò che serve per ricamo a mano, cucito a macchina e per lavori a maglia. Molto utile poi quando trovi un’esperta che sa consigliarti l’articolo migliore per ciò che devi fare e migliore non vuol dire costoso perché mi ha consigliato perfino un articolo più economico rispetto a quello che avevo preso io. Sono molto soddisfatta di aver conosciuto questo posto, merito va anche all’ottima comunicazione che fai su Instagram, senza quella non avrei mai scoperto questo negozio. Grazie Tania"
-    },
-    {
-        "id": 2,
-        "name": "Lyudmyla Wings",
-        "star": 5,
-        "description": "Sono rimasta molto sodisfarà da professionalità e gentilezza 👍"
-    },
-    {
-        "id": 3,
-        "name": "Carola María Lage",
-        "star": 5,
-        "description": "La donna e molto cordiale, ha pazienza perche non parlo molto bene l’italiano e lei mi ha dato buona attenzione con lo che trovavo. Grazie!"
-    },
-    {
-        "id": 4,
-        "name": "Monica Marzocchi",
-        "star": 4,
-        "description": "Trovi quasi tutto, belle passamanerie, pizzi a metratura, salda strappi e ottimi i cotoni per cucire a mano o a macchina, la signora che gestisce il negozio è esperta e in grado di consigliarti per il meglio. Inoltre organizza corsi per imparate ad usare la macchina da"
-    },
-    {
-        "id": 5,
-        "name": "Laura Marcheselli",
-        "star": 5,
-        "description": "Ho frequentato il corso base di cucito ed è stata una esperienza meravigliosa,  Tania è bravissima, paziente e molto competente su qualsiasi argomento.  Proseguirò con altri corsi."
-    },
-    {
-        "id": 6,
-        "name": "MARIA TERESA SACCO",
-        "star": 5,
-        "description": "Un negozio ben fornito, ho trovato sempre quello che cercavo! È bello che a Borgo Panigale ci sia dove trovare tutto quello che compete ad una merceria...ed anche di più !Molto gentili e sanno dare consigli!"
-    },
-    {
-        "id": 7,
-        "name": "Oriana Chindamo",
-        "star": 5,
-        "description": "Negozio molto accogliente, ricco ti tessuti, oggetti per i cucito. La titolare è molto cortese e disponibile."
-    },
-    {
-        "id": 8,
-        "name": "Wilhelmina",
-        "star": 5,
-        "description": "Nel corso degli anni è sempre migliorata la qualità dei prodotti. Vado da lei sempre. Gentile l'accoglienza, sempre."
-    },
-    {
-        "id": 9,
-        "name": "Alessandra Albertini",
-        "star": 5,
-        "description": "Signors gentilisdima merceria onesta e ben rifornita Fsnno anche corsi molto interessanti"
-    },
-    {
-        "id": 10,
-        "name": "Massimo. Macca Maccagni",
-        "star": 5,
-        "description": "Molto gentile e cordiale"
-    },
-    {
-        "id": 11,
-        "name": "Liubov Shcherbak",
-        "star": 5,
-        "description": "Tania è molto brava e precisa nel suo lavoro.Gentile e disponibile.Il negozio è ben fornito."
-    },
-    {
-        "id": 12,
-        "name": "Patrizia Ansaloni",
-        "star": 5,
-        "description": "Luogo molto accogliente con tante cose x creare ciò che volete"
-    },
-    {
-        "id": 13,
-        "name": "Patrizia Carati",
-        "star": 5,
-        "description": "Bel negozio dove fare corsi di cucito omaglieria ci sono filati e tessuti da comprare"
-    },
-    {
-        "id": 14,
-        "name": "Lidia Mengoli",
-        "star": 5,
-        "description": "merceria molto fornita dove fanno anche corsi di cucito, maglia e uncinetto. Fornitissima di tutto!"
-    },
-    {
-        "id": 15,
-        "name": "Martha Mendoza",
-        "star": 5,
-        "description": "Gentilezza , efficienza e creatività de seguro e il marquio de sta merceria, complementi."
-    },
-    {
-        "id": 16,
-        "name": "Niko Todisco",
-        "star": 5,
-        "description": "Brava, precisa, competente e prezzi buoni. La consiglio."
-    },
-    {
-        "id": 17,
-        "name": "Andreea Carla",
-        "star": 5,
-        "description": "Molto brava e gentilissima.👍🔝"
-    },
-    {
-        "id": 18,
-        "name": "Annalisa Castagnoli",
-        "star": 5,
-        "description": "Piccolo negozietto ma ben fornito"
-    },
-    {
-        "id": 19,
-        "name": "Claudio",
-        "star": 4,
-        "description": "Brave ma secondo me un po' costoso"
-    },
-    {
-        "id": 20,
-        "name": "Vincenzo La Notte",
-        "star": 5,
-        "description": "Cortesia e competenza"
-    },
-    {
-        "id": 21,
-        "name": "Licia Sanese",
-        "star": 4,
-        "description": "Gentilissime"
-    },
-    {
-        "id": 22,
-        "name": "Aurica Curos",
-        "star": 4,
-        "description": ""
-    },
-    {
-        "id": 23,
-        "name": "Mirna Monari",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 24,
-        "name": "Maria C",
-        "star": 3,
-        "description": ""
-    },
-    {
-        "id": 25,
-        "name": "Oleksandr Oleksyuk",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 26,
-        "name": "Fiorenza Ghini",
-        "star": 4,
-        "description": "GRAZIE!!!!"
-    },
-    {
-        "id": 27,
-        "name": "Anna Stocchero",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 28,
-        "name": "Deanna Cantarelli",
-        "star": 4,
-        "description": ""
-    },
-    {
-        "id": 29,
-        "name": "Gennaro Stasi",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 30,
-        "name": "Carla Serranti",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 31,
-        "name": "jessica pireddu",
-        "star": 3,
-        "description": ""
-    },
-    {
-        "id": 32,
-        "name": "Michele Cotti SiD",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 33,
-        "name": "Angela Conti",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 34,
-        "name": "Mirca piemonte",
-        "star": 5,
-        "description": "Grazie!!!!!"
-    },
-    {
-        "id": 35,
-        "name": "Michele Lipari",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 36,
-        "name": "Sara Bordoni",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 37,
-        "name": "Michela Boiani",
-        "star": 5,
-        "description": "Grazie mille!!!!!"
-    },
-    {
-        "id": 38,
-        "name": "Liliana Conti",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 39,
-        "name": "Fiorella Fontana",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 40,
-        "name": "Mirco Fabulli",
-        "star": 5,
-        "description": "Grazie mille!!!"
-    }, 
-    {
-        "id": 41,
-        "name": "Patrizia Spanu",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 42,
-        "name": "Paola Iannone",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 43,
-        "name": "Anna Maria Scaramagli",
-        "star": 4,
-        "description": ""
-    },
-    {
-        "id": 44,
-        "name": "Paolo Mazza",
-        "star": 5,
-        "description": ""
-    },
-    {
-        "id": 45,
-        "name": "Tamara Trapella",
-        "star": 4,
-        "description": ""
-    }
+  {
+    "id": 0,
+    "name": "Delia Saccomani",
+    "star": 5,
+    "description": "Negozio incredibilmente pieno di materiale creativo e anche pezzi già fatti ! La proprietaria Tania di una gentilezza e cordialità unica insieme alle sue collaboratrici per i corsi"
+  },
+  {
+    "id": 1,
+    "name": "Anna Portia Coretti",
+    "star": 5,
+    "description": "Appena stata qui! Un’ottima merceria nel quartiere. Ha tutto ciò che serve per ricamo a mano, cucito a macchina e per lavori a maglia. Molto utile poi quando trovi un’esperta che sa consigliarti l’articolo migliore per ciò che devi fare e migliore non vuol dire costoso perché mi ha consigliato perfino un articolo più economico rispetto a quello che avevo preso io. Sono molto soddisfatta di aver conosciuto questo posto, merito va anche all’ottima comunicazione che fai su Instagram, senza quella non avrei mai scoperto questo negozio. Grazie Tania"
+  },
+  {
+    "id": 2,
+    "name": "Lyudmyla Wings",
+    "star": 5,
+    "description": "Sono rimasta molto sodisfarà da professionalità e gentilezza 👍"
+  },
+  {
+    "id": 3,
+    "name": "Carola María Lage",
+    "star": 5,
+    "description": "La donna e molto cordiale, ha pazienza perche non parlo molto bene l’italiano e lei mi ha dato buona attenzione con lo che trovavo. Grazie!"
+  },
+  {
+    "id": 4,
+    "name": "Monica Marzocchi",
+    "star": 4,
+    "description": "Trovi quasi tutto, belle passamanerie, pizzi a metratura, salda strappi e ottimi i cotoni per cucire a mano o a macchina, la signora che gestisce il negozio è esperta e in grado di consigliarti per il meglio. Inoltre organizza corsi per imparate ad usare la macchina da"
+  },
+  {
+    "id": 5,
+    "name": "Laura Marcheselli",
+    "star": 5,
+    "description": "Ho frequentato il corso base di cucito ed è stata una esperienza meravigliosa,  Tania è bravissima, paziente e molto competente su qualsiasi argomento.  Proseguirò con altri corsi."
+  },
+  {
+    "id": 6,
+    "name": "MARIA TERESA SACCO",
+    "star": 5,
+    "description": "Un negozio ben fornito, ho trovato sempre quello che cercavo! È bello che a Borgo Panigale ci sia dove trovare tutto quello che compete ad una merceria...ed anche di più !Molto gentili e sanno dare consigli!"
+  },
+  {
+    "id": 7,
+    "name": "Oriana Chindamo",
+    "star": 5,
+    "description": "Negozio molto accogliente, ricco ti tessuti, oggetti per i cucito. La titolare è molto cortese e disponibile."
+  },
+  {
+    "id": 8,
+    "name": "Wilhelmina",
+    "star": 5,
+    "description": "Nel corso degli anni è sempre migliorata la qualità dei prodotti. Vado da lei sempre. Gentile l'accoglienza, sempre."
+  },
+  {
+    "id": 9,
+    "name": "Alessandra Albertini",
+    "star": 5,
+    "description": "Signors gentilisdima merceria onesta e ben rifornita Fsnno anche corsi molto interessanti"
+  },
+  {
+    "id": 10,
+    "name": "Massimo. Macca Maccagni",
+    "star": 5,
+    "description": "Molto gentile e cordiale"
+  },
+  {
+    "id": 11,
+    "name": "Liubov Shcherbak",
+    "star": 5,
+    "description": "Tania è molto brava e precisa nel suo lavoro.Gentile e disponibile.Il negozio è ben fornito."
+  },
+  {
+    "id": 12,
+    "name": "Patrizia Ansaloni",
+    "star": 5,
+    "description": "Luogo molto accogliente con tante cose x creare ciò che volete"
+  },
+  {
+    "id": 13,
+    "name": "Patrizia Carati",
+    "star": 5,
+    "description": "Bel negozio dove fare corsi di cucito omaglieria ci sono filati e tessuti da comprare"
+  },
+  {
+    "id": 14,
+    "name": "Lidia Mengoli",
+    "star": 5,
+    "description": "merceria molto fornita dove fanno anche corsi di cucito, maglia e uncinetto. Fornitissima di tutto!"
+  },
+  {
+    "id": 15,
+    "name": "Martha Mendoza",
+    "star": 5,
+    "description": "Gentilezza , efficienza e creatività de seguro e il marquio de sta merceria, complementi."
+  },
+  {
+    "id": 16,
+    "name": "Niko Todisco",
+    "star": 5,
+    "description": "Brava, precisa, competente e prezzi buoni. La consiglio."
+  },
+  {
+    "id": 17,
+    "name": "Andreea Carla",
+    "star": 5,
+    "description": "Molto brava e gentilissima.👍🔝"
+  },
+  {
+    "id": 18,
+    "name": "Annalisa Castagnoli",
+    "star": 5,
+    "description": "Piccolo negozietto ma ben fornito"
+  },
+  {
+    "id": 19,
+    "name": "Claudio",
+    "star": 4,
+    "description": "Brave ma secondo me un po' costoso"
+  },
+  {
+    "id": 20,
+    "name": "Vincenzo La Notte",
+    "star": 5,
+    "description": "Cortesia e competenza"
+  },
+  {
+    "id": 21,
+    "name": "Licia Sanese",
+    "star": 4,
+    "description": "Gentilissime"
+  },
+  {
+    "id": 22,
+    "name": "Aurica Curos",
+    "star": 4,
+    "description": ""
+  },
+  {
+    "id": 23,
+    "name": "Mirna Monari",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 24,
+    "name": "Maria C",
+    "star": 3,
+    "description": ""
+  },
+
+  {
+    "id": 26,
+    "name": "Fiorenza Ghini",
+    "star": 4,
+    "description": "GRAZIE!!!!"
+  },
+  {
+    "id": 27,
+    "name": "Anna Stocchero",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 28,
+    "name": "Deanna Cantarelli",
+    "star": 4,
+    "description": ""
+  },
+  {
+    "id": 29,
+    "name": "Gennaro Stasi",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 30,
+    "name": "Carla Serranti",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 31,
+    "name": "jessica pireddu",
+    "star": 3,
+    "description": ""
+  },
+  {
+    "id": 32,
+    "name": "Michele Cotti SiD",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 33,
+    "name": "Angela Conti",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 34,
+    "name": "Mirca piemonte",
+    "star": 5,
+    "description": "Grazie!!!!!"
+  },
+  {
+    "id": 35,
+    "name": "Michele Lipari",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 36,
+    "name": "Sara Bordoni",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 37,
+    "name": "Michela Boiani",
+    "star": 5,
+    "description": "Grazie mille!!!!!"
+  },
+  {
+    "id": 38,
+    "name": "Liliana Conti",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 39,
+    "name": "Fiorella Fontana",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 40,
+    "name": "Mirco Fabulli",
+    "star": 5,
+    "description": "Grazie mille!!!"
+  },
+  {
+    "id": 41,
+    "name": "Patrizia Spanu",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 42,
+    "name": "Paola Iannone",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 43,
+    "name": "Anna Maria Scaramagli",
+    "star": 4,
+    "description": ""
+  },
+  {
+    "id": 44,
+    "name": "Paolo Mazza",
+    "star": 5,
+    "description": ""
+  },
+  {
+    "id": 45,
+    "name": "Tamara Trapella",
+    "star": 4,
+    "description": ""
+  }
 ]

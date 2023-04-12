@@ -11,14 +11,14 @@ export default class ReviewsController {
       const result = await fetch(`${this.Utils.viewsPath}reviews/js/data.json`);
       const data = await result.json();
       this.renderReviews(data);
-      this.counterStar(data);
+      // this.counterStar(data);
     } catch (error) {
       console.error(error);
     }
   }
 
   renderReviews(data) {
-    const reviewsContainer = document.querySelector(
+    const reviewsContainer = document.querySelectorAll(
       "#reviewsContainer .swiper-wrapper"
     );
     const html = data
@@ -30,10 +30,9 @@ export default class ReviewsController {
           );
         }
         return `
-        <div class="swiper-slide bg-white w-full space-y-2 p-5">
-            <div class="flex justify-center">${
-              star ? arrStar.join("") : ""
-            }</div>
+        <div class="swiper-slide bg-white w-full space-y-2">
+            <div class="flex max-lg:justify-center">${star ? arrStar.join("") : ""
+          }</div>
             <div class="">
                 <p class="text-sm font-light">${description}</p>
             </div>
@@ -43,7 +42,8 @@ export default class ReviewsController {
         </div>`;
       })
       .join("");
-    reviewsContainer.insertAdjacentHTML("afterbegin", html);
+    console.log(reviewsContainer);
+    reviewsContainer.forEach(r => r.insertAdjacentHTML("afterbegin", html))
 
     this.renderSwipper();
   }
@@ -82,13 +82,11 @@ export default class ReviewsController {
       const html = `
       <div class="flex items-center gap-1">
           <div class="flex items-center gap-1">
-              <p>${i + 1}</p><img class="w-5 h-5" src="${
-        this.Utils.assetsPath
-      }images/svg/star.svg" /></div>
+              <p>${i + 1}</p><img class="w-5 h-5" src="${this.Utils.assetsPath
+        }images/svg/star.svg" /></div>
               <div class="w-52 bg-gray-200 rounded-full h-2.5 flex">
-                  <div class="bg-pink-600 h-2.5 rounded-full" style="width: ${
-                    (100 / sumStar) * star
-                  }%"></div>
+                  <div class="bg-pink-600 h-2.5 rounded-full" style="width: ${(100 / sumStar) * star
+        }%"></div>
           </div>
           <div>${Math.trunc((100 / sumStar) * star)}%</div>
       </div>`;

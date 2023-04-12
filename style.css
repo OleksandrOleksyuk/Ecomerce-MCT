@@ -21,10 +21,8 @@ Last modified: 20/02/2023 - oleksandr
   }
 }
 #containerImageCard img {
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 5px;
-  height: 12rem;
-  width: auto;
 }
 
 /* * {

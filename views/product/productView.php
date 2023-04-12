@@ -47,8 +47,8 @@ $product_list = render_products();
                             ?>
                                         <li class="w-full">
                                             <div class="flex items-center">
-                                                <input data-type="subcategories" data-parent="<?= strtolower($value['data-parent']); ?>" data-children="<?= strtolower($value['data-children']); ?>" id="<?= '1' . $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 checked:bg-pink-400 rounded-full bg-pink-100 border-[1px] border-pink-500 ">
-                                                <label for="<?= '1' . $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?= $value['children'][0]; ?></label>
+                                                <input data-type="subcategories" data-parent="<?= strtolower($value['data-parent']); ?>" data-children="<?= strtolower($value['data-children']); ?>" id="<?= '10' . $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 checked:bg-pink-400 rounded-full bg-pink-100 border-[1px] border-pink-500 ">
+                                                <label for="<?= '10' . $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?= $value['children'][0]; ?></label>
                                             </div>
                                         </li>
                             <?php
@@ -64,7 +64,7 @@ $product_list = render_products();
                 </div>
             </div>
         </div>
-        <div id="contProd" class="flex flex-wrap gap-2 items-center justify-around w-full">
+        <div id="contProd" class="flex flex-wrap gap-2 items-center max-lg:justify-around w-full">
             <?php
             foreach ($product_list as $product) {
                 // include($path);
@@ -75,6 +75,32 @@ $product_list = render_products();
                 ]);
             }
             ?>
+
+            <!-- <nav aria-label="Page navigation example">
+                <ul class="inline-flex -space-x-px">
+                    <li>
+                        <a href="#" class="px-3 py-2 ml-0 leading-tight text-emerald-500 bg-emerald-50 border border-emerald-300 rounded-l-lg hover:bg-emerald-100 hover:text-emerald-700">Previous</a>
+                    </li>
+                    <?php
+                    $index = 0;
+                    foreach ($product_list as $product) {
+                        $index += 1;
+                        if ($index % 10 == 0 && $index > 0) {
+                    ?>
+                            <li>
+                                <a href="#" class="px-3 py-2 leading-tight text-emerald-500 bg-emerald-50 border border-emerald-300 hover:bg-emerald-100 hover:text-emerald-700">1</a>
+                            </li>
+                    <?php
+                        };
+                    };
+                    ?>
+
+                    <li>
+                        <a href="#" class="px-3 py-2 leading-tight text-emerald-500 bg-emerald-50 border border-emerald-300 rounded-r-lg hover:bg-emerald-100 hover:text-emerald-700">Next</a>
+                    </li>
+                </ul>
+            </nav> -->
+
         </div>
     </div>
 </section>

@@ -8,6 +8,7 @@ function add_custom_rewrite_tags()
 add_action('init', 'add_custom_rewrite_tags', 10, 0);
 
 
+
 function get_image_path($image_filename)
 {
     $local_path = '/mct';
@@ -117,9 +118,9 @@ function render_single_product($product_id)
             'id' => $variation['variation_id'],
             'attributes' => $variation['attributes'],
             'price' => $variation['display_price'],
-            // 'stockQuantity' => isset($variation['stock_quantity']) ? $variation['stock_quantity'] : null,
-            // 'stockStatus' => isset($variation['stock_status']) ? $variation['stock_status'] : null,
-            'image' => ''
+            'image' => '',
+            // 'stock_quantity' => wc_get_stock_quantity($variation['variation_id'], 'total'), // Aggiungi la quantità disponibile per ogni variante
+            // 'stock_status' => $variation['is_in_stock'] ? 'disponibile' : 'non disponibile' // Aggiungi lo stato di disponibilità della variante
         );
 
         if (isset($variation['image_id']) && $variation['image_id']) {
@@ -129,6 +130,7 @@ function render_single_product($product_id)
             }
         }
     }
+
     $gallery_ids = $product->get_gallery_image_ids();
     $gallery_images = array();
 

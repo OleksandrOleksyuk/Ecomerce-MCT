@@ -6,6 +6,7 @@ $product = $params['params'];
         <div class="w-80 h-[448px] text-left flex flex-col rounded-xl">
             <div id="containerImageCard" class="flex h-48 items-center justify-center overflow-hidden relative rounded-t-xl">
                 <?= $product['image']; ?>
+                <div class="absolute top-5 left-5 py-1 px-2 text-sm rounded-lg <?= $product['available'] ? 'bg-emerald-50 text-emerald-500' : 'bg-red-50 text-red-500'; ?>"><?= $product['available'] ? 'Disponibile' : 'Non disponibile'; ?></div>
             </div>
             <div class="flex flex-col justify-between h-64 p-5">
                 <div>
@@ -21,7 +22,7 @@ $product = $params['params'];
                     <h3 class="text-4xl font-semibold text-emerald-600 py-2">
                         <?= '€ ' . $product['price']; ?>
                     </h3>
-                    <a href="#" class="">
+                    <a href="<?= $product['link']; ?>" class="">
                         <button class="btnStyle min-w-full">
                             Vai ai dettagli
                         </button>
