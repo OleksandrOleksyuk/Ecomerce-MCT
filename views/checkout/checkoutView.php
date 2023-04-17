@@ -28,7 +28,7 @@
             </li>
         </ol>
         <form action="#" data-multi-step="">
-            <div data-step="0" class="hidden">
+            <div data-step="0" class="">
                 <h3 class="mb-4 text-lg font-medium leading-none">Step 1</h3>
                 <div class="grid gap-4 mb-4 sm:grid-cols-6 ">
                     <div class="col-span-3">
@@ -68,7 +68,7 @@
                     Prossimo step: informazioni di pagamento
                 </button>
             </div>
-            <div data-step="1" class="hidden">
+            <div data-step="1" class="">
                 <h3 class="mb-4 text-lg font-medium leading-none">Step 2</h3>
                 <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
                     <div class="w-full p-3 border-b border-gray-200">
@@ -138,11 +138,12 @@
                         indietro
                     </button>
                     <button class="uppercase text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-next>
-                        <?= do_shortcode('[woo_paypal_checkout_button]'); ?>
+                        Paga ora
                     </button>
+                    <!-- <div id="paypal-button-container"></div> -->
                 </div>
             </div>
-            <div data-step="2" class="hidden">
+            <div data-step="2" class="">
                 <div class="bg-white p-6 md:mx-auto">
                     <svg viewBox="0 0 24 24" class="text-green-600 w-16 h-16 mx-auto my-6">
                         <path fill="currentColor" d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">

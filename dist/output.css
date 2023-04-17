@@ -9,6 +9,119 @@ Version:        #
 Last modified: 20/02/2023 - oleksandr
 */
 
+/* import style */
+
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-roller.hidden {
+  display: none !important;
+}
+
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #000;
+  margin: -4px 0 0 -4px;
+}
+
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Importazioni di Tailwind */
+
 /*
 ! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com
 */
@@ -589,6 +702,14 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.active {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity));
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -715,6 +836,10 @@ video {
   z-index: 20;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
@@ -795,6 +920,10 @@ video {
   margin-bottom: 0.25rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -813,10 +942,6 @@ video {
 
 .mb-6 {
   margin-bottom: 1.5rem;
-}
-
-.ml-0 {
-  margin-left: 0px;
 }
 
 .ml-1 {
@@ -1687,12 +1812,6 @@ video {
   gap: 3vw;
 }
 
-.-space-x-px > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(-1px * var(--tw-space-x-reverse));
-  margin-left: calc(-1px * calc(1 - var(--tw-space-x-reverse)));
-}
-
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -2012,19 +2131,9 @@ video {
   border-bottom-left-radius: 0.25rem;
 }
 
-.rounded-l-lg {
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-}
-
 .rounded-r {
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
-}
-
-.rounded-r-lg {
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
 }
 
 .rounded-t {
@@ -2117,11 +2226,6 @@ video {
 
 .border-none {
   border-style: none;
-}
-
-.border-emerald-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(110 231 183 / var(--tw-border-opacity));
 }
 
 .border-emerald-600 {
@@ -2682,10 +2786,6 @@ video {
   line-height: 1;
 }
 
-.leading-tight {
-  line-height: 1.25;
-}
-
 .tracking-widest {
   letter-spacing: 0.1em;
 }
@@ -3128,6 +3228,10 @@ video {
   transition-duration: 200ms;
 }
 
+.duration-300 {
+  transition-duration: 300ms;
+}
+
 .duration-500 {
   transition-duration: 500ms;
 }
@@ -3161,21 +3265,26 @@ video {
   a-z-a--z-: #;
 }
 
+/* Dichiarazioni di stile personalizzate */
+
+/* Stile per le immagini all'interno di #containerImageCard */
+
 #containerImageCard img {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
   height: 12rem;
   width: auto;
+  transition: all 0.5s ease-in-out;
 }
 
-/* * {
-  font-family: "Poppins", sans-serif !important;
-} */
+/* Stile per l'animazione delle immagini quando il mouse si posiziona sulla card */
 
-/* nascondo le cose di WP */
+.cardView:hover #containerImageCard img {
+  transform: scale(1.1);
+}
 
-/* #page > header, */
+/* Nascondo le sezioni inutili di WordPress */
 
 section.storefront-product-section,
 #page div.storefront-breadcrumb,
@@ -3186,18 +3295,19 @@ footer#colophon {
   display: none;
 }
 
+/* Altezza a 100% per #page */
+
 div#page {
   height: 100vh;
 }
+
+/* Larghezza al 100% per #primary */
 
 div#primary {
   width: 100%;
 }
 
-/* ol,
-ul {
-  list-style: none;
-} */
+/* Reset dei margini, padding e border per molti elementi HTML */
 
 #page,
 #primary,
@@ -3237,6 +3347,8 @@ a {
   list-style: none;
 }
 
+/* Stile per rimuovere i margini superiori di alcuni elementi HTML */
+
 p + h2,
 p + header h2,
 p + h3,
@@ -3264,27 +3376,23 @@ form + h4 {
   margin: 0 !important;
 }
 
-section.section {
-  transition: transform 1s, opacity 1s;
+.section {
+  transition: all 1s ease-in-out;
 }
 
 input[type="checkbox"] {
   -moz-appearance: none;
        appearance: none;
   -webkit-appearance: none;
-  /* per compatibilità con alcuni browser */
 }
 
 /* Disattiva il bordo sui link quando selezionati */
 
-a:focus,
-button:focus,
-input:focus,
-div:focus {
+:focus {
   outline: none;
 }
 
-span.p-singleProduct {
+.p-singleProduct {
   font-weight: 800;
   margin: 0.8rem 0;
 }
@@ -3294,8 +3402,38 @@ span.p-singleProduct {
   height: auto;
 }
 
-.hiddenCard {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
+
+.card {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.card--hidden {
   display: none;
+  animation: fadeOut 1s forwards;
 }
 
 @media (min-width: 640px) {
@@ -3397,11 +3535,6 @@ span.p-singleProduct {
   animation: spin 1s linear infinite;
 }
 
-.hover\:bg-emerald-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 250 229 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-emerald-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(16 185 129 / var(--tw-bg-opacity));
@@ -3417,13 +3550,17 @@ span.p-singleProduct {
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
 }
 
+.hover\:text-3xl:hover {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .hover\:font-bold:hover {
   font-weight: 700;
 }
 
-.hover\:text-emerald-700:hover {
-  --tw-text-opacity: 1;
-  color: rgb(4 120 87 / var(--tw-text-opacity));
+.hover\:font-semibold:hover {
+  font-weight: 600;
 }
 
 .hover\:text-pink-500:hover {
@@ -3439,11 +3576,6 @@ span.p-singleProduct {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:shadow-pink-600:hover {
-  --tw-shadow-color: #db2777;
-  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .before\:hover\:text-center:hover::before {
@@ -3533,16 +3665,6 @@ span.p-singleProduct {
 @media not all and (min-width: 1280px) {
   .max-xl\:hidden {
     display: none;
-  }
-}
-
-@media not all and (min-width: 1024px) {
-  .max-lg\:justify-center {
-    justify-content: center;
-  }
-
-  .max-lg\:justify-around {
-    justify-content: space-around;
   }
 }
 
@@ -3748,6 +3870,17 @@ span.p-singleProduct {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:hover\:shadow-lg:hover {
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+
+  .md\:hover\:shadow-pink-600:hover {
+    --tw-shadow-color: #db2777;
+    --tw-shadow: var(--tw-shadow-colored);
   }
 }
 

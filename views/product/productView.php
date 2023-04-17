@@ -64,10 +64,9 @@ $product_list = render_products();
                 </div>
             </div>
         </div>
-        <div id="contProd" class="flex flex-wrap gap-2 items-center max-lg:justify-around w-full">
+        <div id="contProd" class="flex flex-wrap gap-5 items-center justify-around w-full relative">
             <?php
             foreach ($product_list as $product) {
-                // include($path);
                 echo $this->SetGeneralsShortCodesParams([
                     'section' => 'general',
                     'name' => 'cardView',
@@ -75,32 +74,9 @@ $product_list = render_products();
                 ]);
             }
             ?>
-
-            <!-- <nav aria-label="Page navigation example">
-                <ul class="inline-flex -space-x-px">
-                    <li>
-                        <a href="#" class="px-3 py-2 ml-0 leading-tight text-emerald-500 bg-emerald-50 border border-emerald-300 rounded-l-lg hover:bg-emerald-100 hover:text-emerald-700">Previous</a>
-                    </li>
-                    <?php
-                    $index = 0;
-                    foreach ($product_list as $product) {
-                        $index += 1;
-                        if ($index % 10 == 0 && $index > 0) {
-                    ?>
-                            <li>
-                                <a href="#" class="px-3 py-2 leading-tight text-emerald-500 bg-emerald-50 border border-emerald-300 hover:bg-emerald-100 hover:text-emerald-700">1</a>
-                            </li>
-                    <?php
-                        };
-                    };
-                    ?>
-
-                    <li>
-                        <a href="#" class="px-3 py-2 leading-tight text-emerald-500 bg-emerald-50 border border-emerald-300 rounded-r-lg hover:bg-emerald-100 hover:text-emerald-700">Next</a>
-                    </li>
-                </ul>
-            </nav> -->
-
+            <div class="h-100 w-100 absolute inset-0 flex justify-center items-center">
+                <?= do_shortcode("[views section=general name=loaderView]"); ?>
+            </div>
         </div>
     </div>
 </section>

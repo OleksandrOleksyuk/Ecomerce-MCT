@@ -3,7 +3,7 @@
 </div>
 <nav class="navbar flex justify-between items-center w-11/12 mx-auto top-0 text-emerald-900">
     <div>
-        <a href="<?= get_link_path('home'); ?>"><img class="h-20" src="<?= get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
+        <a href="<?= get_link_path('home'); ?>"><img class="h-20 hover:scale-105 transition-all duration-300 ease-in" src="<?= get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
     </div>
     <div id="menu" class="hidden md:block absolute md:static bg-white left-0 top-[120px] w-full md:w-auto p-5">
         <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 transition-all duration-500">
@@ -13,13 +13,13 @@
             ];
             foreach ($elements as $key => $value) {
                 $path = get_link_path($key);
-                echo "<li class='cursor-pointer'><a class='hover:text-pink-500 text-xl' href=" . $path . ">$value</a></li>";
+                echo "<li class='cursor-pointer'><a class='hover:text-pink-500 text-2xl hover:text-3xl transition-all duration-300 ease-linear hover:font-semibold' href=" . $path . ">$value</a></li>";
             }
             ?>
         </ul>
     </div>
     <div class="flex items-center gap-2">
-        <div id="openSliderover" class="flex gap-2">
+        <div id="openSliderover" class="flex gap-2 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
@@ -34,15 +34,15 @@
     </div>
 </nav>
 <div id="slideover-container" class="fixed inset-0 w-full h-full invisible z-20 text-emerald-900">
-    <div id="slideover-bg" class=" absolute transition-all ease-out w-full h-full bg-gray-500 top-0 opacity-0"></div>
+    <div id="slideover-bg" class="absolute transition-all ease-out w-full h-full bg-gray-500 top-0 opacity-0"></div>
     <div id="slideover" class=" absolute transition-all ease-out duration-700 w-full sm:w-[450px] h-full bg-white top-0 right-0 translate-x-full p-5 shadow-lg">
-        <div id="closeSlideover" class="h-10 z-10 w-10 absolute top-0 right-0 m-5 flex justify-center items-center cursor-pointer">
+        <div id="closeSlideover" class="h-10 w-10 absolute top-0 right-0 m-5 flex justify-center items-center cursor-pointer z-50">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </div>
         <div class="w-full h-full py-5 flex flex-col justify-between gap-5 text-start">
-            <h1 class="text-4xl font-semibolds absolute top-10 left-0 p-5 bg-white w-full z-10">Carrello</h1>
+            <h1 class="text-4xl font-semibolds absolute top-10 left-0 p-5 bg-white w-full z-20">Carrello</h1>
             <div id="containerSidebarProduct" class="overflow-scroll py-20"></div>
             <div>
                 <p>Eventuali costi di spedizioni vengono calcolati al checkout</p>

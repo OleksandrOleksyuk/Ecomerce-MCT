@@ -21,8 +21,8 @@ export default class Checkout extends ExecJS {
     }
     multiStepForm.addEventListener("click", this.handleStepNavigation);
   }
-
   handleStepNavigation = (e) => {
+    e.preventDefault();
     const incrementor = e.target.matches("[data-next]") ? 1 : -1;
     if (!incrementor) return;
     const inputs = this.formSteps[this.currentStep].querySelectorAll("input");
@@ -53,7 +53,6 @@ export default class Checkout extends ExecJS {
     svgEl.classList.remove("text-gray-600");
     svgEl.classList.add("text-emerald-600");
   }
-
   renderCheckContainer() {
     const cart = this.getCartFromLocalStorage();
     let html = "";
@@ -88,5 +87,30 @@ export default class Checkout extends ExecJS {
     document.querySelector("#checkSumPrice").innerHTML = `€ ${sumPrice.toFixed(
       2
     )}`;
+    // this.createPaypalButton();
+  }
+  createPaypalButton() {
+    document.querySelector("#checkSumPrice").innerHTML = "20";
+    console.log(document.querySelector("#checkSumPrice").textContent);
+    paypal
+      .Buttons({
+        createOrder: function (data, actions) {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: "20",
+                },
+              },
+            ],
+          });
+        },
+        onApprove: function (data, actions) {
+          return actions.order.capture().then(function (details) {
+            alert("Transaction completed by " + details.payer.name.given_name);
+          });
+        },
+      })
+      .render("#paypal-button-container");
   }
 }

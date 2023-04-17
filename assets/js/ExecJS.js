@@ -1,4 +1,4 @@
-import GeneralPage from './GeneralPage.js';
+import GeneralPage from "./GeneralPage.js";
 
 export default class ExecJs {
   constructor() {
@@ -6,7 +6,20 @@ export default class ExecJs {
     this.handleClickMenu();
     this.toggleSlideover();
     this.renderSidebar();
+    // this.activeNav();
   }
+  // activeNav() {
+  //   const allLinks = document.querySelectorAll("#menu > ul > li > a");
+  //   allLinks.forEach((link) => {
+  //     link.addEventListener("click", (e) => {
+  //       allLinks.forEach((link) => link.classList.remove("active"));
+  //       link.classList.add("active");
+  //     });
+  //   });
+  // }
+  waitTime = (delay) =>
+    new Promise((resolve) => setTimeout(() => resolve(), delay));
+
   handleClickMenu() {
     const openBtn = document.querySelector("#open");
     const closeBtn = document.querySelector("#close");
@@ -21,69 +34,73 @@ export default class ExecJs {
     );
   }
   toggleSlideover() {
-    const sliderContainer = document.querySelector('#slideover-container');
-    const sliderBg = document.querySelector('#slideover-bg');
-    const slider = document.querySelector('#slideover');
-    const openSliderOver = document.querySelector('#openSliderover');
-    const closeSlideOver = document.querySelector('#closeSlideover');
-    const addToSidebarBtn = document.querySelector('#addToSidebarBtn');
+    const sliderContainer = document.querySelector("#slideover-container");
+    const sliderBg = document.querySelector("#slideover-bg");
+    const slider = document.querySelector("#slideover");
+    const openSliderOver = document.querySelector("#openSliderover");
+    const closeSlideOver = document.querySelector("#closeSlideover");
+    const addToSidebarBtn = document.querySelector("#addToSidebarBtn");
     const arr = [openSliderOver, sliderBg, closeSlideOver];
     if (addToSidebarBtn) arr.push(addToSidebarBtn);
     console.log(arr);
 
-    arr.forEach(el =>
-      el.addEventListener('click', (evt) => {
+    arr.forEach((el) =>
+      el.addEventListener("click", (evt) => {
         evt.preventDefault();
-        sliderContainer.classList.toggle('invisible');
-        sliderBg.classList.toggle('opacity-0')
-        sliderBg.classList.toggle('opacity-50')
-        slider.classList.toggle('translate-x-full')
-      }))
+        sliderContainer.classList.toggle("invisible");
+        sliderBg.classList.toggle("opacity-0");
+        sliderBg.classList.toggle("opacity-50");
+        slider.classList.toggle("translate-x-full");
+      })
+    );
   }
 
   saveCartToLocalStorage(cartItem) {
-    let cart = JSON.parse(localStorage.getItem('cart'));
-    if (!cart) cart = []
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (!cart) cart = [];
     cart.unshift(cartItem);
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 
   getCartFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('cart')) || [];
+    return JSON.parse(localStorage.getItem("cart")) || [];
   }
 
   removeProductFromCart(index) {
-    let cart = JSON.parse(localStorage.getItem('cart'));
+    let cart = JSON.parse(localStorage.getItem("cart"));
     if (!cart) return;
 
     cart.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
     this.renderSidebar();
   }
 
-
   appendProduct() {
-    const addToSidebarBtn = document.querySelector('#addToSidebarBtn');
+    const addToSidebarBtn = document.querySelector("#addToSidebarBtn");
 
-    addToSidebarBtn.addEventListener('click', (evt) => {
+    addToSidebarBtn.addEventListener("click", (evt) => {
       evt.preventDefault();
-      const src = document.querySelector('#imgFirst').src;
-      const categories = document.querySelector('#singleProduct--categories').textContent;
-      const name = document.querySelector('#singleProduct--name').textContent;
-      const qnt = document.querySelector('#singleProduct--qnt').textContent;
-      const price = document.querySelector('#singleProduct--price').textContent.replace('€ ', '').trim();
-      const data = { src, categories, name, qnt, price }
+      const src = document.querySelector("#imgFirst").src;
+      const categories = document.querySelector(
+        "#singleProduct--categories"
+      ).textContent;
+      const name = document.querySelector("#singleProduct--name").textContent;
+      const qnt = document.querySelector("#singleProduct--qnt").textContent;
+      const price = document
+        .querySelector("#singleProduct--price")
+        .textContent.replace("€ ", "")
+        .trim();
+      const data = { src, categories, name, qnt, price };
       this.saveCartToLocalStorage(data);
 
       this.renderSidebar();
-    })
-
+    });
   }
 
   renderSidebar() {
     const cart = this.getCartFromLocalStorage();
-    let html = '';
-    document.querySelector('#containerSidebarProduct').innerHTML = html;
+    let html = "";
+    document.querySelector("#containerSidebarProduct").innerHTML = html;
     let sumPrice = 0;
 
     cart.forEach((item) => {
@@ -118,17 +135,16 @@ export default class ExecJs {
       `;
     });
 
-    document.querySelector('#containerSidebarProduct').innerHTML = html;
+    document.querySelector("#containerSidebarProduct").innerHTML = html;
 
-    const deleteEl = document.querySelectorAll('.deleteEl');
+    const deleteEl = document.querySelectorAll(".deleteEl");
     deleteEl.forEach((item, index) => {
       // ...
-      item.addEventListener('click', () => this.removeProductFromCart(index));
+      item.addEventListener("click", () => this.removeProductFromCart(index));
     });
 
-    document.querySelector('#sumPrice').innerHTML = `€ ${sumPrice.toFixed(2)}`;
+    document.querySelector("#sumPrice").innerHTML = `€ ${sumPrice.toFixed(2)}`;
 
-    document.querySelector('#numElOnCart').innerHTML = `${cart.length}`
+    document.querySelector("#numElOnCart").innerHTML = `${cart.length}`;
   }
-
 }

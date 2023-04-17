@@ -2,7 +2,9 @@ import ExecJs from "../../../assets/js/ExecJS.js";
 export default class ProductController extends ExecJs {
   constructor() {
     super();
-    this.productCards = document.querySelectorAll("#contProd > div");
+    this.productCards = document.querySelectorAll(
+      "#contProd > div:not(:last-child)"
+    );
     this.categoryCheckboxes = document.querySelectorAll(
       '#product input[data-type="categories"]'
     );
@@ -10,16 +12,27 @@ export default class ProductController extends ExecJs {
       '#product input[data-type="subcategories"]'
     );
     //...
+    this.animationFadeInCard();
     this.setupCategoryFilter();
+  }
+  async animationFadeInCard() {
+    let delay = 200;
+    const pippo = [...this.productCards].filter(
+      (card) => !card.classList.contains("card--hidden") && card
+    );
+    console.log(pippo.length);
+    pippo.forEach((card, index) => {
+      setTimeout(() => card.classList.add("card"), delay * (index + 1));
+    });
   }
   setupCategoryFilter() {
     [...this.categoryCheckboxes, ...this.subcategoryCheckboxes].forEach(
       (input) => {
         input.addEventListener("change", (evt) => {
           evt.preventDefault();
-          // hide all cards
+          // // hide all cards
           [...this.productCards].forEach((card) =>
-            card.classList.add("hiddenCard")
+            card.classList.add("card--hidden")
           );
           // get selected categories and brands
           const selectedCategories = [];
@@ -35,6 +48,7 @@ export default class ProductController extends ExecJs {
               )}"]`
             );
             if (!parentEl.checked) parentEl.checked = true;
+            this.animationFadeInCard();
           }
           // if you deselect the brand you need to deselect all the categories related to the brand
           if (
@@ -51,19 +65,18 @@ export default class ProductController extends ExecJs {
           }
           // show all cards if no categories or brands are selected
           if (checkedCheckboxes.length === 0) {
-            [...this.productCards].forEach((card) =>
-              card.classList.remove("hiddenCard")
-            );
+            [...this.productCards].forEach((card) => {
+              card.classList.remove("card--hidden");
+            });
+            this.animationFadeInCard();
             return;
           }
-          console.log(selectedBrands, selectedCategories);
           this.updateSelectedCategoriesAndBrands(
             selectedCategories,
             selectedBrands,
             checkedCheckboxes
           );
           // show cards that match the selected categories and brands
-          console.log(selectedBrands, selectedCategories);
           this.showMatchingProductCards(selectedCategories, selectedBrands);
         });
       }
@@ -85,14 +98,16 @@ export default class ProductController extends ExecJs {
     [...this.productCards].forEach((card) => {
       const brand = card.getAttribute("data-parent");
       const category = card.getAttribute("data-children");
-      // show cards that match the selected categories and brands
       if (
         (selectedCategories.length === 0 ||
           selectedCategories.includes(category)) &&
         selectedBrands.includes(brand)
       ) {
-        card.classList.remove("hiddenCard");
+        card.classList.remove("card--hidden");
+      } else {
+        card.classList.add("card--hidden");
       }
     });
+    this.animationFadeInCard();
   }
 }

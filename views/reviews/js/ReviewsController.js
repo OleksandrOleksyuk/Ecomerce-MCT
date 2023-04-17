@@ -30,9 +30,10 @@ export default class ReviewsController {
           );
         }
         return `
-        <div class="swiper-slide bg-white w-full space-y-2">
-            <div class="flex max-lg:justify-center">${star ? arrStar.join("") : ""
-          }</div>
+        <div class="swiper-slide bg-white w-full space-y-2 text-center px-10">
+            <div class="flex justify-center">${
+              star ? arrStar.join("") : ""
+            }</div>
             <div class="">
                 <p class="text-sm font-light">${description}</p>
             </div>
@@ -43,7 +44,7 @@ export default class ReviewsController {
       })
       .join("");
     console.log(reviewsContainer);
-    reviewsContainer.forEach(r => r.insertAdjacentHTML("afterbegin", html))
+    reviewsContainer.forEach((r) => r.insertAdjacentHTML("afterbegin", html));
 
     this.renderSwipper();
   }
@@ -53,7 +54,7 @@ export default class ReviewsController {
       effect: "creative",
       creativeEffect: {
         prev: {
-          shadow: true,
+          shadow: false,
           translate: ["-100%", 0, -1],
         },
         next: {
@@ -82,11 +83,13 @@ export default class ReviewsController {
       const html = `
       <div class="flex items-center gap-1">
           <div class="flex items-center gap-1">
-              <p>${i + 1}</p><img class="w-5 h-5" src="${this.Utils.assetsPath
-        }images/svg/star.svg" /></div>
+              <p>${i + 1}</p><img class="w-5 h-5" src="${
+        this.Utils.assetsPath
+      }images/svg/star.svg" /></div>
               <div class="w-52 bg-gray-200 rounded-full h-2.5 flex">
-                  <div class="bg-pink-600 h-2.5 rounded-full" style="width: ${(100 / sumStar) * star
-        }%"></div>
+                  <div class="bg-pink-600 h-2.5 rounded-full" style="width: ${
+                    (100 / sumStar) * star
+                  }%"></div>
           </div>
           <div>${Math.trunc((100 / sumStar) * star)}%</div>
       </div>`;

@@ -12,14 +12,9 @@ export default class HomeController extends ExecJs {
   swiperBestProducts() {
     document.addEventListener("DOMContentLoaded", () => {
       const swiper = new Swiper("#swiper", {
-        spaceBetween: 10,
-        loop: false,
-        centeredSlides: false,
-        slidesPerView: "auto",
-        navigation: {
-          nextEl: "#next",
-          prevEl: "#prev",
-        },
+        slidesPerView: 1,
+        // spaceBetween: 30,
+        loop: true,
         autoplay: {
           delay: 3000,
           disableOnInteraction: false,

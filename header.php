@@ -22,6 +22,7 @@ $viewName = $generalController->GetViewName();
 	<link rel="pingback" href="<?php bloginfo("pingback_url"); ?>">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+	<script src="https://www.paypal.com/sdk/js?client-id=ARhBSRr5IGtlf0L03m-19-uGaMZqWSruL1KOpDru6sOIVZqiihhI0am-X0Uh6f1ETMrxMyxdp5mLPW_e"></script>
 	<?php wp_head(); ?>
 </head>
 
