@@ -74,9 +74,6 @@ $product_list = render_products();
                 ]);
             }
             ?>
-            <div class="h-100 w-100 absolute inset-0 flex justify-center items-center">
-                <?= do_shortcode("[views section=general name=loaderView]"); ?>
-            </div>
         </div>
     </div>
 </section>
