@@ -175,10 +175,10 @@ input[type="checkbox"] {
 
 .card {
   opacity: 0;
+  transform: translateY(-150px);
   animation: fadeIn 1s forwards;
 }
 
 .card--hidden {
   display: none;
-  animation: fadeOut 1s forwards;
 }
