@@ -1,7 +1,7 @@
 <?php
 $product = $params['params'];
 ?>
-<div data-parent="<?= strtolower($product['data-parent']); ?>" data-children="<?= strtolower($product['data-children']); ?>" id="<?= $product['id']; ?>" class="opacity-0 cardView transition-all duration-1000 ease-in-out col-span-1 mb-10 w-80 h-[448px] rounded-xl text-slate-900 swiper-slide shadow-lg md:hover:shadow-lg md:hover:shadow-pink-600">
+<div data-parent="<?= strtolower($product['data-parent']); ?>" data-children="<?= strtolower($product['data-children']); ?>" id="<?= $product['id']; ?>" class="opacity-0 -translate-y-52 cardView transition-all duration-1000 ease-in-out col-span-1 mb-10 w-80 h-[448px] rounded-xl text-slate-900 swiper-slide shadow-lg md:hover:shadow-lg md:hover:shadow-pink-600">
     <a href="<?= $product['link']; ?>">
         <div class="w-80 h-[448px] text-left flex flex-col rounded-xl">
             <div id="containerImageCard" class="flex h-48 items-center justify-center overflow-hidden relative rounded-t-xl">

@@ -1190,6 +1190,11 @@ video {
   border-collapse: separate;
 }
 
+.-translate-y-52 {
+  --tw-translate-y: -13rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-x-full {
   --tw-translate-x: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -3277,7 +3282,10 @@ input[type="checkbox"] {
 
 /* Disattiva il bordo sui link quando selezionati */
 
-:focus {
+a:focus,
+button:focus,
+input:focus,
+div:focus {
   outline: none;
 }
 
@@ -3299,25 +3307,13 @@ input[type="checkbox"] {
 
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(-150px);
+    transform: translateY(0px) !important;
   }
 }
 
 .card {
   opacity: 0;
-  transform: translateY(0px);
+  transform: translateY(0px) !important;
   animation: fadeIn 1s forwards;
 }
 

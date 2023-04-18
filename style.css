@@ -137,7 +137,10 @@ input[type="checkbox"] {
 }
 
 /* Disattiva il bordo sui link quando selezionati */
-:focus {
+a:focus,
+button:focus,
+input:focus,
+div:focus {
   outline: none;
 }
 
@@ -158,24 +161,13 @@ input[type="checkbox"] {
   }
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-150px);
+    transform: translateY(0px) !important;
   }
 }
 
 .card {
   opacity: 0;
-  transform: translateY(0px);
+  transform: translateY(0px) !important;
   animation: fadeIn 1s forwards;
 }
 
