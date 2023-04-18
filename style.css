@@ -140,7 +140,6 @@ input[type="checkbox"] {
 :focus {
   outline: none;
 }
-
 .p-singleProduct {
   font-weight: 800;
   margin: 0.8rem 0;
@@ -174,8 +173,9 @@ input[type="checkbox"] {
 }
 
 .card {
-  /* transform: translateY(0px); */
-  animation: fadeIn 1s forwards !important;
+  opacity: 0;
+  transform: translateY(0px);
+  animation: fadeIn 1s forwards;
 }
 
 .card--hidden {

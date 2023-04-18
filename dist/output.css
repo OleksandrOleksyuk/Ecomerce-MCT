@@ -3321,8 +3321,9 @@ input[type="checkbox"] {
 }
 
 .card {
-  /* transform: translateY(0px); */
-  animation: fadeIn 1s forwards !important;
+  opacity: 0;
+  transform: translateY(0px);
+  animation: fadeIn 1s forwards;
 }
 
 .card--hidden {
