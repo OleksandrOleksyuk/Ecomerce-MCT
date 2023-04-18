@@ -23,9 +23,8 @@ export default class ProductController extends ExecJs {
         return;
       } else return card;
     });
-    console.log(newArr.length);
     newArr.forEach((card, index) => {
-      setTimeout(() => card.classList.add("card"), delay * (index + 1));
+      setTimeout(() => card.classList.add("card"), delay * index);
     });
   }
   setupCategoryFilter() {

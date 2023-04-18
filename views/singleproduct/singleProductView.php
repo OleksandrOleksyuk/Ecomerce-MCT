@@ -8,9 +8,12 @@ $image_src = isset($product['variations'][0]['image']) ? $product['variations'][
 <main id="singleProduct" class="text-emerald-900">
     <section class="flex flex-col lg:flex-row-reverse mx-auto justify-center items-center max-w-7xl p-10">
         <div class="lg:w-1/2 h-[550px] flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center p-5">
-            <img id="imgFirst" class="w-64 h-64 sm:w-96 sm:h-96  mb-5 rounded-lg p-2 object-cover" src="<?= $product['variations'][0]['image']; ?>" alt="">
-            <div id="gallery" class="gap-5 max-sm:flex lg:flex ]">
-                <img id="imgFirst--small" class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-lg mt-2 activeProduct" src="<?= $product['variations'][0]['image']; ?>" alt="">
+            <img id="imgFirst" class="w-64 h-64 sm:w-96 sm:h-96  mb-5 rounded-lg p-2 object-cover" src="<?= $image_src; ?>" alt="">
+            <div id="gallery" class="gap-5 max-sm:flex lg:flex">
+                <?php
+                $opacityClass = (count($product['gallery_images']) == 0) ? 'opacity-0' : '';
+                ?>
+                <img id="imgFirst--small" class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-lg mt-2 activeProduct <?= $opacityClass ?>" src="<?= $image_src; ?>" alt="">
                 <?php
                 foreach ($product['gallery_images'] as $value) {
                     if (strpos($value, 'gallery') !== false) {
@@ -26,7 +29,6 @@ $image_src = isset($product['variations'][0]['image']) ? $product['variations'][
             <div class="space-y-2">
                 <p id="singleProduct--categories" class="uppercase tracking-widest"><?= $product['categories']; ?></p>
                 <h1 id="singleProduct--name" class="text-emerald-900 text-4xl lg:text-5xl"><?= $product['name']; ?></h1>
-
                 <p class="lg:text-lg font-light"><?= $product['description']; ?></p>
                 <div class="mt-5">
                     <span class="font-semibold lg:text-lg">COLORE:</span> <span id="color" class="uppercase text-pink-500"><?= $product['variations'][0]['attributes']['attribute_pa_color']; ?></span>
@@ -96,9 +98,8 @@ $image_src = isset($product['variations'][0]['image']) ? $product['variations'][
                 <div class="flex flex-col items-start md:grid md:grid-cols-2 md:px-5 md:items-center text-left py-5">
                     <h2 class="text-2xl font-semibold text-emerald-600 md:text-3xl lg:text-4xl">Prodotti simili</h2>
                 </div>
-                <div class="flex justify-start items-center gap-5 relative mx-auto"> <!-- overflow-x-auto -->
+                <div class="flex justify-start items-center gap-5 relative mx-auto">
                     <?php
-                    // ciclo foreach per stampare i prodotti
                     foreach ($product_list as $product) {
                         echo $this->SetGeneralsShortCodesParams(["section" => "general", "name" => "cardView", "params" => $product]);
                     } ?>

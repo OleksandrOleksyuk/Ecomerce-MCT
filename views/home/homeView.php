@@ -161,7 +161,7 @@ $product_list = render_products(10);
                 foreach ($data as $d) {
                     $image_path = get_image_path($d["img_src"]); ?>
                     <div class="relative rounded-xl hover:scale-105 cursor-pointer transform duration-500">
-                        <img class=" 2xl:h-80 2xl:w-72 w-screen h-24 sm:w-32 sm:h-52 md:w-40 lg:h-72 lg:w-52 object-cover rounded-xl xl:h-80 xl:w-64 " src="<?= $image_path ?>" alt="">
+                        <img class="2xl:h-80 2xl:w-72 w-screen h-24 sm:w-32 sm:h-52 md:w-40 lg:h-72 lg:w-52 object-cover rounded-xl xl:h-80 xl:w-64 " src="<?= $image_path ?>" alt="">
                         <div class="absolute inset-0 bg-black opacity-50 rounded-xl"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <h5 class="text-white text-3xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-semibold text-center z-10"><?= $d["h5"] ?></h5>

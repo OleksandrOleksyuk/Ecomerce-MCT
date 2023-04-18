@@ -1,9 +1,9 @@
 <?php
 $product = $params['params'];
 ?>
-<div data-parent="<?= strtolower($product['data-parent']); ?>" data-children="<?= strtolower($product['data-children']); ?>" id="<?= $product['id']; ?>" class=" opacity-0 -translate-y-32 duration-500 cardView col-span-1 mb-10 w-80 h-[448px] rounded-xl text-slate-900 swiper-slide shadow-lg md:hover:shadow-lg md:hover:shadow-pink-600">
+<div data-parent="<?= strtolower($product['data-parent']); ?>" data-children="<?= strtolower($product['data-children']); ?>" id="<?= $product['id']; ?>" class=" opacity-0 -translate-y-32 duration-500 cardView col-span-1 mb-10 w-[19rem] h-[448px] rounded-xl text-slate-900 swiper-slide shadow-lg md:hover:shadow-lg md:hover:shadow-pink-600">
     <a href="<?= $product['link']; ?>">
-        <div class="w-80 h-[448px] text-left flex flex-col rounded-xl">
+        <div class="w-[19rem] h-[448px] text-left flex flex-col rounded-xl">
             <div id="containerImageCard" class="flex h-48 items-center justify-center overflow-hidden relative rounded-t-xl">
                 <?= $product['image']; ?>
                 <div class="absolute top-5 left-5 py-1 px-2 text-sm rounded-lg <?= $product['available'] ? 'bg-emerald-50 text-emerald-500' : 'bg-red-50 text-red-500'; ?>"><?= $product['available'] ? '&#9083; Disponibile' : '&#10060; Non disponibile'; ?></div>

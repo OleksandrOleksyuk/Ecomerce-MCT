@@ -9,7 +9,7 @@
         <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 transition-all duration-500">
             <?php
             $elements = [
-                "home" => "Home", "product" => "Prodotti", "#" => "Fai da te creativo", "#" => "Chi sono",
+                "home" => "Home", "product" => "Prodotti", "about" => "Chi sono",
             ];
             foreach ($elements as $key => $value) {
                 $path = get_link_path($key);

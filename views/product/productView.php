@@ -64,7 +64,7 @@ $product_list = render_products();
                 </div>
             </div>
         </div>
-        <div id="contProd" class="flex flex-wrap gap-5 items-center justify-around w-full relative">
+        <div id="contProd" class="flex flex-wrap gap-5 items-center justify-evenly w-full relative">
             <?php
             foreach ($product_list as $product) {
                 echo $this->SetGeneralsShortCodesParams([

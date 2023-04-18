@@ -137,9 +137,13 @@ input[type="checkbox"] {
 }
 
 /* Disattiva il bordo sui link quando selezionati */
-:focus {
+a:focus,
+button:focus,
+input:focus,
+div:focus {
   outline: none;
 }
+
 .p-singleProduct {
   font-weight: 800;
   margin: 0.8rem 0;

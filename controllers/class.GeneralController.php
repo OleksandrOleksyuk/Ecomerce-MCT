@@ -68,7 +68,6 @@ class GeneralController extends UtilsController
         try {
             global $wp, $post;
             $section = $post->post_name;
-
             switch ($section) {
                 case 'home':
                     $section = 'home';
@@ -84,6 +83,9 @@ class GeneralController extends UtilsController
                     break;
                 case 'checkout':
                     $section = 'checkout';
+                    break;
+                case 'about':
+                    $section = 'about';
                     break;
             }
             return $section;
