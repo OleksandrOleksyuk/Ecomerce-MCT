@@ -175,7 +175,7 @@ input[type="checkbox"] {
 
 .card {
   opacity: 0;
-  transform: translateY(-150px);
+  transform: translateY(0px);
   animation: fadeIn 1s forwards;
 }
 
