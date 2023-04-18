@@ -171,7 +171,7 @@ div:focus {
 
 .card {
   /* opacity: 0; */
-  transform: translateY(0px);
+  transform: translateY(0px) !important;
   animation: fadeIn 1s forwards;
 }
 
