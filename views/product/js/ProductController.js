@@ -17,11 +17,11 @@ export default class ProductController extends ExecJs {
   }
   async animationFadeInCard() {
     let delay = 200;
-    const pippo = [...this.productCards].filter(
+    const newArr = [...this.productCards].filter(
       (card) => !card.classList.contains("card--hidden") && card
     );
-    console.log(pippo.length);
-    pippo.forEach((card, index) => {
+    console.log(newArr.length);
+    newArr.forEach((card, index) => {
       setTimeout(() => card.classList.add("card"), delay * (index + 1));
     });
   }

@@ -1190,11 +1190,6 @@ video {
   border-collapse: separate;
 }
 
-.-translate-y-52 {
-  --tw-translate-y: -13rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .translate-x-full {
   --tw-translate-x: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -3174,6 +3169,10 @@ video {
 
 /* Stile per l'animazione delle immagini quando il mouse si posiziona sulla card */
 
+.cardView {
+  opacity: 0;
+}
+
 .cardView:hover #containerImageCard img {
   transform: scale(1.1);
 }
@@ -3282,6 +3281,8 @@ input[type="checkbox"] {
 
 /* Disattiva il bordo sui link quando selezionati */
 
+/* Disattiva il bordo sui link quando selezionati */
+
 a:focus,
 button:focus,
 input:focus,
@@ -3312,8 +3313,8 @@ div:focus {
 }
 
 .card {
-  opacity: 0;
-  transform: translateY(0px) !important;
+  /* opacity: 0; */
+  transform: translateY(0px);
   animation: fadeIn 1s forwards;
 }
 
