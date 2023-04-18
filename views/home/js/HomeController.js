@@ -12,8 +12,8 @@ export default class HomeController extends ExecJs {
   swiperBestProducts() {
     document.addEventListener("DOMContentLoaded", () => {
       const swiper = new Swiper("#swiper", {
-        slidesPerView: 1,
-        // spaceBetween: 30,
+        slidesPerView: "auto",
+        spaceBetween: 30,
         loop: true,
         autoplay: {
           delay: 3000,
@@ -22,8 +22,16 @@ export default class HomeController extends ExecJs {
         pauseOnHover: true,
       });
     });
+    this.animationFadeInCard();
   }
-
+  async animationFadeInCard() {
+    let delay = 200;
+    document
+      .querySelectorAll("#swiper .swiper-slide")
+      .forEach((card, index) => {
+        setTimeout(() => card.classList.add("card"), delay * (index + 1));
+      });
+  }
   revealSections() {
     const allSections = document.querySelectorAll("section.section");
     const revealSection = function (entries, observer) {

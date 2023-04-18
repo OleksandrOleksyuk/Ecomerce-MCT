@@ -17,9 +17,12 @@ export default class ProductController extends ExecJs {
   }
   async animationFadeInCard() {
     let delay = 200;
-    const newArr = [...this.productCards].filter(
-      (card) => !card.classList.contains("card--hidden") && card
-    );
+    const newArr = [...this.productCards].filter((card) => {
+      if (card.classList.contains("card--hidden")) {
+        card.classList.remove("card");
+        return;
+      } else return card;
+    });
     console.log(newArr.length);
     newArr.forEach((card, index) => {
       setTimeout(() => card.classList.add("card"), delay * (index + 1));
