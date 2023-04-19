@@ -8,21 +8,18 @@ $product_list = render_products(10);
         <!-- title -->
         <div class="flex flex-col sm:flex-row justify-center items-center pb-10 gap-10 lg:gap-20 ">
             <div class="flex flex-col gap-2 max-w-2xl">
-                <div class="text-left">
+                <div class="text-left opacity-0 -translate-x-[300px] duration-1000 FadeLeft">
                     <h1 class="text-3xl lg:text-5xl xl:text-6xl font-semibold text-emerald-600 mb-1 md:mb-5">
                         <span class="text-pink-600">Benvenuti nella</span> </br> <span class="highlight"> Merceria Creativa Tania, </span> </br>
                         <p class="text-lg md:text-xl lg:text-2xl xl:text-3xl">il tuo negozio online per il cucito creativo.</p>
                     </h1>
-                    <!-- <a href="#welcome" class="btnStyle z-20">
-                        Scopri di più
-                    </a> -->
-                    <section class="section opacity-0 translate-y-52 duration-1000 max-xl:hidden">
+                    <section class="section opacity-0 delay-1000 translate-y-52 duration-1000 max-xl:hidden">
                         <?= do_shortcode("[views section=reviews name=reviewsViews]"); ?>
                     </section>
                 </div>
             </div>
             <!-- image -->
-            <div class="max-w-xs lg:max-w-sm  shadow-lg shadow-pink-400">
+            <div class="lg:max-w-sm max-w-xs opacity-0 shadow-lg shadow-pink-400 translate-x-[300px] duration-1000 FadeRight">
                 <img class="" src="<?= get_image_path("foto.jpeg"); ?>" alt="Header Image">
             </div>
         </div>
@@ -30,7 +27,7 @@ $product_list = render_products(10);
             <?= do_shortcode("[views section=reviews name=reviewsViews]"); ?>
         </div>
         <!-- brand -->
-        <div class="flex justify-center items-center gap-10 pt-5">
+        <div class="flex justify-center items-center gap-10 pt-5 opacity-0 translate-y-52 duration-1000 FadeDown">
             <?php
             $logos = [
                 "vlieseline.png", "adriafil.png", "iNastriDiMirta.png", "renkalik.webp"
@@ -38,7 +35,7 @@ $product_list = render_products(10);
             foreach ($logos as $logo) {
                 $imagePath = get_image_path("logo/logo-$logo");
             ?>
-                <div class='w-32 h-32 flex justify-center items-center hover:scale-105 transform duration-500'><img class='block' src="<?= $imagePath; ?>" alt='logo-<?= $logo; ?> '></div>
+                <div class='w-32 h-32 flex justify-center items-center'><img class='block' src="<?= $imagePath; ?>" alt='logo-<?= $logo; ?> '></div>
             <?php
             }
             ?>
@@ -46,7 +43,7 @@ $product_list = render_products(10);
     </header>
     <main>
         <!-- welcome phrase -->
-        <section id="welcome" class="section bg-emerald-50 opacity-0 translate-y-52 duration-1000 py-5 flex flex-col items-center px-5 md:px-10">
+        <section id="welcome" class="FadeDown bg-emerald-50 py-5 flex flex-col items-center px-5 md:px-10">
             <div class="flex justify-center mx-auto py-5 w-11/12">
                 <div class="flex flex-col md:grid md:grid-cols-3 max-w-5xl text-left">
                     <div class="col-span-1 p-2 lg:p-5">
@@ -83,7 +80,7 @@ $product_list = render_products(10);
                                 echo $this->SetGeneralsShortCodesParams(["section" => "general", "name" => "cardView", "params" => $product]);
                             } ?>
                         </div>
-                        <div class=" flex justify-end items-center gap-5 py-5">
+                        <div class="flex justify-end items-center gap-5 py-5">
                             <button type="button" id="prev" class="focus:outline-none btnStyle rotate-180">
                                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>

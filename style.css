@@ -130,15 +130,15 @@ form + h4 {
 .section {
   transition: all 1s ease-in-out;
 }
-
+/* 
 input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
-}
+} */
 
 /* Disattiva il bordo sui link quando selezionati */
 a:focus,
-button:focus,
+/* button:focus, */
 input:focus,
 div:focus {
   outline: none;
@@ -167,21 +167,60 @@ div:focus {
 
 @keyframes fadeOut {
   from {
+    opacity: 0;
+    transform: translateY(128px);
+  }
+  to {
     opacity: 1;
     transform: translateY(0px);
   }
-  to {
+}
+@keyframes fadeLeft {
+  from {
     opacity: 0;
-    transform: translateY(-128px);
+    transform: translateX(-300px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
   }
 }
 
-.card {
+.FadeUp {
   opacity: 0;
   transform: translateY(0px);
   animation: fadeIn 1s forwards;
+}
+.FadeDown {
+  opacity: 0;
+  transform: translateY(0px);
+  animation: fadeOut 1s forwards;
+}
+.FadeRight {
+  opacity: 0;
+  transform: translateX(0px);
+  animation: fadeRight 1s forwards;
+}
+.FadeLeft {
+  opacity: 0;
+  transform: translateX(0px);
+  animation: fadeLeft 1s forwards;
 }
 
 .card--hidden {
   display: none;
 }
+
+/* .hidden {
+  display: none;
+} */

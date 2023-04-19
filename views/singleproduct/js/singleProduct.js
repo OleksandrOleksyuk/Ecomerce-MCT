@@ -7,7 +7,7 @@ export default class SingleProduct extends ExecJS {
     // this.appendProduct();
     this.counter();
     // this.renderSidebar();
-    this.animationFadeInCard();
+    this.swiperBestProducts();
   }
   changeImageOnClick() {
     const mainImg = document.querySelector("#imgFirst");
@@ -69,7 +69,23 @@ export default class SingleProduct extends ExecJS {
     document
       .querySelectorAll("#singleProduct .swiper-slide")
       .forEach((card, index) => {
-        setTimeout(() => card.classList.add("card"), delay * (index + 1));
+        setTimeout(() => card.classList.add("FadeUp"), delay * (index + 1));
       });
+  }
+  swiperBestProducts() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const swiper = new Swiper("#swiper", {
+        slidesPerView: "auto",
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pauseOnHover: true,
+      });
+    });
+    console.log(swiper);
+    this.animationFadeInCard();
   }
 }

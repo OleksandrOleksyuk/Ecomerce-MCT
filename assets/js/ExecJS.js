@@ -6,26 +6,17 @@ export default class ExecJs {
     this.handleClickMenu();
     this.toggleSlideover();
     this.renderSidebar();
-    // this.activeNav();
   }
-  // activeNav() {
-  //   const allLinks = document.querySelectorAll("#menu > ul > li > a");
-  //   allLinks.forEach((link) => {
-  //     link.addEventListener("click", (e) => {
-  //       allLinks.forEach((link) => link.classList.remove("active"));
-  //       link.classList.add("active");
-  //     });
-  //   });
-  // }
   waitTime = (delay) =>
     new Promise((resolve) => setTimeout(() => resolve(), delay));
 
   handleClickMenu() {
     const openBtn = document.querySelector("#open");
     const closeBtn = document.querySelector("#close");
-    const menu = document.querySelector("#menu");
+    const menu = document.querySelector("#mobile-menu");
     [openBtn, closeBtn].forEach((el) =>
-      el.addEventListener("click", () => {
+      el.addEventListener("click", (evt) => {
+        evt.preventDefault();
         menu.classList.toggle("hidden");
         menu.classList.toggle("flex");
         openBtn.classList.toggle("hidden");

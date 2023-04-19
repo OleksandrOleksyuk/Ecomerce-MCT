@@ -19,12 +19,12 @@ export default class ProductController extends ExecJs {
     let delay = 200;
     const newArr = [...this.productCards].filter((card) => {
       if (card.classList.contains("card--hidden")) {
-        card.classList.remove("card");
+        card.classList.remove("FadeUp");
         return;
       } else return card;
     });
     newArr.forEach((card, index) => {
-      setTimeout(() => card.classList.add("card"), delay * index);
+      setTimeout(() => card.classList.add("FadeUp"), delay * index);
     });
   }
   setupCategoryFilter() {

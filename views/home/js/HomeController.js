@@ -29,7 +29,7 @@ export default class HomeController extends ExecJs {
     document
       .querySelectorAll("#swiper .swiper-slide")
       .forEach((card, index) => {
-        setTimeout(() => card.classList.add("card"), delay * (index + 1));
+        setTimeout(() => card.classList.add("FadeUp"), delay * (index + 1));
       });
   }
   revealSections() {

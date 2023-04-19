@@ -1,5 +1,5 @@
 <?php
-$product_list = render_products(4);
+$product_list = render_products(10);
 $product_id = get_query_var('product_id');
 $product = render_single_product($product_id);
 $image_src = isset($product['variations'][0]['image']) ? $product['variations'][0]['image'] : '';
@@ -98,11 +98,14 @@ $image_src = isset($product['variations'][0]['image']) ? $product['variations'][
                 <div class="flex flex-col items-start md:grid md:grid-cols-2 md:px-5 md:items-center text-left py-5">
                     <h2 class="text-2xl font-semibold text-emerald-600 md:text-3xl lg:text-4xl">Prodotti simili</h2>
                 </div>
-                <div class="flex justify-start items-center gap-5 relative mx-auto">
-                    <?php
-                    foreach ($product_list as $product) {
-                        echo $this->SetGeneralsShortCodesParams(["section" => "general", "name" => "cardView", "params" => $product]);
-                    } ?>
+                <div id="swiper" class="w-full h-full overflow-hidden">
+                    <div class="swiper-wrapper">
+                        <?php
+                        // ciclo foreach per stampare i prodotti
+                        foreach ($product_list as $product) {
+                            echo $this->SetGeneralsShortCodesParams(["section" => "general", "name" => "cardView", "params" => $product]);
+                        } ?>
+                    </div>
                 </div>
             </div>
         </div>
