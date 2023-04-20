@@ -38,6 +38,7 @@ export default class ExecJs {
     arr.forEach((el) =>
       el.addEventListener("click", (evt) => {
         evt.preventDefault();
+        document.body.classList.toggle("overflow-hidden");
         sliderContainer.classList.toggle("invisible");
         sliderBg.classList.toggle("opacity-0");
         sliderBg.classList.toggle("opacity-50");
@@ -105,7 +106,7 @@ export default class ExecJs {
               </svg>
           </div>
           <div class="w-32 h-24">
-            <img class=" h-full object-cover" src="${src}" alt="">
+            <img class=" w-full object-cover" src="${src}" alt="">
           </div>
           <div class="flex flex-col justify-between w-full">
             <div>

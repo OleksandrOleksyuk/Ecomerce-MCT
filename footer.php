@@ -28,7 +28,6 @@ $viewName = $generalController->GetViewName();
 		 */
 		do_action('storefront_footer');
 		?>
-
 	</div><!-- .col-full -->
 </footer><!-- #colophon -->
 

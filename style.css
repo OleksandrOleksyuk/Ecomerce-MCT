@@ -51,9 +51,9 @@ footer#colophon {
 }
 
 /* Altezza a 100% per #page */
-div#page {
+/* div#page {
   height: 100vh;
-}
+} */
 
 /* Larghezza al 100% per #primary */
 div#primary {
