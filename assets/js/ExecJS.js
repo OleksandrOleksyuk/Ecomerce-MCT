@@ -68,7 +68,6 @@ export default class ExecJs {
 
   appendProduct() {
     const addToSidebarBtn = document.querySelector("#addToSidebarBtn");
-
     addToSidebarBtn.addEventListener("click", (evt) => {
       evt.preventDefault();
       const src = document.querySelector("#imgFirst").src;

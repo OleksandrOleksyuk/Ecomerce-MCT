@@ -4,7 +4,7 @@ export default class SingleProduct extends ExecJS {
   constructor() {
     super();
     this.changeImageOnClick();
-    // this.appendProduct();
+    this.appendProduct();
     this.counter();
     // this.renderSidebar();
     this.swiperBestProducts();
