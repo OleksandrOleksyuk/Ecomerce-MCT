@@ -7,6 +7,45 @@ function add_custom_rewrite_tags()
 }
 add_action('init', 'add_custom_rewrite_tags', 10, 0);
 
+add_action('wp_ajax_create_order', 'create_order');
+add_action('wp_ajax_nopriv_create_order', 'create_order');
+
+function create_order()
+{
+    try {
+        // Verifica che i dati necessari siano stati forniti.
+        if (!isset($_POST['paypal_data'])) {
+            wp_send_json_error(array('message' => 'Dati PayPal mancanti.'));
+            return;
+        }
+
+        // Recupera i dati inviati via POST.
+        $paypal_data = $_POST['paypal_data'];
+
+        // Esegui le operazioni necessarie per creare l'ordine su WooCommerce.
+        $order = new WC_Order();
+
+        $order->set_status('processing');
+        $order->set_customer_id(get_current_user_id());
+        $order->set_currency($paypal_data['payment_currency']);
+        $order->set_total($paypal_data['payment_amount']);
+        $order->set_payment_method('paypal');
+        $order->save();
+
+        // Aggiungi i prodotti all'ordine.
+        // ...
+
+        // Restituisci una risposta JSON.
+        wp_send_json_success(array('message' => 'Ordine creato correttamente.'));
+    } catch (\Throwable $th) {
+        error_log($th);
+    }
+}
+
+
+
+
+
 
 
 function get_image_path($image_filename)

@@ -1,7 +1,9 @@
 import ExecJS from "../../../assets/js/ExecJS.js";
+import Utils from "../../../assets/js/Utils.js";
 export default class Checkout extends ExecJS {
   constructor() {
     super();
+    this.Utils = new Utils();
     this.nextStep();
     this.renderCheckContainer();
   }
@@ -27,8 +29,7 @@ export default class Checkout extends ExecJS {
     if (!incrementor) return;
     const inputs = this.formSteps[this.currentStep].querySelectorAll("input");
     const allValid = [...inputs].every((input) => input.reportValidity());
-    if (!(e.target.matches("[data-next]") || e.target.matches("[data-prev]")))
-      return;
+    if (!(e.target.matches("[data-next]") || e.target.matches("[data-prev]"))) return;
     if (allValid) {
       this.currentStep += incrementor;
       this.showCurrentStep();
@@ -84,14 +85,10 @@ export default class Checkout extends ExecJS {
 
     document.querySelector("#checkContainer").innerHTML = html;
 
-    document.querySelector("#checkSumPrice").innerHTML = `€ ${sumPrice.toFixed(
-      2
-    )}`;
-    // this.createPaypalButton();
+    document.querySelector("#checkSumPrice").innerHTML = `€ ${sumPrice.toFixed(2)}`;
+    this.createPaypalButton();
   }
   createPaypalButton() {
-    document.querySelector("#checkSumPrice").innerHTML = "20";
-    console.log(document.querySelector("#checkSumPrice").textContent);
     paypal
       .Buttons({
         createOrder: function (data, actions) {
@@ -105,10 +102,40 @@ export default class Checkout extends ExecJS {
             ],
           });
         },
-        onApprove: function (data, actions) {
-          return actions.order.capture().then(function (details) {
-            alert("Transaction completed by " + details.payer.name.given_name);
-          });
+        onApprove: async (data, actions) => {
+          try {
+            const details = await actions.order.capture();
+            // Recupera i dati del pagamento PayPal
+            const paypal_data = {
+              paypal_order_id: data.orderID,
+              payer_id: details.payer.payer_id,
+              payment_id: details.id,
+              payment_status: details.status,
+              payment_amount: details.purchase_units[0].amount.value,
+              payment_currency: details.purchase_units[0].amount.currency_code,
+            };
+            // Effettua la chiamata AJAX per creare l'ordine in WooCommerce
+            const response = await fetch(location.origin + "/wp-admin/admin-ajax.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                action: "create_order",
+                paypal_data: paypal_data,
+              }),
+            });
+            const result = await response.json();
+            if (result.success) {
+              // L'ordine è stato creato con successo
+              alert("Ordine creato con successo!");
+            } else {
+              // Si è verificato un errore durante la creazione dell'ordine
+              alert("Errore durante la creazione dell'ordine!", result);
+            }
+          } catch (error) {
+            alert("Si è verificato un errore durante la creazione dell'ordine!");
+          }
         },
       })
       .render("#paypal-button-container");

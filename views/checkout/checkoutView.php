@@ -140,7 +140,7 @@
                     <button class="uppercase text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-next>
                         Paga ora
                     </button>
-                    <!-- <div id="paypal-button-container"></div> -->
+                    <div id="paypal-button-container"></div>
                 </div>
             </div>
             <div data-step="2" class="">
