@@ -3,17 +3,15 @@ $product_list = render_products(10);
 $product_id = get_query_var('product_id');
 $product = render_single_product($product_id);
 $image_src = isset($product['variations'][0]['image']) ? $product['variations'][0]['image'] : '';
+$opacityClass = (count($product['gallery_images']) == 0) ? 'hidden' : 'max-sm:flex lg:flex';
 ?>
 <?= do_shortcode('[views section=general name=navbarView]'); ?>
 <main id="singleProduct" class="text-emerald-900">
     <section class="flex flex-col lg:flex-row-reverse mx-auto justify-center items-center max-w-7xl p-10">
         <div class="lg:w-1/2 h-[550px] flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center p-5">
             <img id="imgFirst" class="w-64 h-64 sm:w-96 sm:h-96  mb-5 rounded-lg p-2 object-cover" src="<?= $image_src; ?>" alt="">
-            <div id="gallery" class="gap-5 max-sm:flex lg:flex">
-                <?php
-                $opacityClass = (count($product['gallery_images']) == 0) ? 'hidden' : '';
-                ?>
-                <img id="imgFirst--small" class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-lg mt-2 activeProduct <?= $opacityClass ?>" src="<?= $image_src; ?>" alt="">
+            <div id="gallery" class="gap-5 <?= $opacityClass ?>">
+                <img id="imgFirst--small" class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-lg mt-2 activeProduct" src="<?= $image_src; ?>" alt="">
                 <?php
                 foreach ($product['gallery_images'] as $value) {
                     if (strpos($value, 'gallery') !== false) {
