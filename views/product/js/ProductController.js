@@ -25,7 +25,6 @@ export default class ProductController extends ExecJs {
         return;
       } else return card;
     });
-    console.log(this.newArr);
     this.newArr.forEach((card, index) => {
       setTimeout(() => card.classList.add("FadeUp"), delay * index);
     });
@@ -34,14 +33,21 @@ export default class ProductController extends ExecJs {
   }
 
   renderNavigationEl() {
-    const container = document.querySelector("#navigationProduct ul");
-    container.innerHTML = "";
+    const containerTop = document.querySelector("#navigationProductTop ul");
+    const containerBottom = document.querySelector(
+      "#navigationProductBottom ul"
+    );
 
-    const itemsPerpage = 10;
+    containerTop.innerHTML = "";
+    containerBottom.innerHTML = "";
+
+    const itemsPerpage = 12;
     const totalProduct = this.newArr.length;
     this.numPages = Math.ceil(totalProduct / itemsPerpage);
 
-    const fragment = document.createDocumentFragment();
+    const fragmentTop = document.createDocumentFragment();
+    const fragmentBottom = document.createDocumentFragment();
+
     this.navigationLinks = [];
 
     for (let i = 0; i < this.numPages; i++) {
@@ -62,18 +68,26 @@ export default class ProductController extends ExecJs {
       );
       li.textContent = i + 1;
 
-      fragment.appendChild(li);
+      fragmentTop.appendChild(li); // aggiungi il nuovo elemento clonato al frammento per containerTop
+      fragmentBottom.appendChild(li.cloneNode(true)); // aggiungi il nuovo elemento clonato al frammento per containerBottom
       this.navigationLinks.push(li);
     }
 
-    container.appendChild(fragment);
+    containerTop.appendChild(fragmentTop);
+    containerBottom.appendChild(fragmentBottom);
+
     this.handleClickNavigationEl();
   }
 
   handleClickNavigationEl() {
-    const container = document.querySelector("#navigationProduct ul");
-    const next = document.querySelector("#nextNavigation");
-    const prev = document.querySelector("#prevNavigation");
+    const containerTop = document.querySelector("#navigationProductTop ul");
+    const nextTop = document.querySelector("#nextNavigationTop");
+    const prevTop = document.querySelector("#prevNavigationTop");
+    const containerBottom = document.querySelector(
+      "#navigationProductBottom ul"
+    );
+    const nextBottom = document.querySelector("#nextNavigationBottom");
+    const prevBottom = document.querySelector("#prevNavigationBottom");
 
     let selectedPage = 1;
 
@@ -89,8 +103,10 @@ export default class ProductController extends ExecJs {
     };
 
     const updateButtons = () => {
-      prev.classList.toggle("disabled", selectedPage === 1);
-      next.classList.toggle("disabled", selectedPage === this.numPages);
+      prevTop.classList.toggle("disabled", selectedPage === 1);
+      nextTop.classList.toggle("disabled", selectedPage === this.numPages);
+      prevBottom.classList.toggle("disabled", selectedPage === 1);
+      nextBottom.classList.toggle("disabled", selectedPage === this.numPages);
     };
 
     const handleNextButtonClick = (e) => {
@@ -109,32 +125,43 @@ export default class ProductController extends ExecJs {
       this.displayPage(selectedPage);
     };
 
-    container.addEventListener("click", handleNumericButtonClick.bind(this));
-    next.addEventListener("click", handleNextButtonClick.bind(this));
-    prev.addEventListener("click", handlePrevButtonClick.bind(this));
+    containerTop.addEventListener("click", handleNumericButtonClick.bind(this));
+    nextTop.addEventListener("click", handleNextButtonClick.bind(this));
+    prevTop.addEventListener("click", handlePrevButtonClick.bind(this));
+    containerBottom.addEventListener(
+      "click",
+      handleNumericButtonClick.bind(this)
+    );
+    nextBottom.addEventListener("click", handleNextButtonClick.bind(this));
+    prevBottom.addEventListener("click", handlePrevButtonClick.bind(this));
 
     updateButtons();
   }
 
   displayPage(page) {
-    const CARDS_PER_PAGE = 10;
-    const startIdx = (page - 1) * CARDS_PER_PAGE;
-    const endIdx = startIdx + CARDS_PER_PAGE;
+    const cardsPerPAge = 12;
+    const startIdx = (page - 1) * cardsPerPAge;
+    const endIdx = startIdx + cardsPerPAge;
 
-    for (let i = 0; i < this.newArr.length; i++) {
-      const card = this.newArr[i];
-      const isVisible = i >= startIdx && i < endIdx;
-      card.classList.toggle("card--hidden", !isVisible);
-    }
+    this.newArr.forEach((card, i) =>
+      card.classList.toggle("card--hidden", !(i >= startIdx && i < endIdx))
+    );
 
-    for (let i = 0; i < this.navigationLinks.length; i++) {
-      const link = this.navigationLinks[i];
-      const isCurrentPage = i + 1 === page;
-      link.classList.toggle("text-white", isCurrentPage);
-      link.classList.toggle("bg-emerald-600", isCurrentPage);
-      link.classList.toggle("px-6", isCurrentPage);
-    }
+    // for (let i = 0; i < this.newArr.length; i++) {
+    //   const card = this.newArr[i];
+    //   const isVisible = i >= startIdx && i < endIdx;
+    //   card.classList.toggle("card--hidden", !isVisible);
+    // }
 
+    const allLi = document.querySelectorAll(
+      "#navigationProductTop ul > li, #navigationProductBottom ul > li"
+    );
+    allLi.forEach((li, i) => {
+      const isCurrentPage = +li.textContent === page;
+      li.classList.toggle("text-white", isCurrentPage);
+      li.classList.toggle("bg-emerald-600", isCurrentPage);
+      li.classList.toggle("px-6", isCurrentPage);
+    });
     this.currentPage = page;
   }
 
@@ -148,9 +175,9 @@ export default class ProductController extends ExecJs {
             card.classList.add("card--hidden")
           );
           // get selected categories and brands
-          const selectedCategories = [];
-          const selectedBrands = [];
-          let checkedCheckboxes = [
+          const selCat = [];
+          const selBrands = [];
+          let checkeds = [
             ...document.querySelectorAll('input[type="checkbox"]:checked'),
           ];
           // if click categories need active brand
@@ -168,7 +195,7 @@ export default class ProductController extends ExecJs {
             !evt.target.checked &&
             evt.target.getAttribute("data-type") === "categories"
           ) {
-            checkedCheckboxes = checkedCheckboxes.filter((cat) => {
+            checkeds = checkeds.filter((cat) => {
               return (cat.checked =
                 cat.getAttribute("data-parent") ===
                 evt.target.getAttribute("data-parent")
@@ -177,44 +204,35 @@ export default class ProductController extends ExecJs {
             });
           }
           // show all cards if no categories or brands are selected
-          if (checkedCheckboxes.length === 0) {
+          if (checkeds.length === 0) {
             [...this.productCards].forEach((card) =>
               card.classList.remove("card--hidden")
             );
             this.animationFadeInCard();
             return;
           }
-          this.updateSelectedCategoriesAndBrands(
-            selectedCategories,
-            selectedBrands,
-            checkedCheckboxes
-          );
+          this.updateSelectedCategoriesAndBrands(selCat, selBrands, checkeds);
           // show cards that match the selected categories and brands
-          this.showMatchingProductCards(selectedCategories, selectedBrands);
+          this.showMatchingProductCards(selCat, selBrands);
         });
       }
     );
   }
-  updateSelectedCategoriesAndBrands(
-    selectedCategories,
-    selectedBrands,
-    checkedCheckboxes
-  ) {
-    checkedCheckboxes.forEach((checkbox) => {
+  updateSelectedCategoriesAndBrands(selCat, selBrands, checkeds) {
+    checkeds.forEach((checkbox) => {
       const parent = checkbox.getAttribute("data-parent");
       const children = checkbox.getAttribute("data-children");
-      if (parent) selectedBrands.push(parent);
-      if (children) selectedCategories.push(children);
+      if (parent) selBrands.push(parent);
+      if (children) selCat.push(children);
     });
   }
-  showMatchingProductCards(selectedCategories, selectedBrands) {
+  showMatchingProductCards(selCat, selBrands) {
     [...this.productCards].forEach((card) => {
       const brand = card.getAttribute("data-parent");
       const category = card.getAttribute("data-children");
       if (
-        (selectedCategories.length === 0 ||
-          selectedCategories.includes(category)) &&
-        selectedBrands.includes(brand)
+        (selCat.length === 0 || selCat.includes(category)) &&
+        selBrands.includes(brand)
       ) {
         card.classList.remove("card--hidden");
       } else {
