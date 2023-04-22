@@ -70,7 +70,7 @@ $product_list = render_products();
             <div>
                 <div class="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3 sm:px-6 z-10 min-w-full">
                     <div class="flex flex-1 justify-between items-center">
-                        <button type="button" id="prevNavigationTop" class="focus:outline-none btnStyle rotate-180">
+                        <button type="button" id="prevNavigationTop" class="focus:outline-none btnStyle px-3 rotate-180">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
@@ -78,7 +78,7 @@ $product_list = render_products();
                         <nav id="navigationProductTop" aria-label="Pagination">
                             <ul class="isolate inline-flex -space-x-px rounded-md shadow-sm"></ul>
                         </nav>
-                        <button type="button" id="nextNavigationTop" class="focus:outline-none btnStyle">
+                        <button type="button" id="nextNavigationTop" class="focus:outline-none btnStyle px-3">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
@@ -98,7 +98,7 @@ $product_list = render_products();
                 </div>
                 <div class="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3 sm:px-6 z-10 min-w-full">
                     <div class="flex flex-1 justify-between items-center">
-                        <button type="button" id="prevNavigationBottom" class="focus:outline-none btnStyle rotate-180">
+                        <button type="button" id="prevNavigationBottom" class="focus:outline-none btnStyle px-3 rotate-180">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
@@ -106,7 +106,7 @@ $product_list = render_products();
                         <nav id="navigationProductBottom" aria-label="Pagination">
                             <ul class="isolate inline-flex -space-x-px rounded-md shadow-sm"></ul>
                         </nav>
-                        <button type="button" id="nextNavigationBottom" class="focus:outline-none btnStyle">
+                        <button type="button" id="nextNavigationBottom" class="focus:outline-none btnStyle px-3">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
