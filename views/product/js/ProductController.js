@@ -1,7 +1,9 @@
 import ExecJs from "../../../assets/js/ExecJS.js";
+import Utils from "../../../assets/js/Utils.js";
 export default class ProductController extends ExecJs {
   constructor() {
     super();
+    this.Utils = new Utils();
     this.productCards = document.querySelectorAll(
       "#contProd > div:not(:last-child)"
     );
@@ -17,16 +19,125 @@ export default class ProductController extends ExecJs {
   }
   async animationFadeInCard() {
     let delay = 200;
-    const newArr = [...this.productCards].filter((card) => {
+    this.newArr = [...this.productCards].filter((card) => {
       if (card.classList.contains("card--hidden")) {
         card.classList.remove("FadeUp");
         return;
       } else return card;
     });
-    newArr.forEach((card, index) => {
+    console.log(this.newArr);
+    this.newArr.forEach((card, index) => {
       setTimeout(() => card.classList.add("FadeUp"), delay * index);
     });
+    this.renderNavigationEl();
+    this.displayPage(1);
   }
+
+  renderNavigationEl() {
+    const container = document.querySelector("#navigationProduct ul");
+    container.innerHTML = "";
+
+    const itemsPerpage = 10;
+    const totalProduct = this.newArr.length;
+    this.numPages = Math.ceil(totalProduct / itemsPerpage);
+
+    const fragment = document.createDocumentFragment();
+    this.navigationLinks = [];
+
+    for (let i = 0; i < this.numPages; i++) {
+      const li = document.createElement("li");
+      li.classList.add(
+        "items-center",
+        "px-4",
+        "py-2",
+        "text-sm",
+        "font-semibold",
+        "text-gray-900",
+        "ring-1",
+        "ring-inset",
+        "ring-gray-300",
+        "focus:z-20",
+        "focus:outline-offset-0",
+        "cursor-pointer"
+      );
+      li.textContent = i + 1;
+
+      fragment.appendChild(li);
+      this.navigationLinks.push(li);
+    }
+
+    container.appendChild(fragment);
+    this.handleClickNavigationEl();
+  }
+
+  handleClickNavigationEl() {
+    const container = document.querySelector("#navigationProduct ul");
+    const next = document.querySelector("#nextNavigation");
+    const prev = document.querySelector("#prevNavigation");
+
+    let selectedPage = 1;
+
+    const handleNumericButtonClick = (e) => {
+      e.preventDefault();
+      updateSelectedPage(+e.target.textContent);
+    };
+
+    const updateSelectedPage = (page) => {
+      selectedPage = page;
+      updateButtons();
+      this.displayPage(selectedPage);
+    };
+
+    const updateButtons = () => {
+      prev.classList.toggle("disabled", selectedPage === 1);
+      next.classList.toggle("disabled", selectedPage === this.numPages);
+    };
+
+    const handleNextButtonClick = (e) => {
+      e.preventDefault();
+      if (selectedPage === this.numPages) return;
+      selectedPage += 1;
+      updateButtons();
+      this.displayPage(selectedPage);
+    };
+
+    const handlePrevButtonClick = (e) => {
+      e.preventDefault();
+      if (selectedPage === 1) return;
+      selectedPage -= 1;
+      updateButtons();
+      this.displayPage(selectedPage);
+    };
+
+    container.addEventListener("click", handleNumericButtonClick.bind(this));
+    next.addEventListener("click", handleNextButtonClick.bind(this));
+    prev.addEventListener("click", handlePrevButtonClick.bind(this));
+
+    updateButtons();
+  }
+
+  displayPage(page) {
+    const CARDS_PER_PAGE = 10;
+    const startIdx = (page - 1) * CARDS_PER_PAGE;
+    const endIdx = startIdx + CARDS_PER_PAGE;
+
+    for (let i = 0; i < this.newArr.length; i++) {
+      const card = this.newArr[i];
+      const isVisible = i >= startIdx && i < endIdx;
+      card.classList.toggle("card--hidden", !isVisible);
+    }
+
+    for (let i = 0; i < this.navigationLinks.length; i++) {
+      const link = this.navigationLinks[i];
+      const isCurrentPage = i + 1 === page;
+      link.classList.toggle("text-white", isCurrentPage);
+      link.classList.toggle("bg-emerald-600", isCurrentPage);
+      link.classList.toggle("px-6", isCurrentPage);
+    }
+
+    this.currentPage = page;
+  }
+
   setupCategoryFilter() {
     [...this.categoryCheckboxes, ...this.subcategoryCheckboxes].forEach(
       (input) => {
@@ -67,9 +178,9 @@ export default class ProductController extends ExecJs {
           }
           // show all cards if no categories or brands are selected
           if (checkedCheckboxes.length === 0) {
-            [...this.productCards].forEach((card) => {
-              card.classList.remove("card--hidden");
-            });
+            [...this.productCards].forEach((card) =>
+              card.classList.remove("card--hidden")
+            );
             this.animationFadeInCard();
             return;
           }

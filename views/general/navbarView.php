@@ -18,11 +18,11 @@
         <div class="relative flex h-16 items-center justify-between">
             <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
                 <!-- Mobile menu button-->
-                <button type="button" class="inline-flexitems-center justify-center rounded-md p-2 bg-pink-900 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                    <svg id="open" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <button type="button" class="inline-flex items-center justify-center rounded-md p-2 bg-pink-900 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <svg id="open" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
-                    <svg id="close" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <svg id="close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
@@ -36,7 +36,6 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="flex space-x-4 gap-5">
-                        <!-- Current: "bg-pink-900 text-white", Default: "text-pink-300 hover:bg-pink-700 hover:text-white" -->
                         <?php
                         $elements = [
                             "home" => "Home", "product" => "Prodotti", "about" => "Chi sono",
@@ -59,10 +58,8 @@
             </div>
         </div>
     </div>
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="md:hidden" id="mobile-menu">
-        <div class="space-y-1 px-2 pb-3 pt-2">
-            <!-- Current: "bg-pink-900 text-white", Default: "text-pink-300 hover:bg-pink-700 hover:text-white" -->
+    <div class="md:hidden hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2 w-full">
             <?php
             $elements = [
                 "home" => "Home", "product" => "Prodotti", "about" => "Chi sono",
@@ -75,16 +72,16 @@
         </div>
     </div>
 </nav>
-<div id="slideover-container" class="fixed inset-0 w-full h-full invisible z-20 text-emerald-900">
+<div id="slideover-container" class="fixed inset-0 w-full h-full invisible z-50 text-emerald-900">
     <div id="slideover-bg" class="absolute transition-all ease-out w-full h-full bg-gray-500 top-0 opacity-1"></div>
     <div id="slideover" class=" absolute transition-all ease-out duration-700 w-full sm:w-[450px] h-full bg-white top-0 right-0 translate-x-full p-5 shadow-lg">
-        <div id="closeSlideover" class="h-10 w-10 absolute top-0 right-0 m-5 flex justify-center items-center cursor-pointer z-50">
+        <div id="closeSlideover" class="h-10 w-10 absolute top-0 right-0 m-5 flex justify-center items-center cursor-pointer z-100">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </div>
         <div class="w-full h-full py-5 flex flex-col justify-between gap-5 text-start">
-            <h1 class="text-4xl font-semibolds absolute top-10 left-0 p-5 bg-white w-full z-20">Carrello</h1>
+            <h1 class="text-4xl font-semibolds absolute top-10 left-0 p-5 bg-white w-full z-50">Carrello</h1>
             <div id="containerSidebarProduct" class="overflow-scroll py-20"></div>
             <div>
                 <p>Eventuali costi di spedizioni vengono calcolati al checkout</p>

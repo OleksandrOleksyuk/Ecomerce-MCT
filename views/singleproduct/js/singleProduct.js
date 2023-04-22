@@ -32,7 +32,6 @@ export default class SingleProduct extends ExecJS {
         const newImg = event.target.getAttribute("data-image");
         mainImg.setAttribute("src", newImg);
         mainImgSmall.setAttribute("src", newImg);
-        console.log(event.target.dataset.color);
         colorStr.textContent = event.target.dataset.color;
       });
     });

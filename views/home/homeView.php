@@ -93,7 +93,6 @@ $product_list = render_products(10);
                             </button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

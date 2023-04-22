@@ -81,7 +81,9 @@ export default class ExecJs {
         .querySelector("#singleProduct--price")
         .textContent.replace("€ ", "")
         .trim();
-      const data = { src, categories, name, qnt, price };
+      const color = document.querySelector("#color").textContent;
+      console.log(color);
+      const data = { src, categories, name, qnt, price, color };
       this.saveCartToLocalStorage(data);
 
       this.renderSidebar();
@@ -95,30 +97,35 @@ export default class ExecJs {
     let sumPrice = 0;
 
     cart.forEach((item) => {
-      const { src, categories, name, qnt, price } = item;
+      const { src, categories, name, qnt, price, color } = item;
       const finalPrice = (+qnt * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
-        <div class="flex gap-3 mb-5 px-5 relative shadow-lg py-2">
-          <div class="deleteEl h-10 z-10 w-10 pl-5 absolute top-0 right-0 flex justify-center items-center cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+        <div class="flex gap-3 px-5 relative h-24 overflow-hidden shadow-sm">
+          <div class="flex h-24 items-center">
+            <img class="h-[86px] object-cover" src="${src}" alt="">
           </div>
-          <div class="w-32 h-24">
-            <img class=" w-full object-cover" src="${src}" alt="">
-          </div>
-          <div class="flex flex-col justify-between w-full">
+          <div class="flex flex-col justify-center w-full">
             <div>
-              <p class="uppercase text-sm tracking-widest">${categories}</p>
+              <div class="flex justify-between items-center">
+                <p class="uppercase text-xs tracking-widest">${categories}</p>
+                <div class="deleteEl z-10 w-10 pl-5 flex justify-center items-center cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+              </div>
               <h3 class="font-semibold text-2xl overflow-hidden">${name}</h3>
+              <p class="text-sm hidden">COLOR: <span>${
+                color && color.toLowerCase()
+              }</span></p>
             </div>
-            <div class="flex justify-between items-end">
+            <div class="flex justify-between items-center">
               <div>
-                <p class="font-light">quantità <span id="qnt">${qnt}</span></p>
+                <p class="font-light">QTÀ: <span id="qnt">${qnt}</span></p>
               </div>
               <div>
-                <h3 class="text-2xl text-emerald-600 py-2">€ ${finalPrice}</h3>
+                <h3 class="text-2xl text-emerald-600">€ ${finalPrice}</h3>
               </div>
             </div>
           </div>
