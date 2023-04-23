@@ -1,5 +1,3 @@
-
-export default class GeneralPage{
-    constructor() {
-    }
+export default class GeneralPage {
+  constructor() {}
 }

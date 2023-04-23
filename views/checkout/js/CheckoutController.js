@@ -4,7 +4,6 @@ export default class Checkout extends ExecJS {
   constructor() {
     super();
     this.Utils = new Utils();
-    this.nextStep();
     this.renderCheckContainer();
   }
   nextStep() {
@@ -61,7 +60,8 @@ export default class Checkout extends ExecJS {
     let sumPrice = 0;
 
     cart.forEach((item) => {
-      const { src, categories, name, qnt, price } = item;
+      const { src, categories, name, qnt, price, id } = item;
+      console.log(id);
       const finalPrice = (+qnt * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
@@ -86,9 +86,10 @@ export default class Checkout extends ExecJS {
     document.querySelector("#checkContainer").innerHTML = html;
 
     document.querySelector("#checkSumPrice").innerHTML = `€ ${sumPrice.toFixed(2)}`;
-    this.createPaypalButton();
+    this.createPaypalButton(sumPrice.toFixed(2));
+    // this.creaOrdine();
   }
-  createPaypalButton() {
+  createPaypalButton(price) {
     paypal
       .Buttons({
         createOrder: function (data, actions) {
@@ -96,7 +97,8 @@ export default class Checkout extends ExecJS {
             purchase_units: [
               {
                 amount: {
-                  value: "20",
+                  value: +price,
+                  currency: "EUR",
                 },
               },
             ],
@@ -114,19 +116,10 @@ export default class Checkout extends ExecJS {
               payment_amount: details.purchase_units[0].amount.value,
               payment_currency: details.purchase_units[0].amount.currency_code,
             };
-            // Effettua la chiamata AJAX per creare l'ordine in WooCommerce
-            const response = await fetch(location.origin + "/wp-admin/admin-ajax.php", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                action: "create_order",
-                paypal_data: paypal_data,
-              }),
-            });
-            const result = await response.json();
-            if (result.success) {
+            const formData = this.Utils.FormToJson("formDataOrder");
+
+            const result = await this.createOrder(formData);
+            if (result) {
               // L'ordine è stato creato con successo
               alert("Ordine creato con successo!");
             } else {
@@ -140,4 +133,22 @@ export default class Checkout extends ExecJS {
       })
       .render("#paypal-button-container");
   }
+
+  createOrder = async (formData) => {
+    try {
+      const url = this.Utils.viewsPath + "checkout/createOrder.php";
+      const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData }),
+      };
+      console.log(options);
+      const response = await fetch(url, options);
+      const result = await response.text();
+      console.log(result);
+      return 1;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }

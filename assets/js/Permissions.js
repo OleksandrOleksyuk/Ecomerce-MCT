@@ -1,9 +1,9 @@
-import Utils from './Utils.js';
+import Utils from "./Utils.js";
 
 class Permissions extends Utils {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 }
 
-export default Permissions
+export default Permissions;

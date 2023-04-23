@@ -27,44 +27,52 @@
                 </div>
             </li>
         </ol>
-        <form action="#" data-multi-step="">
+        <form id="formDataOrder" action="#" data-multi-step="">
             <div data-step="0" class="">
                 <h3 class="mb-4 text-lg font-medium leading-none">Step 1</h3>
                 <div class="grid gap-4 mb-4 sm:grid-cols-6 ">
                     <div class="col-span-3">
                         <label for="first_name" class="block mb-2 text-sm font-medium">Nome</label>
-                        <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Maria" required>
+                        <input type="text" name="first_name" id="first_name" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Maria" required>
                     </div>
                     <div class="col-span-3">
                         <label for="last_name" class="block mb-2 text-sm font-medium">Cognome</label>
-                        <input type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Rossi" required>
+                        <input type="text" name="last_name" id="last_name" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Rossi" required>
                     </div>
-                    <div class="col-span-6">
-                        <label for="phone" class="block mb-2 text-sm font-medium">Numbero di cellulare</label>
-                        <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="+39 333 92 88 151 01" required>
-                    </div>
-                    <div class="col-span-6">
+                    <div class="col-span-3">
                         <label for="email" class="block mb-2 text-sm font-medium">Email</label>
                         <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="maria_rossi@esempio.com" required>
                     </div>
+                    <div class="col-span-3">
+                        <label for="phone" class="block mb-2 text-sm font-medium">Numbero di cellulare</label>
+                        <input type="tel" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="+39 333 92 88 151 01" required>
+                    </div>
                     <div class="col-span-6">
-                        <label for="address" class="block mb-2 text-sm font-medium">Indirizzo</label>
-                        <input type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="Via Roma" required>
+                        <label for="address_1" class="block mb-2 text-sm font-medium">Indirizzo di spedizione</label>
+                        <input type="text" name="address_1" id="address_1" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="Via Roma" required>
+                    </div>
+                    <div class="col-span-6">
+                        <label for="address_2" class="block mb-2 text-sm font-medium">Indirizzo di fatturazione</label>
+                        <input type="text" name="address_2" id="address_2" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="Via Roma">
                     </div>
                     <div class="col-span-2">
                         <label for="city" class="block mb-2 text-sm font-medium">Città</label>
-                        <input type="text" id="city" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required>
+                        <input type="text" name="city" id="city" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required>
                     </div>
                     <div class="col-span-2">
-                        <label for="province" class="block mb-2 text-sm font-medium">Provincia</label>
-                        <input type="text" id="province" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required>
+                        <label for="state" class="block mb-2 text-sm font-medium">Provincia</label>
+                        <input type="text" name="state" id="state" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required>
                     </div>
-                    <div class="col-span-2">
-                        <label for="zip" class="block mb-2 text-sm font-medium">Codice postale</label>
-                        <input type="text" id="zip" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="40100" required>
+                    <div class="col-span-1">
+                        <label for="postcode" class="block mb-2 text-sm font-medium">CAP</label>
+                        <input type="text" name="postcode" id="postcode" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="40100" required>
+                    </div>
+                    <div class="col-span-1">
+                        <label for="country" class="block mb-2 text-sm font-medium">Stato</label>
+                        <input type="text" name="country" id="country" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Italia" required>
                     </div>
                 </div>
-                <button class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-next>
+                <button id="estractData" class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-next>
                     Prossimo step: informazioni di pagamento
                 </button>
             </div>

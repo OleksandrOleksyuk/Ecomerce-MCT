@@ -7,8 +7,7 @@ export default class ExecJs {
     this.toggleSlideover();
     this.renderSidebar();
   }
-  waitTime = (delay) =>
-    new Promise((resolve) => setTimeout(() => resolve(), delay));
+  waitTime = (delay) => new Promise((resolve) => setTimeout(() => resolve(), delay));
 
   handleClickMenu() {
     const openBtn = document.querySelector("#open");
@@ -72,17 +71,12 @@ export default class ExecJs {
     addToSidebarBtn.addEventListener("click", (evt) => {
       evt.preventDefault();
       const src = document.querySelector("#imgFirst").src;
-      const categories = document.querySelector(
-        "#singleProduct--categories"
-      ).textContent;
+      const categories = document.querySelector("#singleProduct--categories").textContent;
       const name = document.querySelector("#singleProduct--name").textContent;
       const qnt = document.querySelector("#singleProduct--qnt").textContent;
-      const price = document
-        .querySelector("#singleProduct--price")
-        .textContent.replace("€ ", "")
-        .trim();
+      const price = document.querySelector("#singleProduct--price").textContent.replace("€ ", "").trim();
       const color = document.querySelector("#color").textContent;
-      console.log(color);
+      const id = document.querySelector("");
       const data = { src, categories, name, qnt, price, color };
       this.saveCartToLocalStorage(data);
 
@@ -116,9 +110,7 @@ export default class ExecJs {
                 </div>
               </div>
               <h3 class="font-semibold text-2xl overflow-hidden">${name}</h3>
-              <p class="text-sm hidden">COLOR: <span>${
-                color && color.toLowerCase()
-              }</span></p>
+              <p class="text-sm hidden">COLOR: <span>${color && color.toLowerCase()}</span></p>
             </div>
             <div class="flex justify-between items-center">
               <div>
