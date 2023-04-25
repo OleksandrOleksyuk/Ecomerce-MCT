@@ -150,7 +150,7 @@ function render_single_product($product_id)
   ];
 
   // Resto del codice per renderizzare il prodotto come desiderato
-  $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/single.txt');
-  file_put_contents($path, '<pre>' . print_r($product_data, true)  . '</pre>');
+  // $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/single.txt');
+  // file_put_contents($path, '<pre>' . print_r($product_data, true)  . '</pre>');
   return $product_data;
 }
