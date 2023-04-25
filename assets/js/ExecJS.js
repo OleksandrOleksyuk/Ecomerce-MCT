@@ -97,7 +97,7 @@ export default class ExecJs {
       html += `
         <div class="flex gap-3 px-5 relative h-24 overflow-hidden shadow-sm">
           <div class="flex h-24 items-center">
-            <img class="h-[86px] object-cover" src="${src}" alt="">
+            <img class="h-[86px] object-cover" src="${src}" alt="name">
           </div>
           <div class="flex flex-col justify-center w-full">
             <div>

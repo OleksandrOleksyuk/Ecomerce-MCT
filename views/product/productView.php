@@ -63,7 +63,7 @@ $product_list = render_products();
                         </div>
                     </div>
                     <div class="p-2">
-                        <div class="flex gap-2 p-2 mx-auto border border-pink-600 rounded-lg items-center justify-center">Reset<img class="h-6 w-6 hover:animate-spin" src="<?= get_image_path('svg/reset.svg'); ?>" alt="" srcset=""></div>
+                        <div class="flex gap-2 p-2 mx-auto border border-pink-600 rounded-lg items-center justify-center">Reset<img class="h-6 w-6 hover:animate-spin" src="<?= get_image_path('svg/reset.svg'); ?>" alt="bottone di reset" srcset=""></div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,49 @@
+Consigli personali su Merceriacreativatania:
+
+Ciao, ho dato uno sguardo generale al sito di tua madre e ti indico alcune cose che, secondo mia opinione personale, potresti fare diversamente per dare una percezione più professionale al sito. 
+Ne aprofitto anche per allacciarmi ad alcune problematiche che ho riscontrato nel refactoring della home del sito GP che sono accomunate al tuo sito.
+
+Tralascerò la versione mobile che è evidente che sia ancora da sistemare, quindi mi concentro su quella desktop.
+
+Andiamo con ordine:
+
+## home page ##
+
+1)Impatto grafico: il primo impatto è buono ma, ad una attenta analisi, viene restituita la percezione di essere un sito parzialmente "fatto in casa" per via di queste ragioni:
+
+-  Sono presenti troppe ombre negli elementi principali della pagina. Questo è il primo aspetto che si ricollega al dev di Grand Prix. Ovviamnte, l'utilizzo delle ombre è un gusto personale ma, a livello comunicativo, già da 7/8 anni a questa parte, regna la metodologia grafica FLAT e quindi le ombre danno un senso di produzione meno professionale e più "casalinga" se utilizzate negli elmenti principali. 
+Ad esempio, prova a sostituire le ombre nello slider dei prodotti con un bordo da 1px di colore #f1f1f1 e vedrai che ne acquisirà di eleganza complessiva.
+- L'ombra presente nella foto di tua madre può anche andare ma dovresti attenuarla per farla sembrare più naturale e meno invasiva. Se la lasci così distogli l'attenzione del visitatore. 
+Se vuoi che il sito sia efficace dal punto di vista comunicativo, chiediti che "flusso" deve seguire lo sguardo dell'utente appena carica la pagina e fai comportare il sito di conseguenza. Se il primo elemento che l'utente guarda non è di suo gradimento, rischi che venga compromessa la navaigazione del sito o che l'utente applichi, inconsciamente, una sorta di "prevenzione".
+
+2) Posizione moduli home: Un flusso ideale per un e-commerce richiede che i prodotti, categorie e promozioni dovrebbero rimanere in primo piano e, a seguire, presentazione aziendale con i servizi inclusi e infine social e recensioni. Questo è un flusso ideale poi non so come la avevi pensata tu.
+
+3) Rendering primo avvio home: questa è il secondo aspetto che accomuna il dev di Grand Prix col tuo sito. Infatti, nonostante la tua home non abbia molti contenuti dinamici da caricare al primo avvio, il primo rendering è molto lento e anche pingdom (vedi immagini) segna un punteggio tutto sommato nella media ma la velocità di primo rendering potrebbe essere migliore, almeno consdierato che la pagina non è molto complessa (ti allego screenshot del tuo sito e del dev di gp).
+Questo problema lo sto riscontrando anche sul dev di Grand Prix che, da quando abbiamo deciso di fare il refactoring e nonostante la pagina sia stata ripulta e snellita, rispetto a prima PingDom restituisce un tempo di rendering più alto del dev originale e questo non è un bene per la SEO e bisogna caprine la motivazione. 
+Ho esaminato allora un pò il codice sia del tuo sito che quello del refactoring del dev e, in comune hanno, che non utilizzi il caricamento ritardato dei contenuti (quindi li fai caricare tutti insieme, anche quelli dinamici).
+Nel caso di GP, oltre a questo, usi troppe funzioni iterattive combinate per far fronte a determinte esigenze, anche semplici, che magari potresti affrontare con qualche condizione all'interno di un semplice ciclo.
+Infine, nell'homeController della tua home, potresti ottimizzare piccole parti del codice come questo alla riga 50:
+
+section.classList.add("opacity-0");
+section.classList.add("translate-y-52");
+
+e farlo diventare
+
+section.classList.add("opacity-0,translate-y-52");
+
+e anche alla riga 40 con il removeClass stesso discorso. 
+Ci sarebbero anche altre piccole ottimizzazioni che magari ti dico di persona per non allungare troppo.
+
+
+## Prodotti ##  
+
+1) schede prodotto: stesso discorso per la home, proverei a sostituire le ombre con un bordino leggero come quello già indicato;
+2) Pagination: La paginazione, nei siti moderni e nelle app moderne, ora si tende a farla con l'infinite scroll (un po come hai visto nel sito GP). 
+Nel tuo caso, avere una paginazione classica per sole due pagine di prodotto secondo me non è l'ideale, poi ovviamente vedi tu. Inoltre, eliminarei l'avanzamento pagina dall'alto.
+3) il titolo Prodotti lo allinearei a sinistra e, sotto di esso, inserire una sorta di breadcrumb con carattere piccolo. Se lo lasci al centro si trova decentrato sia con l'header che con la lista prodotto;
+4) Il bottone reset lo staccherei un po dal resto dei filtri.
+
+Domani ti invio una relazione delle altre pagine
+
+
+

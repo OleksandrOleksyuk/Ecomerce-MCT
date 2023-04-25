@@ -26,11 +26,9 @@ export default class HomeController extends ExecJs {
   }
   async animationFadeInCard() {
     let delay = 200;
-    document
-      .querySelectorAll("#swiper .swiper-slide")
-      .forEach((card, index) => {
-        setTimeout(() => card.classList.add("FadeUp"), delay * (index + 1));
-      });
+    document.querySelectorAll("#swiper .swiper-slide").forEach((card, index) => {
+      setTimeout(() => card.classList.add("FadeUp"), delay * (index + 1));
+    });
   }
   revealSections() {
     const allSections = document.querySelectorAll("section.section");

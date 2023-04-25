@@ -87,7 +87,6 @@ export default class Checkout extends ExecJS {
 
     document.querySelector("#checkSumPrice").innerHTML = `€ ${sumPrice.toFixed(2)}`;
     this.createPaypalButton(sumPrice.toFixed(2));
-    // this.creaOrdine();
   }
   createPaypalButton(price) {
     paypal

@@ -1,25 +1,31 @@
-<section class="py-10 lg:py-20 px-10 flex flex-col items-center text-emerald-900">
-    <div class="flex flex-col gap-5 max-w-2xl items-center">
-        <div class="text-center">
-            <h1 class="text-3xl lg:text-4xl">Iscriviti alla nostra newsletter </h1>
-            <p class="md:text-lg lg:text-xl">Vi piacerebbe ricevere <span class="text-pink-600">sconti</span> e consigli <span class="text-pink-600">esclusivi</span> ogni mese sul cucito direttamente via email? Sapete cosa fare.</p>
-        </div>
-        <div>
-            <div class="flex gap-2">
-                <div>
-                    <label for="input-group-1" class="hidden mb-2 text-sm font-medium text-emerald-600">La tua email</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg aria-hidden="true" class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                            </svg>
-                        </div>
-                        <input type="text" id="input-group-1" class="bg-gray-50 border border-gray-300 text-emerald-600 text-sm rounded-lg w-56 lg:w-72 focus:ring-pink-500 focus:border-pink-500 block p-2.5" placeholder="tania@gmail.com" style="padding: 0.5rem 0.5rem 0.5rem 2.2rem">
-                    </div>
-                </div>
-                <button class="btnStyle py-1">Invia</button>
-            </div>
-        </div>
+<div class="relative flex flex-col justify-center lg:flex-row items-center bg-slate-50 rounded-2xl sm:rounded-[40px] p-4 pb-0 sm:p-5 sm:pb-0 lg:p-24">
+    <div class="max-w-lg relative text-left">
+        <h2 class="font-semibold text-4xl md:text-5xl">Non perdere le offerte speciali</h2>
+        <span class="block mt-5 text-neutral-500">Registrati per ricevere notizie sulle ultime combo, codici sconto e promozioni...</span>
+        <ul class="space-y-4 mt-10">
+            <li class="flex items-center space-x-4">
+                <span class="nc-Badge inline-flex px-2.5 py-1 rounded-full font-medium text-xs relative text-purple-800 bg-purple-100">01</span>
+                <span class="font-medium text-neutral-700">Combo di risparmio</span>
+            </li>
+            <li class="flex items-center space-x-4">
+                <span class="nc-Badge inline-flex px-2.5 py-1 rounded-full font-medium text-xs relative text-blue-800 bg-blue-100">02</span>
+                <span class="font-medium text-neutral-700">Spedizione gratuita</span>
+            </li>
+            <li class="flex items-center space-x-4">
+                <span class="nc-Badge inline-flex px-2.5 py-1 rounded-full font-medium text-xs relative text-red-800 bg-red-100">03</span>
+                <span class="font-medium text-neutral-700">Riviste premium</span>
+            </li>
+        </ul>
+        <form class="mt-10 relative max-w-sm">
+            <input type="email" class="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white disabled:bg-neutral-200 rounded-full text-sm font-normal h-11 px-4 py-3 " required="" aria-required="true" placeholder="Inserisci la tua email">
+            <button class="btnStyle p-0 flex justify-center items-center rounded-full disabled:bg-opacity-70 absolute top-1/2 -translate-y-1/2 right-1 w-8 h-8 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" aria-hidden="true" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M3.75 12a.75.75 0 01.75-.75h13.19l-5.47-5.47a.75.75 0 011.06-1.06l6.75 6.75a.75.75 0 010 1.06l-6.75 6.75a.75.75 0 11-1.06-1.06l5.47-5.47H4.5a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </form>
     </div>
-</section>
+    <div class="max-w-[420px]">
+        <img class="object-cover w-[420px] h-[420px]" src="<?= get_image_path('foto-borsa.jpg'); ?>" alt="" style="color: transparent;">
+    </div>
+</div>

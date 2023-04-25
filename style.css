@@ -19,7 +19,7 @@ Last modified: 20/02/2023 - oleksandr
     @apply outline outline-offset-2 outline-pink-500;
   }
   .btnStyle {
-    @apply rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-700 py-3 px-8 text-white hover:bg-gradient-to-r hover:from-green-400 hover:to-green-500 hover:text-white;
+    @apply rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-700 py-3 px-8 text-white transition-all duration-500 ease-in-out hover:bg-gradient-to-r hover:from-green-400 hover:to-green-500 hover:text-white;
   }
   .active {
     @apply text-3xl font-semibold text-pink-500;
