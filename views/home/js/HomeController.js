@@ -28,8 +28,7 @@ export default class HomeController extends ExecJs {
     const allSections = document.querySelectorAll("section.section");
     const revealSection = ([entry], observer) => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.remove("opacity-0");
-      entry.target.classList.remove("translate-y-52");
+      entry.target.classList.remove("opacity-0", "translate-y-52");
       console.log(entry.target.id === "bestSellingProducts");
       entry.target.id === "bestSellingProducts" && this.swiperBestProducts();
       observer.unobserve(entry.target);
@@ -40,8 +39,7 @@ export default class HomeController extends ExecJs {
     });
     [...allSections].forEach((section) => {
       sectionObserver.observe(section);
-      section.classList.add("opacity-0");
-      section.classList.add("translate-y-52");
+      section.classList.add("opacity-0", "translate-y-52");
     });
   }
 }

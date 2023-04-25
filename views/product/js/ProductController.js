@@ -43,8 +43,20 @@ export default class ProductController extends ExecJs {
 
     for (let i = 0; i < this.numPages; i++) {
       const li = document.createElement("li");
-      li.classList.add("items-center", "px-4", "py-2", "text-sm", "font-semibold", "text-gray-900");
-      li.classList.add("ring-1", "ring-inset", "ring-gray-300", "focus:z-20", "focus:outline-offset-0", "cursor-pointer");
+      li.classList.add(
+        "items-center",
+        "px-4",
+        "py-2",
+        "text-sm",
+        "font-semibold",
+        "text-gray-900",
+        "ring-1",
+        "ring-inset",
+        "ring-gray-300",
+        "focus:z-20",
+        "focus:outline-offset-0",
+        "cursor-pointer"
+      );
       li.textContent = i + 1;
       fragmentTop.appendChild(li);
       fragmentBottom.appendChild(li.cloneNode(true));
@@ -140,9 +152,7 @@ export default class ProductController extends ExecJs {
         let checkeds = [...document.querySelectorAll("input[type='checkbox']:checked")];
         // if click categories need active brand
         if (evt.target.getAttribute("data-children")) {
-          const parentEl = document.querySelector(
-            `input[data-type="categories"][data-parent="${evt.target.getAttribute("data-parent")}"]`
-          );
+          const parentEl = document.querySelector(`input[data-type="categories"][data-parent="${evt.target.getAttribute("data-parent")}"]`);
           if (!parentEl.checked) parentEl.checked = true;
           this.animationFadeInCard();
         }

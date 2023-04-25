@@ -8,13 +8,28 @@ $data = json_decode($json_str);
 
 // Crea un nuovo ordine
 $order = wc_create_order();
-// estraggo i dati dal form
 
 // Aggiungi i prodotti all'ordine
-$order->add_product(wc_get_product(73), 2);
+$tuttiiprodotti = $data->code;
 
-// Imposta l'indirizzo di fatturazione e di spedizione
-$address = array(
+foreach ($tuttiiprodotti as $value) {
+    $product_id = $value->productId;
+    $quantity = $value->productQnt;
+    $variation_id = $value->variantId;
+    $variation_attributes = [$value->productColor];
+    $variation_image_id = $value->imageSrc;
+
+    $product = wc_get_product($product_id);
+
+    $image_id = $product->get_image_id(); // ottieni l'ID dell'immagine predefinita del prodotto
+    $product->set_image_id($variation_image_id); // imposta l'ID dell'immagine della variante del prodotto
+    $order->add_product($product, $quantity, [$variation_id, $variation_attributes]);
+}
+
+
+
+
+$address = [
     'first_name' => $data->first_name,
     'last_name'  => $data->last_name,
     'email'      => $data->email,
@@ -25,12 +40,13 @@ $address = array(
     'state'      => $data->state,
     'postcode'   => $data->postcode,
     'country'    => $data->country
-);
+];
 $order->set_address($address, 'billing');
 $order->set_address($address, 'shipping');
 
 // Imposta lo stato dell'ordine
-$order->set_status('processing');
+$order->update_status('processing');
+
 
 // Calcola e salva il totale dell'ordine
 $order->calculate_totals();

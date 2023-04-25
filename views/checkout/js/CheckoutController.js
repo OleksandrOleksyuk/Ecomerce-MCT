@@ -4,14 +4,14 @@ export default class Checkout extends ExecJS {
   constructor() {
     super();
     this.Utils = new Utils();
+    this.nextStep();
     this.renderCheckContainer();
   }
   nextStep() {
-    const multiStepForm = document.querySelector("[data-multi-step]");
+    const multiStepForm = document.querySelector("#formDataOrder");
     this.formSteps = [...multiStepForm.querySelectorAll("[data-step]")];
     this.stepBar = document.querySelector("#stepbar-checkout");
     this.allLiEl = [...this.stepBar.querySelectorAll("[data-step]")];
-
     this.currentStep = this.formSteps.findIndex((step) => {
       return step.classList.contains("active");
     });
@@ -35,6 +35,7 @@ export default class Checkout extends ExecJS {
       this.showColorStep();
     }
   };
+
   showCurrentStep() {
     this.formSteps.forEach((step, i) => {
       if (i === this.currentStep) step.classList.remove("hidden");
@@ -58,10 +59,11 @@ export default class Checkout extends ExecJS {
     let html = "";
     document.querySelector("#checkContainer").innerHTML = html;
     let sumPrice = 0;
+    this.dataCreateOrder = [];
 
     cart.forEach((item) => {
-      const { src, categories, name, qnt, price, id } = item;
-      console.log(id);
+      const { src, categories, name, qnt, price, idProduct, color, idVariant } = item;
+      this.dataCreateOrder.push({ productId: idProduct, productQnt: qnt, productColor: color, variantId: idVariant, imageSrc: src });
       const finalPrice = (+qnt * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
@@ -82,6 +84,8 @@ export default class Checkout extends ExecJS {
       </li>
       `;
     });
+
+    console.log(this.dataCreateOrder);
 
     document.querySelector("#checkContainer").innerHTML = html;
 
@@ -116,8 +120,7 @@ export default class Checkout extends ExecJS {
               payment_currency: details.purchase_units[0].amount.currency_code,
             };
             const formData = this.Utils.FormToJson("formDataOrder");
-
-            const result = await this.createOrder(formData);
+            const result = await this.createOrder({ ...formData, code: [...this.dataCreateOrder] });
             if (result) {
               // L'ordine è stato creato con successo
               alert("Ordine creato con successo!");
@@ -136,6 +139,7 @@ export default class Checkout extends ExecJS {
   createOrder = async (formData) => {
     try {
       const url = this.Utils.viewsPath + "checkout/createOrder.php";
+      console.log(formData);
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },

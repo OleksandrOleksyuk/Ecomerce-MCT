@@ -47,10 +47,11 @@ export default class ExecJs {
   }
 
   saveCartToLocalStorage(cartItem) {
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    if (!cart) cart = [];
-    cart.unshift(cartItem);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingCartItem = cartItems.find((item) => item.id === cartItem.id && item.color === cartItem.color);
+    if (existingCartItem) existingCartItem.qnt = +existingCartItem.qnt + +cartItem.qnt;
+    else cartItems.unshift(cartItem);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
   }
 
   getCartFromLocalStorage() {
@@ -60,7 +61,6 @@ export default class ExecJs {
   removeProductFromCart(index) {
     let cart = JSON.parse(localStorage.getItem("cart"));
     if (!cart) return;
-
     cart.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cart));
     this.renderSidebar();
@@ -70,68 +70,61 @@ export default class ExecJs {
     const addToSidebarBtn = document.querySelector("#addToSidebarBtn");
     addToSidebarBtn.addEventListener("click", (evt) => {
       evt.preventDefault();
-      const src = document.querySelector("#imgFirst").src;
-      const categories = document.querySelector("#singleProduct--categories").textContent;
-      const name = document.querySelector("#singleProduct--name").textContent;
-      const qnt = document.querySelector("#singleProduct--qnt").textContent;
-      const price = document.querySelector("#singleProduct--price").textContent.replace("€ ", "").trim();
-      const color = document.querySelector("#color").textContent;
-      const id = document.querySelector("");
-      const data = { src, categories, name, qnt, price, color };
+      const container = document.querySelector("#singleProduct");
+      const src = container.querySelector("#imgFirst").src;
+      const categories = container.querySelector("#singleProduct--categories").textContent;
+      const name = container.querySelector("#singleProduct--name").textContent;
+      const qnt = container.querySelector("#singleProduct--qnt").textContent;
+      const price = container.querySelector("#singleProduct--price").textContent.replace("€ ", "").trim();
+      const color = container.querySelector("#color").textContent;
+      const idProduct = container.dataset.id;
+      const idVariant = container.querySelector("#colorSingleProduct img.activeProduct").id;
+      const data = { src, categories, name, qnt, price, color, idProduct, idVariant };
       this.saveCartToLocalStorage(data);
-
       this.renderSidebar();
     });
   }
 
   renderSidebar() {
     const cart = this.getCartFromLocalStorage();
+    const container = document.querySelector("#containerSidebarProduct");
     let html = "";
-    document.querySelector("#containerSidebarProduct").innerHTML = html;
+    container.innerHTML = html;
     let sumPrice = 0;
 
-    cart.forEach((item) => {
-      const { src, categories, name, qnt, price, color } = item;
+    cart.forEach(({ src, categories, name, qnt, price, color, idProduct, idVariant }) => {
       const finalPrice = (+qnt * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
-        <div class="flex gap-3 px-5 relative h-24 overflow-hidden shadow-sm">
-          <div class="flex h-24 items-center">
-            <img class="h-[86px] object-cover" src="${src}" alt="name">
-          </div>
-          <div class="flex flex-col justify-center w-full">
-            <div>
-              <div class="flex justify-between items-center">
-                <p class="uppercase text-xs tracking-widest">${categories}</p>
-                <div class="deleteEl z-10 w-10 pl-5 flex justify-center items-center cursor-pointer">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </div>
-              </div>
-              <h3 class="font-semibold text-2xl overflow-hidden">${name}</h3>
-              <p class="text-sm hidden">COLOR: <span>${color && color.toLowerCase()}</span></p>
+      <div id="${idProduct}" data-id=${idVariant} class="flex py-6">
+        <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-slate-50">
+          <img src="${src}" alt="${(name, color)}" class="h-full w-full object-cover object-center">
+        </div>
+        <div class="ml-4 flex flex-1 flex-col">
+          <div>
+            <div class="flex justify-between text-base font-medium text-slate-900">
+              <h3>
+                <a href="#">${name}</a>
+              </h3>
+              <p class="ml-4">€ ${finalPrice}</p>
             </div>
-            <div class="flex justify-between items-center">
-              <div>
-                <p class="font-light">QTÀ: <span id="qnt">${qnt}</span></p>
-              </div>
-              <div>
-                <h3 class="text-2xl text-emerald-600">€ ${finalPrice}</h3>
-              </div>
+            <p class="mt-1 text-sm text-slate-500">${color && color !== "number" && color.toLowerCase()}</p>
+          </div>
+          <div class="flex flex-1 items-end justify-between text-sm">
+            <p class="text-slate-500">Qnt ${qnt}</p>
+            <div class="flex">
+              <button type="button" class="font-medium text-pink-600 hover:text-pink-500 deleteEl p-0">Rimuovi</button>
             </div>
           </div>
         </div>
+      </div>
       `;
     });
 
-    document.querySelector("#containerSidebarProduct").innerHTML = html;
+    container.innerHTML = html;
 
     const deleteEl = document.querySelectorAll(".deleteEl");
-    deleteEl.forEach((item, index) => {
-      // ...
-      item.addEventListener("click", () => this.removeProductFromCart(index));
-    });
+    deleteEl.forEach((item, index) => item.addEventListener("click", () => this.removeProductFromCart(index)));
 
     document.querySelector("#sumPrice").innerHTML = `€ ${sumPrice.toFixed(2)}`;
 

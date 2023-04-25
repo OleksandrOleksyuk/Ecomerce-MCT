@@ -1,4 +1,4 @@
-<header class="sticky top-0 w-full z-40">
+<header class="sticky top-0 w-full">
     <div class="relative isolate flex justify-center items-center gap-x-6 overflow-hidden bg-emerald-50 px-6 py-2.5 sm:px-3.5">
         <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
             <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#80ff8b] to-[#89fc95] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
@@ -74,45 +74,4 @@
         </div>
     </nav>
 </header>
-<div id="slideover-container" class="fixed inset-0 w-full h-full invisible z-50 text-emerald-900">
-    <div id="slideover-bg" class="absolute transition-all ease-out w-full h-full bg-gray-500 top-0 opacity-1"></div>
-    <div id="slideover" class=" absolute transition-all ease-out duration-700 w-full sm:w-[450px] h-full bg-white top-0 right-0 translate-x-full p-5 shadow-lg">
-        <div id="closeSlideover" class="h-10 w-10 absolute top-0 right-0 m-5 flex justify-center items-center cursor-pointer z-100">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </div>
-        <div class="w-full h-full py-5 flex flex-col justify-between gap-5 text-start">
-            <h1 class="text-4xl font-semibolds absolute top-10 left-0 p-5 bg-white w-full z-50">Carrello</h1>
-            <div id="containerSidebarProduct" class="overflow-scroll py-20"></div>
-            <div>
-                <p>Eventuali costi di spedizioni vengono calcolati al checkout</p>
-                <div class="flex justify-between items-center w-full">
-                    <div>
-                        <h3 class="font-semibold text-3xl overflow-hidden">
-                            Subtotale
-                        </h3>
-                    </div>
-                    <div>
-                        <h3 id="sumPrice" class="text-4xl font-semibold text-emerald-600 py-2">
-                            20.00
-                        </h3>
-                    </div>
-                </div>
-                <a href="<?= get_link_path('checkout'); ?>">
-                    <div class="mt-6 text-center">
-                        <button type="button" class="group inline-flex w-full items-center justify-center rounded-md bg-emerald-900 px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-emerald-800 hover:text-white">
-                            Checkout
-                            <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </button>
-                    </div>
-                </a>
-                <div class="text-center">
-                    <p>o <a href="<?= get_link_path('product'); ?>" class="text-pink-500 cursor-pointer">continua a fare shopping</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<?= do_shortcode('[views section=general name=sidebar]'); ?>
