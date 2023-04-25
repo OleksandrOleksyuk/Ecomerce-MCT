@@ -5,38 +5,33 @@ export default class HomeController extends ExecJs {
   constructor() {
     super();
     // this.handleClickMenu();
-    this.swiperBestProducts();
     this.ReviewsController = new ReviewsController();
     this.revealSections();
   }
   swiperBestProducts() {
-    document.addEventListener("DOMContentLoaded", () => {
-      const swiper = new Swiper("#swiper", {
-        slidesPerView: "auto",
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        pauseOnHover: true,
-      });
+    new Swiper("#swiper--bestSellingProducts", {
+      slidesPerView: "auto",
+      spaceBetween: 30,
+      loop: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      pauseOnHover: true,
     });
     this.animationFadeInCard();
   }
   async animationFadeInCard() {
     let delay = 200;
-    document.querySelectorAll("#swiper .swiper-slide").forEach((card, index) => {
+    document.querySelectorAll("#swiper--bestSellingProducts .swiper-slide").forEach((card, index) => {
       setTimeout(() => card.classList.add("FadeUp"), delay * (index + 1));
     });
   }
   revealSections() {
     const allSections = document.querySelectorAll("section.section");
-    const revealSection = function (entries, observer) {
-      const [entry] = entries;
+    const revealSection = ([entry], observer) => {
       if (!entry.isIntersecting) return;
       entry.target.classList.remove("opacity-0");
       entry.target.classList.remove("translate-y-52");
+      console.log(entry.target.id === "bestSellingProducts");
+      entry.target.id === "bestSellingProducts" && this.swiperBestProducts();
       observer.unobserve(entry.target);
     };
     const sectionObserver = new IntersectionObserver(revealSection, {

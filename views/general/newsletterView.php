@@ -1,4 +1,4 @@
-<div class="relative flex flex-col justify-center lg:flex-row items-center bg-slate-50 rounded-2xl sm:rounded-[40px] p-4 pb-0 sm:p-5 sm:pb-0 lg:p-24">
+<div class="relative flex flex-col justify-center lg:flex-row items-center bg-emerald-50 rounded-2xl sm:rounded-[40px] p-4 pb-0 sm:p-5 sm:pb-0 lg:p-24">
     <div class="max-w-lg relative text-left">
         <h2 class="font-semibold text-4xl md:text-5xl">Non perdere le offerte speciali</h2>
         <span class="block mt-5 text-neutral-500">Registrati per ricevere notizie sulle ultime combo, codici sconto e promozioni...</span>
