@@ -23,11 +23,9 @@ $product_list = render_products();
                                         // aggiungi il valore attuale all'array di valori visualizzati
                                         $displayed_parents[] = $value['parent'];
                                 ?>
-                                        <li class="w-full">
-                                            <div class="flex items-center">
-                                                <input data-type="categories" data-parent="<?= strtolower($value['data-parent']); ?>" id="<?= $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4  accent-pink-500 bg-pink-100">
-                                                <label for="<?= $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?= $value['parent']; ?></label>
-                                            </div>
+                                        <li class="w-full flex items-center">
+                                            <input data-type="categories" data-parent="<?= strtolower($value['data-parent']); ?>" id="<?= $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4  accent-pink-500 bg-pink-100">
+                                            <label for="<?= $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?= $value['parent']; ?></label>
                                         </li>
                                 <?php
                                     }
@@ -48,11 +46,9 @@ $product_list = render_products();
                                             // aggiungi il valore attuale all'array di valori visualizzati
                                             $displayed_children[] = $value['children'][0];
                                 ?>
-                                            <li class="w-full">
-                                                <div class="flex items-center">
-                                                    <input data-type="subcategories" data-parent="<?= strtolower($value['data-parent']); ?>" data-children="<?= strtolower($value['data-children']); ?>" id="<?= '10' . $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 accent-pink-500 bg-pink-100 ">
-                                                    <label for="<?= '10' . $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?= $value['children'][0]; ?></label>
-                                                </div>
+                                            <li class="w-full flex items-center">
+                                                <input data-type="subcategories" data-parent="<?= strtolower($value['data-parent']); ?>" data-children="<?= strtolower($value['data-children']); ?>" id="<?= '10' . $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4 accent-pink-500 bg-pink-100 ">
+                                                <label for="<?= '10' . $key . '-checkbox'; ?>" class="w-full py-1 ml-2 font-medium text-emerald-900"><?= $value['children'][0]; ?></label>
                                             </li>
                                 <?php
                                         }
@@ -117,5 +113,6 @@ $product_list = render_products();
         </div>
     </div>
 </section>
+
 <!-- footer -->
 <?= do_shortcode('[views section=footer name=footerView]'); ?>

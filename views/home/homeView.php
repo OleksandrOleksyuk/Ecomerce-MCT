@@ -75,43 +75,50 @@ $product_list = render_products(10); ?>
             </div>
         </section>
         <section class="bg-emerald-50 duration-1000 flex flex-col mx-auto section">
-            <div class="gap-10 grid lg:grid-cols-3 max-w-7xl mx-auto relative py-10 lg:py-20 sm:gap-16 sm:grid-cols-2 w-11/12 xl:gap-20">
+            <div class="gap-10 grid lg:grid-cols-4 max-w-7xl mx-auto relative py-10 lg:py-20 sm:gap-10 sm:grid-cols-2 w-11/12">
                 <img class="hidden md:block absolute inset-x-0 top-5" src="<?= get_image_path("svg/linea-trattegiata.svg") ?>" style="color: transparent;">
-                <div class="relative flex flex-col items-center max-w-xs mx-auto col-span-1">
-                    <div class="mb-4 sm:mb-10 max-w-[140px] mx-auto">
+                <div class="relative flex flex-col items-center max-w-xs mx-auto col-span-1 translate-x-12 opacity-0 FadeRight">
+                    <div class="mb-4 sm:mb-10 w-36 h-36 mx-auto">
                         <img class="rounded-3xl w-full" src="<?= get_image_path("svg/step-1.svg") ?>" style="color: transparent;">
                     </div>
-                    <div class="text-center mt-auto space-y-2">
-                        <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-md font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Step 1</span>
-                        <h3 class="text-lg font-semibold">Filtra &amp; Scropri</h3><span class="block text-slate-600 text-md leading-6">Filtri intelligenti e suggerimenti facilitano la ricerca</span>
+                    <div class="text-center space-y-2">
+                        <h3 class="text-lg font-semibold">Semplicità di utilizzo</h3>
+                        <span class="block text-slate-600 text-md leading-6">Filtri intelligenti e suggerimenti rendono la ricerca facile e veloce</span>
                     </div>
                 </div>
                 <div class="relative flex flex-col items-center max-w-xs mx-auto col-span-1">
-                    <div class="mb-4 sm:mb-10 max-w-[140px] mx-auto">
+                    <div class="mb-4 sm:mb-10 w-36 h-36 mx-auto">
                         <img class="rounded-3xl w-full" src="<?= get_image_path("svg/step-2.svg") ?>" style="color: transparent;">
                     </div>
-                    <div class="text-center mt-auto space-y-2">
-                        <span class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-md font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">Step 2</span>
-                        <h3 class="text-lg font-semibold">Aggiungi al carrello</h3>
-                        <span class="block text-slate-600 text-md leading-6">Seleziona facilmente gli articoli e aggiungili al carrello</span>
+                    <div class="text-center space-y-2">
+                        <h3 class="text-lg font-semibold">Assistenza telefonica</h3>
+                        <span class="block text-slate-600 text-md leading-6">I nostri esperti sono a tua disposizione per consigliarti il prodotto migliore per te</span>
                     </div>
                 </div>
                 <div class="relative flex flex-col items-center max-w-xs mx-auto col-span-1">
-                    <div class="mb-4 sm:mb-10 max-w-[140px] mx-auto">
+                    <div class="mb-4 sm:mb-10 w-36 h-36 mx-auto">
                         <img class="rounded-3xl w-full" src="<?= get_image_path("svg/step-3.svg") ?>" style="color: transparent;">
                     </div>
-                    <div class="text-center mt-auto space-y-2">
-                        <span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-md font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">Step 3</span>
-                        <h3 class="text-lg font-semibold">Spedizione Rapida</h3>
-                        <span class="block text-slate-600 text-md leading-6">Il corriere confermerà e spedirà rapidamente a te</span>
+                    <div class="text-center space-y-2">
+                        <h3 class="text-lg font-semibold">Spedizione in giornata</h3>
+                        <span class="block text-slate-600 text-md leading-6">Ricevi i tuoi prodotti rapidamente grazie alla spedizione in giornata</span>
+                    </div>
+                </div>
+                <div class="relative flex flex-col items-center max-w-xs mx-auto col-span-1">
+                    <div class="mb-4 sm:mb-10 w-36 h-36 mx-auto">
+                        <img class="rounded-3xl w-full" src="<?= get_image_path("svg/step-4.svg") ?>" style="color: transparent;">
+                    </div>
+                    <div class="text-center space-y-2">
+                        <h3 class="text-lg font-semibold">Facilità di pagamento</h3>
+                        <span class="block text-slate-600 text-md leading-6">Pagamenti sicuri e veloci, senza alcun problema</span>
                     </div>
                 </div>
             </div>
         </section>
         <section class="section opacity-0 translate-y-52 duration-1000 w-11/12 mx-auto max-w-7xl">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <h2 class=" text-3xl md:text-4xl font-semibold text-left">Acquista per categoria</h2>
-                <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                <h2 class="text-3xl md:text-4xl font-semibold text-left py-5">Le migliori scelte<span class="">. </span><span class="text-neutral-500">Prodotti top per la tua categoria preferita</span></h2>
+                <div class="mt-6 space-y-12 md:grid md:grid-cols-3 md:gap-x-6 md:space-y-0 text-left">
                     <?php
                     $data = [
                         ["img_src" => "lana.jpeg", "span" => "Lana", 'p' => 'Creare morbidi capi e accessori con la lana.'],
@@ -121,17 +128,13 @@ $product_list = render_products(10); ?>
                     ];
                     foreach ($data as $d) {
                         $image_path = get_image_path($d["img_src"]); ?>
-                        <div class="group relative">
-                            <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:h-64">
-                                <img src="<?= $image_path; ?>" alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug." class="h-full w-full object-cover object-center">
+                        <a href="<?= get_link_path('product'); ?>" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow lg:flex-row md:max-w-xl hover:bg-gray-100">
+                            <img class="object-cover max-md:rounded-t-lg h-96 md:h-48 lg:h-full md:w-full lg:w-32 xl:w-48 md:rounded-none lg:rounded-l-lg" src="<?= $image_path; ?>" alt="">
+                            <div class="flex flex-col justify-between p-4 leading-normal">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"><?= $d['span']; ?></h5>
+                                <p class="mb-3 font-normal text-gray-700"><?= $d['p']; ?></p>
                             </div>
-                            <h3 class="mt-6 text-sm text-gray-500">
-                                <a href="#">
-                                    <?= $d['span']; ?>
-                                </a>
-                            </h3>
-                            <p class="text-base font-semibold text-gray-900"><?= $d['p']; ?></p>
-                        </div>
+                        </a>
                     <?php
                     }
                     ?>

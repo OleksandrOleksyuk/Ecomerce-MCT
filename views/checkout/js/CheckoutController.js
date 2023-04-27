@@ -67,28 +67,48 @@ export default class Checkout extends ExecJS {
       const finalPrice = (+qnt * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
-      <li class="grid grid-cols-6 gap-2 border-b-1">
-          <div class="col-span-1 self-center">
-              <img src="${src}" alt="Product" class="rounded w-full">
-          </div>
-          <div class="flex flex-col col-span-3 pt-2">
-              <span class="text-gray-600 text-md font-semi-bold">${name}</span>
-              <span class="text-gray-400 text-sm inline-block pt-2">${categories}</span>
-          </div>
-          <div class="col-span-2 pt-3">
-              <div class="flex items-center space-x-2 text-sm justify-between">
-                  <span class="text-gray-400">${qnt} x ${price}</span>
-                  <span class="text-pink-400 font-semibold inline-block">€${finalPrice}</span>
-              </div>
-          </div>
-      </li>
-      `;
+            <div class="relative flex py-7 first:pt-0 last:pb-0">
+                <div class="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100 sm:w-28">
+                    <img src="${src}" alt="Product" class="h-full w-full object-cover object-center" sizes="100px" src="" /><a class="absolute inset-0" href="/product-detail"></a>
+                </div>
+                <div class="ml-3 flex flex-1 flex-col sm:ml-6">
+                    <div>
+                        <div class="flex justify-between">
+                            <div class="flex-[1.5]">
+                                <h3><a class="text-xl font-light" href="/product-detail">${name}</a></h3>
+                                <div class="mt-1.5 flex text-sm text-slate-900 sm:mt-2.5">
+                                    <div class="flex items-center space-x-1.5">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
+                                            <path d="M7.01 18.0001L3 13.9901C1.66 12.6501 1.66 11.32 3 9.98004L9.68 3.30005L17.03 10.6501C17.4 11.0201 17.4 11.6201 17.03 11.9901L11.01 18.0101C9.69 19.3301 8.35 19.3301 7.01 18.0001Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M8.35 1.94995L9.69 3.28992" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M2.07 11.92L17.19 11.26" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M3 22H16" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M18.85 15C18.85 15 17 17.01 17 18.24C17 19.26 17.83 20.09 18.85 20.09C19.87 20.09 20.7 19.26 20.7 18.24C20.7 17.01 18.85 15 18.85 15Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>${color}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-2">
+                                <div class="font-semibold">
+                                    <p class="text-2xl text-pink-400">€${finalPrice}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                      <div class="col-span-2 pt-3">
+                          <div class="text-gray-400">${qnt} x ${price}</div>
+                      </div>
+                      <div class="mt-auto flex items-end justify-between pt-4 text-sm">
+                          <a href="##" class="text-primary-6000 hover:text-primary-500 relative z-10 mt-3 flex items-center font-medium"><span>Rimuovi</span></a>
+                      </div>
+                    </div>
+                </div>
+            </div>`;
     });
-
     console.log(this.dataCreateOrder);
-
     document.querySelector("#checkContainer").innerHTML = html;
-
     document.querySelector("#checkSumPrice").innerHTML = `€ ${sumPrice.toFixed(2)}`;
     this.createPaypalButton(sumPrice.toFixed(2));
   }

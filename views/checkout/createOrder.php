@@ -21,13 +21,8 @@ foreach ($tuttiiprodotti as $value) {
 
     $product = wc_get_product($product_id);
 
-    $image_id = $product->get_image_id(); // ottieni l'ID dell'immagine predefinita del prodotto
-    $product->set_image_id($variation_image_id); // imposta l'ID dell'immagine della variante del prodotto
     $order->add_product($product, $quantity, [$variation_id, $variation_attributes]);
 }
-
-
-
 
 $address = [
     'first_name' => $data->first_name,

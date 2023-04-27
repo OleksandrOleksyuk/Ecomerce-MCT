@@ -1,7 +1,7 @@
 <?php global $woocommerce; ?>
-<?= do_shortcode("[views section=general name=navbarView]"); ?>
-<div id="checkout" class="text-emerald-900 md:grid md:grid-cols-4 w-11/12 mx-auto">
-    <div class="col-span-2 px-5 py-10 lg:p-20">
+<?= do_shortcode("[views section=general name=navbarView]") ?>
+<div id="checkout" class="flex text-emerald-900 w-11/12 mx-auto pb-20 max-w-screen-xl">
+    <div class="px-5 py-10 lg:p-20">
         <ol id="stepbar-checkout" class="flex items-center w-full mb-4 sm:mb-5">
             <li data-step="0" class="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block">
                 <div class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 shrink-0">
@@ -105,12 +105,29 @@
                                     <div>
                                         <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                                             <?php
-                                            $data = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
+                                            $data = [
+                                                "January",
+                                                "February",
+                                                "March",
+                                                "April",
+                                                "May",
+                                                "June",
+                                                "July",
+                                                "August",
+                                                "September",
+                                                "October",
+                                                "November",
+                                                "December",
+                                            ];
                                             for ($i = 0; $i < count($data); $i++) {
-                                                echo '<option value="' . ($i + 1) . '">' . ($i + 1) . ' - ' . $data[$i] . '</option>';
+                                                echo '<option value="' .
+                                                    ($i + 1) .
+                                                    '">' .
+                                                    ($i + 1) .
+                                                    " - " .
+                                                    $data[$i] .
+                                                    "</option>";
                                             }
-
                                             ?>
                                         </select>
                                     </div>
@@ -118,9 +135,9 @@
                                 <div class="px-2 w-1/4">
                                     <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                                         <?php
-                                        $data = ['2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029'];
+                                        $data = ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029"];
                                         for ($i = 0; $i < count($data); $i++) {
-                                            echo '<option value="' . $data[$i] . '">' . $data[$i] . '</option>';
+                                            echo '<option value="' . $data[$i] . '">' . $data[$i] . "</option>";
                                         }
                                         ?>
                                     </select>
@@ -171,31 +188,31 @@
             </div>
         </form>
     </div>
-    <div class="col-span-2 h-100  px-5 py-10 lg:p-20">
-        <div class="col-span-1 bg-white">
+    <div class="w-full lg:w-2/5">
+        <h3 class="text-lg font-semibold">Order summary</h3>
+        <div id="checkContainer" class="divide-slate-200/70 divide-y h-[500px] mt-8 overflow-scroll"></div>
+        <div class="mt-10 border-t border-slate-200/70 pt-6 text-sm text-slate-500">
             <div>
-                <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">Order Summary</h1>
-                <ul id="checkContainer" class="py-6 border-b space-y-6 px-8 overflow-auto h-72">
-
-                </ul>
+                <label class="nc-Label text-sm font-medium text-emerald-900 " data-nc-id="Label">Codice sconto</label>
+                <div class="mt-1.5 flex">
+                    <input type="text" class="focus:border-primary-300 focus:ring-primary-200 block h-10 w-full flex-1 rounded-2xl border-emerald-200 bg-white px-4 py-3 text-sm font-normal focus:ring focus:ring-opacity-50 disabled:bg-emerald-200   " /><button class="ml-3 flex w-24 items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-200/70 px-4 text-sm font-medium text-emerald-700 transition-colors hover:bg-emerald-100">
+                        Applica
+                    </button>
+                </div>
             </div>
-            <div>
-                <div class="px-8 border-b">
-                    <div class="flex justify-between py-4 text-gray-600">
-                        <span>Subtotal</span>
-                        <span class="font-semibold text-pink-500">€846.98</span>
-                    </div>
-                    <div class="flex justify-between py-4 text-gray-600">
-                        <span>Shipping</span>
-                        <span class="font-semibold text-pink-500">Free</span>
-                    </div>
-                </div>
-                <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
-                    <span>Total</span>
-                    <span id="checkSumPrice">€846.98</span>
-                </div>
+            <div class="mt-4 flex justify-between py-2.5">
+                <span>Subtotale</span><span id="checkSumPrice" class="font-semibold text-slate-900">$249.00</span>
+            </div>
+            <div class="flex justify-between py-2.5">
+                <span>Costi di spedizione</span><span class="font-semibold text-slate-900">$5.00</span>
+            </div>
+            <div class="flex justify-between py-2.5">
+                <span>Tasse stimate</span><span class="font-semibold text-slate-900">$24.90</span>
+            </div>
+            <div class="flex justify-between pt-4 text-base font-semibold text-slate-900">
+                <span>Totale dell'ordine</span><span>$276.00</span>
             </div>
         </div>
     </div>
 </div>
-<?= do_shortcode("[views section=footer name=footerView]"); ?>
+<?= do_shortcode("[views section=footer name=footerView]") ?>
