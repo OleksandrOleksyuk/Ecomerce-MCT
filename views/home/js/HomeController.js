@@ -13,14 +13,15 @@ export default class HomeController extends ExecJs {
       slidesPerView: "auto",
       spaceBetween: 30,
       loop: true,
-      autoplay: { delay: 3000, disableOnInteraction: false },
+      // autoplay: { delay: 3000, disableOnInteraction: false },
       pauseOnHover: true,
     });
     this.animationFadeInCard();
   }
   async animationFadeInCard() {
     let delay = 200;
-    document.querySelectorAll("#swiper--bestSellingProducts .swiper-slide").forEach((card, index) => {
+    const allCard = document.querySelectorAll("#swiper--bestSellingProducts .swiper-slide")
+    allCard.forEach((card, index) => {
       setTimeout(() => card.classList.add("FadeUp"), delay * (index + 1));
     });
   }
@@ -28,9 +29,9 @@ export default class HomeController extends ExecJs {
     const allSections = document.querySelectorAll("section.section");
     const revealSection = ([entry], observer) => {
       if (!entry.isIntersecting) return;
+      entry.target.id === "bestSellingProducts" && this.swiperBestProducts();
       entry.target.classList.remove("opacity-0", "translate-y-52");
       console.log(entry.target.id === "bestSellingProducts");
-      entry.target.id === "bestSellingProducts" && this.swiperBestProducts();
       observer.unobserve(entry.target);
     };
     const sectionObserver = new IntersectionObserver(revealSection, {
