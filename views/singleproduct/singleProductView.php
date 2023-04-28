@@ -6,7 +6,7 @@ $image_src = isset($product['variations'][0]['image']) ? $product['variations'][
 $opacityClass = (count($product['gallery_images']) == 0) ? 'hidden' : 'max-sm:flex lg:flex';
 ?>
 <?= do_shortcode('[views section=general name=navbarView]'); ?>
-<main id="singleProduct" data-id="<?= $product['id']; ?>" class="text-emerald-900">
+<main id="singleProduct" data-id="<?= $product['id']; ?>" data-link="<?= $product['link']; ?>" class="text-emerald-900">
     <section class="flex flex-col lg:flex-row-reverse mx-auto justify-center items-center max-w-7xl p-10">
         <div class="lg:w-1/2 h-[550px] flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center p-5">
             <img id="imgFirst" class="w-64 h-64 sm:w-96 sm:h-96 mb-5 rounded-lg p-2 object-cover" src="<?= $image_src; ?>" alt="immagine grande del prodotti">
