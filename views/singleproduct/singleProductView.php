@@ -34,8 +34,20 @@ foreach ($product['gallery_images'] as $image) {
             <?php
             } else {
             ?>
-                <div id="imgFirstSimple" class="w-64 h-64 sm:w-96 sm:h-96 mb-5 rounded-lg p-2 object-cover">
+                <div id="imgFirstSimple">
                     <?= $product['image']; ?>
+                </div>
+                <div id="gallerySingle" class="gap-5 <?= $opacityClass ?>">
+                    <?= $product['image']; ?>
+                    <?php
+                    foreach ($product['gallery_images'] as $value) {
+                        if (strpos($value, 'gallery') !== false) {
+                    ?>
+                            <img class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-lg object-cover mt-2" src="<?= $value; ?>" alt="galleria delle immagini">
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
             <?php
             };
@@ -43,7 +55,7 @@ foreach ($product['gallery_images'] as $image) {
         </div>
         <div class="lg:w-1/2 md:p-5 flex flex-col justify-between">
             <div class="space-y-2">
-                <p id="singleProduct--categories" class="uppercase tracking-widest"><?= $product['categories']; ?></p>
+                <p id="singleProduct--categories" class="uppercase tracking-widest"><?= $product['parent']; ?></p>
                 <h1 id="singleProduct--name" class="text-emerald-900 text-4xl lg:text-5xl"><?= $product['name']; ?></h1>
                 <p class="lg:text-lg font-light"><?= $product['description']; ?></p>
                 <?php
@@ -118,8 +130,8 @@ foreach ($product['gallery_images'] as $image) {
                 <div class="flex flex-col items-start md:grid md:grid-cols-2 md:px-5 md:items-center text-left py-5">
                     <h2 class="text-2xl font-semibold text-emerald-600 md:text-3xl lg:text-4xl">Prodotti simili</h2>
                 </div>
-                <div id="swiper" class="w-full h-full overflow-hidden">
-                    <div class="swiper-wrapper">
+                <div id="swiperSingleProduct" class="swiper w-full h-full overflow-hidden">
+                    <div class="swiper-wrapper flex">
                         <?php
                         // ciclo foreach per stampare i prodotti
                         foreach ($product_list as $product) {

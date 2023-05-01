@@ -22,8 +22,8 @@ export default class ProductController extends ExecJs {
     this.newArr.forEach((card, index) => {
       setTimeout(() => card.classList.add("FadeUp"), delay * index);
     });
-    this.renderNavigationEl();
-    this.displayPage(1);
+    // this.renderNavigationEl();
+    // this.displayPage(1);
   }
 
   renderNavigationEl() {
@@ -144,15 +144,17 @@ export default class ProductController extends ExecJs {
     [...this.categoryCheckboxes, ...this.subcategoryCheckboxes].forEach((input) => {
       input.addEventListener("change", (evt) => {
         evt.preventDefault();
-        // // hide all cards
+        // hide all cards
         [...this.productCards].forEach((card) => card.classList.add("card--hidden"));
         // get selected categories and brands
         const selCat = [];
         const selBrands = [];
-        let checkeds = [...document.querySelectorAll("input[type='checkbox']:checked")];
+        let checkeds = [...document.querySelectorAll("#product input[type='checkbox']:checked")];
         // if click categories need active brand
         if (evt.target.getAttribute("data-children")) {
-          const parentEl = document.querySelector(`input[data-type="categories"][data-parent="${evt.target.getAttribute("data-parent")}"]`);
+          const parentEl = document.querySelector(
+            `input[data-type="categories"][data-parent="${evt.target.getAttribute("data-parent")}"]`
+          );
           if (!parentEl.checked) parentEl.checked = true;
           this.animationFadeInCard();
         }
@@ -163,6 +165,7 @@ export default class ProductController extends ExecJs {
           });
         }
         // show all cards if no categories or brands are selected
+        console.log(checkeds);
         if (checkeds.length === 0) {
           [...this.productCards].forEach((card) => card.classList.remove("card--hidden"));
           this.animationFadeInCard();

@@ -5,7 +5,7 @@ $product_list = render_products(10); ?>
     <?= do_shortcode("[views section=general name=navbarView]") ?>
     <header class="py-10 lg:py-20 w-11/12 mx-auto max-w-7xl">
         <!-- title -->
-        <div class="flex flex-col sm:flex-row justify-center items-center pb-10 gap-10">
+        <div class="flex flex-col-reverse sm:flex-row justify-center items-center pb-10 gap-10">
             <div class="flex flex-col gap-2 max-w-2xl">
                 <div class="text-left">
                     <h1 class="text-3xl lg:text-5xl xl:text-6xl font-semibold text-emerald-600 mb-1 md:mb-5">
@@ -49,7 +49,7 @@ $product_list = render_products(10); ?>
         <!-- best-selling products -->
         <section id="bestSellingProducts" class="section opacity-0 translate-y-52 duration-1000 py-5 flex flex-col items-center px-5 md:px-10">
             <div class="max-w-7xl mx-auto max-2xl:w-11/12">
-                <div class="flex justify-between mb-5">
+                <div class="flex flex-wrap justify-between mb-5">
                     <h2 class="text-3xl md:text-4xl font-semibold text-left py-5">I più venduti<span class="">. </span><span class="text-neutral-500">Prodotti più venduti del mese</span></h2>
                     <div class="flex justify-end items-center gap-5 py-5">
                         <button type="button" id="prev" class="focus:outline-none btnStyle rotate-180">
@@ -64,7 +64,7 @@ $product_list = render_products(10); ?>
                         </button>
                     </div>
                 </div>
-                <div id="swiper--bestSellingProducts" class="w-full h-full max-2xl:overflow-hidden">
+                <div id="swiper--bestSellingProducts" class="w-full h-full ">
                     <div class="swiper-wrapper">
                         <?php
                         foreach ($product_list as $product) {
@@ -128,8 +128,8 @@ $product_list = render_products(10); ?>
                     ];
                     foreach ($data as $d) {
                         $image_path = get_image_path($d["img_src"]); ?>
-                        <a href="<?= get_link_path('product'); ?>" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow lg:flex-row md:max-w-xl hover:bg-gray-100">
-                            <img class="object-cover max-md:rounded-t-lg h-96 md:h-48 lg:h-full md:w-full lg:w-32 xl:w-48 md:rounded-none lg:rounded-l-lg" src="<?= $image_path; ?>" alt="">
+                        <a href="<?= get_link_path('product'); ?>" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                            <img class="h-64 lg:rounded-l-lg max-md:rounded-t-lg md:rounded-none min-w-full object-cover" src="<?= $image_path; ?>" alt="">
                             <div class="flex flex-col justify-between p-4 leading-normal">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"><?= $d['span']; ?></h5>
                                 <p class="mb-3 font-normal text-gray-700"><?= $d['p']; ?></p>

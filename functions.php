@@ -97,63 +97,6 @@ function render_products($limit = -1)
   // file_put_contents($path, '<pre>' . print_r($product_list, true)  . '</pre>');
   return $product_list;
 }
-// function render_single_product($product_id)
-// {
-//   $product = wc_get_product($product_id);
-
-//   $price = $product->get_price();
-//   $price = number_format($price, 2, ".", ""); // Formatta il prezzo con due decimali
-
-//   $variations = $product->get_available_variations();
-//   $variation_data = [];
-
-//   foreach ($variations as $variation) {
-//     // Aggiungi le informazioni sull'attributo per ciascuna variazione
-//     $variation_data[] = [
-//       "id" => $variation["variation_id"],
-//       "attributes" => $variation["attributes"],
-//       "price" => $variation["display_price"],
-//       "image" => "",
-//       'max_qty' => $variation['max_qty'], // Aggiungi la quantità disponibile per ogni variante
-//       // 'stock_status' => $variation['is_in_stock'] ? 'disponibile' : 'non disponibile' // Aggiungi lo stato di disponibilità della variante
-//     ];
-
-//     if (isset($variation["image_id"]) && $variation["image_id"]) {
-//       $image_data = wp_get_attachment_image_src($variation["image_id"], "full");
-//       if (is_array($image_data)) {
-//         $variation_data[count($variation_data) - 1]["image"] = $image_data[0];
-//       }
-//     }
-//   }
-
-//   $gallery_ids = $product->get_gallery_image_ids();
-//   $gallery_images = [];
-
-//   foreach ($gallery_ids as $gallery_id) {
-//     $image_data = wp_get_attachment_image_src($gallery_id, "full");
-//     if (is_array($image_data) && !empty($image_data[0])) {
-//       $gallery_images[] = $image_data[0];
-//     }
-//   }
-
-//   $product_data = [
-//     "id" => $product->get_id(),
-//     "name" => $product->get_name(),
-//     "image" => $product->get_image(),
-//     "short_description" => $product->get_short_description(),
-//     "description" => $product->get_description(),
-//     "price" => $price,
-//     "categories" => $product->get_categories(),
-//     "link" => get_link_path("singleproduct") . "/?product_id=" . $product->get_id(),
-//     "variations" => $variation_data, // Aggiungi le informazioni sulle variazioni disponibili
-//     "gallery_images" => $gallery_images, // Aggiungi le immagini della galleria del prodotto
-//   ];
-
-//   // Resto del codice per renderizzare il prodotto come desiderato
-//   $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/single.txt');
-//   file_put_contents($path, '<pre>' . print_r($product_data, true)  . '</pre>');
-//   return $product_data;
-// }
 
 function render_single_product($product_id)
 {
@@ -169,6 +112,21 @@ function render_single_product($product_id)
     $image_data = wp_get_attachment_image_src($gallery_id, "full");
     if (is_array($image_data) && !empty($image_data[0])) {
       $gallery_images[] = $image_data[0];
+    }
+  }
+  $categories = get_the_terms($product->get_id(), "product_cat");
+  $parent_id = 0;
+  $children_ids = [];
+
+  if (is_array($categories) || is_object($categories)) {
+    foreach ($categories as $category) {
+      if ($category->parent == 0) {
+        $parent_id = $category->name;
+      } else {
+        $parent_category = get_term($category->parent, "product_cat");
+        $parent_id = $parent_category->name;
+        $children_ids[] = $category->name;
+      }
     }
   }
 
@@ -205,6 +163,10 @@ function render_single_product($product_id)
       "description" => $product->get_description(),
       "price" => $price,
       "categories" => $product->get_categories(),
+      "parent" => $parent_id,
+      "children" => $children_ids,
+      "data-parent" => $parent_id,
+      "data-children" => implode(",", $children_ids),
       "link" => get_link_path("singleproduct") . "/?product_id=" . $product->get_id(),
       "variations" => $variation_data, // Aggiungi le informazioni sulle variazioni disponibili
       "gallery_images" => $gallery_images, // Aggiungi le immagini della galleria del prodotto
@@ -220,6 +182,10 @@ function render_single_product($product_id)
       "description" => $product->get_description(),
       "price" => $price,
       "categories" => $product->get_categories(),
+      "parent" => $parent_id,
+      "children" => $children_ids,
+      "data-parent" => $parent_id,
+      "data-children" => implode(",", $children_ids),
       "link" => get_link_path("singleproduct") . "/?product_id=" . $product->get_id(),
       "variations" => [], // Nessuna variante disponibile per i prodotti semplici
       "gallery_images" => $gallery_images, // Aggiungi le immagini della galleria del prodotto
@@ -227,7 +193,7 @@ function render_single_product($product_id)
   }
 
   // Resto del codice per renderizzare il prodotto come desiderato
-  $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/single.txt');
-  file_put_contents($path, '<pre>' . print_r($product_data, true)  . '</pre>');
+  // $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/single.txt');
+  // file_put_contents($path, '<pre>' . print_r($product_data, true)  . '</pre>');
   return $product_data;
 }

@@ -6,17 +6,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/mct/wp-content/plugins/woocommerce/wo
 $json_str = file_get_contents('php://input');
 $data = json_decode($json_str);
 
+// $path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/payment.txt');
+// file_put_contents($path, '<pre>' . print_r($data, true)  . '</pre>');
 
-$path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/payment.txt');
-file_put_contents($path, '<pre>' . print_r($data, true)  . '</pre>');
-
-// Crea un nuovo ordine
 $order = wc_create_order();
 
-// Aggiungi i prodotti all'ordine
-$tuttiiprodotti = $data->code;
+$allVariationsProduct = $data->data->variable;
+$allSimpleProducts = $data->data->simple;
 
-foreach ($tuttiiprodotti as $value) {
+foreach ($allVariationsProduct as $value) {
     $product_id = $value->productId;
     $quantity = $value->productQnt;
     $variation_id = $value->variantId;
@@ -29,7 +27,6 @@ foreach ($tuttiiprodotti as $value) {
     $item_id = $order->add_product($product, $quantity, [$variation_id, $variation_attributes]);
     $variation_image_id = $value->imageSrc;
 
-    // Aggiungi descrizione prodotto all'elemento dell'ordine
     $description = $product_name . ' - ' . implode(', ', $variation_attributes) . ' - ' . $product_description;
     wc_update_order_item_meta($item_id, 'Product Description', $description);
 
@@ -42,7 +39,13 @@ foreach ($tuttiiprodotti as $value) {
     wc_update_product_stock($variation_id, $quantity);
 }
 
-// Calcola e salva il totale dell'ordine
+foreach ($allSimpleProducts as $value) {
+    $product_id = $value->productId;
+    $quantity = $value->productQnt;
+    $product = wc_get_product($product_id);
+    $item_id = $order->add_product($product, $quantity);
+}
+
 $order->calculate_totals();
 
 $address = [
@@ -57,13 +60,14 @@ $address = [
     'postcode'   => $data->postcode,
     'country'    => $data->country
 ];
+
 $order->set_address($address, 'billing');
 $order->set_address($address, 'shipping');
 
-// Imposta lo stato dell'ordine
 $order->update_status('processing');
 
 $order->save();
 
-// Mostra un messaggio di conferma
-echo 'L\'ordine è stato creato con successo senza il pagamento.';
+echo 1;
+
+// echo 'L\'ordine è stato creato con successo senza il pagamento.';

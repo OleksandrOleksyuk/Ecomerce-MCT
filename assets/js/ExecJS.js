@@ -1,4 +1,3 @@
-
 import GeneralPage from "./GeneralPage.js";
 
 export default class ExecJs {
@@ -31,12 +30,12 @@ export default class ExecJs {
     const addToSidebarBtn = document.querySelector("#addToSidebarBtn");
     const arr = [openSliderOver, closeSlideOver];
     if (addToSidebarBtn) arr.push(addToSidebarBtn);
-    let status = false
+    let status = false;
     arr.forEach((el) =>
       el.addEventListener("click", (evt) => {
         evt.preventDefault();
-        if (evt.target.closest('#addToSidebarBtn') && status) return;
-        status = !status
+        if (evt.target.closest("#addToSidebarBtn") && status) return;
+        status = !status;
         sliderContainer.classList.toggle("invisible");
       })
     );
@@ -44,8 +43,10 @@ export default class ExecJs {
 
   saveCartToLocalStorage(cartItem) {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingCartItem = cartItems.find((item) => item.id === cartItem.id && item.color === cartItem.color);
-    if (existingCartItem) existingCartItem.qnt = +existingCartItem.qnt + +cartItem.qnt;
+    const existingCartItem = cartItems.find(
+      ({ id, color, idProduct }) => id === cartItem.id && color === cartItem.color && idProduct === cartItem.idProduct
+    );
+    if (existingCartItem) existingCartItem.quantity = +existingCartItem.quantity + +cartItem.quantity;
     else cartItems.unshift(cartItem);
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }
@@ -67,16 +68,30 @@ export default class ExecJs {
     addToSidebarBtn.addEventListener("click", (evt) => {
       evt.preventDefault();
       const container = document.querySelector("#singleProduct");
-      const src = container.querySelector("#imgFirst").src;
-      const categories = container.querySelector("#singleProduct--categories").textContent;
-      const name = container.querySelector("#singleProduct--name").textContent;
-      const qnt = container.querySelector("#singleProduct--qnt").textContent;
-      const price = container.querySelector("#singleProduct--price").textContent.replace("€ ", "").trim();
-      const color = container.querySelector("#color").textContent;
+      const categoriesEl = container.querySelector("#singleProduct--categories");
+      const nameEl = container.querySelector("#singleProduct--name");
+      const quantityEl = container.querySelector("#singleProduct--qnt");
+      const priceEl = container.querySelector("#singleProduct--price");
       const idProduct = container.dataset.id;
       const linkProduct = container.dataset.link;
-      const idVariant = container.querySelector("#colorSingleProduct img.activeProduct").id;
-      const data = { src, categories, name, qnt, price, color, idProduct, idVariant, linkProduct };
+      const categories = categoriesEl.textContent;
+      const name = nameEl.textContent;
+      const type = container.dataset.type;
+      const quantity = quantityEl.textContent;
+      const price = priceEl.textContent.replace("€ ", "").trim();
+      let data = { categories, name, quantity, price, idProduct, linkProduct, type };
+      if (type === "variable") {
+        const colorEl = container.querySelector("#color");
+        const variantEl = container.querySelector("#colorSingleProduct img.activeProduct");
+        const src = container.querySelector("#imgFirst").src;
+        const color = colorEl.textContent;
+        const idVariant = variantEl.id;
+        data = { ...data, src, color, idVariant };
+      } else {
+        const src = container.querySelector("#imgFirstSimple > img").src;
+        data = { ...data, src };
+      }
+
       this.saveCartToLocalStorage(data);
       this.renderSidebar();
     });
@@ -89,13 +104,15 @@ export default class ExecJs {
     container.innerHTML = html;
     let sumPrice = 0;
 
-    cart.forEach(({ src, categories, name, qnt, price, color, idProduct, idVariant, linkProduct }) => {
-      const finalPrice = (+qnt * +price).toFixed(2);
+    cart.forEach(({ src, categories, name, quantity, price, color, idProduct, idVariant, linkProduct, type }) => {
+      const finalPrice = (+quantity * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
-        <div id="${idProduct}" data-id=${idVariant} div class="relative flex py-7 first:pt-0 last:pb-0" >
+        <div data-type=${type} id="${idProduct}" data-id=${idVariant} div class="relative flex py-7 first:pt-0 last:pb-0" >
           <div class="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100 sm:w-28">
-              <img src="${src}" alt="${(name, color)}" class="h-full w-full object-cover object-center" sizes="100px" src="" /><a class="absolute inset-0" href="${linkProduct}"></a>
+              <img src="${src}" alt="${
+        (name, color)
+      }" class="h-full w-full object-cover object-center" sizes="100px" src="" /><a class="absolute inset-0" href="${linkProduct}"></a>
           </div>
           <div class="ml-3 flex flex-1 flex-col sm:ml-6">
               <div>
@@ -103,7 +120,7 @@ export default class ExecJs {
                       <div class="flex-[1.5]">
                           <h3><a class="text-xl font-light" href="${linkProduct}">${name}</a></h3>
                           <div class="mt-1.5 flex text-sm text-slate-900 sm:mt-2.5">
-                              <div class="flex items-center space-x-1.5">
+                              <div class="flex items-center space-x-1.5 ${color ? "" : "hidden"}">
                                   <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
                                       <path d="M7.01 18.0001L3 13.9901C1.66 12.6501 1.66 11.32 3 9.98004L9.68 3.30005L17.03 10.6501C17.4 11.0201 17.4 11.6201 17.03 11.9901L11.01 18.0101C9.69 19.3301 8.35 19.3301 7.01 18.0001Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
                                       <path d="M8.35 1.94995L9.69 3.28992" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -124,7 +141,7 @@ export default class ExecJs {
               </div>
               <div class="flex justify-between items-end">
                 <div class="col-span-2 pt-3">
-                    <div class="text-gray-400">${qnt} x ${price}</div>
+                    <div class="text-gray-400">${quantity} x ${price}</div>
                 </div>
                 <div class="mt-auto flex items-end justify-between pt-4 text-sm">
                     <a href="##" class="deleteEl text-primary-6000 hover:text-primary-500 relative z-10 mt-3 flex items-center font-medium"><span>Rimuovi</span></a>

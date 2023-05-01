@@ -67,18 +67,29 @@ export default class Checkout extends ExecJS {
     let html = "";
     document.querySelector("#checkContainer").innerHTML = html;
     let sumPrice = 0;
-    this.dataCreateOrder = [];
+    this.dataCreateOrder = {
+      simple: [],
+      variable: [],
+    };
 
     cart.forEach((item) => {
-      const { src, categories, name, qnt, price, idProduct, color, idVariant } = item;
-      this.dataCreateOrder.push({
-        productId: idProduct,
-        productQnt: qnt,
-        productColor: color,
-        variantId: idVariant,
-        imageSrc: src,
-      });
-      const finalPrice = (+qnt * +price).toFixed(2);
+      const { src, categories, name, quantity, price, idProduct, color, idVariant, type } = item;
+      if (type === "simple") {
+        this.dataCreateOrder.simple.push({
+          productId: idProduct,
+          productQnt: quantity,
+        });
+      } else {
+        this.dataCreateOrder.variable.push({
+          productId: idProduct,
+          productQnt: quantity,
+          productColor: color,
+          variantId: idVariant,
+          imageSrc: src,
+        });
+      }
+      console.log(this.dataCreateOrder);
+      const finalPrice = (+quantity * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
             <div class="relative flex py-7 first:pt-0 last:pb-0">
@@ -91,7 +102,7 @@ export default class Checkout extends ExecJS {
                             <div class="flex-[1.5]">
                                 <h3><a class="text-xl font-light" href="/product-detail">${name}</a></h3>
                                 <div class="mt-1.5 flex text-sm text-slate-900 sm:mt-2.5">
-                                    <div class="flex items-center space-x-1.5">
+                                    <div class="flex items-center space-x-1.5 ${color ? "" : "hidden"}">
                                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
                                             <path d="M7.01 18.0001L3 13.9901C1.66 12.6501 1.66 11.32 3 9.98004L9.68 3.30005L17.03 10.6501C17.4 11.0201 17.4 11.6201 17.03 11.9901L11.01 18.0101C9.69 19.3301 8.35 19.3301 7.01 18.0001Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
                                             <path d="M8.35 1.94995L9.69 3.28992" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -112,7 +123,7 @@ export default class Checkout extends ExecJS {
                     </div>
                     <div class="flex justify-between items-end">
                       <div class="col-span-2 pt-3">
-                          <div class="text-gray-400">${qnt} x ${price}</div>
+                          <div class="text-gray-400">${quantity} x ${price}</div>
                       </div>
                     </div>
                 </div>
@@ -150,7 +161,7 @@ export default class Checkout extends ExecJS {
               payment_currency: details.purchase_units[0].amount.currency_code,
             };
             const formData = this.Utils.FormToJson("formDataOrder");
-            const result = await this.createOrder({ ...formData, code: [...this.dataCreateOrder] });
+            const result = await this.createOrder({ ...formData, data: { ...this.dataCreateOrder } });
             if (result) {
               // L'ordine è stato creato con successo
               this.currentStep += 1;

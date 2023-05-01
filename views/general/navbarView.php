@@ -17,9 +17,18 @@
         </div>
         <div class="items-center mx-auto">
             <p class="text-sm leading-6 text-pink-900">
-                <strong class="font-semibold">Aprile 2023</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
+                <strong class="font-semibold">
+                    <?php
+                    $date = new DateTime();
+                    $formatter = new IntlDateFormatter('it_IT', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+                    $data = $formatter->format($date);
+                    echo $data;
+                    ?>
+                </strong>
+                <svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
                     <circle cx="1" cy="1" r="1" />
-                </svg>Spedizione gratuita sopra i 79€ - Spedizione entro 24h
+                </svg>
+                Spedizione gratuita sopra i 79€ - Spedizione entro 24h
             </p>
         </div>
     </div>
@@ -28,7 +37,7 @@
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
                     <!-- Mobile menu button-->
-                    <button type="button" class="inline-flex items-center justify-center rounded-md p-2 bg-pink-900 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" class="inline-flex items-center justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                         <svg id="open" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
@@ -103,7 +112,7 @@
                 ];
                 foreach ($elements as $key => $value) {
                     $path = get_link_path($key);
-                    echo "<a href='$path' class='bg-pink-900 text-white block rounded-md px-3 py-2 text-base font-medium' aria-current='page'>$value</a>";
+                    echo "<a href='$path' class='bg-emerald-5ˇ00 text-white block rounded-md px-3 py-2 text-base font-medium' aria-current='page'>$value</a>";
                 }
                 ?>
             </div>
