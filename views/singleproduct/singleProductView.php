@@ -2,53 +2,77 @@
 $product_list = render_products(10);
 $product_id = get_query_var('product_id');
 $product = render_single_product($product_id);
-$image_src = isset($product['variations'][0]['image']) ? $product['variations'][0]['image'] : '';
-$opacityClass = (count($product['gallery_images']) == 0) ? 'hidden' : 'max-sm:flex lg:flex';
+$image_src = isset($product['variations'][0]['image']) ? $product['variations'][0]['image'] : $product['image'];
+$opacityClass = 'hidden';
+foreach ($product['gallery_images'] as $image) {
+    if (strpos($image, 'gallery') !== false) {
+        $opacityClass = 'max-sm:flex lg:flex';
+        break;
+    }
+}
 ?>
 <?= do_shortcode('[views section=general name=navbarView]'); ?>
-<main id="singleProduct" data-id="<?= $product['id']; ?>" data-link="<?= $product['link']; ?>" class="text-emerald-900">
+<main data-type="<?= $product['type']; ?>" id="singleProduct" data-id="<?= $product['id']; ?>" data-link="<?= $product['link']; ?>" class="text-emerald-900">
     <section class="flex flex-col lg:flex-row-reverse mx-auto justify-center items-center max-w-7xl p-10">
-        <div class="lg:w-1/2 h-[550px] flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center p-5">
-            <img id="imgFirst" class="w-64 h-64 sm:w-96 sm:h-96 mb-5 rounded-lg p-2 object-cover" src="<?= $image_src; ?>" alt="immagine grande del prodotti">
-            <div id="gallery" class="gap-5 <?= $opacityClass ?>">
-                <img id="imgFirst--small" class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-lg mt-2 activeProduct" src="<?= $image_src; ?>" alt="immagine piccola del prodotto dentro la galleria">
-                <?php
-                foreach ($product['gallery_images'] as $value) {
-                    if (strpos($value, 'gallery') !== false) {
-                ?>
-                        <img class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-lg object-cover mt-2" src="<?= $value; ?>" alt="galleria delle immagini">
-                <?php
+        <div class="lg:w-1/2 h-[550px] flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center gap-5 p-5">
+            <?php
+            if (count($product['variations']) > 0) {
+            ?>
+                <img id="imgFirst" class="w-64 h-64 sm:w-96 sm:h-96 mb-5 rounded-lg p-2 object-cover" src="<?= $image_src; ?>" alt="immagine grande del prodotti">
+                <div id="gallery" class="gap-5 <?= $opacityClass ?>">
+                    <img id="imgFirst--small" class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-cover rounded-lg mt-2 activeProduct" src="<?= $image_src; ?>" alt="immagine piccola del prodotto dentro la galleria">
+                    <?php
+                    foreach ($product['gallery_images'] as $value) {
+                        if (strpos($value, 'gallery') !== false) {
+                    ?>
+                            <img class="w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-lg object-cover mt-2" src="<?= $value; ?>" alt="galleria delle immagini">
+                    <?php
+                        }
                     }
-                }
-                ?>
-            </div>
+                    ?>
+                </div>
+            <?php
+            } else {
+            ?>
+                <div id="imgFirstSimple" class="w-64 h-64 sm:w-96 sm:h-96 mb-5 rounded-lg p-2 object-cover">
+                    <?= $product['image']; ?>
+                </div>
+            <?php
+            };
+            ?>
         </div>
-        <div class="lg:w-1/2 min-h-[550px] md:p-5 flex flex-col justify-between">
+        <div class="lg:w-1/2 md:p-5 flex flex-col justify-between">
             <div class="space-y-2">
                 <p id="singleProduct--categories" class="uppercase tracking-widest"><?= $product['categories']; ?></p>
                 <h1 id="singleProduct--name" class="text-emerald-900 text-4xl lg:text-5xl"><?= $product['name']; ?></h1>
                 <p class="lg:text-lg font-light"><?= $product['description']; ?></p>
-                <div class="mt-5">
-                    <span class="font-semibold lg:text-lg">COLORE:</span> <span id="color" class="uppercase text-pink-500"><?= $product['variations'][0]['attributes']['attribute_pa_color']; ?></span>
-                    <div id="colorSingleProduct" class="flex gap-2 flex-wrap">
-                        <?php
-                        foreach ($product['variations'] as $key => $value) {
-                            $color = $value['attributes']['attribute_pa_color'];
-                            $image_src = '';
-                            $active = ($key === 0) ? 'activeProduct' : '';
-                            foreach ($product['gallery_images'] as $img) {
-                                if (strpos($img, $color) !== false) {
-                                    $image_src = $img;
-                                    break;
+                <?php
+                if (count($product['variations']) > 0) {
+                ?>
+                    <div class="mt-5 <?= $product['variations'][0] ? '' : 'hidden'; ?>">
+                        <span class="font-semibold lg:text-lg">COLORE:</span> <span id="color" class="uppercase text-pink-500"><?= $product['variations'][0]['attributes']['attribute_pa_color']; ?> <span id="maxQnt"><?= $product['variations'][0]['attributes']['max_qty']; ?></span></span>
+                        <div id="colorSingleProduct" class="flex gap-2 flex-wrap">
+                            <?php
+                            foreach ($product['variations'] as $key => $value) {
+                                $color = $value['attributes']['attribute_pa_color'];
+                                $image_src = '';
+                                $active = ($key === 0) ? 'activeProduct' : '';
+                                foreach ($product['gallery_images'] as $img) {
+                                    if (strpos($img, $color) !== false) {
+                                        $image_src = $img;
+                                        break;
+                                    }
                                 }
-                            }
-                        ?>
-                            <img id="<?= $value['id']; ?>" data-color="<?= $color; ?>" data-image="<?= $value['image']; ?>" class="h-10 w-10 rounded-full object-cover <?= $active; ?>" src="<?= $image_src; ?>" alt="immagine del colore da selezionare <?= $color; ?>">
-                        <?php
-                        };
-                        ?>
+                            ?>
+                                <img id="<?= $value['id']; ?>" data-maxQty="<?= $value["max_qty"]; ?>" data-color="<?= $color; ?>" data-image="<?= $value['image']; ?>" class="h-10 w-10 rounded-full object-cover <?= $active; ?>" src="<?= $image_src; ?>" alt="immagine del colore da selezionare <?= $color; ?>">
+                            <?php
+                            };
+                            ?>
+                        </div>
                     </div>
-                </div>
+                <?php
+                }
+                ?>
             </div>
             <div class="flex flex-col items-start justify-between gap-5 mt-5">
                 <div>
@@ -70,20 +94,18 @@ $opacityClass = (count($product['gallery_images']) == 0) ? 'hidden' : 'max-sm:fl
                         </div>
                     </a>
                     <div class="flex items-center gap-2">
-                        <div class="flex items-center gap-2">
-                            <div id="minus-btn" class="counter-btn cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div class="w-10 h-10 bg-emerald-500 text-white flex justify-center items-center rounded-lg">
-                                <p id="singleProduct--qnt">1</p>
-                            </div>
-                            <div id="plus-btn" class="counter-btn cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
+                        <div id="minus-btn" class="counter-btn cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="w-10 h-10 bg-emerald-500 text-white flex justify-center items-center rounded-lg">
+                            <p id="singleProduct--qnt" data-maxQnt="max_qty">1</p>
+                        </div>
+                        <div id="plus-btn" class="counter-btn cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
                         </div>
                     </div>
                 </div>

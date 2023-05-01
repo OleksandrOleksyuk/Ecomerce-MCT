@@ -33,52 +33,52 @@
                 <div class="grid gap-4 mb-4 sm:grid-cols-6 ">
                     <div class="col-span-3">
                         <label for="first_name" class="block mb-2 text-sm font-medium">Nome</label>
-                        <input type="text" name="first_name" id="first_name" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Maria" required>
+                        <input type="text" name="first_name" id="first_name" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Maria" required>
                     </div>
                     <div class="col-span-3">
                         <label for="last_name" class="block mb-2 text-sm font-medium">Cognome</label>
-                        <input type="text" name="last_name" id="last_name" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Rossi" required>
+                        <input type="text" name="last_name" id="last_name" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Rossi" required>
                     </div>
                     <div class="col-span-3">
                         <label for="email" class="block mb-2 text-sm font-medium">Email</label>
-                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="maria_rossi@esempio.com" required>
+                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="maria_rossi@esempio.com" required>
                     </div>
                     <div class="col-span-3">
                         <label for="phone" class="block mb-2 text-sm font-medium">Numbero di cellulare</label>
-                        <input type="tel" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="+39 333 92 88 151 01" required>
+                        <input type="tel" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="+39 333 92 88 151 01" required>
                     </div>
                     <div class="col-span-6">
                         <label for="address_1" class="block mb-2 text-sm font-medium">Indirizzo di spedizione</label>
-                        <input type="text" name="address_1" id="address_1" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="Via Roma" required>
+                        <input type="text" name="address_1" id="address_1" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="Via Roma" required>
                     </div>
                     <div class="col-span-6">
                         <label for="address_2" class="block mb-2 text-sm font-medium">Indirizzo di fatturazione</label>
-                        <input type="text" name="address_2" id="address_2" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="Via Roma">
+                        <input type="text" name="address_2" id="address_2" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="Via Roma">
                     </div>
                     <div class="col-span-2">
                         <label for="city" class="block mb-2 text-sm font-medium">Città</label>
-                        <input type="text" name="city" id="city" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required>
+                        <input type="text" name="city" id="city" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required>
                     </div>
                     <div class="col-span-2">
                         <label for="state" class="block mb-2 text-sm font-medium">Provincia</label>
-                        <input type="text" name="state" id="state" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required>
+                        <input type="text" name="state" id="state" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required>
                     </div>
                     <div class="col-span-1">
                         <label for="postcode" class="block mb-2 text-sm font-medium">CAP</label>
-                        <input type="text" name="postcode" id="postcode" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="40100" required>
+                        <input type="text" name="postcode" id="postcode" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="40100" required>
                     </div>
                     <div class="col-span-1">
                         <label for="country" class="block mb-2 text-sm font-medium">Stato</label>
-                        <input type="text" name="country" id="country" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Italia" required>
+                        <input type="text" name="country" id="country" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Italia" required>
                     </div>
                 </div>
-                <button id="estractData" class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-next>
+                <button id="estractData" class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded text-sm px-5 py-2.5 text-center" data-next>
                     Prossimo step: informazioni di pagamento
                 </button>
             </div>
             <div data-step="1" class="hidden">
                 <h3 class="mb-4 text-lg font-medium leading-none">Step 2</h3>
-                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
+                <div class="w-full mx-auto rounded bg-white border border-gray-200 text-gray-800 font-light mb-6">
                     <div class="w-full p-3 border-b border-gray-200">
                         <div class="mb-5">
                             <label for="type1" class="flex items-center cursor-pointer">
@@ -106,27 +106,10 @@
                                         <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                                             <?php
                                             $data = [
-                                                "January",
-                                                "February",
-                                                "March",
-                                                "April",
-                                                "May",
-                                                "June",
-                                                "July",
-                                                "August",
-                                                "September",
-                                                "October",
-                                                "November",
-                                                "December",
+                                                "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",
                                             ];
                                             for ($i = 0; $i < count($data); $i++) {
-                                                echo '<option value="' .
-                                                    ($i + 1) .
-                                                    '">' .
-                                                    ($i + 1) .
-                                                    " - " .
-                                                    $data[$i] .
-                                                    "</option>";
+                                                echo '<option value="' . ($i + 1) . '">' . ($i + 1) . " - " . $data[$i] . "</option>";
                                             }
                                             ?>
                                         </select>
@@ -159,10 +142,10 @@
                     </div>
                 </div>
                 <div>
-                    <button class="uppercase text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-prev>
+                    <button class="uppercase text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded text-sm px-5 py-2.5 text-center" data-prev>
                         indietro
                     </button>
-                    <button class="uppercase text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" data-next>
+                    <button class="uppercase text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded text-sm px-5 py-2.5 text-center" data-next>
                         Paga ora
                     </button>
                     <div id="paypal-button-container"></div>
@@ -195,7 +178,7 @@
             <div>
                 <label class="nc-Label text-sm font-medium text-emerald-900 " data-nc-id="Label">Codice sconto</label>
                 <div class="mt-1.5 flex">
-                    <input type="text" class="focus:border-primary-300 focus:ring-primary-200 block h-10 w-full flex-1 rounded-2xl border-emerald-200 bg-white px-4 py-3 text-sm font-normal focus:ring focus:ring-opacity-50 disabled:bg-emerald-200   " /><button class="ml-3 flex w-24 items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-200/70 px-4 text-sm font-medium text-emerald-700 transition-colors hover:bg-emerald-100">
+                    <input type="text" class="focus:border-primary-300 focus:ring-primary-200 block h-10 w-full flex-1 rounded-2xl border-emerald-200 bg-white px-4 py-3 text-sm font-normal focus:ring focus:ring-opacity-50 disabled:bg-emerald-200" /><button class="ml-3 flex w-24 items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-200/70 px-4 text-sm font-medium text-emerald-700 transition-colors hover:bg-emerald-100">
                         Applica
                     </button>
                 </div>

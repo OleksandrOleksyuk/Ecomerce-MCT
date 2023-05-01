@@ -26,16 +26,24 @@ export default class Checkout extends ExecJS {
     e.preventDefault();
     const incrementor = e.target.matches("[data-next]") ? 1 : -1;
     if (!incrementor) return;
-    const inputs = this.formSteps[this.currentStep].querySelectorAll("input");
-    const allValid = [...inputs].every((input) => input.reportValidity());
+    const inputs = this.formSteps[this.currentStep].querySelectorAll("input[required]");
+    const allFieldsCompleted = this.checkAllFieldsCompleted(inputs);
     if (!(e.target.matches("[data-next]") || e.target.matches("[data-prev]"))) return;
-    if (allValid) {
+    if (allFieldsCompleted) {
       this.currentStep += incrementor;
       this.showCurrentStep();
       this.showColorStep();
     }
   };
-
+  checkAllFieldsCompleted(inputs) {
+    let allCompleted = true;
+    inputs.forEach((input) => {
+      if (!input.value) {
+        allCompleted = false;
+      }
+    });
+    return allCompleted;
+  }
   showCurrentStep() {
     this.formSteps.forEach((step, i) => {
       if (i === this.currentStep) step.classList.remove("hidden");
@@ -63,7 +71,13 @@ export default class Checkout extends ExecJS {
 
     cart.forEach((item) => {
       const { src, categories, name, qnt, price, idProduct, color, idVariant } = item;
-      this.dataCreateOrder.push({ productId: idProduct, productQnt: qnt, productColor: color, variantId: idVariant, imageSrc: src });
+      this.dataCreateOrder.push({
+        productId: idProduct,
+        productQnt: qnt,
+        productColor: color,
+        variantId: idVariant,
+        imageSrc: src,
+      });
       const finalPrice = (+qnt * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
@@ -100,14 +114,10 @@ export default class Checkout extends ExecJS {
                       <div class="col-span-2 pt-3">
                           <div class="text-gray-400">${qnt} x ${price}</div>
                       </div>
-                      <div class="mt-auto flex items-end justify-between pt-4 text-sm">
-                          <a href="##" class="text-primary-6000 hover:text-primary-500 relative z-10 mt-3 flex items-center font-medium"><span>Rimuovi</span></a>
-                      </div>
                     </div>
                 </div>
             </div>`;
     });
-    console.log(this.dataCreateOrder);
     document.querySelector("#checkContainer").innerHTML = html;
     document.querySelector("#checkSumPrice").innerHTML = `€ ${sumPrice.toFixed(2)}`;
     this.createPaypalButton(sumPrice.toFixed(2));
@@ -143,7 +153,9 @@ export default class Checkout extends ExecJS {
             const result = await this.createOrder({ ...formData, code: [...this.dataCreateOrder] });
             if (result) {
               // L'ordine è stato creato con successo
-              alert("Ordine creato con successo!");
+              this.currentStep += 1;
+              this.showCurrentStep();
+              this.showColorStep();
             } else {
               // Si è verificato un errore durante la creazione dell'ordine
               alert("Errore durante la creazione dell'ordine!", result);
