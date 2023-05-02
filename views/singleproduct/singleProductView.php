@@ -62,7 +62,7 @@ foreach ($product['gallery_images'] as $image) {
                 if (count($product['variations']) > 0) {
                 ?>
                     <div class="mt-5 <?= $product['variations'][0] ? '' : 'hidden'; ?>">
-                        <span class="font-semibold lg:text-lg">COLORE:</span> <span id="color" class="uppercase text-pink-500"><?= $product['variations'][0]['attributes']['attribute_pa_color']; ?> <span id="maxQnt"><?= $product['variations'][0]['attributes']['max_qty']; ?></span></span>
+                        <span class="font-semibold lg:text-lg">COLORE:</span> <span id="color" class="uppercase text-pink-500"><?= $product['variations'][0]['attributes']['attribute_pa_color']; ?></span>
                         <div id="colorSingleProduct" class="flex gap-2 flex-wrap">
                             <?php
                             foreach ($product['variations'] as $key => $value) {
