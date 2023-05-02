@@ -141,10 +141,13 @@ input[type="checkbox"] {
 
 /* Disattiva il bordo sui link quando selezionati */
 a:focus,
-/* button:focus, */
+button:focus,
 input:focus,
 div:focus {
   outline: none;
+}
+button:hover {
+  background-color: transparent;
 }
 
 .p-singleProduct {

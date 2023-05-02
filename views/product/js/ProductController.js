@@ -10,6 +10,10 @@ export default class ProductController extends ExecJs {
     //...
     this.animationFadeInCard();
     this.setupCategoryFilter();
+    this.toggleMenuVisibility();
+    this.toggleBrandVisibility();
+    this.toggleCategoryVisibility();
+    this.filterOrder();
   }
   async animationFadeInCard() {
     let delay = 100;
@@ -177,6 +181,7 @@ export default class ProductController extends ExecJs {
       });
     });
   }
+
   updateSelectedCategoriesAndBrands(selCat, selBrands, checkeds) {
     checkeds.forEach((checkbox) => {
       const parent = checkbox.getAttribute("data-parent");
@@ -185,6 +190,7 @@ export default class ProductController extends ExecJs {
       if (children) selCat.push(children);
     });
   }
+
   showMatchingProductCards(selCat, selBrands) {
     [...this.productCards].forEach((card) => {
       const brand = card.getAttribute("data-parent");
@@ -194,5 +200,55 @@ export default class ProductController extends ExecJs {
       } else card.classList.add("card--hidden");
     });
     this.animationFadeInCard();
+  }
+
+  toggleMenuVisibility() {
+    const menuButtonElement = document.querySelector("#menu-button");
+    const menuElement = document.querySelector("#menu-button + div");
+    const handleMenuButtonClick = () => menuElement.classList.toggle("hidden");
+    menuButtonElement.addEventListener("click", handleMenuButtonClick);
+  }
+  toggleBrandVisibility() {
+    const menuButtonElement = document.querySelector('button[aria-controls="filter-brand-0"]');
+    const svgPlus = menuButtonElement.querySelector("svg.plus");
+    const svgMin = menuButtonElement.querySelector("svg.min");
+    const menuElement = document.querySelector("div#filter-brand-0");
+    const handleMenuButtonClick = () => {
+      menuElement.classList.toggle("hidden");
+      svgPlus.classList.toggle("hidden");
+      svgMin.classList.toggle("hidden");
+    };
+    menuButtonElement.addEventListener("click", handleMenuButtonClick);
+  }
+  toggleCategoryVisibility() {
+    const menuButtonElement = document.querySelector('button[aria-controls="filter-category-0"]');
+    const svgPlus = menuButtonElement.querySelector("svg.plus");
+    const svgMin = menuButtonElement.querySelector("svg.min");
+    const menuElement = document.querySelector("div#filter-category-0");
+    const handleMenuButtonClick = () => {
+      menuElement.classList.toggle("hidden");
+      svgPlus.classList.toggle("hidden");
+      svgMin.classList.toggle("hidden");
+    };
+    menuButtonElement.addEventListener("click", handleMenuButtonClick);
+  }
+  filterOrder() {
+    const lowPrice = document.querySelector("#lowPrice");
+    const container = document.querySelector("#contProd");
+    console.log(this.productCards);
+    lowPrice.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      container.innerHTML = "";
+      this.productCards = [...this.productCards].sort((a, b) => {
+        const priceA = +a.querySelector("#priceSingleElement").textContent.trim().slice(2);
+        const priceB = +b.querySelector("#priceSingleElement").textContent.trim().slice(2);
+        if (priceA > priceB) return 1;
+        else if (priceA < priceB) return -1;
+        else return 0;
+      });
+      this.productCards.forEach((card) => container.appendChild(card));
+      // this.animationFadeInCard();
+      console.log(this.productCards);
+    });
   }
 }

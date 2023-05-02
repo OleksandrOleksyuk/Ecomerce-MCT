@@ -19,7 +19,7 @@ $product = $params['params'];
                     </p>
                 </div>
                 <div class="">
-                    <h3 class="text-4xl font-semibold text-emerald-600 py-2">
+                    <h3 id="priceSingleElement" class="text-4xl font-semibold text-emerald-600 py-2">
                         <?= '€ ' . $product['price']; ?>
                     </h3>
                     <a href="<?= $product['link']; ?>" class="">
