@@ -33,12 +33,10 @@ $product_list = render_products(10); ?>
         </div>
     </header>
     <main class="space-y-20">
-        <!-- welcome phrase -->
         <section id="welcome" class="FadeDown bg-emerald-50 py-5 flex flex-col items-center px-5 md:px-10">
             <div class="flex flex-col md:grid md:grid-cols-3 text-left py-5 w-11/12 mx-auto max-w-7xl">
                 <div class="col-span-1 p-2 lg:p-5">
                     <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl">Sei un <span class="text-emerald-600 font-semibold">creativo</span> alla ricerca di prodotti <span class="text-emerald-600 font-semibold"> unici</span> per dare libero sfogo alla tua<span class="text-emerald-600 font-semibold"> fantasia</span>?</p>
-
                 </div>
                 <div class="col-span-2 p-2 lg:p-5">
                     <p class="lg:text-lg xl:text-xl mb-5">Da Merceria Creativa Tania troverai tutto ciò di cui hai bisogno per dare vita ai tuoi progetti di <span class="font-bold text-emerald-600">cucito</span> e <span class="font-bold text-emerald-600">sartoria</span>, dai tessuti di <span class="font-bold text-emerald-600">alta qualità</span> ai bottoni <span class="font-bold text-emerald-600">esclusivi</span> e agli accessori più <span class="font-bold text-emerald-600">ricercati</span>. Siamo qui per aiutarti a dare forma alle tue idee e a creare capi unici e sorprendenti.</p>
@@ -141,7 +139,6 @@ $product_list = render_products(10); ?>
                 </div>
             </div>
         </section>
-        <!-- news letter -->
         <section class="section opacity-0 translate-y-52 duration-1000 w-11/12 max-w-7xl mx-auto hidden">
             <?= do_shortcode("[views section=general name=newsletterView]") ?>
         </section>

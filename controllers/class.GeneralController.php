@@ -86,6 +86,9 @@ class GeneralController extends UtilsController
         case 'about':
           $section = 'about';
           break;
+        case 'blog':
+          $section = 'blog';
+          break;
       }
       return $section;
     } catch (Exception $e) {
