@@ -106,10 +106,27 @@
                                         <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                                             <?php
                                             $data = [
-                                                "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",
+                                                "January",
+                                                "February",
+                                                "March",
+                                                "April",
+                                                "May",
+                                                "June",
+                                                "July",
+                                                "August",
+                                                "September",
+                                                "October",
+                                                "November",
+                                                "December",
                                             ];
                                             for ($i = 0; $i < count($data); $i++) {
-                                                echo '<option value="' . ($i + 1) . '">' . ($i + 1) . " - " . $data[$i] . "</option>";
+                                                echo '<option value="' .
+                                                    ($i + 1) .
+                                                    '">' .
+                                                    ($i + 1) .
+                                                    " - " .
+                                                    $data[$i] .
+                                                    "</option>";
                                             }
                                             ?>
                                         </select>
@@ -118,7 +135,18 @@
                                 <div class="px-2 w-1/4">
                                     <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                                         <?php
-                                        $data = ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029"];
+                                        $data = [
+                                            "2020",
+                                            "2021",
+                                            "2022",
+                                            "2023",
+                                            "2024",
+                                            "2025",
+                                            "2026",
+                                            "2027",
+                                            "2028",
+                                            "2029",
+                                        ];
                                         for ($i = 0; $i < count($data); $i++) {
                                             echo '<option value="' . $data[$i] . '">' . $data[$i] . "</option>";
                                         }

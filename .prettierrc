@@ -1,0 +1,7 @@
+{
+  "printWidth": 120, // Larghezza massima della riga
+  "tabWidth": 4, // Numero di spazi per ciascun livello di rientro
+  "useTabs": false, // Utilizza gli spazi invece dei tab per l'indentazione
+  "semi": true, // Utilizza il punto e virgola alla fine di ogni istruzione
+  "singleQuote": false
+}

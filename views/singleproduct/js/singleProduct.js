@@ -59,7 +59,17 @@ export default class SingleProduct extends ExecJS {
       const img = document.querySelector("#gallerySingle > img");
       const imgBig = document.querySelector("#imgFirstSimple > img");
       imgBig.classList.add("w-64", "h-64", "sm:w-96", "sm:h-96", "mb-5", "rounded-lg", "p-2", "object-cover");
-      img.classList.add("w-14", "h-14", "sm:w-20", "sm:h-20", "lg:w-24", "lg:h-24", "rounded-lg", "object-cover", "mt-2");
+      img.classList.add(
+        "w-14",
+        "h-14",
+        "sm:w-20",
+        "sm:h-20",
+        "lg:w-24",
+        "lg:h-24",
+        "rounded-lg",
+        "object-cover",
+        "mt-2"
+      );
       this.changeImageByGallery("#imgFirstSimple > img", "#gallerySingle img");
     } else {
       this.changeImageByColor();
@@ -90,7 +100,7 @@ export default class SingleProduct extends ExecJS {
   swiperBestProducts() {
     this.animationFadeInCard();
     document.addEventListener("DOMContentLoaded", () => {
-      const swiper = new Swiper(".swiper", {
+      const swiper = new Swiper("#swiperSingleProduct", {
         slidesPerView: "auto",
         spaceBetween: 30,
         loop: true,

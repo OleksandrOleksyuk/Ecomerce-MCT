@@ -4,6 +4,7 @@ require_once "controllers.php";
 function add_custom_rewrite_tags()
 {
     add_rewrite_tag("%product_id%", "([^&]+)");
+    add_rewrite_tag("%blog_id%", "([^&]+)");
 }
 
 add_action("init", "add_custom_rewrite_tags");
@@ -131,7 +132,7 @@ function render_single_product($product_id)
         }
     }
 
-    if ($product->is_type('variable')) {
+    if ($product->is_type("variable")) {
         // prodotto variabile
         $variations = $product->get_available_variations();
         $variation_data = [];
@@ -143,7 +144,7 @@ function render_single_product($product_id)
                 "attributes" => $variation["attributes"],
                 "price" => $variation["display_price"],
                 "image" => "",
-                'max_qty' => $variation['max_qty'], // Aggiungi la quantità disponibile per ogni variante
+                "max_qty" => $variation["max_qty"], // Aggiungi la quantità disponibile per ogni variante
                 // 'stock_status' => $variation['is_in_stock'] ? 'disponibile' : 'non disponibile' // Aggiungi lo stato di disponibilità della variante
             ];
 

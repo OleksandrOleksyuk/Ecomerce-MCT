@@ -1,13 +1,13 @@
 <?php
 class UtilsController
 {
-  function __construct()
-  {
-    $this->Pippo();
-  }
+    function __construct()
+    {
+        $this->Pippo();
+    }
 
-  function Pippo()
-  {
-    echo json_encode(['pippo']);
-  }
+    function Pippo()
+    {
+        echo json_encode(["pippo"]);
+    }
 }

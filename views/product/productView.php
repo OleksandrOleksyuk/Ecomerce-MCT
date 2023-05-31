@@ -1,13 +1,9 @@
-<?= do_shortcode('[views section=general name=navbarView]'); ?>
-<?php
-$product_list = render_products();
-?>
-<div id="product" class="bg-white">
-    <div>
+<?= do_shortcode("[views section=general name=navbarView]") ?>
+<?php $product_list = render_products(); ?>
+    <div id="product" class="bg-white">
         <main class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-            <div class="flex items-baseline justify-between border-b border-gray-400 pb-6 pt-24">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900">Prodotti</h1>
-
+            <div class="flex items-baseline justify-between border-b border-gray-400 pb-6 pt-16">
+                <h1 class="text-3xl md:text-5xl font-semibold text-left py-5 text-emerald-900 capitalize">I nostri prodotti</h1>
                 <div class="flex items-center">
                     <div class="relative inline-block text-left">
 
@@ -47,15 +43,15 @@ $product_list = render_products();
                                 <button type="button" class="flex w-full items-center justify-between bg-white hover:bg-gray-100 py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-brand-0" aria-expanded="false">
                                     <span class="font-medium text-gray-900 text-lg">Brand</span>
                                     <span class="ml-6 flex items-center">
-                                        <!-- Expand icon, show/hide based on section open state. -->
-                                        <svg class="h-5 w-5 plus hidden" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                                        </svg>
+                                    <!-- Expand icon, show/hide based on section open state. -->
+                                    <svg class="h-5 w-5 plus hidden" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                                    </svg>
                                         <!-- Collapse icon, show/hide based on section open state. -->
-                                        <svg class="h-5 w-5 min" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd" />
-                                        </svg>
-                                    </span>
+                                    <svg class="h-5 w-5 min" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
                                 </button>
                             </h3>
                             <!-- Filter section, show/hide based on section state. -->
@@ -65,15 +61,16 @@ $product_list = render_products();
                                     $displayed_parents = []; // array vuoto per tenere traccia dei valori già visualizzati
                                     foreach ($product_list as $key => $value) {
                                         // verifica se il valore è già stato visualizzato
-                                        if (!in_array($value['parent'], $displayed_parents)) {
+                                        if (!in_array($value["parent"], $displayed_parents)) {
                                             // aggiungi il valore attuale all'array di valori visualizzati
-                                            $displayed_parents[] = $value['parent'];
-                                    ?>
+                                            $displayed_parents[] = $value["parent"]; ?>
                                             <div class="flex items-center">
-                                                <input data-type="categories" data-parent="<?= strtolower($value['data-parent']); ?>" id="filter-brand-1<?= $key; ?>" name="color[]" value="white" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
-                                                <label for="filter-brand-1<?= $key; ?>" class="ml-3 text-sm text-gray-600"><?= $value['parent']; ?></label>
+                                                <input data-type="categories" data-parent="<?= strtolower(
+                                                    $value["data-parent"]
+                                                ) ?>" id="filter-brand-1<?= $key ?>" name="color[]" value="white" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
+                                                <label for="filter-brand-1<?= $key ?>" class="ml-3 text-sm text-gray-600"><?= $value["parent"] ?></label>
                                             </div>
-                                    <?php
+                                            <?php
                                         }
                                     }
                                     ?>
@@ -86,15 +83,15 @@ $product_list = render_products();
                                 <button type="button" class="flex w-full items-center justify-between bg-white hover:bg-gray-100 py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-category-0" aria-expanded="false">
                                     <span class="font-medium text-gray-900 text-lg">Category</span>
                                     <span class="ml-6 flex items-center">
-                                        <!-- Expand icon, show/hide based on section open state. -->
-                                        <svg class="h-5 w-5 plus hidden" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                                        </svg>
+                                    <!-- Expand icon, show/hide based on section open state. -->
+                                    <svg class="h-5 w-5 plus hidden" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                                    </svg>
                                         <!-- Collapse icon, show/hide based on section open state. -->
-                                        <svg class="h-5 w-5 min" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd" />
-                                        </svg>
-                                    </span>
+                                    <svg class="h-5 w-5 min" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
                                 </button>
                             </h3>
                             <!-- Filter section, show/hide based on section state. -->
@@ -104,17 +101,20 @@ $product_list = render_products();
                                     $displayed_children = []; // array vuoto per tenere traccia dei valori già visualizzati
                                     foreach ($product_list as $key => $value) {
                                         // verifico se il mio array non è vuoto per evitare che mi dia errore
-                                        if (!empty($value['children'])) {
+                                        if (!empty($value["children"])) {
                                             // verifica se il valore è già stato visualizzato
-                                            if (!in_array($value['children'][0], $displayed_children)) {
+                                            if (!in_array($value["children"][0], $displayed_children)) {
                                                 // aggiungi il valore attuale all'array di valori visualizzati
-                                                $displayed_children[] = $value['children'][0];
-                                    ?>
+                                                $displayed_children[] = $value["children"][0]; ?>
                                                 <div class="flex items-center">
-                                                    <input data-type="subcategories" data-parent="<?= strtolower($value['data-parent']); ?>" data-children="<?= strtolower($value['data-children']); ?>" id="filter-category-10<?= $key; ?>" name="category[]" value="new-arrivals" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
-                                                    <label for="filter-category-10<?= $key; ?>" class="ml-3 text-sm text-gray-600"><?= $value['children'][0]; ?></label>
+                                                    <input data-type="subcategories" data-parent="<?= strtolower(
+                                                        $value["data-parent"]
+                                                    ) ?>" data-children="<?= strtolower(
+                                                        $value["data-children"]
+                                                    ) ?>" id="filter-category-10<?= $key ?>" name="category[]" value="new-arrivals" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
+                                                    <label for="filter-category-10<?= $key ?>" class="ml-3 text-sm text-gray-600"><?= $value["children"][0] ?></label>
                                                 </div>
-                                    <?php
+                                                <?php
                                             }
                                         }
                                     }
@@ -127,21 +127,27 @@ $product_list = render_products();
                     <div id="contProd" class="flex flex-wrap items-center justify-evenly w-full relative lg:col-span-4">
                         <!-- Your content -->
                         <?php
+                        shuffle($product_list);
                         foreach ($product_list as $product) {
                             echo $this->SetGeneralsShortCodesParams([
-                                'section' => 'general',
-                                'name' => 'cardView',
-                                'params' => $product
+                                "section" => "general",
+                                "name" => "cardView",
+                                "params" => $product,
                             ]);
-                        }
-                        ?>
+                        } ?>
                     </div>
 
                 </div>
             </section>
         </main>
+        <a href="#product" class="scroll-smooth">
+            <div class="fixed bottom-0 right-0 z-100 flex p-3 m-10 text-xl rounded-lg bg-pink-600 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+        </a>
     </div>
-</div>
 
-<!-- footer -->
-<?= do_shortcode('[views section=footer name=footerView]'); ?>
+    <!-- footer -->
+<?= do_shortcode("[views section=footer name=footerView]") ?>

@@ -20,7 +20,7 @@
                 <strong class="font-semibold">
                     <?php
                     $date = new DateTime();
-                    $formatter = new IntlDateFormatter('it_IT', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+                    $formatter = new IntlDateFormatter("it_IT", IntlDateFormatter::LONG, IntlDateFormatter::NONE);
                     $data = $formatter->format($date);
                     echo $data;
                     ?>
@@ -47,21 +47,34 @@
                     </button>
                 </div>
                 <div class="flex items-center">
-                    <a href="<?= get_link_path('home'); ?>"><img class="hidden h-20 w-auto md:block" src="<?= get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
+                    <a href="<?= get_link_path(
+                        "home"
+                    ) ?>"><img class="hidden h-20 w-auto md:block" src="<?= get_image_path(
+                            "logo/logo.png"
+                        ) ?>" alt="Merceria creativa tania logo"></a>
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-center">
                     <div class="flex items-center">
-                        <a href="<?= get_link_path('home'); ?>"><img class="h-12 block w-auto md:hidden " src="<?= get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
+                        <a href="<?= get_link_path(
+                            "home"
+                        ) ?>"><img class="h-12 block w-auto md:hidden " src="<?= get_image_path(
+                                "logo/logo.png"
+                            ) ?>" alt="Merceria creativa tania logo"></a>
                     </div>
                     <div class="hidden md:block">
                         <div class="flex space-x-4 gap-5">
                             <?php
                             $elements = [
-                                "home" => "Home", "product" => "Prodotti", "about" => "Chi sono",
+                                "home" => "Home",
+                                "product" => "Prodotti",
+                                "about" => "Chi sono",
                             ];
                             foreach ($elements as $key => $value) {
-                                $path = get_link_path($key);
-                                echo "<li class='text-emerald-900 hover:text-pink-500 md:text-2xl hover:text-3xl transition-all duration-300 ease-linear hover:font-semibold'><a href='$path' aria-current='page'>$value</a></li>";
+                                $path = get_link_path($key); ?>
+                                <li class='text-emerald-900 hover:text-pink-500 md:text-2xl hover:text-3xl transition-all duration-300 ease-linear hover:font-semibold'>
+                                    <a href='<?= $path ?>' aria-current='page'><?= $value ?></a>
+                                </li>
+                                <?php
                             }
                             ?>
                         </div>
@@ -95,7 +108,9 @@
                                         <span><span>Subtotale</span><span class="block text-sm font-normal text-slate-500">Spedizione e tasse vengono calcolate al checkout.</span></span><span id="sumPrice" class="">$299.00</span>
                                     </p>
                                     <div class="mt-5 flex space-x-2">
-                                        <a class="btnStyle w-full text-center" href="<?= get_link_path("checkout") ?>">Check out</a>
+                                        <a class="btnStyle w-full text-center" href="<?= get_link_path(
+                                            "checkout"
+                                        ) ?>">Check out</a>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +123,10 @@
             <div class="space-y-1 px-2 pb-3 pt-2 w-full">
                 <?php
                 $elements = [
-                    "home" => "Home", "product" => "Prodotti", "about" => "Chi sono",
+                    "home" => "Home",
+                    "product" => "Prodotti",
+                    "about" => "Chi sono",
+                    "blog" => "Blog",
                 ];
                 foreach ($elements as $key => $value) {
                     $path = get_link_path($key);
@@ -119,4 +137,4 @@
         </div>
     </nav>
 </header>
-<?= do_shortcode('[views section=general name=sidebar]'); ?>
+<?= do_shortcode("[views section=general name=sidebar]") ?>

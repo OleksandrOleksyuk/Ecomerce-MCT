@@ -15,32 +15,39 @@ Last modified: 20/02/2023 - oleksandr
 
 /* Dichiarazioni di stile personalizzate */
 @layer components {
-  .headerWidth {
-    @apply section mx-auto w-11/12 max-w-7xl translate-y-52 opacity-0 duration-1000;
-  }
-  .activeProduct {
-    @apply outline outline-1 outline-offset-2 outline-pink-500;
-  }
-  .btnStyle {
-    @apply rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-700 px-8 py-3 text-white transition-colors duration-500 ease-in-out hover:text-white hover:opacity-90;
-  }
-  .active {
-    @apply text-3xl font-semibold text-pink-500;
-  }
+    .headerWidth {
+        @apply section mx-auto w-11/12 max-w-7xl translate-y-52 opacity-0 duration-1000;
+    }
+
+    .activeProduct {
+        @apply outline outline-1 outline-offset-2 outline-pink-500;
+    }
+
+    .btnStyle {
+        @apply rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-700 px-8 py-3 text-white transition-colors duration-500 ease-in-out hover:text-white hover:opacity-90;
+    }
+
+    .active {
+        @apply text-3xl font-semibold text-pink-500;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* Stile per le immagini all'interno di #containerImageCard */
 #containerImageCard img {
-  object-fit: cover;
-  border-radius: 5px;
-  height: 12rem;
-  width: auto;
-  transition: all 0.5s ease-in-out;
+    object-fit: cover;
+    border-radius: 5px;
+    height: 12rem;
+    width: auto;
+    transition: all 0.5s ease-in-out;
 }
 
 /* Stile per l'animazione delle immagini quando il mouse si posiziona sulla card */
 .cardView:hover #containerImageCard img {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 /* Nascondo le sezioni inutili di WordPress */
@@ -50,7 +57,7 @@ section.storefront-product-section,
 #masthead,
 header.entry-header,
 footer#colophon {
-  display: none;
+    display: none;
 }
 
 /* Altezza a 100% per #page */
@@ -60,7 +67,7 @@ footer#colophon {
 
 /* Larghezza al 100% per #primary */
 div#primary {
-  width: 100%;
+    width: 100%;
 }
 
 /* Reset dei margini, padding e border per molti elementi HTML */
@@ -90,16 +97,16 @@ label,
 nav,
 section,
 a {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  max-width: 100%;
-  text-decoration: none !important;
-  color: inherit;
-  list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    max-width: 100%;
+    text-decoration: none !important;
+    color: inherit;
+    list-style: none;
 }
 
 /* Stile per rimuovere i margini superiori di alcuni elementi HTML */
@@ -127,13 +134,14 @@ form + h2,
 form + header h2,
 form + h3,
 form + h4 {
-  margin: 0 !important;
+    margin: 0 !important;
 }
 
 .section {
-  transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
-/* 
+
+/*
 input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
@@ -144,87 +152,93 @@ a:focus,
 button:focus,
 input:focus,
 div:focus {
-  outline: none;
+    outline: none;
 }
+
 button:hover {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .p-singleProduct {
-  font-weight: 800;
-  margin: 0.8rem 0;
+    font-weight: 800;
+    margin: 0.8rem 0;
 }
 
 .swiper-slide {
-  width: auto;
-  height: auto;
+    width: auto;
+    height: auto;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-128px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-128px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 @keyframes fadeOut {
-  from {
-    opacity: 0;
-    transform: translateY(128px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(128px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
+
 @keyframes fadeLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-300px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
+    from {
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
+
 @keyframes fadeRight {
-  from {
-    opacity: 0;
-    transform: translateX(300px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
+    from {
+        opacity: 0;
+        transform: translateX(300px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
 
 .FadeUp {
-  opacity: 0;
-  transform: translateY(0px);
-  animation: fadeIn 1s forwards;
+    opacity: 0;
+    transform: translateY(0px);
+    animation: fadeIn 1s forwards;
 }
+
 .FadeDown {
-  opacity: 0;
-  transform: translateY(0px);
-  animation: fadeOut 1s forwards;
+    opacity: 0;
+    transform: translateY(0px);
+    animation: fadeOut 1s forwards;
 }
+
 .FadeRight {
-  opacity: 0;
-  transform: translateX(0px);
-  animation: fadeRight 1s forwards;
+    opacity: 0;
+    transform: translateX(0px);
+    animation: fadeRight 1s forwards;
 }
+
 .FadeLeft {
-  opacity: 0;
-  transform: translateX(0px);
-  animation: fadeLeft 1s forwards;
+    opacity: 0;
+    transform: translateX(0px);
+    animation: fadeLeft 1s forwards;
 }
 
 .card--hidden {
-  display: none;
+    display: none;
 }
 
 /* .hidden {

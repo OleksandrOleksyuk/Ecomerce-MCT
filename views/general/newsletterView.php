@@ -26,6 +26,8 @@
         </form>
     </div>
     <div class="max-w-[420px]">
-        <img class="object-cover w-[420px] h-[420px]" src="<?= get_image_path('foto-borsa.jpg'); ?>" alt="" style="color: transparent;">
+        <img class="object-cover w-[420px] h-[420px]" src="<?= get_image_path(
+            "foto-borsa.jpg"
+        ) ?>" alt="" style="color: transparent;">
     </div>
 </div>
