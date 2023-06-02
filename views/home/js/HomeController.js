@@ -8,16 +8,40 @@ export default class HomeController extends ExecJs {
     this.ReviewsController = new ReviewsController();
     this.revealSections();
   }
-  swiperBestProducts() {
-    new Swiper("#swiper--bestSellingProducts", {
+  // swiperBestProducts() {
+  //   new Swiper("#swiper--bestSellingProducts", {
+  //     slidesPerView: "auto",
+  //     spaceBetween: 30,
+  //     loop: true,
+  //     autoplay: { delay: 3000, disableOnInteraction: false },
+  //     pauseOnHover: true,
+  //   });
+  //   this.animationFadeInCard();
+  // }
+
+  async swiperBestProducts() {
+    await this.animationFadeInCard();
+    const swiper = new Swiper("#swiper--bestSellingProducts", {
       slidesPerView: "auto",
       spaceBetween: 30,
       loop: true,
-      autoplay: { delay: 3000, disableOnInteraction: false },
-      pauseOnHover: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pauseOnHover: false, // Disabilita la pausa predefinita onHover di Swiper
     });
-    this.animationFadeInCard();
+
+    const swiperContainer = document.querySelector("#swiper--bestSellingProducts");
+    swiperContainer.addEventListener("mouseenter", () => {
+      swiper.autoplay.stop(); // Ferma la riproduzione automatica durante l'hover
+    });
+
+    swiperContainer.addEventListener("mouseleave", () => {
+      swiper.autoplay.start(); // Riprende la riproduzione automatica dopo l'hover
+    });
   }
+
   async animationFadeInCard() {
     let delay = 300;
     const allCard = document.querySelectorAll("#swiper--bestSellingProducts .swiper-slide");

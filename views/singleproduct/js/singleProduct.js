@@ -96,8 +96,8 @@ export default class SingleProduct extends ExecJS {
       setTimeout(() => card.classList.add("FadeUp"), delay * (index + 1));
     });
   }
-  swiperSimilarProduct() {
-    this.animationFadeInCard();
+  async swiperSimilarProduct() {
+    await this.animationFadeInCard();
     document.addEventListener("DOMContentLoaded", () => {
       const swiper = new Swiper("#swiperSingleProduct", {
         slidesPerView: "auto",
@@ -107,7 +107,16 @@ export default class SingleProduct extends ExecJS {
           delay: 3000,
           disableOnInteraction: false,
         },
-        pauseOnHover: true,
+        pauseOnHover: false, // Disabilita la pausa predefinita onHover di Swiper
+      });
+
+      const swiperContainer = document.querySelector("#swiperSingleProduct");
+      swiperContainer.addEventListener("mouseenter", () => {
+        swiper.autoplay.stop(); // Ferma la riproduzione automatica durante l'hover
+      });
+
+      swiperContainer.addEventListener("mouseleave", () => {
+        swiper.autoplay.start(); // Riprende la riproduzione automatica dopo l'hover
       });
     });
   }
