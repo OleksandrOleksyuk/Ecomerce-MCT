@@ -6,7 +6,6 @@ export default class SingleProduct extends ExecJS {
     this.changeImageOnClick();
     this.appendProduct();
     this.counter();
-    // this.renderSidebar();
     this.swiperBestProducts();
   }
   // Funzione per cambiare l'immagine del prodotto in base al colore selezionato
