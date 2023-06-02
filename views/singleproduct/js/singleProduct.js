@@ -6,7 +6,7 @@ export default class SingleProduct extends ExecJS {
     this.changeImageOnClick();
     this.appendProduct();
     this.counter();
-    this.swiperBestProducts();
+    this.swiperSimilarProduct();
   }
   // Funzione per cambiare l'immagine del prodotto in base al colore selezionato
   changeImageByColor() {
@@ -96,7 +96,7 @@ export default class SingleProduct extends ExecJS {
       setTimeout(() => card.classList.add("FadeUp"), delay * (index + 1));
     });
   }
-  swiperBestProducts() {
+  swiperSimilarProduct() {
     this.animationFadeInCard();
     document.addEventListener("DOMContentLoaded", () => {
       const swiper = new Swiper("#swiperSingleProduct", {

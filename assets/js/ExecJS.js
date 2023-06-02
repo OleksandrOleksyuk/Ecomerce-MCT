@@ -91,9 +91,9 @@ export default class ExecJs {
         const src = container.querySelector("#imgFirstSimple > img").src;
         data = { ...data, src };
       }
-
       this.saveCartToLocalStorage(data);
       this.renderSidebar();
+      quantityEl.textContent = "1";
     });
   }
 

@@ -128,12 +128,12 @@ foreach ($product["gallery_images"] as $image) {
         </div>
     </section>
     <section class="py-5 flex flex-col items-center px-5 md:p-10">
-        <div class="flex flex-col max-w-7xl mx-auto overflow-hidden w-11/12">
+        <div class="flex flex-col max-w-7xl mx-auto w-11/12">
             <div class="flex flex-col">
-                <div class="flex flex-col items-start md:grid md:grid-cols-2 md:px-5 md:items-center text-left py-5">
-                    <h2 class="text-2xl font-semibold text-emerald-600 md:text-3xl lg:text-4xl">Prodotti simili</h2>
+                <div class="md:px-5 py-5">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-left py-5">Prodotti correlati</h2>
                 </div>
-                <div id="swiperSingleProduct" class="swiper w-full h-full">
+                <div id="swiperSingleProduct" class="swiper w-full h-full" style="overflow: visible !important;">
                     <div class="swiper-wrapper flex">
                         <?php
                         // ciclo foreach per stampare i prodotti
@@ -153,7 +153,5 @@ foreach ($product["gallery_images"] as $image) {
         </div>
     </section>
 </main>
-<!-- news letter -->
-<?= do_shortcode("[views section=general name=newsletterView]") ?>
 <!-- footer -->
 <?= do_shortcode("[views section=footer name=footerView]") ?>
