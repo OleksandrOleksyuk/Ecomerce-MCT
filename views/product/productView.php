@@ -18,9 +18,9 @@
                             <div class="py-1">
                                 <!-- <div class="block px-4 py-2 text-sm hover:bg-emerald-500 cursor-pointer hover:text-white font-medium text-gray-900" id="menu-item-0">Più popolari</div> -->
                                 <!-- <div class="block px-4 py-2 text-sm hover:bg-emerald-500 cursor-pointer hover:text-white text-gray-500" id="menu-item-1">Migliori recensioni</div> -->
-                                <div class="block px-4 py-2 text-sm hover:bg-emerald-500 cursor-pointer hover:text-white text-gray-500" id="newProduct">Novità</div>
                                 <div class="block px-4 py-2 text-sm hover:bg-emerald-500 cursor-pointer hover:text-white text-gray-500" id="lowPrice">Prezzo: dal più basso</div>
                                 <div class="block px-4 py-2 text-sm hover:bg-emerald-500 cursor-pointer hover:text-white text-gray-500" id="hightPrice">Prezzo: dal più alto</div>
+                                <div class="block px-4 py-2 text-sm hover:bg-emerald-500 cursor-pointer hover:text-white text-gray-500" id="reset">Resetta i filtri</div>
                             </div>
                         </div>
                     </div>

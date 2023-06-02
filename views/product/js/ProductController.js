@@ -5,7 +5,7 @@ export default class ProductController extends ExecJs {
   constructor() {
     super();
     this.Utils = new Utils();
-    this.productCards = document.querySelectorAll("#contProd > div");
+    this.productCards = [...document.querySelectorAll("#contProd > div")];
     this.categoryCheckboxes = document.querySelectorAll("#product input[data-type='categories']");
     this.subcategoryCheckboxes = document.querySelectorAll("#product input[data-type='subcategories']");
     this.animationFadeInCard();
@@ -18,7 +18,7 @@ export default class ProductController extends ExecJs {
 
   async animationFadeInCard() {
     const delay = 100;
-    this.newArr = [...this.productCards].filter((card) => {
+    this.newArr = this.productCards.filter((card) => {
       if (card.classList.contains("card--hidden")) {
         card.classList.remove("FadeUp");
         return false;
@@ -34,7 +34,7 @@ export default class ProductController extends ExecJs {
       input.addEventListener("change", (evt) => {
         evt.preventDefault();
         // hide all cards
-        [...this.productCards].forEach((card) => card.classList.add("card--hidden"));
+        this.productCards.forEach((card) => card.classList.add("card--hidden"));
         // get selected categories and brands
         const selCat = [];
         const selBrands = [];
@@ -56,7 +56,7 @@ export default class ProductController extends ExecJs {
         // show all cards if no categories or brands are selected
         console.log(checkeds);
         if (checkeds.length === 0) {
-          [...this.productCards].forEach((card) => card.classList.remove("card--hidden"));
+          this.productCards.forEach((card) => card.classList.remove("card--hidden"));
           this.animationFadeInCard();
           this.disableIrrelevantSubcategories(selBrands);
           return;
@@ -90,7 +90,7 @@ export default class ProductController extends ExecJs {
   }
 
   showMatchingProductCards(selCat, selBrands) {
-    [...this.productCards].forEach((card) => {
+    this.productCards.forEach((card) => {
       const brand = card.getAttribute("data-parent");
       const category = card.getAttribute("data-children");
       if ((selCat.length === 0 || selCat.includes(category)) && selBrands.includes(brand)) {
@@ -135,21 +135,34 @@ export default class ProductController extends ExecJs {
 
   filterOrder() {
     const lowPrice = document.querySelector("#lowPrice");
+    const hightPrice = document.querySelector("#hightPrice");
+    const reset = document.querySelector("#reset");
     const container = document.querySelector("#contProd");
     console.log(this.productCards);
-    lowPrice.addEventListener("click", (evt) => {
-      evt.preventDefault();
-      container.innerHTML = "";
-      this.productCards = [...this.productCards].sort((a, b) => {
-        const priceA = +a.querySelector("#priceSingleElement").textContent.trim().slice(2);
-        const priceB = +b.querySelector("#priceSingleElement").textContent.trim().slice(2);
-        if (priceA > priceB) return 1;
-        else if (priceA < priceB) return -1;
-        else return 0;
-      });
-      this.productCards.forEach((card) => container.appendChild(card));
-      // this.animationFadeInCard();
-      console.log(this.productCards);
-    });
+    [lowPrice, hightPrice, reset].forEach((btnFilter) =>
+      btnFilter.addEventListener("click", (evt) => {
+        evt.preventDefault();
+        container.innerHTML = "";
+        if (evt.target === reset) {
+          this.productCards = this.productCards.sort(() => Math.random() - 0.5);
+        } else if (evt.target === lowPrice || evt.target === hightPrice) {
+          this.productCards = this.productCards.sort((a, b) => {
+            const priceA = +a.querySelector("#priceSingleElement").textContent.trim().slice(2);
+            const priceB = +b.querySelector("#priceSingleElement").textContent.trim().slice(2);
+            if (evt.target === lowPrice) {
+              if (priceA > priceB) return 1;
+              else if (priceA < priceB) return -1;
+              else return 0;
+            } else if (evt.target === hightPrice) {
+              if (priceA < priceB) return 1;
+              else if (priceA > priceB) return -1;
+              else return 0;
+            }
+          });
+        }
+        this.productCards.forEach((card) => container.appendChild(card));
+        this.animationFadeInCard();
+      })
+    );
   }
 }
