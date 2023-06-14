@@ -8,43 +8,45 @@ export default class Checkout extends ExecJS {
     this.renderCheckContainer();
   }
   nextStep() {
-    const multiStepForm = document.querySelector("#formDataOrder");
-    this.formSteps = [...multiStepForm.querySelectorAll("[data-step]")];
+    const inputs = [...document.querySelectorAll("#formDataOrder div[data-step='0'] input")];
+    const goToPayment = document.querySelector("#estractData");
+    this.formSteps = [...document.querySelectorAll("#formDataOrder [data-step]")];
+
     this.stepBar = document.querySelector("#stepbar-checkout");
     this.allLiEl = [...this.stepBar.querySelectorAll("[data-step]")];
-    this.currentStep = this.formSteps.findIndex((step) => {
-      return step.classList.contains("active");
-    });
+
+    this.currentStep = this.formSteps.findIndex((step) => step.classList.contains("active"));
+
     if (this.currentStep < 0) {
       this.currentStep = 0;
       this.showCurrentStep();
       this.showColorStep();
     }
-    multiStepForm.addEventListener("click", this.handleStepNavigation);
-  }
-  handleStepNavigation = (e) => {
-    e.preventDefault();
-    const incrementor = e.target.matches("[data-next]") ? 1 : -1;
-    if (!incrementor) return;
-    const inputs = this.formSteps[this.currentStep].querySelectorAll("input[required]");
-    const allFieldsCompleted = this.checkAllFieldsCompleted(inputs);
-    if (!(e.target.matches("[data-next]") || e.target.matches("[data-prev]"))) return;
-    if (allFieldsCompleted) {
-      this.currentStep += incrementor;
-      this.showCurrentStep();
-      this.showColorStep();
-    }
-  };
-  checkAllFieldsCompleted(inputs) {
-    let allCompleted = true;
-    inputs.forEach((input) => {
-      if (!input.value) {
-        allCompleted = false;
-      }
-    });
-    return allCompleted;
+
+    let isButtonEnabled = false;
+
+    inputs.forEach((input) =>
+      input.addEventListener("input", (evt) => {
+        evt.preventDefault();
+        const allValuesFilled = [...inputs].every((input) => input.value !== "");
+        if (allValuesFilled && !isButtonEnabled) {
+          goToPayment.classList.remove("disabled");
+          isButtonEnabled = true;
+
+          goToPayment.addEventListener("click", (evt) => {
+            evt.preventDefault();
+            this.currentStep += 1;
+            this.showCurrentStep();
+            this.showColorStep();
+            this.renderSelectPayment();
+            this.sendPayment();
+          });
+        }
+      })
+    );
   }
   showCurrentStep() {
+    console.log(this.currentStep);
     this.formSteps.forEach((step, i) => {
       if (i === this.currentStep) step.classList.remove("hidden");
       else step.classList.add("hidden");
@@ -88,7 +90,6 @@ export default class Checkout extends ExecJS {
           imageSrc: src,
         });
       }
-      console.log(this.dataCreateOrder);
       const finalPrice = (+quantity * +price).toFixed(2);
       sumPrice += +finalPrice;
       html += `
@@ -129,11 +130,104 @@ export default class Checkout extends ExecJS {
                 </div>
             </div>`;
     });
-    document.querySelector("#checkContainer").innerHTML = html;
-    document.querySelector("#checkSumPrice").innerHTML = `€ ${sumPrice.toFixed(2)}`;
-    this.createPaypalButton(sumPrice.toFixed(2));
+
+    const checkContainer = document.querySelector("#checkContainer");
+    const checkSubtotalPrice = document.querySelector("#checkSubtotalPrice");
+    const checkShippingPrice = document.querySelector("#checkShippingPrice");
+    const checkSumPrice = document.querySelector("#checkSumPrice");
+
+    checkContainer.innerHTML = html;
+    checkSubtotalPrice.innerHTML = `€ ${sumPrice.toFixed(2)}`;
+
+    const shippingPriceString = checkShippingPrice.innerHTML;
+    let shippingPriceNumber = +shippingPriceString.replace("€", "").trim();
+    shippingPriceNumber = +sumPrice < 79 ? shippingPriceNumber : 0;
+
+    shippingPriceNumber || (checkShippingPrice.innerHTML = `€ ${+shippingPriceNumber.toFixed(2)}`);
+
+    checkSumPrice.innerHTML = `€ ${(+sumPrice + +shippingPriceNumber).toFixed(2)}`;
+
+    this.createPaypalButton((sumPrice + shippingPriceNumber).toFixed(2));
   }
+  renderSelectPayment() {
+    this.currentPayment;
+    const paypalMethod = document.querySelector('#formDataOrder div[data-step="1"] input#paypalMethod');
+    const internetBanking = document.querySelector('#formDataOrder div[data-step="1"] input#internetBanking');
+    const methodPayment = [paypalMethod, internetBanking];
+    const btnPayment = document.querySelector("#btnPayment");
+
+    const handlePaymentSelection = (evt) => {
+      evt.preventDefault();
+      const targetPayment = document.querySelector(`.${evt.target.id}`);
+      targetPayment.classList.remove("hidden");
+      evt.target.checked = true;
+      this.currentPayment = evt.target;
+      if (this.currentPayment) btnPayment.classList.remove("disabled");
+      methodPayment.forEach((input) => {
+        if (input.id !== evt.target.id) {
+          document.querySelector(`.${input.id}`).classList.add("hidden");
+          input.checked = false;
+        }
+      });
+    };
+
+    methodPayment.forEach((input) => input.addEventListener("click", handlePaymentSelection));
+  }
+
+  sendPayment() {
+    const btnPayment = document.querySelector("#btnPayment");
+    const statusMessage = document.querySelector("#statusMessage");
+    const statusMessageStatus = statusMessage.querySelector("#statusMessage--status");
+    const statusMessageText = statusMessage.querySelector("#statusMessage--text");
+    const statusMessageCallToAction = statusMessage.querySelector("#statusMessage--callToAction");
+    const statusMessageSvg = document.querySelector("#statusMessage--svg img");
+    btnPayment.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      if (!this.currentPayment) return false;
+      if (this.currentPayment.id === "internetBanking") {
+        const modal = document.querySelector("#containerModal");
+        const closeModal = modal.querySelector("#containerModalClose");
+        const sendOrderModal = modal.querySelector("#containerModalSendOrder");
+        sendOrderModal.addEventListener("click", async (evt) => {
+          evt.preventDefault();
+          const formData = this.Utils.FormToJson("formDataOrder");
+          console.log({ ...formData, method: "internet_banking" });
+          const result = await this.createOrder({
+            ...formData,
+            method: "internet_banking",
+            data: { ...this.dataCreateOrder },
+          });
+          if (result) {
+            // L'ordine è stato creato con successo
+            modal.classList.add("hidden");
+            this.currentStep += 1;
+            this.showCurrentStep();
+            this.showColorStep();
+            statusMessageStatus.textContent = "Pagamento avvenuto con successo";
+            statusMessageText.textContent =
+              "Appena riceveremo il bonifico bancario, spediremo immediatamente i prodotti che hai ordinato.";
+            statusMessageCallToAction.textContent = "Auguriamo una splendida giornata!";
+            statusMessageSvg.src = this.Utils.assetsPath + "images/svg/success.svg";
+          } else {
+            // Si è verificato un errore durante la creazione dell'ordine
+            alert("Errore durante la creazione dell'ordine!", result);
+          }
+        });
+        closeModal.addEventListener("click", (evt) => {
+          evt.preventDefault();
+          modal.classList.add("hidden");
+        });
+        modal.classList.remove("hidden");
+      }
+    });
+  }
+
   createPaypalButton(price) {
+    const statusMessage = document.querySelector("#statusMessage");
+    const statusMessageStatus = statusMessage.querySelector("#statusMessage--status");
+    const statusMessageText = statusMessage.querySelector("#statusMessage--text");
+    const statusMessageCallToAction = statusMessage.querySelector("#statusMessage--callToAction");
+    const statusMessageSvg = document.querySelector("#statusMessage--svg img");
     paypal
       .Buttons({
         createOrder: function (data, actions) {
@@ -160,13 +254,23 @@ export default class Checkout extends ExecJS {
               payment_amount: details.purchase_units[0].amount.value,
               payment_currency: details.purchase_units[0].amount.currency_code,
             };
+            console.log(details);
             const formData = this.Utils.FormToJson("formDataOrder");
-            const result = await this.createOrder({ ...formData, data: { ...this.dataCreateOrder } });
+            console.log(formData);
+            const result = await this.createOrder({
+              ...formData,
+              method: "paypal",
+              data: { ...this.dataCreateOrder },
+            });
             if (result) {
               // L'ordine è stato creato con successo
               this.currentStep += 1;
               this.showCurrentStep();
               this.showColorStep();
+              statusMessageStatus.textContent = "Pagamento avvenuto con successo";
+              statusMessageText.textContent = "Grazie per aver completato il tuo pagamento online in modo sicuro.";
+              statusMessageCallToAction.textContent = "Auguriamo una splendida giornata!";
+              statusMessageSvg.src = this.Utils.assetsPath + "images/svg/success.svg";
             } else {
               // Si è verificato un errore durante la creazione dell'ordine
               alert("Errore durante la creazione dell'ordine!", result);
@@ -175,10 +279,28 @@ export default class Checkout extends ExecJS {
             alert("Si è verificato un errore durante la creazione dell'ordine!");
           }
         },
+        onCancel: (data) => {
+          this.currentStep += 1;
+          this.showCurrentStep();
+          this.showColorStep();
+          statusMessageStatus.textContent = "Pagamento non andato a buon fine o annullato";
+          statusMessageText.textContent = "Spiacenti, il pagamento non è andato a buon fine o è stato annullato.";
+          statusMessageCallToAction.textContent = "Riprova o contatta l'assistenza clienti per ulteriori informazioni.";
+          statusMessageSvg.src = this.Utils.assetsPath + "images/svg/error.svg";
+        },
+        onError: (err) => {
+          // this.currentStep += 1;
+          this.showCurrentStep();
+          this.showColorStep();
+          statusMessageStatus.textContent = "Si è verificato un errore durante il pagamento";
+          statusMessageText.textContent = "Spiacenti, si è verificato un errore durante il processo di pagamento.";
+          statusMessageCallToAction.textContent = "Riprova più tardi o contatta l'assistenza clienti per assistenza.";
+          statusMessageSvg.src = this.Utils.assetsPath + "images/svg/error.svg";
+          console.error(err);
+        },
       })
       .render("#paypal-button-container");
   }
-
   createOrder = async (formData) => {
     try {
       const url = this.Utils.viewsPath + "checkout/createOrder.php";
@@ -188,11 +310,9 @@ export default class Checkout extends ExecJS {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData }),
       };
-      console.log(options);
       const response = await fetch(url, options);
       const result = await response.text();
-      console.log(result);
-      return 1;
+      return result;
     } catch (error) {
       console.error(error);
     }

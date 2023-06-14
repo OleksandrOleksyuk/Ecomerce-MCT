@@ -17,6 +17,7 @@ $viewName = $generalController->GetViewName();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link href="<?= get_merceria_path("dist/output.css") ?>" rel="stylesheet">
+    <link rel="icon" type="image/png" href="<?= get_image_path("favicon/favicon.ico");?>">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo("pingback_url"); ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>

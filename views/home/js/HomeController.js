@@ -29,16 +29,16 @@ export default class HomeController extends ExecJs {
         delay: 3000,
         disableOnInteraction: false,
       },
-      pauseOnHover: false, // Disabilita la pausa predefinita onHover di Swiper
+      pauseOnHover: false,
     });
 
     const swiperContainer = document.querySelector("#swiper--bestSellingProducts");
     swiperContainer.addEventListener("mouseenter", () => {
-      swiper.autoplay.stop(); // Ferma la riproduzione automatica durante l'hover
+      swiper.autoplay.stop();
     });
 
     swiperContainer.addEventListener("mouseleave", () => {
-      swiper.autoplay.start(); // Riprende la riproduzione automatica dopo l'hover
+      swiper.autoplay.start();
     });
   }
 
