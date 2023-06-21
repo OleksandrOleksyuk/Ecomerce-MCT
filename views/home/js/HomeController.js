@@ -8,16 +8,6 @@ export default class HomeController extends ExecJs {
     this.ReviewsController = new ReviewsController();
     this.revealSections();
   }
-  // swiperBestProducts() {
-  //   new Swiper("#swiper--bestSellingProducts", {
-  //     slidesPerView: "auto",
-  //     spaceBetween: 30,
-  //     loop: true,
-  //     autoplay: { delay: 3000, disableOnInteraction: false },
-  //     pauseOnHover: true,
-  //   });
-  //   this.animationFadeInCard();
-  // }
 
   async swiperBestProducts() {
     await this.animationFadeInCard();
@@ -33,13 +23,13 @@ export default class HomeController extends ExecJs {
     });
 
     const swiperContainer = document.querySelector("#swiper--bestSellingProducts");
-    swiperContainer.addEventListener("mouseenter", () => {
-      swiper.autoplay.stop();
-    });
+    const next = document.querySelector("#bestSellingProducts #next");
+    const prev = document.querySelector("#bestSellingProducts #prev");
 
-    swiperContainer.addEventListener("mouseleave", () => {
-      swiper.autoplay.start();
-    });
+    next.addEventListener("click", () => swiper.slideNext());
+    prev.addEventListener("click", () => swiper.slidePrev());
+    swiperContainer.addEventListener("mouseenter", () => swiper.autoplay.stop());
+    swiperContainer.addEventListener("mouseleave", () => swiper.autoplay.start());
   }
 
   async animationFadeInCard() {

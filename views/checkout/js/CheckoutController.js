@@ -40,6 +40,7 @@ export default class Checkout extends ExecJS {
             this.showColorStep();
             this.renderSelectPayment();
             this.sendPayment();
+            this.cameBackHandleClick();
           });
         }
       })
@@ -173,6 +174,13 @@ export default class Checkout extends ExecJS {
 
     methodPayment.forEach((input) => input.addEventListener("click", handlePaymentSelection));
   }
+  cameBackHandleClick = () =>
+    document.querySelector("#formDataOrder #comeBack").addEventListener("click", (evt) => {
+      evt.preventDefault();
+      this.currentStep -= 1;
+      this.showCurrentStep();
+      this.showColorStep();
+    });
 
   sendPayment() {
     const btnPayment = document.querySelector("#btnPayment");
@@ -263,7 +271,6 @@ export default class Checkout extends ExecJS {
               data: { ...this.dataCreateOrder },
             });
             if (result) {
-              // L'ordine è stato creato con successo
               this.currentStep += 1;
               this.showCurrentStep();
               this.showColorStep();
@@ -272,7 +279,6 @@ export default class Checkout extends ExecJS {
               statusMessageCallToAction.textContent = "Auguriamo una splendida giornata!";
               statusMessageSvg.src = this.Utils.assetsPath + "images/svg/success.svg";
             } else {
-              // Si è verificato un errore durante la creazione dell'ordine
               alert("Errore durante la creazione dell'ordine!", result);
             }
           } catch (error) {

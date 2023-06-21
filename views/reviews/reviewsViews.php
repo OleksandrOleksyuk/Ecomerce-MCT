@@ -1,4 +1,4 @@
-<div class="relative flow-root py-12 md:py-16">
+<div class="relative flow-root py-12 md:py-16 text-emerald-900">
     <div class="relative flex flex-col sm:flex-row sm:items-end justify-between mb-12 lg:mb-14 text-neutral-900">
         <div class="flex flex-col items-center text-center w-full mx-auto">
             <h2 class="text-center text-3xl md:text-4xl font-bold">Recensioni dei nostri clienti</h2>
