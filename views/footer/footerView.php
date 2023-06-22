@@ -1,5 +1,5 @@
-<footer class="bg-emerald-900 flex items-center flex-col">
-    <div class="py-4 bg-emerald-900 md:py-8 w-11/12 mx-auto ">
+<footer class="bg-emerald-800 flex items-center flex-col">
+    <div class="py-4 bg-emerald-800 md:py-8 w-11/12 mx-auto ">
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="<?= get_link_path("home") ?>"><img class="h-20" src="<?= get_image_path(
     "logo/logo.png"
@@ -13,14 +13,14 @@
                 ];
                 foreach ($elements as $key => $value) {
                     $path = get_link_path($key);
-                    echo "<li class=''><a class='hover:text-pink-600 text-slate-300 md:text-xl' href=" .
+                    echo "<li class=''><a class='underlineHoverEffect text-slate-300 md:text-xl' href=" .
                         $path .
                         ">$value</a></li>";
                 }
                 ?>
             </ul>
         </div>
-        <!-- <hr class="my-6 border-white-200 sm:mx-auto emerald-900:border-white-700 lg:my-8" /> -->
+        <!-- <hr class="my-6 border-white-200 sm:mx-auto emerald-800:border-white-700 lg:my-8" /> -->
         <hr class="my-6 border-white-200 sm:mx-auto lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
             <span class="block text-sm text-white sm:text-center">© <a href="" class="">Merceria Creativa Tania</a> P.Iva 0000000000</span>

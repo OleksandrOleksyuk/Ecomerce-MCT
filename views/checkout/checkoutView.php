@@ -1,6 +1,5 @@
 <?php
-global $woocommerce;
-?>
+global $woocommerce; ?>
 <?= do_shortcode("[views section=general name=navbarView]") ?>
 <div id="checkout" class="flex text-emerald-900 w-11/12 mx-auto max-w-screen-xl p-5 md:py-24 gap-2 flex-col-reverse md:flex-row">
     <div class="w-full">
@@ -34,52 +33,52 @@ global $woocommerce;
                 <h3 class="mb-4 text-lg font-medium leading-none">Step 1</h3>
                 <div class="grid gap-4 mb-4 sm:grid-cols-6">
                     <div class="col-span-6 md:col-span-3">
-                        <label for="first_name" class="block mb-2 text-sm font-medium">Nome</label>
-                        <input type="text" name="first_name" id="first_name" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Maria" required="" />
+                        <label for="first_name" class="labelStyle">Nome</label>
+                        <input type="text" name="first_name" id="first_name" class="inputStyle" placeholder="Maria" required="" />
                     </div>
                     <div class="col-span-6 md:col-span-3">
-                        <label for="last_name" class="block mb-2 text-sm font-medium">Cognome</label>
-                        <input type="text" name="last_name" id="last_name" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Rossi" required="" />
+                        <label for="last_name" class="labelStyle">Cognome</label>
+                        <input type="text" name="last_name" id="last_name" class="inputStyle" placeholder="Rossi" required="" />
                     </div>
                     <div class="col-span-6 md:col-span-3">
-                        <label for="email" class="block mb-2 text-sm font-medium">Email</label>
-                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="maria_rossi@esempio.com" required="" />
+                        <label for="email" class="labelStyle">Email</label>
+                        <input type="email" name="email" id="email" class="inputStyle" placeholder="maria_rossi@esempio.com" required="" />
                     </div>
                     <div class="col-span-6 md:col-span-3">
-                        <label for="phone" class="block mb-2 text-sm font-medium">Numbero di cellulare</label>
-                        <input type="tel" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="+39 333 92 88 151 01" required="" />
+                        <label for="phone" class="labelStyle">Numbero di cellulare</label>
+                        <input type="tel" name="phone" id="phone" class="inputStyle" placeholder="+39 333 92 88 151 01" required="" />
                     </div>
                     <div class="col-span-6 md:col-span-4">
-                        <label for="address_1" class="block mb-2 text-sm font-medium">Indirizzo di spedizione</label>
-                        <input type="text" name="address_1" id="address_1" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="Via Roma" required="" />
+                        <label for="address_1" class="labelStyle">Indirizzo di spedizione</label>
+                        <input type="text" name="address_1" id="address_1" class="inputStyle" placeholder="Via Roma" required="" />
                     </div>
                     <div class="col-span-6 md:col-span-2">
-                        <label for="address_1_number" class="block mb-2 text-sm font-medium">Numero civico</label>
-                        <input type="text" name="address_1" id="address_1" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="2" required="" />
+                        <label for="address_1_number" class="labelStyle">Numero civico</label>
+                        <input type="text" name="address_1" id="address_1" class="inputStyle" placeholder="2" required="" />
                     </div>
                     <div class="col-span-6 md:col-span-4">
-                        <label for="address_2" class="block mb-2 text-sm font-medium">Indirizzo di fatturazione</label>
-                        <input type="text" name="address_2" id="address_2" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="Via Roma" />
+                        <label for="address_2" class="labelStyle">Indirizzo di fatturazione</label>
+                        <input type="text" name="address_2" id="address_2" class="inputStyle" placeholder="Via Roma" />
                     </div>
                     <div class="col-span-6 md:col-span-2">
-                        <label for="address_2_number" class="block mb-2 text-sm font-medium">Numero civico</label>
-                        <input type="text" name="address_2" id="address_2" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5" placeholder="4" />
+                        <label for="address_2_number" class="labelStyle">Numero civico</label>
+                        <input type="text" name="address_2" id="address_2" class="inputStyle" placeholder="4" />
                     </div>
                     <div class="col-span-6 md:col-span-2">
-                        <label for="city" class="block mb-2 text-sm font-medium">Città</label>
-                        <input type="text" name="city" id="city" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required="" />
+                        <label for="city" class="labelStyle">Città</label>
+                        <input type="text" name="city" id="city" class="inputStyle" placeholder="Bologna" required="" />
                     </div>
                     <div class="col-span-6 md:col-span-2">
-                        <label for="state" class="block mb-2 text-sm font-medium">Provincia</label>
-                        <input type="text" name="state" id="state" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Bologna" required="" />
+                        <label for="state" class="labelStyle">Provincia</label>
+                        <input type="text" name="state" id="state" class="inputStyle" placeholder="Bologna" required="" />
                     </div>
                     <div class="col-span-6 md:col-span-1">
-                        <label for="postcode" class="block mb-2 text-sm font-medium">CAP</label>
-                        <input type="text" name="postcode" id="postcode" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="40100" required="" />
+                        <label for="postcode" class="labelStyle">CAP</label>
+                        <input type="text" name="postcode" id="postcode" class="inputStyle" placeholder="40100" required="" />
                     </div>
                     <div class="col-span-6 md:col-span-1">
-                        <label for="country" class="block mb-2 text-sm font-medium">Stato</label>
-                        <input type="text" name="country" id="country" class="bg-gray-50 border border-gray-300 text-sm rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="Italia" required="" />
+                        <label for="country" class="labelStyle">Stato</label>
+                        <input type="text" name="country" id="country" class="inputStyle" placeholder="Italia" required="" />
                     </div>
                 </div>
                 <button id="estractData" class="disabled text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded text-sm px-5 py-2.5 text-center" data-next="">

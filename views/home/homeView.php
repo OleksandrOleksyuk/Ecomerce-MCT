@@ -22,7 +22,7 @@ $product_list = render_products(10); ?>
             </div>
         </div>
         <!-- brand -->
-        <div class="flex justify-center items-center gap-10 pt-5 opacity-0 translate-y-52 duration-1000 FadeDown">
+        <div class="flex justify-center items-center gap-10 pt-5 opacity-0 translate-y-52 duration-700 FadeDown">
             <?php
             $logos = ["vlieseline.png", "adriafil.png", "iNastriDiMirta.png", "renkalik.webp"];
             foreach ($logos as $logo) {
@@ -49,7 +49,7 @@ $product_list = render_products(10); ?>
             </div>
         </section>
         <!-- best-selling products -->
-        <section id="bestSellingProducts" class="section opacity-0 translate-y-52 duration-1000 py-5 flex flex-col items-center px-5 md:px-10">
+        <section id="bestSellingProducts" class="section opacity-0 translate-y-52 duration-700 py-5 flex flex-col items-center px-5 md:px-10">
             <div class="max-w-7xl mx-auto max-2xl:w-11/12">
                 <div class="flex flex-wrap justify-between mb-5">
                     <h2 class="text-3xl md:text-4xl font-semibold text-left py-5">I più venduti<span>. </span>
@@ -81,12 +81,16 @@ $product_list = render_products(10); ?>
                 </div>
             </div>
         </section>
-        <section class="bg-emerald-50 duration-1000 flex flex-col mx-auto section">
+        <section class="bg-emerald-50 duration-700 flex flex-col mx-auto section">
             <div class="gap-10 grid lg:grid-cols-4 max-w-7xl mx-auto relative py-10 lg:py-20 sm:gap-10 sm:grid-cols-2 w-11/12">
-                <img class="hidden md:block absolute inset-x-0 top-5" src="<?= get_image_path("svg/linea-trattegiata.svg") ?>" style="color: transparent;">
+                <img class="hidden md:block absolute inset-x-0 top-5" src="<?= get_image_path(
+                    "svg/linea-trattegiata.svg"
+                ) ?>" style="color: transparent;">
                 <div class="relative flex flex-col items-center max-w-xs mx-auto col-span-1 translate-x-12 opacity-0 FadeRight">
                     <div class="mb-4 sm:mb-10 w-36 h-36 mx-auto">
-                        <img class="rounded-3xl w-full" src="<?= get_image_path("svg/step-1.svg") ?>" style="color: transparent;">
+                        <img class="rounded-3xl w-full" src="<?= get_image_path(
+                            "svg/step-1.svg"
+                        ) ?>" style="color: transparent;">
                     </div>
                     <div class="text-center space-y-2">
                         <h3 class="text-lg font-semibold">Semplicità di utilizzo</h3>
@@ -95,7 +99,9 @@ $product_list = render_products(10); ?>
                 </div>
                 <div class="relative flex flex-col items-center max-w-xs mx-auto col-span-1">
                     <div class="mb-4 sm:mb-10 w-36 h-36 mx-auto">
-                        <img class="rounded-3xl w-full" src="<?= get_image_path("svg/step-2.svg") ?>" style="color: transparent;">
+                        <img class="rounded-3xl w-full" src="<?= get_image_path(
+                            "svg/step-2.svg"
+                        ) ?>" style="color: transparent;">
                     </div>
                     <div class="text-center space-y-2">
                         <h3 class="text-lg font-semibold">Assistenza telefonica</h3>
@@ -104,7 +110,9 @@ $product_list = render_products(10); ?>
                 </div>
                 <div class="relative flex flex-col items-center max-w-xs mx-auto col-span-1">
                     <div class="mb-4 sm:mb-10 w-36 h-36 mx-auto">
-                        <img class="rounded-3xl w-full" src="<?= get_image_path("svg/step-3.svg") ?>" style="color: transparent;">
+                        <img class="rounded-3xl w-full" src="<?= get_image_path(
+                            "svg/step-3.svg"
+                        ) ?>" style="color: transparent;">
                     </div>
                     <div class="text-center space-y-2">
                         <h3 class="text-lg font-semibold">Spedizione in giornata</h3>
@@ -113,7 +121,9 @@ $product_list = render_products(10); ?>
                 </div>
                 <div class="relative flex flex-col items-center max-w-xs mx-auto col-span-1">
                     <div class="mb-4 sm:mb-10 w-36 h-36 mx-auto">
-                        <img class="rounded-3xl w-full" src="<?= get_image_path("svg/step-4.svg") ?>" style="color: transparent;">
+                        <img class="rounded-3xl w-full" src="<?= get_image_path(
+                            "svg/step-4.svg"
+                        ) ?>" style="color: transparent;">
                     </div>
                     <div class="text-center space-y-2">
                         <h3 class="text-lg font-semibold">Facilità di pagamento</h3>
@@ -122,7 +132,7 @@ $product_list = render_products(10); ?>
                 </div>
             </div>
         </section>
-        <section class="section opacity-0 translate-y-52 duration-1000 w-11/12 mx-auto max-w-7xl">
+        <section class="section opacity-0 translate-y-52 duration-700 w-11/12 mx-auto max-w-7xl">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl md:text-4xl font-semibold text-left py-5">Le migliori scelte<span class="">. </span><br><span class="text-neutral-500">Prodotti top per la tua categoria preferita
                 </h2>
@@ -148,7 +158,9 @@ $product_list = render_products(10); ?>
                     ];
                     foreach ($data as $d) {
                         $image_path = get_image_path($d["img_src"]); ?>
-                        <a href="<?= get_link_path("product") ?>" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                        <a href="<?= get_link_path(
+                            "product"
+                        ) ?>" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
                             <img class="h-64 lg:rounded-l-lg max-md:rounded-t-lg md:rounded-none min-w-full object-cover" src="<?= $image_path ?>" alt="">
                             <div class="flex flex-col justify-between p-4 leading-normal">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"><?= $d["span"] ?></h5>
@@ -161,10 +173,10 @@ $product_list = render_products(10); ?>
                 </div>
             </div>
         </section>
-        <section class="section opacity-0 translate-y-52 duration-1000 w-11/12 max-w-7xl mx-auto hidden">
+        <section class="section opacity-0 translate-y-52 duration-700 w-11/12 max-w-7xl mx-auto hidden">
             <?= do_shortcode("[views section=general name=newsletterView]") ?>
         </section>
-        <section class="section opacity-0 translate-y-52 duration-1000 w-11/12 max-w-7xl mx-auto">
+        <section class="section opacity-0 translate-y-52 duration-700 w-11/12 max-w-7xl mx-auto">
             <?= do_shortcode("[views section=reviews name=reviewsViews]") ?>
         </section>
     </main>

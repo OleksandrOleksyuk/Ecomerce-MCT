@@ -205,6 +205,7 @@ export default class Checkout extends ExecJS {
             method: "internet_banking",
             data: { ...this.dataCreateOrder },
           });
+          console.log(result);
           if (result) {
             // L'ordine è stato creato con successo
             modal.classList.add("hidden");

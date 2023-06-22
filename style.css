@@ -15,39 +15,47 @@ Last modified: 20/02/2023 - oleksandr
 
 /* Dichiarazioni di stile personalizzate */
 @layer components {
-    .headerWidth {
-        @apply section mx-auto w-11/12 max-w-7xl translate-y-52 opacity-0 duration-1000;
-    }
+  .headerWidth {
+    @apply section mx-auto w-11/12 max-w-7xl translate-y-52 opacity-0 duration-1000;
+  }
 
-    .activeProduct {
-        @apply outline outline-1 outline-offset-2 outline-pink-500;
-    }
+  .activeProduct {
+    @apply outline outline-1 outline-offset-2 outline-pink-500;
+  }
 
-    .btnStyle {
-        @apply rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-700 px-8 py-3 text-white transition-colors duration-500 ease-in-out hover:text-white hover:opacity-90;
-    }
+  .btnStyle {
+    @apply rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-700 px-8 py-3 text-white transition-colors duration-500 ease-in-out hover:text-white hover:opacity-90;
+  }
 
-    .active {
-        @apply text-3xl font-semibold text-pink-500;
-    }
+  .active {
+    @apply text-3xl font-semibold text-pink-500;
+  }
+
+  .inputStyle {
+    @apply block w-full rounded border border-gray-300 bg-gray-50 p-2.5 text-sm placeholder:text-gray-300 focus:border-emerald-500 focus:ring-emerald-500;
+  }
+
+  .labelStyle {
+    @apply mb-2 block text-sm font-medium;
+  }
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Stile per le immagini all'interno di #containerImageCard */
 #containerImageCard img {
-    object-fit: cover;
-    border-radius: 5px;
-    height: 12rem;
-    width: auto;
-    transition: all 0.5s ease-in-out;
+  object-fit: cover;
+  border-radius: 5px;
+  height: 12rem;
+  width: auto;
+  transition: all 0.5s ease-in-out;
 }
 
 /* Stile per l'animazione delle immagini quando il mouse si posiziona sulla card */
 .cardView:hover #containerImageCard img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* Nascondo le sezioni inutili di WordPress */
@@ -57,17 +65,12 @@ section.storefront-product-section,
 #masthead,
 header.entry-header,
 footer#colophon {
-    display: none;
+  display: none;
 }
-
-/* Altezza a 100% per #page */
-/* div#page {
-  height: 100vh;
-} */
 
 /* Larghezza al 100% per #primary */
 div#primary {
-    width: 100%;
+  width: 100%;
 }
 
 /* Reset dei margini, padding e border per molti elementi HTML */
@@ -97,16 +100,16 @@ label,
 nav,
 section,
 a {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    max-width: 100%;
-    text-decoration: none !important;
-    color: inherit;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  max-width: 100%;
+  text-decoration: none !important;
+  color: inherit;
+  list-style: none;
 }
 
 /* Stile per rimuovere i margini superiori di alcuni elementi HTML */
@@ -134,113 +137,125 @@ form + h2,
 form + header h2,
 form + h3,
 form + h4 {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 .section {
-    transition: all 1s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
-
-/*
-input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-} */
 
 /* Disattiva il bordo sui link quando selezionati */
 a:focus,
 button:focus,
 input:focus,
 div:focus {
-    outline: none;
+  outline: none;
 }
 
 button:hover {
-    background-color: transparent;
+  background-color: transparent;
+}
+
+.underlineHoverEffect {
+  text-decoration: none;
+  position: relative;
+}
+
+.underlineHoverEffect::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.underlineHoverEffect:hover::after {
+  transform: scaleX(1);
 }
 
 .p-singleProduct {
-    font-weight: 800;
-    margin: 0.8rem 0;
+  font-weight: 800;
+  margin: 0.8rem 0;
 }
 
 .swiper-slide {
-    width: auto;
-    height: auto;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-128px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 0;
-        transform: translateY(128px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
-
-@keyframes fadeLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-300px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
-}
-
-@keyframes fadeRight {
-    from {
-        opacity: 0;
-        transform: translateX(300px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
+  width: auto;
+  height: auto;
 }
 
 .FadeUp {
-    opacity: 0;
-    transform: translateY(0px) !important;
-    animation: fadeIn 1s forwards;
+  opacity: 0;
+  transform: translateY(0px) !important;
+  animation: fadeIn 0.6s forwards;
 }
 
 .FadeDown {
-    opacity: 0;
-    transform: translateY(0px);
-    animation: fadeOut 1s forwards;
+  opacity: 0;
+  transform: translateY(0px);
+  animation: fadeOut 0.6s forwards;
 }
 
 .FadeRight {
-    opacity: 0;
-    transform: translateX(0px);
-    animation: fadeRight 1s forwards;
+  opacity: 0;
+  transform: translateX(0px);
+  animation: fadeRight 0.6s forwards;
 }
 
 .FadeLeft {
-    opacity: 0;
-    transform: translateX(0px);
-    animation: fadeLeft 1s forwards;
+  opacity: 0;
+  transform: translateX(0px);
+  animation: fadeLeft 0.6s forwards;
 }
 
 .card--hidden {
-    display: none;
+  display: none;
 }
 
-/* .hidden {
-  display: none;
-} */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-128px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 0;
+    transform: translateY(128px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

@@ -50,16 +50,16 @@
                     <a href="<?= get_link_path(
                         "home"
                     ) ?>"><img class="hidden h-20 w-auto md:block" src="<?= get_image_path(
-                            "logo/logo.png"
-                        ) ?>" alt="Merceria creativa tania logo"></a>
+    "logo/logo.png"
+) ?>" alt="Merceria creativa tania logo"></a>
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-center">
                     <div class="flex items-center">
                         <a href="<?= get_link_path(
                             "home"
                         ) ?>"><img class="h-12 block w-auto md:hidden " src="<?= get_image_path(
-                                "logo/logo.png"
-                            ) ?>" alt="Merceria creativa tania logo"></a>
+    "logo/logo.png"
+) ?>" alt="Merceria creativa tania logo"></a>
                     </div>
                     <div class="hidden md:block">
                         <div class="flex space-x-4 gap-5">
@@ -71,10 +71,10 @@
                             ];
                             foreach ($elements as $key => $value) {
                                 $path = get_link_path($key); ?>
-                                <li class='text-emerald-900 hover:text-pink-500 md:text-2xl hover:text-3xl transition-all duration-300 ease-linear hover:font-semibold'>
+                                <li class='text-emerald-900 hover:text-pink-500 md:text-2xl underlineHoverEffect transition-all duration-300 ease-linear'>
                                     <a href='<?= $path ?>' aria-current='page'><?= $value ?></a>
                                 </li>
-                                <?php
+                            <?php
                             }
                             ?>
                         </div>
@@ -130,7 +130,7 @@
                 ];
                 foreach ($elements as $key => $value) {
                     $path = get_link_path($key);
-                    echo "<a href='$path' class='bg-emerald-5ˇ00 text-white block rounded-md px-3 py-2 text-base font-medium' aria-current='page'>$value</a>";
+                    echo "<a href='$path' class='bg-emerald-500 text-white block rounded-md px-3 py-2 text-base font-medium' aria-current='page'>$value</a>";
                 }
                 ?>
             </div>
