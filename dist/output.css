@@ -1047,8 +1047,16 @@ select {
   right: -0.5rem;
 }
 
+.-top-2 {
+  top: -0.5rem;
+}
+
 .bottom-0 {
   bottom: 0px;
+}
+
+.bottom-8 {
+  bottom: 2rem;
 }
 
 .bottom-\[100px\] {
@@ -1073,6 +1081,10 @@ select {
 
 .left-0 {
   left: 0px;
+}
+
+.left-1 {
+  left: 0.25rem;
 }
 
 .left-1\/2 {
@@ -1113,6 +1125,10 @@ select {
 
 .right-2\.5 {
   right: 0.625rem;
+}
+
+.right-6 {
+  right: 1.5rem;
 }
 
 .right-\[140px\] {
@@ -1157,6 +1173,10 @@ select {
 
 .top-full {
   top: 100%;
+}
+
+.-top-5 {
+  top: -1.25rem;
 }
 
 .isolate {
@@ -1669,6 +1689,10 @@ select {
   width: 3.5rem;
 }
 
+.w-20 {
+  width: 5rem;
+}
+
 .w-24 {
   width: 6rem;
 }
@@ -1861,6 +1885,11 @@ select {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-x-4 {
+  --tw-translate-x: 1rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-x-full {
   --tw-translate-x: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1868,6 +1897,11 @@ select {
 
 .translate-y-52 {
   --tw-translate-y: 13rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.rotate-12 {
+  --tw-rotate: 12deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -4418,6 +4452,15 @@ button:hover {
 .underlineHoverEffect:hover::after,
 .underlineHoverEffect.currentPageActive::after {
   transform: scaleX(1);
+}
+
+#WhatsAppContact a:hover + span {
+  transform: rotateZ(0deg) translateX(0px);
+  opacity: 1;
+}
+
+#WhatsAppContact a:hover img {
+  transform: scale(1.2);
 }
 
 .p-singleProduct {

@@ -7,6 +7,10 @@
         <span class="font-medium">Attenzione!</span> Questo e-commerce è in fase di sviluppo.
     </div>
 </div>
+<div id="WhatsAppContact" class="fixed bottom-8 right-6 z-100 p-4 m-5">
+    <a href="https://wa.link/o46nzq"><img class="h-20 w-20 transition-all duration-500" src="<?= get_image_path('logo/WhatsApp.webp'); ?>" alt="" srcset=""></a>
+    <span class="absolute -top-5 left-0 text-emerald-600 rotate-12 translate-x-4 text-2xl opacity-0 transition-all duration-500">Contattaci</span>
+</div>
 <header class="w-full text-black">
     <div class="relative isolate flex justify-center items-center gap-x-6 overflow-hidden bg-emerald-50 px-6 py-2.5 sm:px-3.5">
         <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">

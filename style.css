@@ -183,6 +183,14 @@ button:hover {
   transform: scaleX(1);
 }
 
+#WhatsAppContact a:hover + span {
+  transform: rotateZ(0deg) translateX(0px);
+  opacity: 1;
+}
+#WhatsAppContact a:hover img {
+  transform: scale(1.2);
+}
+
 .p-singleProduct {
   font-weight: 800;
   margin: 0.8rem 0;
