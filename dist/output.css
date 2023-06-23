@@ -3043,9 +3043,9 @@ select {
   background-color: rgb(4 120 87 / var(--tw-bg-opacity));
 }
 
-.bg-emerald-900 {
+.bg-emerald-800 {
   --tw-bg-opacity: 1;
-  background-color: rgb(6 78 59 / var(--tw-bg-opacity));
+  background-color: rgb(6 95 70 / var(--tw-bg-opacity));
 }
 
 .bg-gray-100 {
@@ -3115,11 +3115,6 @@ select {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-emerald-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(6 95 70 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r {
@@ -4416,7 +4411,12 @@ button:hover {
   transition: transform 0.3s ease;
 }
 
-.underlineHoverEffect:hover::after {
+.underlineHoverEffect.currentPageActive {
+  color: #ec4899;
+}
+
+.underlineHoverEffect:hover::after,
+.underlineHoverEffect.currentPageActive::after {
   transform: scaleX(1);
 }
 

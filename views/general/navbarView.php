@@ -47,19 +47,11 @@
                     </button>
                 </div>
                 <div class="flex items-center">
-                    <a href="<?= get_link_path(
-                        "home"
-                    ) ?>"><img class="hidden h-20 w-auto md:block" src="<?= get_image_path(
-    "logo/logo.png"
-) ?>" alt="Merceria creativa tania logo"></a>
+                    <a href="<?= get_link_path("home") ?>"><img class="hidden h-20 w-auto md:block" src="<?= get_image_path("logo/logo.png") ?>" alt="Merceria creativa tania logo"></a>
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-center">
                     <div class="flex items-center">
-                        <a href="<?= get_link_path(
-                            "home"
-                        ) ?>"><img class="h-12 block w-auto md:hidden " src="<?= get_image_path(
-    "logo/logo.png"
-) ?>" alt="Merceria creativa tania logo"></a>
+                        <a href="<?= get_link_path("home") ?>"><img class="h-12 block w-auto md:hidden " src="<?= get_image_path("logo/logo.png") ?>" alt="Merceria creativa tania logo"></a>
                     </div>
                     <div class="hidden md:block">
                         <div class="flex space-x-4 gap-5">
@@ -71,13 +63,17 @@
                             ];
                             foreach ($elements as $key => $value) {
                                 $path = get_link_path($key); ?>
-                                <li class='text-emerald-900 hover:text-pink-500 md:text-2xl underlineHoverEffect transition-all duration-300 ease-linear'>
+                                <li class='text-emerald-900 hover:text-pink-500 md:text-2xl underlineHoverEffect transition-all duration-300 ease-linear
+                                <?php if (is_page($key)) {
+                                    echo "currentPageActive";
+                                } ?>'>
                                     <a href='<?= $path ?>' aria-current='page'><?= $value ?></a>
                                 </li>
                             <?php
                             }
                             ?>
                         </div>
+
                     </div>
                 </div>
                 <div class="relative" data-headlessui-state="open">
@@ -109,8 +105,8 @@
                                     </p>
                                     <div class="mt-5 flex space-x-2">
                                         <a class="btnStyle w-full text-center" href="<?= get_link_path(
-                                            "checkout"
-                                        ) ?>">Check out</a>
+                                                                                            "checkout"
+                                                                                        ) ?>">Check out</a>
                                     </div>
                                 </div>
                             </div>

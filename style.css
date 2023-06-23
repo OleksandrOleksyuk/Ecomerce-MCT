@@ -174,7 +174,12 @@ button:hover {
   transition: transform 0.3s ease;
 }
 
-.underlineHoverEffect:hover::after {
+.underlineHoverEffect.currentPageActive {
+  color: #ec4899;
+}
+
+.underlineHoverEffect:hover::after,
+.underlineHoverEffect.currentPageActive::after {
   transform: scaleX(1);
 }
 
