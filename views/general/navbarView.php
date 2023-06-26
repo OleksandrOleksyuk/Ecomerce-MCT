@@ -7,8 +7,8 @@
         <span class="font-medium">Attenzione!</span> Questo e-commerce è in fase di sviluppo.
     </div>
 </div>
-<div id="WhatsAppContact" class="fixed bottom-8 right-6 z-100 p-4 m-5">
-    <a href="https://wa.link/o46nzq"><img class="h-20 w-20 transition-all duration-500" src="<?= get_image_path('logo/WhatsApp.webp'); ?>" alt="" srcset=""></a>
+<div id="WhatsAppContact" class="fixed bottom-0 right-0 z-100 p-4 m-5">
+    <a href="https://wa.link/o46nzq"><img class="transition-all duration-500 h-14 w-14 md:h-20 md:w-20" src="<?= get_image_path('logo/WhatsApp.webp'); ?>" alt="" srcset=""></a>
     <span class="absolute -top-5 left-0 text-emerald-600 rotate-12 translate-x-4 text-2xl opacity-0 transition-all duration-500">Contattaci</span>
 </div>
 <header class="w-full text-black">
@@ -36,7 +36,7 @@
             </p>
         </div>
     </div>
-    <nav class="bg-white">
+    <nav id="navbar" class="bg-white w-full">
         <div class="mx-auto max-w-screen-2xl px-2 sm:px-6 lg:px-8 py-3">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center md:hidden">

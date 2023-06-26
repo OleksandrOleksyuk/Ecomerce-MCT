@@ -13,8 +13,8 @@ foreach ($product["gallery_images"] as $image) {
 ?>
 <?= do_shortcode("[views section=general name=navbarView]") ?>
 <main data-type="<?= $product["type"] ?>" id="singleProduct" data-id="<?= $product["id"] ?>" data-link="<?= $product["link"] ?>" class="text-emerald-900">
-    <section class="flex flex-col lg:flex-row-reverse mx-auto justify-center items-center max-w-7xl p-10">
-        <div class="lg:w-1/2 h-[550px] flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center gap-5 p-5">
+    <section class="flex flex-col lg:flex-row-reverse mx-auto justify-center items-center max-w-7xl md:p-10 p-5">
+        <div class="lg:w-1/2 max-h-[550px] flex flex-col sm:flex-row-reverse lg:flex-col justify-center items-center gap-5 p-5">
             <?php
             if (count($product["variations"]) > 0) { ?>
                 <img id="imgFirst" class="w-64 h-64 sm:w-96 sm:h-96 mb-5 rounded-lg p-2 object-cover" src="<?= $image_src ?>" alt="immagine grande del prodotti">
@@ -83,7 +83,7 @@ foreach ($product["gallery_images"] as $image) {
                         <?= "€ " . $product["price"] ?>
                     </h3>
                 </div>
-                <div class="flex gap-5">
+                <div class="flex gap-3 md:gap-5">
                     <a id="addToSidebarBtn" href="#" class="btnStyle flex items-center gap-2">
                         <div>
                             <svg width="20" height="20" viewBox="0 0 20 20" class="fill-current">

@@ -24,7 +24,7 @@ Last modified: 20/02/2023 - oleksandr
   }
 
   .btnStyle {
-    @apply rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-700 px-8 py-3 text-white transition-colors duration-500 ease-in-out hover:text-white hover:opacity-90;
+    @apply rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-700 px-4 py-3 text-white transition-colors duration-500 ease-in-out hover:text-white hover:opacity-90 md:px-8;
   }
 
   .active {

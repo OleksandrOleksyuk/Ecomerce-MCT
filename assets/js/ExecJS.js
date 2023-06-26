@@ -6,6 +6,7 @@ export default class ExecJs {
     this.handleClickMenu();
     this.toggleSlideover();
     this.renderSidebar();
+    this.fixedNavOnTop();
   }
   waitTime = (delay) => new Promise((resolve) => setTimeout(() => resolve(), delay));
 
@@ -40,7 +41,6 @@ export default class ExecJs {
       })
     );
   }
-
   saveCartToLocalStorage(cartItem) {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     const existingCartItem = cartItems.find(
@@ -50,11 +50,9 @@ export default class ExecJs {
     else cartItems.unshift(cartItem);
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }
-
   getCartFromLocalStorage() {
     return JSON.parse(localStorage.getItem("cart")) || [];
   }
-
   removeProductFromCart(index) {
     let cart = JSON.parse(localStorage.getItem("cart"));
     if (!cart) return;
@@ -93,6 +91,10 @@ export default class ExecJs {
       }
       this.saveCartToLocalStorage(data);
       this.renderSidebar();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
       quantityEl.textContent = "1";
     });
   }
@@ -159,5 +161,25 @@ export default class ExecJs {
     document.querySelector("#sumPrice").innerHTML = `€ ${sumPrice.toFixed(2)} `;
 
     document.querySelector("#numElOnCart").innerHTML = `${cart.length} `;
+  }
+
+  fixedNavOnTop() {
+    const nav = document.querySelector("#navbar");
+    const isMobile = window.innerWidth < 768;
+    let isFixedNav = false;
+    if (isMobile) return null;
+    const callback = ([entry]) => {
+      const { isIntersecting } = entry;
+      console.log(isIntersecting);
+      if (!isIntersecting && !isFixedNav) {
+        isFixedNav = true;
+        nav.classList.add("fixed", "top-0", "z-50", "shadow-md");
+      } else if (isIntersecting && isFixedNav) {
+        isFixedNav = false;
+        nav.classList.remove("fixed", "top-0", "z-50", "shadow-md");
+      }
+    };
+    const observer = new IntersectionObserver(callback, { root: null, rootMargin: "-140px", threshold: 0.1 });
+    observer.observe(document.querySelector("#welcome"));
   }
 }
