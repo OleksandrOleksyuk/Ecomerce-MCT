@@ -164,22 +164,25 @@ export default class ExecJs {
   }
 
   fixedNavOnTop() {
-    const nav = document.querySelector("#navbar");
     const isMobile = window.innerWidth < 768;
-    let isFixedNav = false;
     if (isMobile) return null;
-    const callback = ([entry]) => {
-      const { isIntersecting } = entry;
-      console.log(isIntersecting);
-      if (!isIntersecting && !isFixedNav) {
-        isFixedNav = true;
-        nav.classList.add("fixed", "top-0", "z-50", "shadow-md");
-      } else if (isIntersecting && isFixedNav) {
-        isFixedNav = false;
-        nav.classList.remove("fixed", "top-0", "z-50", "shadow-md");
-      }
+    const nav = document.querySelector("#navbar");
+    const navHeight = nav.getBoundingClientRect().height;
+
+    console.log(navHeight);
+
+    const stickyNavbar = function ([entry]) {
+      console.log(entry);
+      if (!entry.isIntersecting) nav.classList.add("stickyNav", "shadow-md", "FadeUp");
+      else nav.classList.remove("stickyNav", "shadow-md", "FadeUp");
     };
-    const observer = new IntersectionObserver(callback, { root: null, rootMargin: "-140px", threshold: 0.1 });
-    observer.observe(document.querySelector("#welcome"));
+
+    const headerObserver = new IntersectionObserver(stickyNavbar, {
+      root: null,
+      threshold: 0,
+      rootMargin: `-${navHeight * 2}px`,
+    });
+
+    headerObserver.observe(document.querySelector("#welcome"));
   }
 }
