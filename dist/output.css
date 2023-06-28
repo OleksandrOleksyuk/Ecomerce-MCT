@@ -1756,6 +1756,14 @@ select {
   width: 100vw;
 }
 
+.w-60 {
+  width: 15rem;
+}
+
+.w-96 {
+  width: 24rem;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -3148,6 +3156,16 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -3500,6 +3518,10 @@ select {
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-left {
@@ -3933,6 +3955,10 @@ select {
 
 .opacity-50 {
   opacity: 0.5;
+}
+
+.opacity-25 {
+  opacity: 0.25;
 }
 
 .bg-blend-normal {
@@ -5130,6 +5156,10 @@ button:hover {
     height: 9rem;
   }
 
+  .md\:h-10 {
+    height: 2.5rem;
+  }
+
   .md\:w-11\/12 {
     width: 91.666667%;
   }
@@ -5140,6 +5170,10 @@ button:hover {
 
   .md\:w-36 {
     width: 9rem;
+  }
+
+  .md\:w-10 {
+    width: 2.5rem;
   }
 
   .md\:max-w-4xl {
@@ -5487,6 +5521,18 @@ button:hover {
 
   .lg\:pr-4 {
     padding-right: 1rem;
+  }
+
+  .lg\:pt-6 {
+    padding-top: 1.5rem;
+  }
+
+  .lg\:pb-6 {
+    padding-bottom: 1.5rem;
+  }
+
+  .lg\:pt-16 {
+    padding-top: 4rem;
   }
 
   .lg\:text-2xl {

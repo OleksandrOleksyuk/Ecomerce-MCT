@@ -165,7 +165,7 @@ export default class ExecJs {
 
   fixedNavOnTop() {
     const header = document.querySelector(".header");
-    const isMobile = window.innerWidth < 768;
+    const isMobile = window.innerWidth <= 1024;
     if (!header || isMobile) return null;
     const nav = document.querySelector("#navbar");
     const navHeight = nav.getBoundingClientRect().height;
