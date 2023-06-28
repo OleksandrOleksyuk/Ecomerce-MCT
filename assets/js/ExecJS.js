@@ -164,25 +164,32 @@ export default class ExecJs {
   }
 
   fixedNavOnTop() {
+    const header = document.querySelector(".header");
     const isMobile = window.innerWidth < 768;
-    if (isMobile) return null;
+    if (!header || isMobile) return null;
     const nav = document.querySelector("#navbar");
     const navHeight = nav.getBoundingClientRect().height;
 
-    console.log(navHeight);
+    // Rimuovi la classe "stickyNav" se è già presente
+    nav.classList.remove("stickyNav");
 
     const stickyNavbar = function ([entry]) {
-      console.log(entry);
-      if (!entry.isIntersecting) nav.classList.add("stickyNav", "shadow-md", "FadeUp");
-      else nav.classList.remove("stickyNav", "shadow-md", "FadeUp");
+      if (!entry.isIntersecting) {
+        nav.classList.add("stickyNav");
+      } else {
+        console.log(window.scrollY);
+        if (window.scrollY === 0) {
+          nav.classList.remove("stickyNav");
+        }
+      }
     };
 
     const headerObserver = new IntersectionObserver(stickyNavbar, {
       root: null,
       threshold: 0,
-      rootMargin: `-${navHeight * 2}px`,
+      rootMargin: `-${navHeight}px`,
     });
 
-    headerObserver.observe(document.querySelector("#welcome"));
+    headerObserver.observe(header);
   }
 }

@@ -1636,6 +1636,22 @@ select {
   height: 100vh;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
+.h-\[132px\] {
+  height: 132px;
+}
+
+.h-\[10\] {
+  height: 10;
+}
+
+.h-\[10px\] {
+  height: 10px;
+}
+
 .max-h-\[45vh\] {
   max-height: 45vh;
 }
@@ -1650,6 +1666,10 @@ select {
 
 .max-h-full {
   max-height: 100%;
+}
+
+.min-h-\[10px\] {
+  min-height: 10px;
 }
 
 .w-0 {

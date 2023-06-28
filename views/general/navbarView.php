@@ -11,32 +11,32 @@
     <a href="https://wa.link/o46nzq"><img class="transition-all duration-500 h-14 w-14 md:h-20 md:w-20" src="<?= get_image_path('logo/WhatsApp.webp'); ?>" alt="" srcset=""></a>
     <span class="absolute -top-5 left-0 text-emerald-600 rotate-12 translate-x-4 text-2xl opacity-0 transition-all duration-500">Contattaci</span>
 </div>
-<header id="navbar" class="w-full text-black">
-    <div class="relative isolate flex justify-center items-center gap-x-6 overflow-hidden bg-emerald-50 px-6 py-2.5 sm:px-3.5">
-        <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
-            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#80ff8b] to-[#89fc95] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
+<header class="w-full text-black header h-[132px]">
+    <nav id="navbar" class="bg-white w-full">
+        <div class="relative isolate flex justify-center items-center gap-x-6 overflow-hidden bg-emerald-50 px-6 py-2.5 sm:px-3.5">
+            <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
+                <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#80ff8b] to-[#89fc95] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
+            </div>
+            <div class="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
+                <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#80ff9e] to-[#89fc95] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
+            </div>
+            <div class="items-center mx-auto">
+                <p class="text-sm leading-6 text-pink-900">
+                    <strong class="font-semibold">
+                        <?php
+                        $date = new DateTime();
+                        $formatter = new IntlDateFormatter("it_IT", IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+                        $data = $formatter->format($date);
+                        echo $data;
+                        ?>
+                    </strong>
+                    <svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
+                        <circle cx="1" cy="1" r="1" />
+                    </svg>
+                    Spedizione gratuita sopra i 79€ - Spedizione entro 24h
+                </p>
+            </div>
         </div>
-        <div class="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
-            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#80ff9e] to-[#89fc95] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
-        </div>
-        <div class="items-center mx-auto">
-            <p class="text-sm leading-6 text-pink-900">
-                <strong class="font-semibold">
-                    <?php
-                    $date = new DateTime();
-                    $formatter = new IntlDateFormatter("it_IT", IntlDateFormatter::LONG, IntlDateFormatter::NONE);
-                    $data = $formatter->format($date);
-                    echo $data;
-                    ?>
-                </strong>
-                <svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
-                    <circle cx="1" cy="1" r="1" />
-                </svg>
-                Spedizione gratuita sopra i 79€ - Spedizione entro 24h
-            </p>
-        </div>
-    </div>
-    <nav class="bg-white w-full">
         <div class="mx-auto max-w-screen-2xl px-2 sm:px-6 lg:px-8 py-3">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
