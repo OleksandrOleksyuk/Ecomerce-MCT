@@ -19,6 +19,7 @@ export default class ExecJs {
         evt.preventDefault();
         menu.classList.toggle("hidden");
         menu.classList.toggle("flex");
+        menu.classList.toggle("FadeLeft");
         openBtn.classList.toggle("hidden");
         closeBtn.classList.toggle("hidden");
       })

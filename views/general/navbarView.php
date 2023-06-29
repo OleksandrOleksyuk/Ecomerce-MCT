@@ -120,7 +120,7 @@
             </div>
         </div>
         <div class="md:hidden hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pb-3 pt-2 w-full">
+            <div class="space-y-1 px-2 pb-3 pt-2 w-full z-50 bg-white">
                 <?php
                 $elements = [
                     "home" => "Home",
@@ -130,7 +130,7 @@
                 ];
                 foreach ($elements as $key => $value) {
                     $path = get_link_path($key);
-                    echo "<a href='$path' class='bg-emerald-500 text-white block rounded-md px-3 py-2 text-base font-medium' aria-current='page'>$value</a>";
+                    echo "<a href='$path' class='hover:opacity-95 bg-emerald-500 text-white block rounded-md px-3 py-2 text-base font-medium' aria-current='page'>$value</a>";
                 }
                 ?>
             </div>
