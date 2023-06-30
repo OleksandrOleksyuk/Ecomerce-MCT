@@ -7,9 +7,24 @@
         <span class="font-medium">Attenzione!</span> Questo e-commerce è in fase di sviluppo.
     </div>
 </div>
-<div id="WhatsAppContact" class="fixed bottom-0 right-0 z-100 p-4 m-5">
-    <a href="https://wa.link/o46nzq"><img class="transition-all duration-500 h-14 w-14 md:h-20 md:w-20" src="<?= get_image_path('logo/WhatsApp.webp'); ?>" alt="" srcset=""></a>
-    <span class="absolute -top-5 left-0 text-emerald-600 rotate-12 translate-x-4 text-2xl opacity-0 transition-all duration-500">Contattaci</span>
+<div class="px-[2px] bg-opacity-70 py-2 rounded-l-2xl fixed right-0 top-2/4 z-50 bg-emerald-100">
+    <ul>
+        <?php
+        $social = [
+            "instagram.svg" => "https://www.instagram.com/merceriacreativatania/",
+            "whatsapp.svg" => "https://wa.link/o46nz"
+        ];
+        foreach ($social as $key => $value) {
+        ?>
+            <li class="hover:scale-110 transition-all duration-500 ease-in-out cursor-pointer">
+                <a class="" href="<?= $value; ?>">
+                    <img class="w-12 h-12 lg:w-14 lg:h-14" src="<?= get_image_path('social/' . $key); ?>" />
+                </a>
+            </li>
+        <?php
+        }
+        ?>
+    </ul>
 </div>
 <header class="w-full text-black header h-[132px]">
     <nav id="navbar" class="bg-white w-full">
@@ -21,13 +36,15 @@
                 <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#80ff9e] to-[#89fc95] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
             </div>
             <div class="items-center mx-auto">
-                <p class="text-sm leading-6 text-pink-900">
+                <p class="text-xs md:text-sm leading-6 text-pink-900">
                     <strong class="font-semibold">
                         <?php
                         $date = new DateTime();
                         $formatter = new IntlDateFormatter("it_IT", IntlDateFormatter::LONG, IntlDateFormatter::NONE);
                         $data = $formatter->format($date);
-                        echo $data;
+                        if ($data) {
+                            echo $data;
+                        }
                         ?>
                     </strong>
                     <svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
@@ -130,7 +147,7 @@
                 ];
                 foreach ($elements as $key => $value) {
                     $path = get_link_path($key);
-                    echo "<a href='$path' class='hover:opacity-95 bg-emerald-500 text-white block rounded-md px-3 py-2 text-base font-medium' aria-current='page'>$value</a>";
+                    echo "<a href='$path' class='hover:opacity-95 transition-all duration-500 ease-in-out bg-emerald-500 text-white block rounded-md px-3 py-2 text-base font-medium' aria-current='page'>$value</a>";
                 }
                 ?>
             </div>

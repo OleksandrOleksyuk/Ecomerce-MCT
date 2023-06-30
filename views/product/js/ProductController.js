@@ -114,6 +114,7 @@ export default class ProductController extends ExecJs {
     const menuElement = document.querySelector("div#filter-brand-0");
     const handleMenuButtonClick = () => {
       menuElement.classList.toggle("hidden");
+      menuElement.classList.add("FadeUp");
       svgPlus.classList.toggle("hidden");
       svgMin.classList.toggle("hidden");
     };
@@ -127,6 +128,7 @@ export default class ProductController extends ExecJs {
     const menuElement = document.querySelector("div#filter-category-0");
     const handleMenuButtonClick = () => {
       menuElement.classList.toggle("hidden");
+      menuElement.classList.add("FadeUp");
       svgPlus.classList.toggle("hidden");
       svgMin.classList.toggle("hidden");
     };
@@ -138,10 +140,11 @@ export default class ProductController extends ExecJs {
     const hightPrice = document.querySelector("#hightPrice");
     const reset = document.querySelector("#reset");
     const container = document.querySelector("#contProd");
-    console.log(this.productCards);
+    const menuElement = document.querySelector("#menu-button + div");
     [lowPrice, hightPrice, reset].forEach((btnFilter) =>
       btnFilter.addEventListener("click", (evt) => {
         evt.preventDefault();
+        menuElement.classList.add("hidden");
         container.innerHTML = "";
         if (evt.target === reset) {
           this.productCards = this.productCards.sort(() => Math.random() - 0.5);

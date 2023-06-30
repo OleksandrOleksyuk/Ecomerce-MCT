@@ -1154,6 +1154,10 @@ select {
   top: 2.5rem;
 }
 
+.top-2\/4 {
+  top: 50%;
+}
+
 .top-3 {
   top: 0.75rem;
 }
@@ -1355,10 +1359,6 @@ select {
 
 .ml-32 {
   margin-left: 8rem;
-}
-
-.ml-4 {
-  margin-left: 1rem;
 }
 
 .ml-6 {
@@ -1738,6 +1738,10 @@ select {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-12 {
+  width: 3rem;
 }
 
 .min-w-full {
@@ -2840,6 +2844,11 @@ select {
   border-bottom-left-radius: 0.25rem;
 }
 
+.rounded-l-2xl {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
 .rounded-r {
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
@@ -3132,6 +3141,15 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-emerald-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(110 231 183 / var(--tw-bg-opacity));
+}
+
+.bg-opacity-70 {
+  --tw-bg-opacity: 0.7;
+}
+
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -3372,6 +3390,11 @@ select {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-\[2px\] {
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .py-1 {
@@ -4427,15 +4450,6 @@ button:hover {
   transform: scaleX(1);
 }
 
-#WhatsAppContact a:hover + span {
-  transform: rotateZ(0deg) translateX(0px);
-  opacity: 1;
-}
-
-#WhatsAppContact a:hover img {
-  transform: scale(1.2);
-}
-
 .p-singleProduct {
   font-weight: 800;
   margin: 0.8rem 0;
@@ -4448,7 +4462,7 @@ button:hover {
 
 .FadeUp {
   opacity: 0;
-  transform: translateY(0px) !important;
+  transform: translateY(0px);
   animation: fadeIn 0.6s forwards;
 }
 
@@ -4614,9 +4628,21 @@ button:hover {
   padding-bottom: 0px;
 }
 
+.hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:scale-125:hover {
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -5223,6 +5249,11 @@ button:hover {
     line-height: 1;
   }
 
+  .md\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -5335,10 +5366,6 @@ button:hover {
     display: grid;
   }
 
-  .lg\:hidden {
-    display: none;
-  }
-
   .lg\:h-12 {
     height: 3rem;
   }
@@ -5349,6 +5376,14 @@ button:hover {
 
   .lg\:h-6 {
     height: 1.5rem;
+  }
+
+  .lg\:h-16 {
+    height: 4rem;
+  }
+
+  .lg\:h-14 {
+    height: 3.5rem;
   }
 
   .lg\:w-1\/2 {
@@ -5373,6 +5408,14 @@ button:hover {
 
   .lg\:w-full {
     width: 100%;
+  }
+
+  .lg\:w-16 {
+    width: 4rem;
+  }
+
+  .lg\:w-14 {
+    width: 3.5rem;
   }
 
   .lg\:max-w-7xl {

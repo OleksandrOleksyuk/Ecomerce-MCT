@@ -46,7 +46,7 @@ foreach ($product["gallery_images"] as $image) {
             <?php
             } ?>
         </div>
-        <div class="lg:w-1/2 md:p-5 flex flex-col justify-between">
+        <div class="w-full lg:w-1/2 md:p-5 flex flex-col justify-between">
             <div class="space-y-2">
                 <p id="singleProduct--categories" class="uppercase tracking-widest"><?= $product["parent"] ?></p>
                 <h1 id="singleProduct--name" class="text-emerald-900 text-4xl lg:text-5xl"><?= $product["name"] ?></h1>
